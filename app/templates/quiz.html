@@ -1,8 +1,10 @@
 {%extends "base.html"%}
 
 {% block content %}
+
+{%include "contents/chapter1.html"%}
 <div class="container">
-    <button id="str" onclick="staveinit()">init</button>
+    <button id="next" onclick="modify()">init</button>
     <button id="change" onclick="modify()">change</button>
     <div id="boo"></div>
 </div>

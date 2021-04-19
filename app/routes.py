@@ -70,3 +70,8 @@ def a():
 @app.route('/quiz')
 def quiz():
     return  render_template('quiz.html')
+
+
+@app.route('/next')
+def chapter1():
+    return request.query_string
