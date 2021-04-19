@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include "imports/importhead.html" %}
+        {% if title %}
+        <title>{{ title }} - musc</title>
+        {% else %}
+        <title>Welcome to musc</title>
+        {% endif %}
+        <style>
+        </style>
+
+    </head>
+    <body>
+        <nav id="a">
+            <div>
+                <h3 class="logo">Nav</h3>
+            </div>
+            <ul class="items">
+                <li><a href="/index">Home</a></li>
+                <li>Learn
+                    <div class="dropdown-content">
+                        <p>Hello World!</p>
+                    </div>
+                </li>
+                <li><a href="{{url_for('quiz')}}">Quiz</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="under">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+        {% include "imports/importfoot.html"%}
+    </body> 
+</html>
