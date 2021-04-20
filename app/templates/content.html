@@ -1,0 +1,19 @@
+{%extends "base.html"%}
+
+{% block content %}
+
+{% include "/content/chapter1.html"%}
+{% include "/content/chapter2.html"%}
+{% include "/content/chapter3.html" ignore missing%}
+{% marco }
+<nav>
+    left 
+</nav>
+<div>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+    </ul>
+</div>
+{% include "imports/importnote.html" %}
+{% endblock %}

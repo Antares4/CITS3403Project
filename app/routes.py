@@ -43,7 +43,7 @@ def welcome():
 @app.route('/form', methods =["GET","POST"])
 def form():
     if request.method == "GET":
-        flash("got it")
+        flash("submit success")
         return render_template('form.html')
     else:
         flash("submit form")
@@ -70,3 +70,8 @@ def a():
 @app.route('/quiz')
 def quiz():
     return  render_template('quiz.html')
+
+@app.route('/learn')
+def learn():
+    
+    return render_template('content.html')
