@@ -1,3 +1,6 @@
+{% extends 'content.html'%}
+
+{% block page %}
 <p>
   In western music notation, a<strong>stave</strong> consists of 5 horrizontal lines and
   four spaces. Notes reside either on or inbetween those staves, representing the duriation
@@ -6,35 +9,8 @@
 <div class="canvascontainer">
   <div id="canvas"></div>
 </div>
-<p>
-  Before a note can be placed however, some context must be established for a given stave.
-</p>
-<hr>
-<p>A clef anchors the relative position of notes(determines which line/gap 
-  represent which note) and usually belong to two types: <span>trebel</span> or <span>bass</span>
-  The following examples demonstrates the position of middle "C" in the respective clefs
-</p>
-<div class="canvascontainer">
-  <div id="clef"></div>
-</div>
-<span id="trabel">trebel</span> <span>bass</span>
-
-<p>The notes are represented cyclically useing the Alphabets [A-G]. 
-  That is, for each step up the stave, the note incriments alphabetically(decrement going down the stave).
-  One step above G, the notation cycles, starting from A again but this time representing
-  notes one octive above the last cycle(doubling its frequency). 
-</p>
 
 
-<div class="canvascontainer">
-  <div id="notes"></div>
-</div>
-<br>
-<div class="slidingWindow">
-  <span id="down"> &lt </span> 
-    <div id="display"></div>
-  <span id="up"> &gt </span>
-</div>
 
 
 <ul class="set" id="piano">
@@ -53,12 +29,8 @@
 </ul>
 
 <br/>
-<div class="pages">
-    <ul>
-        <li>
-            <a href="">chapter1</a>
-        </li>
-    </ul>
+<div class="pagebutton">
+  <span id="next"> <a href="c1page2">&gt</a> </span>
 </div>
 
 <script>
@@ -71,7 +43,7 @@
     for(i=0; i<keys.length; i++){
       keys[i].addEventListener("click", function(){
         removestave("canvas");
-        canvIndex = init("canvas", "treble", "4/4");
+        init("canvas", "treble", "4/4");
         console.log(this.id);
         note = [this.id];
         addnote(canvIndex, "treble",this.id,["q"]);
@@ -82,3 +54,4 @@
     addnote(canvIndex, "treble", basicnotes[position], ["q"]);
   });
 </script>
+{% endblock %}

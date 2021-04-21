@@ -71,7 +71,17 @@ def a():
 def quiz():
     return  render_template('quiz.html')
 
-@app.route('/learn')
-def learn():
-    
-    return render_template('content.html')
+@app.route('/c1page1')
+def c1page1():
+    return render_template('content/chapter1/c1page1.html')
+@app.route('/c1page2')
+def c1page2():
+    return render_template('content/chapter1/c1page2.html')
+@app.route('/c1page3')
+def c1page3():
+    return render_template('content/chapter1/c1page3.html')
+
+
+@app.route('/notes')
+def notes():
+    return render_template("content.html")

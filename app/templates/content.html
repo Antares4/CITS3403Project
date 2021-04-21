@@ -2,18 +2,21 @@
 
 {% block content %}
 
-{% include "/content/chapter1.html"%}
-{% include "/content/chapter2.html"%}
-{% include "/content/chapter3.html" ignore missing%}
-{% marco }
-<nav>
-    left 
+
+<nav class="inner-nav">
+    <ul>
+        <li>cp1</li>
+        <li>cp2</li>
+    </ul>
 </nav>
+{% block page %}{% endblock %}
 <div>
     <ul>
-        <li>1</li>
-        <li>2</li>
+        <li> <a href='c1page1'>1</a> </li>
+        <li> <a href="c1page2">2</a> </li>
+        <li> <a href="c1page3">3</a> </li>
     </ul>
 </div>
+
 {% include "imports/importnote.html" %}
 {% endblock %}

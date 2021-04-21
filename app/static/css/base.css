@@ -100,3 +100,6 @@ nav li:hover .dropdown-content{
     background-color: red;
     height: 400px;
 }
+.pagebutton span{
+    background-color: gray;
+}
