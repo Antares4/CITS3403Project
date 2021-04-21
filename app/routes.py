@@ -85,3 +85,4 @@ def c1page3():
 @app.route('/notes')
 def notes():
     return render_template("content.html")
+
