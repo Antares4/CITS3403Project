@@ -1,0 +1,57 @@
+{% extends 'content.html'%}
+
+{% block page %}
+<p>
+  In western music notation, a<strong>stave</strong> consists of 5 horrizontal lines and
+  four spaces. Notes reside either on or inbetween those staves, representing the duriation
+  and pitch of which should be interpreted by the performer.
+</p>
+<div class="canvascontainer">
+  <div id="canvas"></div>
+</div>
+
+
+
+
+<ul class="set" id="piano">
+  <li class="white b" id="f/4"></li>
+  <li class="black as" id="f#/4"></li>
+  <li class="white a" id="g/4"></li>
+  <li class="black gs" id="g#/4"></li>
+  <li class="white g" id="a/4"></li>
+  <li class="black fs" id="a#/4"></li>
+  <li class="white f" id="b/4"></li>
+  <li class="white e" id="c/4"></li>
+  <li class="black ds" id="c#/4"></li>
+  <li class="white d" id="d/4"></li>
+  <li class="black cs" id="d#/4"></li>
+	<li class="white c" id="e/4"></li>
+</ul>
+
+<br/>
+<div class="pagebutton">
+  <span id="next"> <a href="c1page2">&gt</a> </span>
+</div>
+
+<script>
+
+  $(document).ready(function(){
+    console.log("inittialize")
+    init("canvas", "treble", "4/4");
+    var canvIndex;
+    var keys = document.getElementById("piano").querySelectorAll('li');
+    for(i=0; i<keys.length; i++){
+      keys[i].addEventListener("click", function(){
+        removestave("canvas");
+        init("canvas", "treble", "4/4");
+        console.log(this.id);
+        note = [this.id];
+        addnote(canvIndex, "treble",this.id,["q"]);
+      });
+    }
+    
+    canvIndex = init("notes", "treble", null)
+    addnote(canvIndex, "treble", basicnotes[position], ["q"]);
+  });
+</script>
+{% endblock %}

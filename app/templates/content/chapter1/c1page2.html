@@ -1,0 +1,29 @@
+{% extends 'content.html'%}
+
+{% block page %}
+<p>
+    Before a note can be placed however, some context must be established for a given stave.
+  </p>
+  <hr>
+  <p>A clef anchors the relative position of notes(determines which line/gap 
+    represent which note) and usually belong to two types: <span>trebel</span> or <span>bass</span>
+    The following examples demonstrates the position of middle "C" in the respective clefs
+  </p>
+  <div class="canvascontainer">
+    <div id="clef"></div>
+  </div>
+<span id="treble">treble</span> <span id="bass">bass</span>
+<script>
+    $(document).ready(function(){
+        init("clef", null, null);
+        $("#treble").bind('click',function(){
+            removestave("clef");
+            init("clef","treble",null);
+        })
+        $("#bass").bind('click',function(){
+            removestave("clef");
+            init("clef","bass",null);
+        })
+    });
+  </script>
+{% endblock %}

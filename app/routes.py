@@ -43,7 +43,7 @@ def welcome():
 @app.route('/form', methods =["GET","POST"])
 def form():
     if request.method == "GET":
-        flash("got it")
+        flash("submit success")
         return render_template('form.html')
     else:
         flash("submit form")
@@ -71,7 +71,18 @@ def a():
 def quiz():
     return  render_template('quiz.html')
 
+@app.route('/c1page1')
+def c1page1():
+    return render_template('content/chapter1/c1page1.html')
+@app.route('/c1page2')
+def c1page2():
+    return render_template('content/chapter1/c1page2.html')
+@app.route('/c1page3')
+def c1page3():
+    return render_template('content/chapter1/c1page3.html')
 
-@app.route('/next')
-def chapter1():
-    return request.query_string
+
+@app.route('/notes')
+def notes():
+    return render_template("content.html")
+

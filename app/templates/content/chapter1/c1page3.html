@@ -1,0 +1,64 @@
+{% extends 'content.html'%}
+
+{% block page %}
+<p>The notes are represented cyclically useing the Alphabets [A-G]. 
+    That is, for each step up the stave, the note incriments alphabetically(decrement going down the stave).
+    One step above G, the notation cycles, starting from A again but this time representing
+    notes one octive above the last cycle(doubling its frequency). 
+  </p>
+  
+  
+  <div class="canvascontainer">
+    <div id="notes"></div>
+  </div>
+  <br>
+  <div class="slidingWindow">
+    <span id="down"> &lt </span> 
+      <div id="display"></div>
+    <span id="up"> &gt </span>
+  </div>
+  <script>
+       $(document).ready(function(){
+        const basicnotes = ["c/4","d/4","e/4","f/4","g/4","a/4","b/4","c/5","d/5","e/5","f/5","g/5","a/5","b/5"]
+        var position = 6;
+        init("notes", "treble", "4/4");
+        addnote("treble", basicnotes[position], ["q"]);
+        $("#display").text(basicnotes[position]);
+        $("#down").bind('click',function(){
+            console.log("clicked");
+            if(position == basicnotes.length-1){
+                $('#up').css("display", "block");
+            }
+            if(position > 0 ){
+                position--;
+                console.log("movedown",position)
+                removestave("notes");
+                init("notes", "treble", "4/4");
+                addnote("treble", basicnotes[position], ["q"]); 
+                $("#display").text(basicnotes[position])
+            }
+            if(position == 0){
+                $('#down').css("display", "none");
+            }
+        })
+        $("#up").bind('click',function(){
+            console.log("up")
+            if(position == 0){
+                $('#down').css("display", "block");
+            }
+            if(position < basicnotes.length-1){
+                position++;
+                console.log("moveup",position)
+                removestave("notes")
+                init("notes", "treble", "4/4");
+                addnote("treble", basicnotes[position], ["q"]);  
+                $("#display").text(basicnotes[position])
+            }
+            if(position == basicnotes.length-1){
+                $('#up').css("display", "none");
+            }
+            
+        })
+        });
+  </script>
+  {% endblock %}

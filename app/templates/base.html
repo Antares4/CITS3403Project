@@ -3,22 +3,22 @@
     <head>
         {% include "imports/importhead.html" %}
         {% if title %}
-        <title>{{ title }} - musc</title>
+        <title>{{ title }} - sidenote</title>
         {% else %}
-        <title>Welcome to musc</title>
+        <title>Sidenote</title>
         {% endif %}
         <style>
         </style>
-
     </head>
     <body>
         <nav id="a">
             <div>
-                <h3 class="logo">Nav</h3>
+                <h3 class="logo">Sidenote</h3>
             </div>
+            <!-- display if logedin -->
             <ul class="items">
                 <li><a href="/index">Home</a></li>
-                <li>Learn
+                <li><a href="{{url_for('notes')}}">content</a>
                     <div class="dropdown-content">
                         <p>Hello World!</p>
                     </div>
