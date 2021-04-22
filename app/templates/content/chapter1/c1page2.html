@@ -13,6 +13,10 @@
     <div id="clef"></div>
   </div>
 <span id="treble">treble</span> <span id="bass">bass</span>
+<div class="pagebutton">
+  <span id="previous"> <a href="{{url_for('index.c1page1')}}"> &lt</a> </span>
+  <span id="next"> <a href="{{url_for('index.c1page3')}}">&gt</a> </span>
+</div>
 <script>
     $(document).ready(function(){
         init("clef", null, null);

@@ -1,7 +1,6 @@
 {%extends "base.html"%}
 
 {% block content %}
-    <div class="container">
         <h1>
             This is the title
         </h1>
@@ -10,20 +9,11 @@
             including concepts of notation, keys, chords and more. 
         </p>
         <p id="but">
-            <a href="{{ url_for('quiz') }}">clickme</a>
+            <a href="{{ url_for('index.quiz') }}">clickme</a>
         </p>
         <button id="bt">add</button>
         <div id="sta">asdf</div>
-        
-    </div>
-    <div class="container">
-        <div class="t">
-            asdfaewfhiuawfeh
-        </div>
-    </div>
-    <div class="container">
-        asdfaewfhiuawfeh
-    </div>
+        <a href="{{ url_for('index.demo') }}">demo</a>
     <footer>
         afefaafe
     </footer>

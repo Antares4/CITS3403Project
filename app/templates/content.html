@@ -2,21 +2,24 @@
 
 {% block content %}
 
-
-<nav class="inner-nav">
-    <ul>
-        <li>cp1</li>
-        <li>cp2</li>
-    </ul>
-</nav>
-{% block page %}{% endblock %}
-<div>
-    <ul>
-        <li> <a href='c1page1'>1</a> </li>
-        <li> <a href="c1page2">2</a> </li>
-        <li> <a href="c1page3">3</a> </li>
-    </ul>
+<div class="container">
+    <nav class="inner-nav">
+        <ul>
+            <li>cp1</li>
+            <li>cp2</li>
+        </ul>
+    </nav>
+    {% block page %}{% endblock %}
+    <div>
+        <ul>
+            <li> <a href="{{url_for('index.c1page1')}}">1</a> </li>
+            <li> <a href="{{url_for('index.c1page2')}}">2</a> </li>
+            <li> <a href="{{url_for('index.c1page3')}}">3</a> </li>
+            <li> <a href="{{url_for('index.c1page4')}}">4</a> </li>
+        </ul>
+    </div>
 </div>
+
 
 {% include "imports/importnote.html" %}
 {% endblock %}
