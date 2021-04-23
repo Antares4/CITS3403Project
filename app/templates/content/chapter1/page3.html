@@ -1,21 +1,32 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<p>The notes are represented cyclically useing the Alphabets [A-G]. 
-    That is, for each step up the stave, the note incriments alphabetically(decrement going down the stave).
-    One step above G, the notation cycles, starting from A again but this time representing
-    notes one octive above the last cycle(doubling its frequency). 
+<div class="textcontent">
+  <p>
+    Now with a stave to work with , we are able to add some <strong>notes</strong>.
+    <hr>
+    In western music notation, <strong>notes</strong> are named cyclically useing the Alphabets 
+    <strong>[A-G]</strong>. 
+    <hr>
+    For each step up the stave, the note incriments alphabetically(decrements stepping down the stave).
+    Identical notes of the next/previous cycle essentially represent the same note but an octive higher/Lower. 
+    <hr>
   </p>
-  
-  
+
+</div>
   <div class="canvascontainer">
     <div id="notes"></div>
-  </div>
-  <br>
+</div>
+<p>
+  <hr>
+  but there's more......
+</p>
   <div class="slidingWindow">
-    <span id="down"> &lt </span> 
-      <div id="display"></div>
-    <span id="up"> &gt </span>
+    <span id="down"> &lt </span><span id="display" style="width: 10px;"></span><span id="up"> &gt </span>
+  </div>
+  <div class="pagebutton">
+    <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}"> &lt</a> </span>
+    <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">&gt</a> </span>
   </div>
   <script>
        $(document).ready(function(){
@@ -27,13 +38,13 @@
         $("#down").bind('click',function(){
             console.log("clicked");
             if(position == basicnotes.length-1){
-                $('#up').css("display", "block");
+                $('#up').css("display", "inline");
             }
             if(position > 0 ){
                 position--;
                 console.log("movedown",position)
                 removestave("notes");
-                init("notes", "treble", "4/4");
+                init("notes", "treble", null);
                 addnote("treble", basicnotes[position], ["q"]); 
                 $("#display").text(basicnotes[position])
             }
@@ -44,13 +55,13 @@
         $("#up").bind('click',function(){
             console.log("up")
             if(position == 0){
-                $('#down').css("display", "block");
+                $('#down').css("display", "inline");
             }
             if(position < basicnotes.length-1){
                 position++;
                 console.log("moveup",position)
                 removestave("notes")
-                init("notes", "treble", "4/4");
+                init("notes", "treble", null);
                 addnote("treble", basicnotes[position], ["q"]);  
                 $("#display").text(basicnotes[position])
             }

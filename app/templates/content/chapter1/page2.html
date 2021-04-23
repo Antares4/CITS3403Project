@@ -1,0 +1,40 @@
+{% extends 'content.html'%}
+
+{% block page %}
+<div class="textcontent">
+    <p>
+      Before a note can be placed however, some context must be established for a given stave.
+    </p>
+    <hr>
+    <p>A <strong>clef</strong> determines which note a particular line/space will
+      represent. The <strong>trebel</strong> and the <strong>bass</strong> clef were two of the most commonly used
+      in music notation.
+      <hr>
+      The following examples demonstrates the position of middle "C" in the respective clefs.
+    </p>
+</div>
+  
+  <div class="canvascontainer">
+    <div id="clef"></div>
+  </div>
+<span id="treble">treble</span> <span id="bass">bass</span>
+<div class="pagebutton">
+  <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}"> &lt</a> </span>
+  <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">&gt</a> </span>
+</div>
+<script>
+    $(document).ready(function(){
+        init("clef", null, null);
+        $("#treble").bind('click',function(){
+            removestave("clef");
+            init("clef","treble",null);
+            addnote("treble", "c/4", ["q"]);
+        })
+        $("#bass").bind('click',function(){
+            removestave("clef");
+            init("clef","bass",null);
+            addnote("bass", "c/4", ["q"]);
+        })
+    });
+  </script>
+{% endblock %}

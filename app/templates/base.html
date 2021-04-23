@@ -11,32 +11,19 @@
         </style>
     </head>
     <body>
-        <nav id="a">
-            <div>
-                <h3 class="logo">Sidenote</h3>
-            </div>
-            <!-- display if logedin -->
-            <ul class="items">
-                <li><a href="/index">Home</a></li>
-                <li><a href="{{url_for('notes')}}">content</a>
-                    <div class="dropdown-content">
-                        <p>Hello World!</p>
-                    </div>
-                </li>
-                <li><a href="{{url_for('quiz')}}">Quiz</a></li>
-                <li><a href="/login">Login</a></li>
+        {% include "nav.html" %}
+        <div class="container">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul class="under">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
             </ul>
-        </nav>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-        <ul class="under">
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
+            {% endif %}
+            {% endwith %}
         {% block content %}{% endblock %}
+    </div>
         {% include "imports/importfoot.html"%}
     </body> 
 </html>

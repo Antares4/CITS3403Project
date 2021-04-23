@@ -1,0 +1,44 @@
+{% extends 'content.html'%}
+
+{% block page %}
+<div class="textcontent">
+  <p>
+    Infact, there are <strong>12</strong> notes between an octive instead of <strong>8</strong>
+  </p>
+</div>
+<div class="pianocontainer">
+  <ul class="set" id="piano">
+    <li class="white b" id="f/4"></li>
+    <li class="black as" id="f#/4"></li>
+    <li class="white a" id="g/4"></li>
+    <li class="black gs" id="g#/4"></li>
+    <li class="white g" id="a/4"></li>
+    <li class="black fs" id="a#/4"></li>
+    <li class="white f" id="b/4"></li>
+    <li class="white e" id="c/5"></li>
+    <li class="black ds" id="c#/5"></li>
+    <li class="white d" id="d/5"></li>
+    <li class="black cs" id="d#/5"></li>
+      <li class="white c" id="e/5"></li>
+  </ul>
+</div>
+<div class="canvascontainer">
+  <div id="canvas"></div>
+</div>
+  <script>
+
+    $(document).ready(function(){
+        init("canvas", "treble", "4/4");
+        var keys = document.getElementById("piano").querySelectorAll('li');
+        for(i=0; i<keys.length; i++){
+            keys[i].addEventListener("click", function(){
+            removestave("canvas");
+            init("canvas", "treble", "4/4");
+            console.log(this.id);
+            note = [this.id];
+            addnote("treble",this.id,["q"]);
+            });
+        }
+    });
+  </script>
+  {% endblock %}
