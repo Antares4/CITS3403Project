@@ -10,6 +10,7 @@
 }
 div p{
     margin: 0% 20%;
+    
 }
 .container h1{
     letter-spacing: 0.1ex;
@@ -102,4 +103,17 @@ nav li:hover .dropdown-content{
 }
 .pagebutton span{
     background-color: gray;
+}
+
+.pageIndex{
+    min-height: 7ch;
+    border: 2px solid rgb(53, 51, 44);
+    display: flex;
+    align-items: center;
+    background-color: rgb(43, 41, 38);
+    justify-content: space-around;
+}
+
+.textcontent{
+    height: 250px;   
 }

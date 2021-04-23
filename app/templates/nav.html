@@ -2,15 +2,15 @@
     <div>
         <h3 class="logo">Sidenote</h3>
     </div>
-    <!-- display if logedin -->
+    <!-- display if loggedin -->
     <ul class="items">
-        <li><a href="/index">Home</a></li>
-        <li><a href="{{url_for('index.notes')}}">content</a>
+        <li><a href="{{url_for('index.index')}}">Home</a></li>
+        <li><a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">content</a>
             <div class="dropdown-content">
                 <p>Hello World!</p>
             </div>
         </li>
         <li><a href="{{url_for('index.quiz')}}">Quiz</a></li>
-        <li><a href="/login">Login</a></li>
+        <li><a href="{{url_for('auth.login')}}">Login</a></li>
     </ul>
 </nav>

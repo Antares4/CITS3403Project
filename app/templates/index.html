@@ -4,18 +4,17 @@
         <h1>
             This is the title
         </h1>
+        <h2>
+            {% if not use==None %}
+            welcome back {{use}}!
+            {% endif %}
+        </h2>
         <p>
             <span style="font-size: large;">In this course</span> you will learn about the basics musical theory 
             including concepts of notation, keys, chords and more. 
         </p>
-        <p id="but">
-            <a href="{{ url_for('index.quiz') }}">clickme</a>
-        </p>
-        <button id="bt">add</button>
-        <div id="sta">asdf</div>
+        <a href="{{ url_for('auth.login') }}">LOGIN</a>
+        <br>
         <a href="{{ url_for('index.demo') }}">demo</a>
-    <footer>
-        afefaafe
-    </footer>
 {% endblock %}
 
