@@ -14,12 +14,12 @@ function init(element, clef, time){
   var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
   // Configure the rendering context.
-  renderer.resize(500, 500);
+  renderer.resize(300, 200);
   context = renderer.getContext();
   context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 
   // Create a stave of width 400 at position 10, 40 on the canvas.
-  stave= new VF.Stave(10, 40, 200);
+  stave= new VF.Stave(0, 0, 200);
 
   // Add a clef and time signature.
   if(clef){
@@ -39,7 +39,8 @@ function removestave(staveId){
       document.getElementById(staveId).remove();
       g = document.createElement('div'); 
       g.id = staveId;
-      parent.appendChild(g);
+      g.className = "stave";
+      parent.insertBefore(g,parent.childNodes[0]);
 }
 
 

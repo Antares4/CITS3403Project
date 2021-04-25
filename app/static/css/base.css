@@ -50,8 +50,7 @@ nav{
     justify-content: space-around;
     width: 30%;
 }
-li{
-    
+.items li{
     position:relative;
     text-transform: uppercase;
     padding: 3px 0px;
@@ -66,10 +65,10 @@ li{
     letter-spacing: 1px;
     cursor: pointer;
 }
-li:last-child{
+.items li:last-child{
     border-right: 1px solid black;
 }
-li:hover{
+.items li:hover{
     transition: all 0.4s ease 0.01s;
     color: rgb(199, 194, 194);
     background-color: grey;

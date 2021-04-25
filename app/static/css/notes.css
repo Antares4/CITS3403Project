@@ -1,10 +1,18 @@
   .canvascontainer{
-    height: 200px;
+    height: 140px;
+    justify-content: center;
   }
-  .textcontainer p{
-    visibility: hidden;
+  .display{
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.2s;
   }
-  
+
+  .stave{
+    height: 120px;
+    align-self: center;
+  }
+
   * {
     box-sizing: border-box;
     margin: 0;
@@ -30,9 +38,11 @@
     height: 350px;
     background-color: white;
     border: 1px solid black;
+    transition: all 0.4s ease 0.01s;
   }
   
   .black {
+    color: white;
     width: 40px;
     height: 200px;
     background-color: black;
@@ -40,7 +50,21 @@
     margin-left: -20px;
     margin-right: -20px;
     z-index: 2;
+    transition: all 0.4s ease 0.01s;
   }
+
+ .black:hover{
+    background-color: rgb(43, 43, 46);
+ }
+ .white:hover{
+    background-color: rgb(199, 203, 216);
+ }
+ .black:active{
+    background-color: black;
+}
+ .white:active{
+    background-color:white;
+} 
 /*   
   *{
     box-sizing:border-box

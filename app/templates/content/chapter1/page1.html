@@ -1,13 +1,13 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<div class="textcontent">
-  <p style="padding-top: 14%;">
+<div class="textcontainer">
+  <p>
     Western music notation is a system used to visurally represent music played by instrument or sung by human voice through a set of 
     rules and symbols. 
+    <hr class="display">
   </p>
-  <hr>
-  <p>
+  <p class="display">
     This moduel will develop a basic understanding of musical notation and some relevant context. 
   </p>
 </div>
@@ -15,4 +15,16 @@
 <div class="pagebutton">
   <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">&gt</a> </span>
 </div>
+<script>
+  $(document).ready(function(){
+      var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
+      var display = 0;
+      $(".textcontainer").bind('click',function(){
+          if(display < paragraph.length){
+              paragraph[display].style.opacity = 1;
+              display++;
+          }
+      })
+  });
+</script>
 {% endblock %}
