@@ -9,7 +9,7 @@
     </p>
     <hr>
     <p>A <strong>clef</strong> determines which note a particular line/space will
-      represent. The <strong>trebel</strong> and the <strong>bass</strong> clef were two of the most commonly used
+      represent. The <strong>trebel &#119070</strong> and the <strong>bass &#119074</strong> clef were two of the most commonly used
       in music notation.
       <hr>
       The following examples demonstrates the position of middle "C" in the respective clefs.
@@ -30,12 +30,12 @@
         $("#treble").bind('click',function(){
             removestave("clef");
             init("clef","treble",null);
-            addnote("treble", "c/4", ["q"]);
+            addnote("treble", ["c/4"], ["q"]);
         })
         $("#bass").bind('click',function(){
             removestave("clef");
             init("clef","bass",null);
-            addnote("bass", "c/4", ["q"]);
+            addnote("bass", ["c/4"], ["q"]);
         })
     });
   </script>

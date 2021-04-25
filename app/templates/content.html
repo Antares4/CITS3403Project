@@ -1,17 +1,14 @@
 {%extends "base.html"%}
 
 {% block content %}
-
 <div >
     <nav class="pageIndex">
         <ul class="items">
-            <li>cp1</li>
-            <li>cp2</li>
+            <li><a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Notation</a></li>
+            <li> <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Rhythm</a></li>
         </ul>
     </nav>
-
     {% block page %}{% endblock %}
-
     <div class="pageIndex">
         <ul class="items">
             <li> <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">1</a> </li>

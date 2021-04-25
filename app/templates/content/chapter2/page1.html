@@ -1,0 +1,23 @@
+{%extends "content.html"%}
+
+{% block page %}
+<div class="textcontainer">
+    <p>
+        This module explores the <strong>Rhythm</strong> diamention of music notation.
+    </p>
+    <hr>
+    <p>
+        <h3>
+            What is Rhythm
+        </h3>
+        <ul>
+            <li>Determines the <strong>occurance</strong> and <strong>duration</strong> of pitch(notes)</li>
+            <li>Orgnizes music in an intuitive and readable manner</li>
+            <li>Building block for longer passages and phrases</li>
+        </ul>
+        <div class="pagebutton">
+            <span id="next"> <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Learn More</a> </span>
+        </div>
+    </p>
+</div>
+{% endblock %}

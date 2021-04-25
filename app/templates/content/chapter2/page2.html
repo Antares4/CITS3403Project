@@ -1,0 +1,39 @@
+{% extends 'content.html'%}
+
+{% block page %}
+<div class="textcontainer">
+    <p class="display">
+        In music notation, a <strong>Bar</strong> represents a segment of time corrosponding to a spacific number of <strong>beats</strong> and 
+        are closed off by vertical boundries called <strong>bar line</strong>
+        <hr>
+    </p>
+    <p class="display">
+        Similar to clefs, the <strong>Time signiture</strong> establishes the rhythmic context of a particular piece of music.
+        <hr>
+    </p>
+    <p class="display">
+        The top figure represents the <strong>amount of beats</strong> present in the following bars and the bottom figure determines
+         the <strong>note value</strong> of those beats. 
+    </p>
+</div>
+<div class="canvascontainer">
+    <div id="timesigniture"></div>
+</div>
+<script>
+    $(document).ready(function(){
+        var keys = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
+        init("timesigniture", "treble", null);
+        var display = 0
+        $(".textcontainer").bind('click',function(){
+            if(display < keys.length){
+                keys[display].style.visibility = "visible";
+            }
+            if(display == 1){
+                removestave("timesigniture");
+                init("timesigniture","treble","4/4");
+            }
+            display++;
+        })
+    });
+</script>
+{% endblock %}

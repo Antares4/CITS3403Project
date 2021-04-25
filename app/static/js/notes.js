@@ -2,13 +2,8 @@
 var stave;
 var context;
 
-const sharp = /[a-z]\#\/\d/g;
-const flat = /[a-z]b\/\d/g
-
-
-function rotate(){
-
-}
+const sharp = /[a-z]\#\/\d/;
+const flat = /[a-z]b\/\d/;
 
 function init(element, clef, time){
   console.log("init")
@@ -49,21 +44,20 @@ function removestave(staveId){
 
 
 function addnote(clef, e, dur){
-
-
   var notes = [];
   for(i=0; i<dur.length; i++){
-    console.log(e, dur[i]);
-    notes[i] = new VF.StaveNote({clef: clef, keys: [e], duration: dur[i]});
+    notes[i] = new VF.StaveNote({clef: clef, keys: [e[i]], duration: dur[i]});
+    if(sharp.test(e[i])){
+      notes[i].addAccidental(0, new VF.Accidental("#"));
+      console.log("sharp");
+    }
+    if(flat.test(e[i])){
+      notes[i].addAccidental(0, new VF.Accidental("b"));
+      console.log("flat");
+    }
   }
 	
-  if(sharp.test(e)){
-  	notes[0].addAccidental(0, new VF.Accidental("#"));
-    console.log("sharp");
-  }
-  if(flat.test(e)){
-  	console.log("flat");
-  }
+
 	var voice = new VF.Voice({num_beats: notes.length,  beat_value: 4});
   voice.addTickables(notes);
   var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
