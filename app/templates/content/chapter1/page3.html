@@ -26,13 +26,11 @@
   <div class="slidingWindow display">
     <span id="down"> &lt </span><span id="display" style="width: 10px;"></span><span id="up"> &gt </span>
   </div>
+  <div class="pagebutton display">
+    <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Previous</a> </span>
+    <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">Next</a> </span>
+  </div>
 </div>
-
-<div class="pagebutton">
-  <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}"> &lt</a> </span>
-  <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">&gt</a> </span>
-</div>
-
 <script>
       $(document).ready(function(){
       const basicnotes = ["c/4","d/4","e/4","f/4","g/4","a/4","b/4","c/5","d/5","e/5","f/5","g/5","a/5","b/5"]

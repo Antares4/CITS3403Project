@@ -22,7 +22,9 @@
             </ul>
             {% endif %}
             {% endwith %}
-        {% block content %}{% endblock %}
+        <div class="block" style="display: none;">
+            {% block content %}{% endblock %}
+        </div>
     </div>
         {% include "imports/importfoot.html"%}
     </body> 

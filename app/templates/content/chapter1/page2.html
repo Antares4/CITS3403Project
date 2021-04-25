@@ -2,29 +2,32 @@
 
 {% block page %}
 <div class="textcontainer">
-    <p>
-      In western music notation, notes reside either in one of 4 spaces or 5 horrizontal lines of a <strong>stave</strong>
-      <hr class="display">
-    </p>
-    <p class="display">
-      Before a note can be placed however, some context must be established for a given stave.
-      <hr class="display">
-    </p>
-    <p class="display">
-      A <strong>clef</strong> determines which note a particular line/space will
-      represent. The <strong>trebel &#119070</strong> and the <strong>bass &#119074</strong> clef were two of the most commonly used
-      in music notation.
-      The following examples demonstrates the position of middle "C" in the respective clefs.
-    </p>
-    <div class="canvascontainer display">
-      <div class="stave" id="clef"></div>
-      <span id="treble">treble</span> <span id="bass">bass</span>
-    </div>
+  <p>
+    In western music notation, notes reside either in one of 4 spaces or 5 horrizontal lines of a <strong>stave</strong>
+    <hr class="display">
+  </p>
+  <p class="display">
+    Before a note can be placed however, some context must be established for a given stave.
+    <hr class="display">
+  </p>
+  <p class="display">
+    A <strong>clef</strong> determines which note a particular line/space will
+    represent. The <strong>trebel &#119070</strong> and the <strong>bass &#119074</strong> clef were two of the most commonly used
+    in music notation.
+    The following examples demonstrates the position of middle "C" in the respective clefs.
+  </p>
+  <div class="canvascontainer display">
+    <div class="stave" id="clef"></div>
+  </div>
+  <div class="display">
+    <span id="treble">treble</span> 
+    <span id="bass">bass</span>
+  </div>
+  <div class="pagebutton display">
+    <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Previous</a> </span>
+    <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Next</a> </span>
+  </div>
 </div> 
-<div class="pagebutton">
-  <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}"> &lt</a> </span>
-  <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">&gt</a> </span>
-</div>
 <script>
     $(document).ready(function(){
         init("clef", null, null);

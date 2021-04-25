@@ -3,7 +3,7 @@
 {% block page %}
 <div class="textcontainer">
     <p>
-        In music notation, a <strong>Bar</strong> represents a segment of time corrosponding to a spacific number of <strong>beats</strong> and 
+        In music notation, a <strong>Bar</strong> represents a segment of time corrosponding to a spacific number of <strong>beats</strong> that are
         are closed off by vertical boundries called <strong>bar line</strong>
     </p>
     <div class="canvascontainer display">
@@ -12,12 +12,15 @@
     </div>
     <p class="display">
         Similar to clefs, the <strong>Time signiture</strong> establishes the rhythmic context of a particular piece of music.
-        <hr class="display">
+        <br>
     </p>
     <p class="display">
         The top figure represents the <strong>amount of beats</strong> present in the following bars and the bottom figure determines
         the <strong>note value</strong> of those beats. 
     </p>
+    <div class="pagebutton display">
+        <span id="next"> <a href="{{url_for('index.notes', chapter='chapter2', page='page3')}}">Next</a> </span>
+    </div>
 </div>
 <script>
     $(document).ready(function(){

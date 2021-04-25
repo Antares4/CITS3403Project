@@ -9,14 +9,19 @@
         </ul>
     </nav>
     {% block page %}{% endblock %}
-    <div class="pageIndex">
+    <!-- <div class="pageIndex">
         <ul class="items">
             <li> <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">1</a> </li>
             <li> <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">2</a> </li>
             <li> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">3</a> </li>
             <li> <a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">4</a> </li>
         </ul>
-    </div>
+    </div> -->
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".block").fadeIn(500);
+    });
+</script>
 {% include "imports/importnote.html" %}
 {% endblock %}

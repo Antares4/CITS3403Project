@@ -1,6 +1,11 @@
   .canvascontainer{
-    height: 140px;
+    height: 110px;
     justify-content: center;
+  }
+
+  .textcontainer p{
+    padding-top: 10px;
+    padding-bottom: 14px;
   }
   .display{
     opacity: 0;
@@ -9,7 +14,7 @@
   }
 
   .stave{
-    height: 120px;
+    height: 100px;
     align-self: center;
   }
 
