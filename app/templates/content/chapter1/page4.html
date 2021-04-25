@@ -3,42 +3,48 @@
 {% block page %}
 <div class="textcontent">
   <p>
-    Infact, there are <strong>12</strong> notes between an octive instead of <strong>8</strong>
+    Infact between an octive, exists <strong>12</strong> instead of the <strong>8</strong> notes we have just learnt, as demonnstrated by this keybord. 
+  </p>
+  <hr>
+  <div>
+    <!-- <div class="pianocontainer">
+    <ul class="set" id="piano">
+      <li class="white b" id="f/4"></li>
+      <li class="black as" id="f#/4"></li>
+      <li class="white a" id="g/4"></li>
+      <li class="black gs" id="g#/4"></li>
+      <li class="white g" id="a/4"></li>
+      <li class="black fs" id="a#/4"></li>
+      <li class="white f" id="b/4"></li>
+      <li class="white e" id="c/5"></li>
+      <li class="black ds" id="c#/5"></li>
+      <li class="white d" id="d/5"></li>
+      <li class="black cs" id="d#/5"></li>
+        <li class="white c" id="e/5"></li>
+    </ul>
+  </div> -->
+    KEYBOARD
+  </div>
+  <hr>
+  <p>
+    The white notes, starting from F/4 to E/5 represents what we have drawn on the stave. To represent the black notes however,
+    requires modifyers called the <strong>Accidentals</strong>. 
+    <hr>
+    Observe the keybord carefully, and you will notice that some white keys are right next to each other whereas
+    some were divided by an black key. The difference between two concective keys is called a <strong>Semitone</strong>
+  </p>
+  <hr>
+  <p>
+    There are two main types of Accidentals - <strong>Sharp(#)</strong> and <strong>Flat(b)</strong> 
+    that either rasies or lowers an note by a <strong>Semitone</strong> respectively
+  </p>
+  <p>
   </p>
 </div>
-<div class="pianocontainer">
-  <ul class="set" id="piano">
-    <li class="white b" id="f/4"></li>
-    <li class="black as" id="f#/4"></li>
-    <li class="white a" id="g/4"></li>
-    <li class="black gs" id="g#/4"></li>
-    <li class="white g" id="a/4"></li>
-    <li class="black fs" id="a#/4"></li>
-    <li class="white f" id="b/4"></li>
-    <li class="white e" id="c/5"></li>
-    <li class="black ds" id="c#/5"></li>
-    <li class="white d" id="d/5"></li>
-    <li class="black cs" id="d#/5"></li>
-      <li class="white c" id="e/5"></li>
-  </ul>
-</div>
-<div class="canvascontainer">
-  <div id="canvas"></div>
-</div>
-  <script>
 
-    $(document).ready(function(){
-        init("canvas", "treble", "4/4");
-        var keys = document.getElementById("piano").querySelectorAll('li');
-        for(i=0; i<keys.length; i++){
-            keys[i].addEventListener("click", function(){
-            removestave("canvas");
-            init("canvas", "treble", "4/4");
-            console.log(this.id);
-            note = [this.id];
-            addnote("treble",this.id,["q"]);
-            });
-        }
-    });
-  </script>
-  {% endblock %}
+<div class="pagebutton">
+  <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}"> &lt</a> </span>
+  <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page5')}}"> &gt</a> </span>
+</div>
+
+{% endblock %}

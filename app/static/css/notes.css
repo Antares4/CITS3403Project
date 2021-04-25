@@ -1,11 +1,48 @@
   .canvascontainer{
     height: 200px;
   }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
   
+  .body {
+    background-color: brown;
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+  .set {
+    display: flex;
+  }
+  ul {
+    list-style: none;
+  }
+  
+  .white {
+    width: 120px;
+    height: 350px;
+    background-color: white;
+    border: 1px solid black;
+  }
+  
+  .black {
+    width: 40px;
+    height: 200px;
+    background-color: black;
+    border: 1px solid black;
+    margin-left: -20px;
+    margin-right: -20px;
+    z-index: 2;
+  }
+/*   
   *{
     box-sizing:border-box
   }
-  
+
+
   body {
     margin:0;
   }
@@ -68,4 +105,4 @@
   .a,.g,.f,.d,.c {
     margin:0 0 0 -1em
   }
-  
+   */
