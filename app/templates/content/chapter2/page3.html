@@ -1,5 +1,55 @@
 {% extends 'content.html'%}
 
 {% block page %}
+<div class="textcontainer">
+    <p>
+        Starting from <strong>semibreve &#119133</strong>, the ordinal of note value are as follow: <strong>semibreve &#119133</strong>, <strong>minim &#119134</strong>, 
+        <strong>crotchet &#119135</strong>, <strong>quaver &#119136</strong>, 
+        <strong>semiquavr &#119137</strong> and <strong>demisemiquaver &#119138</strong>. Each with duration halving the previous. 
+    </p>
+    <div class="canvascontainer display">
+        <div class="stave" id="notevalue"></div>
+        <hr class="display">
+    </div>
+    <p class="display">
+        Click on the following to see howmany of each note fit in a 4/4 bar
+    </p>
+    <div class="notedemo display">
+        <button value=0>semibreve</button>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        time = [4,4]
+        notevalues = ["w"];
+        var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
+        init("notevalue", "treble", "4/4");
+        var display = 0;
+        $(".textcontainer").bind('click',function(){
+            if(display < paragraph.length){
+                paragraph[display].style.opacity = 1;
+                display++;
+            }
+        })
+        $(".notedemo > button").bind('click',function(){
+            removestave("notevalue");
+            init("notevalue","treble","4/4");
+            notenames=[];
+            notevals=[];
+            for(i = 0; i < notevalues.length; i++){
+                console.log(parseInt(this.value));
+                if(parseInt(this.value) == i){
+                    thisval=notevalues[i];
+                    numNote=Math.pow(2,i);
+                    for(i = 0; i < numNote; i++){
+                        notenames.push("c/4");
+                        notevals.push(thisval);
+                    }
+                }               
+            }
+            addnote("treble", notenames, notevals, time);
+        })
 
+    });
+</script>
 {% endblock %}

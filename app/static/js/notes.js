@@ -44,7 +44,7 @@ function removestave(staveId){
 }
 
 
-function addnote(clef, e, dur){
+function addnote(clef, e, dur,time){
   var notes = [];
   for(i=0; i<dur.length; i++){
     notes[i] = new VF.StaveNote({clef: clef, keys: [e[i]], duration: dur[i]});
@@ -57,9 +57,7 @@ function addnote(clef, e, dur){
       console.log("flat");
     }
   }
-	
-
-	var voice = new VF.Voice({num_beats: notes.length,  beat_value: 4});
+	var voice = new VF.Voice({num_beats: time[0],  beat_value: time[1]});
   voice.addTickables(notes);
   var formatter = new VF.Formatter().joinVoices([voice]).format([voice], 400);
   
