@@ -1,0 +1,33 @@
+{%extends "content.html"%}
+
+{% block page %}
+<div class="textcontainer">
+    <p>
+        This module explores the <strong>Rhythm</strong> diamention of music notation.
+        <hr class="display">
+    </p>
+
+    <h6 class="display">What is Rhythm</h6>
+
+    <ul>
+        <li class="display">An set of rule that determines the <strong>occurance</strong> and <strong>duration</strong> of pitch(notes)</li>
+        <li class="display">Orgnization of music in an intuitive and readable manner</li>
+        <li class="display">Building block for longer passages and phrases</li>
+    </ul>
+    <div class="pagebutton display">
+        <span id="next"> <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Learn More</a> </span>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
+        var display = 0;
+        $(".textcontainer").bind('click',function(){
+            if(display < paragraph.length){
+                paragraph[display].style.opacity = 1;
+                display++;
+            }
+        })
+    });
+</script>
+{% endblock %}

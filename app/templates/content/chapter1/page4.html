@@ -1,44 +1,55 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<div class="textcontent">
+<div class="textcontainer">
   <p>
-    Infact, there are <strong>12</strong> notes between an octive instead of <strong>8</strong>
+    Infact between an octive, exists <strong>12</strong> instead of the <strong>8</strong> notes we have just learnt, as demonnstrated by this keybord.
   </p>
+  <div class="pianocontainer display">
+    <ul class="set" id="piano">
+      <li class="white b" id="f/4">f/4</li>
+      <li class="black as" id="f#/4">f#/4</li>
+      <li class="white a" id="g/4">g/4</li>
+      <li class="black gs" id="g#/4">g#/4</li>
+      <li class="white g" id="a/4">a/4</li>
+      <li class="black fs" id="a#/4">a#/4</li>
+      <li class="white f" id="b/4">b/4</li>
+      <li class="white e" id="c/5">c/5</li>
+      <li class="black ds" id="c#/5">c#/5</li>
+      <li class="white d" id="d/5">d/5</li>
+      <li class="black cs" id="d#/5">d#/5</li>
+        <li class="white c" id="e/5">e/5</li>
+    </ul>
+  </div>
+  <p class="display">
+    The white notes, starting from F/4 to E/5 represents what we have drawn on the stave. To represent the black notes however,
+    requires modifyers called the <strong>Accidentals</strong>. 
+    <hr class="display">
+  </p>
+  <p class="display">
+    Observe the keybord carefully, and you will notice that some white keys are right next to each other whereas
+    some were divided by an black key. The difference between two concective keys is called a <strong>Semitone</strong>
+    <hr class="display">
+  </p>
+  <p class="display">
+    There are two main types of Accidentals - <strong>Sharp(#)</strong> and <strong>Flat(b)</strong> 
+    that either rasies or lowers an note by a <strong>Semitone</strong> respectively
+  </p>
+  <div class="pagebutton display">
+    <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Previous</a> </span>
+    <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page5')}}">Next</a> </span>
+  </div>
 </div>
-<div class="pianocontainer">
-  <ul class="set" id="piano">
-    <li class="white b" id="f/4"></li>
-    <li class="black as" id="f#/4"></li>
-    <li class="white a" id="g/4"></li>
-    <li class="black gs" id="g#/4"></li>
-    <li class="white g" id="a/4"></li>
-    <li class="black fs" id="a#/4"></li>
-    <li class="white f" id="b/4"></li>
-    <li class="white e" id="c/5"></li>
-    <li class="black ds" id="c#/5"></li>
-    <li class="white d" id="d/5"></li>
-    <li class="black cs" id="d#/5"></li>
-      <li class="white c" id="e/5"></li>
-  </ul>
-</div>
-<div class="canvascontainer">
-  <div id="canvas"></div>
-</div>
-  <script>
-
-    $(document).ready(function(){
-        init("canvas", "treble", "4/4");
-        var keys = document.getElementById("piano").querySelectorAll('li');
-        for(i=0; i<keys.length; i++){
-            keys[i].addEventListener("click", function(){
-            removestave("canvas");
-            init("canvas", "treble", "4/4");
-            console.log(this.id);
-            note = [this.id];
-            addnote("treble",this.id,["q"]);
-            });
-        }
-    });
-  </script>
-  {% endblock %}
+<script>
+  $(document).ready(function(){
+      var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
+      var display = 0;
+      $(".textcontainer").bind('click',function(){
+          if(display < paragraph.length){
+              paragraph[display].style.opacity = 1;
+              display++;
+          }
+      })
+  });
+</script>
+{% endblock %}

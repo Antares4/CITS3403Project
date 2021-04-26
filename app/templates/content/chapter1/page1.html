@@ -1,25 +1,29 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<div class="textcontent">
-  <p style="padding-top: 14%;">
-    In this moduel you will learn about the 
-    In western music notation, notes reside either in one of 4 spaces or 5 horrizontal lines of a <strong>stave</strong>
+<div class="textcontainer">
+  <p>
+    Western music notation is a system used to visurally represent music played by instrument or sung by human voice through a set of 
+    rules and symbols. 
+    <hr class="display">
   </p>
-</div>
-
-<div class="canvascontainer">
-  <div id="canvas"></div>
-</div>
-
-<br/>
-<div class="pagebutton">
-  <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">&gt</a> </span>
+  <p class="display">
+    This moduel will develop a basic understanding of musical notation and some relevant context. 
+  </p>
+  <div class="pagebutton display">
+    <span id="next"><a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Learn More</a> </span>
+  </div>
 </div>
 <script>
-
   $(document).ready(function(){
-    init("canvas", null, null);
+      var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
+      var display = 0;
+      $(".textcontainer").bind('click',function(){
+          if(display < paragraph.length){
+              paragraph[display].style.opacity = 1;
+              display++;
+          }
+      })
   });
 </script>
 {% endblock %}

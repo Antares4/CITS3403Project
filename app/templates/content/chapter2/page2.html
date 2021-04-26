@@ -1,0 +1,46 @@
+{% extends 'content.html'%}
+
+{% block page %}
+<div class="textcontainer">
+    <p>
+        In music notation, a <strong>Bar</strong> represents a segment of time corrosponding to a spacific number of <strong>beats</strong> that are
+        are closed off by vertical boundries called <strong>bar line</strong>
+    </p>
+    <p class="display">
+        Similar to clefs, the <strong>Time signiture</strong> establishes the rhythmic context of a particular piece of music.
+        <br>
+    </p>
+    <div class="canvascontainer display">
+        <div class="stave" id="timesigniture"></div>
+        <hr class="display">
+    </div>
+    <p class="display">
+        The top figure represents the <strong>amount of beats</strong> present in any of the following bars, whereas the bottom figure determines
+        the <strong>note value</strong> of those beats. 
+    </p>
+    <p class="display">
+        The example above shows a <strong> 4/4</strong> time signiture also known as the common-time. The number 4 above indicates <strong>4 beats</strong>  in a bar 
+        with a note value of <strong>crotchet</strong>. 
+    </p>
+    <div class="pagebutton display">
+        <span id="next"> <a href="{{url_for('index.notes', chapter='chapter2', page='page3')}}">Next</a> </span>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
+        init("timesigniture", "treble", null,200);
+        var display = 0;
+        $(".textcontainer").bind('click',function(){
+            if(display < paragraph.length){
+                paragraph[display].style.opacity = 1;
+                display++;
+            }
+            if(display == 3){
+                removestave("timesigniture");
+                init("timesigniture","treble","4/4",200);
+            }
+        })
+    });
+</script>
+{% endblock %}

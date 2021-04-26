@@ -1,0 +1,57 @@
+{% extends 'content.html'%}
+
+{% block page %}
+<div class="canvascontainer">
+    <div id="canvas"></div>
+</div>
+<div>
+    <span id="switch">Sharp</span>
+</div>
+<div class="pianocontainer">
+  <ul class="set" id="piano">
+    <li class="white b" id="f/4">f/4</li>
+    <li class="black as" id="f#/4">f#/4</li>
+    <li class="white a" id="g/4">g/4</li>
+    <li class="black gs" id="g#/4">g#/4</li>
+    <li class="white g" id="a/4">a/4</li>
+    <li class="black fs" id="a#/4">a#/4</li>
+    <li class="white f" id="b/4">b/4</li>
+    <li class="white e" id="c/5">c/5</li>
+    <li class="black ds" id="c#/5">c#/5</li>
+    <li class="white d" id="d/5">d/5</li>
+    <li class="black cs" id="d#/5">d#/5</li>
+      <li class="white c" id="e/5">e/5</li>
+  </ul>
+</div>
+<script>
+  $(document).ready(function(){
+      Sharp = ["f/4","f#/4","g/4","g#/4","a/4","a#/4","b/4","c/5","c#/5","d/5","d#/5","e/5"]
+      Flat = ["f/4","gb/4","g/4","ab/4","a/4","bb/4","b/4","c/5","db/5","d/5","eb/5","e/5"]
+      init("canvas", "treble", "4/4",200);
+      var keys = document.getElementById("piano").querySelectorAll('li');
+      for(i=0; i<keys.length; i++){
+          keys[i].addEventListener("click", function(){
+          removestave("canvas");
+          init("canvas", "treble", "4/4",200);
+          console.log(this.innerHTML);
+          note = [this.innerHTML];
+          addnote("treble",[this.innerHTML],["q"]);
+          });
+      }
+      $("#switch").bind('click',function(){
+            if(this.innerHTML == "Sharp"){
+                this.innerHTML = "Flat";
+                for(i = 0; i < keys.length; i++){
+                    keys[i].innerHTML = Flat[i];
+                }
+            }
+            else{
+                this.innerHTML = "Sharp";
+                for(i = 0; i < keys.length; i++){
+                    keys[i].innerHTML = Sharp[i];
+                }
+            }
+        })
+  });
+</script>
+{% endblock %}

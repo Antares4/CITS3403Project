@@ -1,75 +1,85 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<div class="textcontent">
+<div class="textcontainer">
   <p>
     Now with a stave to work with , we are able to add some <strong>notes</strong>.
-    <hr>
+    <hr class="display">
+  </p>
+  <p class="display">
     In western music notation, <strong>notes</strong> are named cyclically useing the Alphabets 
     <strong>[A-G]</strong>. 
-    <hr>
-    For each step up the stave, the note incriments alphabetically(decrements stepping down the stave).
-    Identical notes of the next/previous cycle essentially represent the same note but an octive higher/Lower. 
-    <hr>
+    <hr class="display">
   </p>
-
-</div>
-  <div class="canvascontainer">
-    <div id="notes"></div>
-</div>
-<p>
-  <hr>
-  but there's more......
-</p>
-  <div class="slidingWindow">
+  <p class="display">
+    For each step up the stave, the note incriments alphabetically(decrements stepping down the stave).
+    Identical notes of the next/previous cycle essentially represent the same note, but an octive higher/Lower. 
+    <hr class="display">
+  </p>
+  <p class="display">
+    but there's more......
+    <hr class="display">
+  </p>
+  <div class="canvascontainer display">
+    <div class="stave" id="notes"></div>
+  </div>
+  <div class="slidingWindow display">
     <span id="down"> &lt </span><span id="display" style="width: 10px;"></span><span id="up"> &gt </span>
   </div>
-  <div class="pagebutton">
-    <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}"> &lt</a> </span>
-    <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">&gt</a> </span>
+  <div class="pagebutton display">
+    <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Previous</a> </span>
+    <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">Next</a> </span>
   </div>
-  <script>
-       $(document).ready(function(){
-        const basicnotes = ["c/4","d/4","e/4","f/4","g/4","a/4","b/4","c/5","d/5","e/5","f/5","g/5","a/5","b/5"]
-        var position = 6;
-        init("notes", "treble", "4/4");
-        addnote("treble", basicnotes[position], ["q"]);
-        $("#display").text(basicnotes[position]);
-        $("#down").bind('click',function(){
-            console.log("clicked");
-            if(position == basicnotes.length-1){
-                $('#up').css("display", "inline");
-            }
-            if(position > 0 ){
-                position--;
-                console.log("movedown",position)
-                removestave("notes");
-                init("notes", "treble", null);
-                addnote("treble", basicnotes[position], ["q"]); 
-                $("#display").text(basicnotes[position])
-            }
-            if(position == 0){
-                $('#down').css("display", "none");
-            }
-        })
-        $("#up").bind('click',function(){
-            console.log("up")
-            if(position == 0){
-                $('#down').css("display", "inline");
-            }
-            if(position < basicnotes.length-1){
-                position++;
-                console.log("moveup",position)
-                removestave("notes")
-                init("notes", "treble", null);
-                addnote("treble", basicnotes[position], ["q"]);  
-                $("#display").text(basicnotes[position])
-            }
-            if(position == basicnotes.length-1){
-                $('#up').css("display", "none");
-            }
-            
-        })
-        });
-  </script>
-  {% endblock %}
+</div>
+<script>
+      $(document).ready(function(){
+      const basicnotes = ["c/4","d/4","e/4","f/4","g/4","a/4","b/4","c/5","d/5","e/5","f/5","g/5","a/5","b/5"]
+      var position = 6;
+      init("notes", "treble", null,200);
+      addnote("treble", [basicnotes[position]], ["q"]);
+      $("#display").text(basicnotes[position]);
+      $("#down").bind('click',function(){
+          console.log("clicked");
+          if(position == basicnotes.length-1){
+              $('#up').css("display", "inline");
+          }
+          if(position > 0 ){
+              position--;
+              console.log("movedown",position)
+              removestave("notes");
+              init("notes", "treble", null,200);
+              addnote("treble", [basicnotes[position]], ["q"]); 
+              $("#display").text(basicnotes[position])
+          }
+          if(position == 0){
+              $('#down').css("display", "none");
+          }
+      })
+      $("#up").bind('click',function(){
+          console.log("up")
+          if(position == 0){
+              $('#down').css("display", "inline");
+          }
+          if(position < basicnotes.length-1){
+              position++;
+              console.log("moveup",position)
+              removestave("notes")
+              init("notes", "treble", null,200);
+              addnote("treble", [basicnotes[position]], ["q"]);  
+              $("#display").text(basicnotes[position])
+          }
+          if(position == basicnotes.length-1){
+              $('#up').css("display", "none");
+          }  
+      })
+      var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
+      var display = 0;
+      $(".textcontainer").bind('click',function(){
+          if(display < paragraph.length){
+              paragraph[display].style.opacity = 1;
+              display++;
+          }   
+      })
+      });
+</script>
+{% endblock %}
