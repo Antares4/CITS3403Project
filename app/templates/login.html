@@ -4,9 +4,17 @@
     
     <form action="" method="post" novalidate>
         <h1>Sign In</h1>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+        {% endif %}
+        {% endwith %}
         {{ form.hidden_tag() }}
         <p>
-            {{ form.username.label }}<br>
+            {{ form.username.label }}
+            <br>
             {{ form.username(size=32) }}
             {% for error in form.username.errors %}
             <br>
@@ -14,7 +22,8 @@
             {% endfor %}
         </p>
         <p>
-            {{ form.password.label }}<br>
+            {{ form.password.label }}
+            <br>
             {{ form.password(size=32) }}
             {% for error in form.password.errors %}
             <br>

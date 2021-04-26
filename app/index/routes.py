@@ -2,9 +2,9 @@ from flask import Flask, request, url_for, redirect, render_template, flash, jso
 from app.index import bp
 
 @bp.route('/')
-@bp.route('/index/<user>')
-def index(user=None):
-    return render_template('index.html', use=user)
+@bp.route('/index/<name>')
+def index(name=None):
+    return render_template('index.html', use=name)
 
 @bp.route('/a')
 def a():
