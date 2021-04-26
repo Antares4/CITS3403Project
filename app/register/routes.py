@@ -3,6 +3,7 @@ from app.register import bp
 from app.register.forms import RegisterForm
 from app.model import users
 from app import db
+from werkzeug.security import generate_password_hash
 
 @bp.route('/register', methods=['GET','POST'])
 def register():
@@ -14,7 +15,8 @@ def register():
         user.firstname = form.firstname.data
         user.lastname = form.lastname.data
         if(form.password.data == form.confirmpassword.data):
-            user.password = form.password.data
+            hash_pwd = generate_password_hash(form.password.data, method="sha384")
+            user.password = hash_pwd
         else:
             flash("password does not match, try again")
             return render_template("register.html", form = form)

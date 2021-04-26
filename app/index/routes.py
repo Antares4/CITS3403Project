@@ -1,4 +1,5 @@
 from flask import Flask, request, url_for, redirect, render_template, flash, jsonify
+from flask_login import current_user, login_required, logout_user
 from app.index import bp
 
 @bp.route('/')
@@ -16,21 +17,6 @@ def a():
 def quiz():
     return  render_template('quiz.html')
 
-# @bp.route('/c1page1')
-# def c1page1():
-#     return render_template('content/chapter1/c1page1.html')
-# @bp.route('/c1page2')
-# def c1page2():
-#     return render_template('content/chapter1/c1page2.html')
-# @bp.route('/c1page3')
-# def c1page3():
-#     return render_template('content/chapter1/c1page3.html')
-
-# @bp.route('/c1page4')
-# def c1page4():
-#     return render_template('content/chapter1/c1page4.html')
-
-
 @bp.route('/demo')
 def demo():
     return render_template('sample.html')
@@ -41,3 +27,8 @@ def notes(chapter, page):
     route_cp = "content/{}/{}.html".format(chapter,page)
     return render_template(route_cp)
 
+@bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index.index'))
