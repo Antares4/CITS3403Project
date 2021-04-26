@@ -7,18 +7,16 @@ from app import db
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        flash('Login requested for user {}, remember_me={}'.format(
-            form.username.data, form.remember_me.data))
         user = users.query.filter_by(username=form.username.data).first()
-        username=form.username.data
         if user:
-            return redirect(url_for('index.index', user=username))
+            if form.password.data == user.password:
+                return redirect(url_for('index.index', name=user.username))
+            else:
+                flash("invalid Password")
+                return render_template('login.html', title='Sign In', form=form)
         else:
-            ## register
-            user = users()
-            user.name = form.username.data
-            flash("name saved")
-        
+            flash("invalid username")
+            return render_template('login.html', title='Sign In', form=form)
     elif(request.method == 'POST' and form.validate_on_submit() != True):
         flash('empty field')
     return render_template('login.html', title='Sign In', form=form)
