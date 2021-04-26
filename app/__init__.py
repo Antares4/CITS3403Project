@@ -13,6 +13,7 @@ def initapp():
     db.init_app(app)
     migrate.init_app(app, db)
     login.init_app(app)
+    login.login_view = "login"
     with app.app_context():
         db.create_all()
 
