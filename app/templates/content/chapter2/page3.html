@@ -4,8 +4,8 @@
 <div class="textcontainer">
     <p>
         Starting from <strong>semibreve &#119133</strong>, the ordinal of note value are as follow: <strong>semibreve &#119133</strong>, <strong>minim &#119134</strong>, 
-        <strong>crotchet &#119135</strong>, <strong>quaver &#119136</strong>, 
-        <strong>semiquavr &#119137</strong> and <strong>demisemiquaver &#119138</strong>. Each with duration halving the previous. 
+        <strong>crotchet &#119135</strong>, <strong>quaver &#119136</strong> and
+        <strong>semiquaver &#119137</strong>. Each with duration halving the previous. 
     </p>
     <div class="canvascontainer display">
         <div class="stave" id="notevalue"></div>
@@ -16,14 +16,17 @@
     </p>
     <div class="notedemo display">
         <button value=0>semibreve</button>
+        <button value=1>minim</button>
+        <button value=2>crotchet</button>
+        <button value=3>quaver</button>
+        <button value=4>semiquaver</button>
     </div>
 </div>
 <script>
     $(document).ready(function(){
-        time = [4,4]
-        notevalues = ["w"];
+        notevalues = ["w","h","q","8","16"];
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
-        init("notevalue", "treble", "4/4");
+        init("notevalue", "treble", "4/4",400);
         var display = 0;
         $(".textcontainer").bind('click',function(){
             if(display < paragraph.length){
@@ -33,7 +36,6 @@
         })
         $(".notedemo > button").bind('click',function(){
             removestave("notevalue");
-            init("notevalue","treble","4/4");
             notenames=[];
             notevals=[];
             for(i = 0; i < notevalues.length; i++){
@@ -47,7 +49,8 @@
                     }
                 }               
             }
-            addnote("treble", notenames, notevals, time);
+            init("notevalue","treble","4/4",400);
+            addnote("treble", notenames, notevals);
         })
 
     });

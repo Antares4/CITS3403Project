@@ -29,7 +29,7 @@
 <script>
     $(document).ready(function(){
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
-        init("timesigniture", "treble", null);
+        init("timesigniture", "treble", null,200);
         var display = 0;
         $(".textcontainer").bind('click',function(){
             if(display < paragraph.length){
@@ -38,7 +38,7 @@
             }
             if(display == 3){
                 removestave("timesigniture");
-                init("timesigniture","treble","4/4");
+                init("timesigniture","treble","4/4",200);
             }
         })
     });

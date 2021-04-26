@@ -30,17 +30,16 @@
 </div> 
 <script>
     $(document).ready(function(){
-        time = [1,4]
-        init("clef", null, null);
+        init("clef", null, null,200);
         $("#treble").bind('click',function(){
             removestave("clef");
-            init("clef","treble",null);
-            addnote("treble", ["c/4"], ["q"], time);
+            init("clef","treble",null,200);
+            addnote("treble", ["c/4"], ["q"]);
         })
         $("#bass").bind('click',function(){
             removestave("clef");
-            init("clef","bass",null);
-            addnote("bass", ["c/4"], ["q"], time);
+            init("clef","bass",null,200);
+            addnote("bass", ["c/4"], ["q"]);
         })
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
         var display = 0;
