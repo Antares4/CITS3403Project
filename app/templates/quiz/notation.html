@@ -1,0 +1,57 @@
+{%extends "assessment.html"%}
+{% block page %}
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p class="button-wrap">
+            {% for subfield in form.Q1 %}
+                <tr>
+                    <td>{{ subfield }}</td>
+                    <td>{{ subfield.label}}</td>
+                    <span class="checkmark"></span>
+                </tr>
+            {% endfor %}
+        </p>    
+        <div style="display: none;">
+            {{form.Q1ans(id="q1")}}
+        </div>
+        <p>{{ form.submit() }}</p>
+    </form>
+       <style>
+        .button-wrap{
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 22px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .button-wrap input[type="radio"]{
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        .button-wrap label{
+            display: inline-block;
+            background-color: #ddd;
+            padding: 10px 20px;
+            font-family: sans-serif, Arial;
+            font-size: 16px;
+            border: 2px solid #444;
+            border-radius: 4px;
+        }
+        .button-wrap input[type="radio"]:checked + label {
+            background-color:#bfb;
+            border-color: #4c4;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("#q1").val("3"); 
+        })
+    </script>
+{% endblock %}

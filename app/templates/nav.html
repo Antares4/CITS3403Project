@@ -12,7 +12,7 @@
                 <p>Hello World!</p>
             </div>
         </li>
-        <li><a href="{{url_for('index.quiz')}}">Quiz</a></li>
+        <li><a href="{{url_for('assessment.testSubmission', subjectName='notation')}}">Assessment</a></li>
         {% if not current_user.is_authenticated %}
             <li><a href="{{url_for('auth.login')}}">Login</a></li>
         {% endif %}
