@@ -22,8 +22,10 @@ def testSubmission(subjectName):
         ans1.answerSeq=1
         ans1.sumbittedAnswer = int(form.Q1.data)
         ans1.correctAnswer = int(form.Q1ans.data)
-        submissionId = sub.id
-        sa = sub.id
+        ans1.submissionId = sub.id
+        db.session.add(ans1)
+        db.session.commit()
+        sa = getAllans()
         return redirect(url_for('index.index', name=sa))
     return render_template('quiz/notation.html', title='Assessment', form=form)
 
