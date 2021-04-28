@@ -1,6 +1,7 @@
 from flask import Flask, request, url_for, redirect, render_template, flash, jsonify
 from flask_login import current_user, login_required, logout_user
 from app.index import bp
+from app.controller import getAllSubmissions, getSubmissionById
 
 @bp.route('/')
 @bp.route('/index/<name>')
@@ -13,9 +14,6 @@ def a():
     b = request.args.get('b', 0, type=int)
     return jsonify(result=a + b)
 
-@bp.route('/quiz')
-def quiz():
-    return  render_template('quiz.html')
 
 @bp.route('/demo')
 def demo():
@@ -32,3 +30,13 @@ def notes(chapter, page):
 def logout():
     logout_user()
     return redirect(url_for('index.index'))
+
+@bp.route('/profile')
+@login_required
+def profile():
+    if current_user.isAdmin:
+        all_sub = getAllSubmissions()
+        return render_template("profile/profile.html",subs=all_sub)
+    else:
+        my_sub = getSubmissionById(current_user.id)
+        return render_template("profile/profile.html",subs=my_sub)

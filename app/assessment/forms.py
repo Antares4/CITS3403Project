@@ -1,19 +1,16 @@
 from flask_wtf import FlaskForm
-from wtforms import RadioField, SubmitField, StringField, PasswordField, BooleanField
+from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired
 
 class submissionForm(FlaskForm):
-    Q1 = RadioField(
-        'Question1',
-        validators=[DataRequired()],
-        choices=[
-            ('1', 'C'),
-            ('2', 'D'),
-            ('3', 'E'),
-            ('4', 'F'),
-        ]
-    )
-    Q1ans = StringField("Question1Ans")
-    submit = SubmitField('submit')
+    Q1 = TextAreaField("Question1")
+    Q2 = TextAreaField("Question2")
+    submit = SubmitField("submit")
 
-    
+
+
+class markingForm(FlaskForm):
+    F1 = TextAreaField("Feedback1")
+    F2 = TextAreaField("Feedback2")
+    submit = SubmitField("submit")
+

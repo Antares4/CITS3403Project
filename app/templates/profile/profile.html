@@ -1,0 +1,12 @@
+{% extend base.html%}
+
+{% block content %}
+<div class="container">
+    {% if current_user.isAdmin %}
+    {% for item in subs %}
+    {% set url = '<a href = "{{url_for('markSubmission', toBeMarked=item)}}"> url </a>' %}
+    <span id="next">{{url}}</a> </span>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

@@ -13,16 +13,22 @@ class users(UserMixin, db.Model):
     firstname = db.Column(db.String(130), nullable=False)
     lastname = db.Column(db.String(130), nullable=False)
     isActive = db.Column(db.Boolean)
+    isAdmin = db.Column(db.Boolean)
     submit = db.relationship("submission", backref="submitter")
-    
+
     ###################################################
     
     def __init__(self):
         self.isActive = True
+        self.isAdmin = False
     
     def is_active(self):
         return True
 
+    def allSubmissions():
+        subs = submission().query.filter_by(creater_id=self.id).all()
+        return (sub)
+        
     def get_id(self):
         return self.id
     
@@ -34,34 +40,31 @@ class submission(db.Model):
     __tablename__ = 'submission'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    subject = db.Column(db.String)
-    # createdAt = db.Column(db.DateTime)
-    # lastModifiedAt = db.Column(db.DateTime)
-    # completedAt = db.Column(db.DateTime)
+    createdAt = db.Column(db.DateTime)
+    markedAt = db.Column(db.DateTime)
     creater_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    marked = db.Column(db.Boolean)
+    difficulty = db.Column(db.String(30))
     answers = db.relationship("answer", backref="submission")
+
     def __init__(self):
+        self.createdAt = datetime.utcnow()
+        self.markedAt = None
+        self.marked = False
         print("submission init")
     
-    # def addAnswers(self, userAnswer):
-    #     if userAnswer == None:
-    #         print('useranswer needed!')
-    #         return False
-    #     else:
-    #         this_answer = submission.answer()
-    #         this_answer.sumbittedAnswer = userAnswer
-    #         print("useranswer is",userAnswer)
-    #         this_answer.correctAnswer = 1
-    #         self.answers.append(this_answer)
-
+    def get_id(self):
+        return self.id
+        
 class answer(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     answerSeq = db.Column(db.Integer)
-    sumbittedAnswer = db.Column(db.Integer)
-    correctAnswer = db.Column(db.Integer)
+    sumbittedAnswer = db.Column(db.String(400))
+    feeback = db.Column(db.String(400))
     submissionId = db.Column(db.Integer, db.ForeignKey("submission.id"))
     
     def __init__(self):
+        feedback = None
         print("init answers")
     def __repr__(self):
         return '<ans>'
