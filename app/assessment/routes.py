@@ -1,10 +1,10 @@
 from flask import Flask, request, url_for, redirect, render_template, flash, jsonify
 from app.assessment import bp
-from app.assessment.forms import submissionForm
+from app.assessment.forms import submissionForm, markingForm
 from app.model import users, submission, answer
 from app import db
 from flask_login import current_user, login_required
-from app.controller import getSubmissionById
+from app.controller import getSubmissionById, getAnswerForSub
 
 
 @bp.route('/testSubmission/<difficulty>', methods=['GET','POST'])
@@ -39,19 +39,43 @@ def testSubmission(difficulty):
     return render_template('quiz/intermediate.html', title='Assessment', form=form)
 
 
-@bp.route('/testSubmission/<toBeMarked>', methods=['GET','POST'])
+@bp.route('/markSubmission/<toBeMarked>', methods=['GET','POST'])
 @login_required 
 def markSubmission(toBeMarked):
     if not current_user.isAdmin:
         return redirect(url_for('index.index'))
     else:
         form = markingForm()
+        this_sub = getSubmissionById(int(toBeMarked))
+        user_responses = getAnswerForSub(int(toBeMarked))
         if form.validate_on_submit():
+            for item in user_responses:
+                if item.answerSeq == 1:
+                    print("1 in")
+                    item.feedback = form.F1.data
+            for item in user_responses:
+                if item.answerSeq == 2:
+                    print("2 in")
+                    item.feedback = form.F2.data
+            db.session.commit()
             return redirect(url_for('index.index'))
-        else:
-            this_sub = getSubmissionById(toBeMarked)
-            user_responses = getAllUserResponse(this_sub)
-            diff = this_sub.difficulty
-            route_mark = "quiz/{}.html".format(diff)
-            return render_template(route_mark, title='Marking', form=form, responses=user_responses)
+        user_responses = getAnswerForSub(int(toBeMarked))
+        diff = this_sub.difficulty
+        route_mark = "quiz/{}.html".format(diff)
+        return render_template(route_mark, title='Marking', form=form, responses=user_responses)
+
+
+
+@bp.route('/viewSubmission/<subId>', methods=['GET','POST'])
+@login_required 
+def viewSubmission(subId):
+    if current_user.isAdmin:
+        return redirect(url_for('index.index'))
+    else:
+        this_sub = getSubmissionById(int(subId))
+        user_responses = getAnswerForSub(int(subId))
+        marker_feedbacks = user_responses
+        diff = this_sub.difficulty
+        route_mark = "quiz/{}.html".format(diff)
+        return render_template(route_mark, title='ViewSubmission', form=False, responses=user_responses, feedback=marker_feedbacks)
 

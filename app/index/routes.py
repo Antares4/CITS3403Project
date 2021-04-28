@@ -1,7 +1,7 @@
 from flask import Flask, request, url_for, redirect, render_template, flash, jsonify
 from flask_login import current_user, login_required, logout_user
 from app.index import bp
-from app.controller import getAllSubmissions, getSubmissionById
+from app.controller import getAllSubmissions, getSubmissionById, getAllUserResponse
 
 @bp.route('/')
 @bp.route('/index/<name>')
@@ -38,5 +38,5 @@ def profile():
         all_sub = getAllSubmissions()
         return render_template("profile/profile.html",subs=all_sub)
     else:
-        my_sub = getSubmissionById(current_user.id)
+        my_sub = getAllUserResponse(current_user.id)
         return render_template("profile/profile.html",subs=my_sub)

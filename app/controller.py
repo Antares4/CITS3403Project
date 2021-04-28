@@ -16,25 +16,24 @@ def getAllSubmissions():
     return all_sub
 
 def getSubmissionById(sub_id):
-    try:
-        this_sub = submission.query.filter_by(id=sub_id).first()
-    except:
-        print("submission does not exist")
-        return False
+
+    print(type(sub_id), sub_id)
+    this_sub = submission.query.filter_by(id=sub_id).first()
+    print("this sub is",this_sub)
     return this_sub
 
-def adminAuthen():
-    #static 
-    pass
 
-def getAllUserResponse(sub):
-    if sub != None:
+def getAnswerForSub(sub_id):
+    answer_list = answer.query.filter_by(submissionId=sub_id).all()
+    return answer_list
+
+
+def getAllUserResponse(userId):
+    if userId != None:
         try:
-            res = answer.query.filter_by(id=sub.get_id()).all()
+            res = submission.query.filter_by(creater_id=userId).all()
         except:
             print("no answer exist")
             return False
         return res
     
-
-

@@ -60,7 +60,7 @@ class answer(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     answerSeq = db.Column(db.Integer)
     sumbittedAnswer = db.Column(db.String(400))
-    feeback = db.Column(db.String(400))
+    feedback = db.Column(db.String(400))
     submissionId = db.Column(db.Integer, db.ForeignKey("submission.id"))
     
     def __init__(self):
