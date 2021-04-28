@@ -5,18 +5,22 @@
     <!-- display if loggedin -->
     <ul class="items">
         <li><a href="{{url_for('index.index')}}">Home</a></li>
-        {% if current_user.is_authenticated %}
-            <li><a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">content</a>
+        {% if current_user.is_authenticated and not current_user.isAdmin %}
+            <li>
+                <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">content</a>
+                <div class="dropdown-content">
+                    <p>Hello World!</p>
+                </div>
+            </li>
+            <li><a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">Assessment</a></li>
         {% endif %}
-            <div class="dropdown-content">
-                <p>Hello World!</p>
-            </div>
-        </li>
-        <li><a href="{{url_for('index.quiz')}}">Quiz</a></li>
+
         {% if not current_user.is_authenticated %}
             <li><a href="{{url_for('auth.login')}}">Login</a></li>
         {% endif %}
+
         {% if current_user.is_authenticated %}
+            <li><a href="{{url_for('index.profile')}}">Profile</a></li>
             <li><a href="{{url_for('index.logout')}}">Log out</a></li>
         {% endif %}
 

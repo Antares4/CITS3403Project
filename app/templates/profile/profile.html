@@ -1,0 +1,20 @@
+{%extends "base.html"%}
+
+{% block content %}
+<div class="container">
+    {% if current_user.isAdmin %}
+        <p>admin</p>
+        {% for item in subs %}
+            {%set item_id = item.id%}
+            <a href="{{url_for('assessment.markSubmission', toBeMarked=item_id)}}">link</a>
+        {% endfor %}
+    {% endif %}
+    {% if not current_user.isAdmin %}
+        <p>not admin</p>
+        {% for item in subs %}
+            {%set item_id = item.id%}
+            <a href="{{url_for('assessment.viewSubmission', subId=item_id)}}">link</a>
+        {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

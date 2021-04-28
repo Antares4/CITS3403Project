@@ -32,5 +32,9 @@
         </p>
         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
         <p>{{ form.submit() }}</p>
+
+        <div>
+          don't have an account? <a href="{{ url_for('register.register') }}">Register</a>
+        </div>
     </form>
 {% endblock %}

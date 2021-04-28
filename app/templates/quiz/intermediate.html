@@ -1,0 +1,83 @@
+{%extends "assessment.html"%}
+{% block page %}
+    <form action="" method="post" novalidate>
+        {% if form %}
+        {{ form.hidden_tag() }}
+        {% endif %}
+        <p class="question question1">
+            This assessment will test your knowldge on 
+            what have you learnt from music theory and history at an intermediate difficulty.
+            <hr>
+            once you felt confortable with the this moduel you can moveon to the hard level
+            <hr>
+            After submission, the paper can be found in your profile 
+            and you will be able to access it when it has been marked along with the feedback
+        </p>    
+        <p>
+            <div class="canvascontainer display">
+                <div class="stave" id="Q1"></div>
+            </div>
+            <p>
+                name three notes in this passage that does not belong to the key of A minor
+            </p>
+            {% if form %}
+                {% if current_user.isAdmin%}
+                    <span>user response for this question is</span>
+                    {% for item in responses %}
+                        {% if item.answerSeq == "1" %}
+                        <p>
+                            {{item.submittedAnswer}}
+                        </p>
+                        {% endif %}
+                    {% endfor %}
+                    <span>marker's feedback:</span>
+                    <p>{{form.F1}}</p>
+                    <p>{{form.F1.lable}}</p>
+                {% endif %}
+                {% if not current_user.isAdmin%}
+                <p>{{form.Q1}}</p>
+                <p>{{form.Q1.lable}}</p>
+                {% endif %}
+            {% endif %}
+
+                    
+            {% for item in feedback %}
+                {{item}}
+                {% if item.answerSeq== 1 %}
+                <p>Feedback for q1: {{item.feedback}}</p>
+                {% endif %}
+            {% endfor %}
+
+        </p>
+        <p>
+            <div class="canvascontainer display">
+                <div class="stave" id="Q2"></div>
+            </div>
+            <p>
+                describe the time signiture of this passage and what kind of vibe does it imply
+            </p>
+            {% if form %}
+                {% if current_user.isAdmin %}
+                    <span>user response for this question is</span>
+                    {% for item in responses %}
+                        {% if item.answerSeq == 2 %}
+                        <p>
+                            {{item.submittedAnswer}}
+                        </p>
+                        {% endif %}
+                    {% endfor %}
+                    <span>marker's feedback:</span>
+                    <p>{{form.F2}}</p>
+                    <p>{{form.F2.lable}}</p>
+                {% endif %}
+                {% if not current_user.isAdmin%}
+                <p>{{form.Q2}}</p>
+                <p>{{form.Q2.lable}}</p>
+                {% endif %}
+            {% endif %}
+        </p>
+        {% if form %}
+        <p>{{ form.submit() }}</p>
+        {% endif %}
+    </form>
+{% endblock %}
