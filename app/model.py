@@ -11,7 +11,7 @@ class users(UserMixin, db.Model):
     password = db.Column(db.String(96), nullable=False)
     email = db.Column(db.String(128), nullable=False, unique=True)
     firstname = db.Column(db.String(130), nullable=False)
-    lastname = db.Column(db.String(130), nullable=False)
+    lastname = db.Column(db.String(200), nullable=False)
     isActive = db.Column(db.Boolean)
     isAdmin = db.Column(db.Boolean)
     submit = db.relationship("submission", backref="submitter")
