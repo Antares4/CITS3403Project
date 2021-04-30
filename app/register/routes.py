@@ -3,6 +3,7 @@ from app.register import bp
 from app.register.forms import RegisterForm
 from app.model import users
 from app import db
+from datetime import datetime
 from werkzeug.security import generate_password_hash
 
 @bp.route('/register', methods=['GET','POST'])
@@ -14,6 +15,7 @@ def register():
         user.email = form.email.data
         user.firstname = form.firstname.data
         user.lastname = form.lastname.data
+        user.joinedAt = datetime.utcnow()
         #############testing###################
         if form.username.data == "Shuang":
             user.isAdmin = True

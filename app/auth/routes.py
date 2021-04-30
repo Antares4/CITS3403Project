@@ -26,3 +26,4 @@ def login():
     elif(request.method == 'POST' and form.validate_on_submit() != True):
         flash('empty field')
     return render_template('login.html', title='Sign In', form=form)
+

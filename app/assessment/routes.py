@@ -13,26 +13,45 @@ def testSubmission(difficulty):
     if current_user.isAdmin:
         print("u fed up")
     form = submissionForm()
+    print(form.validate_on_submit())
     if form.validate_on_submit():
+        print("validated")
         sub = submission()
         sub.difficulty = difficulty
         sub.creater_id = current_user.get_id()
         db.session.add(sub)
         db.session.commit()
-        #
+        
         ans1 = answer()
         ans1.answerSeq=1
-        ans1.sumbittedAnswer = form.Q1.data
+        ans1.submittedAnswer = form.Q1.data
         ans1.submissionId = sub.id
-
 
         ans2 = answer()
         ans2.answerSeq=2
-        ans2.sumbittedAnswer = form.Q2.data
+        ans2.submittedAnswer = form.Q2.data
         ans2.submissionId = sub.id
+        
+        ans3 = answer()
+        ans3.answerSeq=3
+        ans3.submittedAnswer = form.Q3.data
+        ans3.submissionId = sub.id
+
+        ans4 = answer()
+        ans4.answerSeq=4
+        ans4.submittedAnswer = form.Q4.data
+        ans4.submissionId = sub.id
+
+        ans5 = answer()
+        ans5.answerSeq=5
+        ans5.submittedAnswer = form.Q5.data
+        ans5.submissionId = sub.id
 
         db.session.add(ans1)
         db.session.add(ans2)
+        db.session.add(ans3)
+        db.session.add(ans4)
+        db.session.add(ans5)
         db.session.commit()
 
         return redirect(url_for('index.index'))
@@ -51,12 +70,15 @@ def markSubmission(toBeMarked):
         if form.validate_on_submit():
             for item in user_responses:
                 if item.answerSeq == 1:
-                    print("1 in")
                     item.feedback = form.F1.data
-            for item in user_responses:
-                if item.answerSeq == 2:
-                    print("2 in")
+                elif item.answerSeq == 2:
                     item.feedback = form.F2.data
+                elif item.answerSeq == 3:
+                    item.feedback = form.F3.data
+                elif item.answerSeq == 4:
+                    item.feedback = form.F4.data
+                elif item.answerSeq == 5:
+                    item.feedback = form.F5.data
             db.session.commit()
             return redirect(url_for('index.index'))
         user_responses = getAnswerForSub(int(toBeMarked))
@@ -74,8 +96,7 @@ def viewSubmission(subId):
     else:
         this_sub = getSubmissionById(int(subId))
         user_responses = getAnswerForSub(int(subId))
-        marker_feedbacks = user_responses
         diff = this_sub.difficulty
         route_mark = "quiz/{}.html".format(diff)
-        return render_template(route_mark, title='ViewSubmission', form=False, responses=user_responses, feedback=marker_feedbacks)
+        return render_template(route_mark, title='ViewSubmission', form=False, responses=user_responses)
 

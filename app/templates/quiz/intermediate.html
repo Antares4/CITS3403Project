@@ -1,6 +1,6 @@
 {%extends "assessment.html"%}
 {% block page %}
-    <form onsubmit="validate();" method="post">
+    <form method="post" onsubmit="validate();">
         {% if form %}
         {{ form.hidden_tag() }}
         {% endif %}
@@ -9,19 +9,19 @@
             <hr>
             Once you felt confortable with this moduel you may move on to the next level
             <hr>
-        </p>    
-        <p id="question1">
+        </p>
+        <div id="question1">
             <div class="canvascontainer display">
                 <div class="stave" id="Q1"></div>
             </div>
             <p>
-                Mame three notes in this passage that does not belong to the key of A minor
+                Name the highest note in this passage and state its notevalue
             </p>
             {% if form %}
                 {% if current_user.isAdmin%}
                     <span>user response for this question is</span>
                     {% for item in responses %}
-                        {% if item.answerSeq == "1" %}
+                        {% if item.answerSeq == 1 %}
                         <p>
                             {{item.submittedAnswer}}
                         </p>
@@ -32,22 +32,20 @@
                     <p>{{form.F1.lable}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
-                <p>{{form.Q1(id="q1")}}</p>
+                <p>{{form.Q1(class="response")}}</p>
                 <p>{{form.Q1.lable}}</p>
                 {% endif %}
             {% endif %}   
-            {% for item in feedback %}
-                {{item}}
-                {% if item.answerSeq== 1 %}
-                <p>Feedback for q1: {{item.feedback}}</p>
+            {% for item in responses %}
+                {% if item.answerSeq == 1 %}
+                <p>
+                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                    <p><span>Feedback for q1:</span> {{item.feedback}}</p>
+                </p>
                 {% endif %}
             {% endfor %}
-
-        </p>
-        <p>
-            <div class="canvascontainer display">
-                <div class="stave" id="Q2"></div>
-            </div>
+        </div>
+        <div id="question2">
             <p>
                 Describe the time signiture as: Simple or Compound/duple, triple or quadruple
             </p>
@@ -66,16 +64,132 @@
                     <p>{{form.F2.lable}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
-                <p>{{form.Q2}}</p>
+                <p>{{form.Q2(class="response")}}</p>
                 <p>{{form.Q2.lable}}</p>
                 {% endif %}
             {% endif %}
-        </p>
+            {% for item in responses %}
+                {% if item.answerSeq == 2 %}
+                <p>
+                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                    <p><span>Feedback for q2:</span> {{item.feedback}}</p>
+                </p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id="question3">
+            <p>
+                Howmany semiquavers will fit in the third note? 
+            </p>
+            {% if form %}
+                {% if current_user.isAdmin %}
+                    <span>user response for this question is</span>
+                    {% for item in responses %}
+                        {% if item.answerSeq == 3 %}
+                        <p>
+                            {{item.submittedAnswer}}
+                        </p>
+                        {% endif %}
+                    {% endfor %}
+                    <span>marker's feedback:</span>
+                    <p>{{form.F3}}</p>
+                    <p>{{form.F3.lable}}</p>
+                {% endif %}
+                {% if not current_user.isAdmin%}
+                <p>{{form.Q3(class="response")}}</p>
+                <p>{{form.Q3.lable}}</p>
+                {% endif %}
+            {% endif %}
+            {% for item in responses %}
+                {% if item.answerSeq == 3 %}
+                <p>
+                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                    <p><span>Feedback for q3:</span> {{item.feedback}}</p>
+                </p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id="question4">
+            <p>            
+                Name an enharmonic of the second last note 
+            </p>
+            {% if form %}
+                {% if current_user.isAdmin %}
+                    <span>user response for this question is</span>
+                    {% for item in responses %}
+                        {% if item.answerSeq == 4 %}
+                        <p>
+                            {{item.submittedAnswer}}
+                        </p>
+                        {% endif %}
+                    {% endfor %}
+                    <span>marker's feedback:</span>
+                    <p>{{form.F4}}</p>
+                    <p>{{form.F4.lable}}</p>
+                {% endif %}
+                {% if not current_user.isAdmin%}
+                <p>{{form.Q4(class="response")}}</p>
+                <p>{{form.Q4.lable}}</p>
+                {% endif %}
+            {% endif %}
+            {% for item in responses %}
+                {% if item.answerSeq == 4 %}
+                <p>
+                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                    <p><span>Feedback for q4:</span> {{item.feedback}}</p>
+                </p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id="question5">
+            <p>
+                List the components of A major
+            </p>
+            {% if form %}
+                {% if current_user.isAdmin %}
+                    <span>user response for this question is</span>
+                    {% for item in responses %}
+                        {% if item.answerSeq == 5 %}
+                        <p>
+                            {{item.submittedAnswer}}
+                        </p>
+                        {% endif %}
+                    {% endfor %}
+                    <span>marker's feedback:</span>
+                    <p>{{form.F5}}</p>
+                    <p>{{form.F5.lable}}</p>
+                {% endif %}
+                {% if not current_user.isAdmin%}
+                    <p>{{form.Q5(class="response")}}</p>
+                    <p>{{form.Q5.lable}}</p>
+                    {% endif %}
+            {% endif %}
+            {% for item in responses %}
+                {% if item.answerSeq == 5 %}
+                <p>
+                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                    <p><span>Feedback for q4:</span> {{item.feedback}}</p>
+                </p>
+                {% endif %}
+            {% endfor %}
+        </div>
         {% if form %}
         <p>{{ form.submit() }}</p>
         {% endif %}
+
     </form>
+    <style>
+        textarea{
+            width: 300px;
+            height: 90px;
+        }
+    </style>
     <script>
+        $(document).ready(function(){
+            intermediate("Q1")
+        })
+
+
         function validate(){
             var warnings = document.getElementsByClassName("warning")
             if(warnings != null){
@@ -84,7 +198,7 @@
                     warnings[0].remove();
                 }
             }
-            var answerField = document.getElementsByTagName("textarea");
+            var answerField = document.getElementsByClassName("response");
             for(i = 0; i<answerField.length; i++){
                 if(answerField[i].value == ""){
                     var error = document.createElement("div")

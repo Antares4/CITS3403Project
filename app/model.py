@@ -1,6 +1,7 @@
 from app import db, login
 from flask_login import UserMixin
 from datetime import datetime
+from flask import url_for, redirect
 
 class users(UserMixin, db.Model):
 
@@ -11,7 +12,8 @@ class users(UserMixin, db.Model):
     password = db.Column(db.String(96), nullable=False)
     email = db.Column(db.String(128), nullable=False, unique=True)
     firstname = db.Column(db.String(130), nullable=False)
-    lastname = db.Column(db.String(200), nullable=False)
+    lastname = db.Column(db.String(130), nullable=False)
+    joinedAt = db.Column(db.DateTime)
     isActive = db.Column(db.Boolean)
     isAdmin = db.Column(db.Boolean)
     submit = db.relationship("submission", backref="submitter")
@@ -23,12 +25,13 @@ class users(UserMixin, db.Model):
         self.isAdmin = False
     
     def is_active(self):
-        return True
+        return self.isActive
 
-    def allSubmissions():
-        subs = submission().query.filter_by(creater_id=self.id).all()
-        return (sub)
-        
+    @staticmethod
+    def getSubmissions(self):
+        res = submission.query.filter_by(creater_id=self.id).all()
+        return res
+
     def get_id(self):
         return self.id
     
@@ -53,13 +56,11 @@ class submission(db.Model):
         self.marked = False
         print("submission init")
     
-    def get_id(self):
-        return self.id
         
 class answer(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     answerSeq = db.Column(db.Integer)
-    sumbittedAnswer = db.Column(db.String(400))
+    submittedAnswer = db.Column(db.String(400))
     feedback = db.Column(db.String(400))
     submissionId = db.Column(db.Integer, db.ForeignKey("submission.id"))
     
@@ -74,6 +75,9 @@ def load_user(usr_id):
     return users.query.get(int(usr_id))
 
 
+@login.unauthorized_handler
+def unauthorized():
+    return redirect(url_for("index.index"))
 
 #.headers on
 #.open app.db
