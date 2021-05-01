@@ -5,35 +5,35 @@ from sqlalchemy.orm.attributes import flag_modified
 from datetime import datetime
 
 
+def howManySubmissions():
+    sub = submission.query.all()
+    return(len(sub))
 
+def howManyUsers():
+    usr = users.query.all()
+    return(len(usr))
 
 def getAllSubmissions():
-    try:
-        all_sub = submission.query.all()
-    except:
-        print("submission does not exist")
-        return False
+    all_sub = submission.query.order_by(submission.createdAt.desc())
     return all_sub
 
+def getAllUsers():
+    alluser = users.query.order_by(users.joinedAt.asc()).all()
+    return alluser
+
+def getUserById(userId):
+    usr = users.query.filter_by(id=userId).first()
+    if usr==None:
+        print('cannot find the user with id:', userId)
+        return False
+    else:
+        return usr
+
 def getSubmissionById(sub_id):
-
-    print(type(sub_id), sub_id)
     this_sub = submission.query.filter_by(id=sub_id).first()
-    print("this sub is",this_sub)
     return this_sub
-
 
 def getAnswerForSub(sub_id):
     answer_list = answer.query.filter_by(submissionId=sub_id).all()
     return answer_list
 
-
-def getAllUserResponse(userId):
-    if userId != None:
-        try:
-            res = submission.query.filter_by(creater_id=userId).all()
-        except:
-            print("no answer exist")
-            return False
-        return res
-    

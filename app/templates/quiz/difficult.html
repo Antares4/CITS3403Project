@@ -10,12 +10,15 @@
             Once you felt confortable with this moduel you may move on to the next level
             <hr>
         </p>
+        <p>
+            Look at this passage and answer the questions below
+        </p> 
+        <div class="canvascontainer display">
+            <div class="stave" id="Q1"></div>
+        </div>
         <div id="question1">
-            <div class="canvascontainer display">
-                <div class="stave" id="Q1"></div>
-            </div>
-            <p>
-                Name the highest note in this passage and state its notevalue
+            <p>                
+                Name three notes in this passage that does not belong to the key of A minor
             </p>
             {% if form %}
                 {% if current_user.isAdmin%}
@@ -45,9 +48,9 @@
                 {% endif %}
             {% endfor %}
         </div>
-        <div id="question2">
+        <div id="question2">  
             <p>
-                Describe the time signiture as: Simple or Compound/duple, triple or quadruple
+                State one diffierece between bar 1 and bar 2.
             </p>
             {% if form %}
                 {% if current_user.isAdmin %}
@@ -79,7 +82,7 @@
         </div>
         <div id="question3">
             <p>
-                Howmany semiquavers will fit in the third note? 
+                What's the interval between the last two notes? Which note will you add to form a tonic triad in the key of g major? 
             </p>
             {% if form %}
                 {% if current_user.isAdmin %}
@@ -109,9 +112,9 @@
                 {% endif %}
             {% endfor %}
         </div>
-        <div id="question4">
-            <p>            
-                Name an enharmonic of the second last note 
+        <div id="question4">    
+            <p>
+                Name the missing time signiture and explain why.
             </p>
             {% if form %}
                 {% if current_user.isAdmin %}
@@ -141,10 +144,13 @@
                 {% endif %}
             {% endfor %}
         </div>
+
+        <div>passage again</div>
+
         <div id="question5">
             <p>
-                List the components of A major
-            </p>
+                Compare this passage with the one above, is it correctly written one octive higher? Why andy why not? 
+            </p>                      
             {% if form %}
                 {% if current_user.isAdmin %}
                     <span>user response for this question is</span>
@@ -188,8 +194,6 @@
         $(document).ready(function(){
             intermediate("Q1")
         })
-
-
         function validate(){
             var warnings = document.getElementsByClassName("warning")
             if(warnings != null){
@@ -219,3 +223,10 @@
         }
     </script>
 {% endblock %}
+
+
+
+
+
+
+

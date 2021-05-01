@@ -2,26 +2,26 @@
 
 {% block page %}
 <div class="textcontainer">
+  <h2>Clefs</h2>
   <p>
-    In western music notation, notes reside either in one of 4 spaces or 5 horrizontal lines of a <strong>stave</strong>
-    <hr class="display">
-  </p>
-  <p class="display">
-    Before a note can be placed however, some context must be established for a given stave.
+    In western music notation, <strong>notes</strong> reside either in one of 4 spaces or 5 horrizontal lines of a <strong>stave.</strong>
+    But inorder to place a note with it's intended meaning, some context must be established on a given stave.
     <hr class="display">
   </p>
   <p class="display">
     A <strong>clef</strong> determines which note a particular line/space will
-    represent. The <strong>trebel &#119070</strong> and the <strong>bass &#119074</strong> clef were two of the most commonly used
+    represent. The <strong>trebel &#119070</strong> and <strong>bass &#119074</strong> clef were two of the most commonly used
     in music notation.
-    The following examples demonstrates the position of middle "C" in the respective clefs.
+  </p>
+  <p>
+    Click the buttons to find out the position of middle "C" in respective clefs.
   </p>
   <div class="canvascontainer display">
     <div class="stave" id="clef"></div>
   </div>
   <div class="display">
-    <span id="treble">treble</span> 
-    <span id="bass">bass</span>
+    <button id="treble">treble</button>
+    <button id="bass">bass</button>
   </div>
   <div class="pagebutton display">
     <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Previous</a> </span>

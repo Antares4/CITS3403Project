@@ -1,0 +1,102 @@
+{% extends 'content.html'%}
+{% block page %}
+<div id="intro">
+    <div>
+        <p>
+            In this test you will have 30 seconds to test your
+            familiraty with note recognition. 
+        </p>
+    </div>
+    <button id="start">Start</button>
+</div>
+<div id="content" style="display: none;">
+    <span>timer</span>
+    <div>
+        <div class="stave" id="note"></div>
+    </div>
+    <button id="btn-1">button1</button>
+    <button id="btn-2">button2</button>
+    <p id="boo"></p>
+</div>
+<div id="review" style="display: none;">
+    <span>Congratulations you have received: </span><span id="score"></span><span> Marks!</span>
+</div>
+
+<script type=text/javascript>
+    $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    $(document).ready(function(){
+        var rightAnswer = null;
+        var basscanidateLiterals = [["c/3","C"],["d/3","D"],["e/3","E"],["f/3","F"],
+                            ["g/3","G"],["a/3","A"],["b/3","B"],["c/4","C"]]
+        var treblecanidateLiterals = [["c/4","C"],["d/4","D"],["e/4","E"],["f/4","F"],
+                            ["g/4","G"],["a/4","A"],["b/4","B"],["c/5","C"]]
+        var currentpair = [];
+        var correctanswer = null;
+        var this_clef = null;
+        var points = 0;
+        var userId = {{ current_user.id|safe }}
+        $("#start").bind("click",function(){
+            //display intro to none
+            $("#intro").css("display","none")
+            //display contont
+            $("#content").css("display","block")
+            setTimeout(timeOutSubmit, 30000)
+            this_clef = getRandomClef()
+            setAnswers(this_clef);
+        })
+        $("#btn-1").bind("click",function(){
+            if(event.target.innerHTML == correctanswer[1]){
+                points++;
+            }
+            else{
+                if(points > 0){
+                    points--;
+                }
+            }
+            removestave("note");
+            this_clef = getRandomClef()
+            setAnswers(this_clef);
+        })
+        $("#btn-2").bind("click",function(){
+            if(event.target.innerHTML == correctanswer[1]){
+                points++;
+            }
+            else{
+                if(points > 0){
+                    points--;
+                }
+            }
+            removestave("note");
+            this_clef = getRandomClef()
+            setAnswers(this_clef);
+        })
+        
+        function setAnswers(clef){
+            canidates = getRandomCanidate();
+            if(clef == "treble"){
+                currentpair[0] = treblecanidateLiterals[canidates[0]];
+                currentpair[1] = treblecanidateLiterals[canidates[1]];
+            }
+            else{
+                currentpair[0] = basscanidateLiterals[canidates[0]];
+                currentpair[1] = basscanidateLiterals[canidates[1]];
+            }
+            //0 is always correct answer
+            correctanswer = currentpair[0];
+            btn_assign = Math.round(Math.random())
+            btn_assign == 0 ? btnAssingInOrder("btn-1","btn-2",currentpair) : btnAssignReOrder("btn-1","btn-2",currentpair)
+            renderStaveNotes("note",currentpair[0][0],this_clef);
+        }
+        function timeOutSubmit(){
+            $.getJSON($SCRIPT_ROOT + '/timedNote', {
+                score: points,
+                user : userId
+                }, function(data) {
+                $("#content").css("display","none")
+                $("#review").css("display","block")
+                document.getElementById("score").innerHTML = data.result;
+            }) 
+        }
+    });
+  </script>
+{% endblock %}

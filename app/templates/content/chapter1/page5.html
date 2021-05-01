@@ -1,11 +1,17 @@
 {% extends 'content.html'%}
 
 {% block page %}
+
+<h2>Try It your Self!</h2>
+<p>
+    Click on the keybord below to see where the notes were placed on a stave <br>
+</p>
+<div>
+    <p>Click this button to switch between accidentals</p>
+    <button id="switch">Sharp</button>
+</div>
 <div class="canvascontainer">
     <div id="canvas"></div>
-</div>
-<div>
-    <span id="switch">Sharp</span>
 </div>
 <div class="pianocontainer">
   <ul class="set" id="piano">
@@ -22,6 +28,9 @@
     <li class="black cs" id="d#/5">d#/5</li>
       <li class="white c" id="e/5">e/5</li>
   </ul>
+</div>
+<div>
+    <p>Felt confortable? click <a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">HERE</a> to test yourself</p>
 </div>
 <script>
   $(document).ready(function(){

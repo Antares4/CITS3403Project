@@ -4,6 +4,9 @@
 <div class="block" style="display: none;">
     <nav class="pageIndex">
         <ul class="items">
+            <a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">Intro</a>
+            <a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">intermediate</a>
+            <a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">Difficult</a>
         </ul>
     </nav>
     {% block page %}{% endblock %}
@@ -13,5 +16,5 @@
         $(".block").fadeIn(500);
     });
 </script>
-{% include "imports/importnote.html" %}
+{% include "imports/importassessment.html" %}
 {% endblock %}

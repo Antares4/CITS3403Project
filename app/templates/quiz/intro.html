@@ -10,12 +10,15 @@
             Once you felt confortable with this moduel you may move on to the next level
             <hr>
         </p>
+        <p>
+            Look at this passage and answer the questions below
+        </p> 
+        <div class="canvascontainer display">
+            <div class="stave" id="Q1"></div>
+        </div>
         <div id="question1">
-            <div class="canvascontainer display">
-                <div class="stave" id="Q1"></div>
-            </div>
             <p>
-                Name the highest note in this passage and state its notevalue
+                Name the first and last note.
             </p>
             {% if form %}
                 {% if current_user.isAdmin%}
@@ -47,7 +50,7 @@
         </div>
         <div id="question2">
             <p>
-                Describe the time signiture as: Simple or Compound/duple, triple or quadruple
+                Howmany semiquavers does the last note worth?
             </p>
             {% if form %}
                 {% if current_user.isAdmin %}
@@ -79,7 +82,7 @@
         </div>
         <div id="question3">
             <p>
-                Howmany semiquavers will fit in the third note? 
+                Name a note that is a perfect 5th above the last note 
             </p>
             {% if form %}
                 {% if current_user.isAdmin %}
@@ -110,8 +113,8 @@
             {% endfor %}
         </div>
         <div id="question4">
-            <p>            
-                Name an enharmonic of the second last note 
+            <p>
+                List 5 note values in decending order(longest to shortest), starting from semibreave.
             </p>
             {% if form %}
                 {% if current_user.isAdmin %}
@@ -143,8 +146,8 @@
         </div>
         <div id="question5">
             <p>
-                List the components of A major
-            </p>
+                Name the time signiture and exaplain what it means
+            </p>            
             {% if form %}
                 {% if current_user.isAdmin %}
                     <span>user response for this question is</span>
@@ -219,3 +222,8 @@
         }
     </script>
 {% endblock %}
+
+
+
+
+

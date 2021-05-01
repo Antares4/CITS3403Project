@@ -3,7 +3,14 @@
 {% block page %}
 <div class="textcontainer">
   <p>
-    Infact between an octive(e.g. C/4 to C/5), exists <strong>12</strong> instead of the <strong>7</strong> notes we have just learnt, as demonnstrated by this keybord.
+    <h2>
+      More representations
+    </h2>
+    <hr>
+    Infact, in between an octive, exists <strong>12</strong> notes, instead of the <strong>7</strong> we have just learnt. <br>
+    This keybord demonstrates those 12 notes from F4 to E5. <br>
+    Notice how there are 5 black notes in total, which fill the missing pieces of the puzzle. <br>
+    Along with the 7 white notes, they form the <strong>12 tone equal temperament</strong> - a musical system that used predominantly in western Music notation
   </p>
   <div class="pianocontainer display">
     <ul class="set" id="piano">
@@ -21,19 +28,23 @@
         <li class="white c" id="e/5">e/5</li>
     </ul>
   </div>
+  <h2>
+    Accidentals
+  </h2>
+  <hr>
   <p class="display">
-    The white notes, starting from F/4 to E/5 represents what we have drawn on the stave. To represent the black notes however,
-    requires modifyers called the <strong>Accidentals</strong>. 
+    To represent the black notes, we need modifyers called the <strong>Accidentals</strong>. 
+  </p>
+  <p class="display">
+    The black notes were identified by modifying existing white notes with accidentals.<br>
+    However, observe the keybord carefully, and you will notice that all of the black keys were juxtaposed by <strong>two</strong> white keys<br>
+    <hr>
+    This means that any black note can be named in two ways using its neighbouring white keys. 
+    To avoid ambiguity, two types of Accidentals - <strong>Sharp(#)</strong> and <strong>Flat(b)</strong> - were used to raise/lower a white key respectively.
     <hr class="display">
   </p>
   <p class="display">
-    Observe the keybord carefully, and you will notice that some white keys are right next to each other whereas
-    some were divided by an black key. The difference between two concective keys is called a <strong>Semitone</strong>
-    <hr class="display">
-  </p>
-  <p class="display">
-    There are two main types of Accidentals - <strong>Sharp(#)</strong> and <strong>Flat(b)</strong> 
-    that either rasies or lowers an note by a <strong>Semitone</strong> respectively
+    Click on the next page to learn more 
   </p>
   <div class="pagebutton display">
     <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Previous</a> </span>
