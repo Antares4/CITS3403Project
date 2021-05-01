@@ -2,17 +2,19 @@
 
 {% block page %}
 <div class="textcontainer">
+    <h1>Note Values</h1>
     <p>
         Starting from <strong>semibreve &#119133</strong>, the ordinal of note value are as follow: <strong>semibreve &#119133</strong>, <strong>minim &#119134</strong>, 
         <strong>crotchet &#119135</strong>, <strong>quaver &#119136</strong> and
-        <strong>semiquaver &#119137</strong>. Each with duration halving the previous. 
+        <strong>semiquaver &#119137</strong>. <br>
+        Each with duration halving the previous. 
     </p>
     <div class="canvascontainer display">
         <div class="stave" id="notevalue"></div>
         <hr class="display">
     </div>
     <p class="display">
-        Click on the following to see howmany of each note fit in a 4/4 bar
+        Click on the following to see howmany of each note fits in a 4/4 bar
     </p>
     <div class="notedemo display">
         <button value=0>semibreve</button>
@@ -21,9 +23,25 @@
         <button value=3>quaver</button>
         <button value=4>semiquaver</button>
     </div>
+    <p>
+        The note values are not set in stone however as they can also be changed by <strong>dot</strong> modifyers <br>
+        This modifyer extends the notevalue of it's host note by half of it's own value. <br>
+        For example, A crotchet is normally equivilent to <strong>2</strong> quavers, however a <strong>dotted</strong> crotchet will instead be equivilent to <strong>3</strong> quavers
+    </p>
+    <p class="display">
+        Here is an example a 6/8 bar that a duration of 6 quavers, which will fit exactly two <strong>dotted</strong> crotchets
+    </p>
+    <div class="canvascontainer display">
+        <div class="stave" id="dotted"></div>
+        <hr class="display">
+    </div>
+    <hr>
+    <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Previous</a>
+    <p><a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Next Module</a></p>
 </div>
 <script>
     $(document).ready(function(){
+        initdotted();
         notevalues = ["w","h","q","8","16"];
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
         init("notevalue", "treble", "4/4",400);
@@ -52,7 +70,12 @@
             init("notevalue","treble","4/4",400);
             addnote("treble", notenames, notevals);
         })
-
     });
+    function initdotted() {
+        init("dotted", "treble", "6/8",200);
+        notes = ["c/4","c/4"]
+        vals = ["qd","qd"]
+        addnote("treble", notes, vals);
+    }
 </script>
 {% endblock %}

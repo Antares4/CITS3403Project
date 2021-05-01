@@ -1,28 +1,62 @@
 {% extends 'content.html'%}
 {% block page %}
+<!-- this is the interesting one -->
+<!-- each module needs to take up the entire page -->
+
+<!-- intro module will be displayed at the beginning-->
 <div id="intro">
     <div>
+        <!-- header -->
+        <h1>Note Reaction test</h1>
+        <!--  -->
         <p>
-            In this test you will have 30 seconds to test your
-            familiraty with note recognition. 
+            <!-- make this eye catching, espically the "30"  -->
+            In this test you will have <strong>30</strong> seconds to test your familiraty with note recognition. 
         </p>
     </div>
+    <!-- make this button bigger and  -->
     <button id="start">Start</button>
 </div>
+<!--  -->
+
+<!-- Start button triggers display of this module which will also take up the whole page-->
 <div id="content" style="display: none;">
+
+    <!-- you need to impliment either a text timer e.g 1:30 or a css graphic one which ever one you prefer -->
     <span>timer</span>
+    <!--  -->
+
+    <!-- this div you can use to position the stave -->
     <div>
+
+        <!-- do not touch !!!!! -->
         <div class="stave" id="note"></div>
+        <!-- do not touch !!!!! -->
+
     </div>
+    <!--  -->
+
+    <!-- these two buttons needs to be large to be clicked on easily -->
+    <!-- please use contrasting color -->
     <button id="btn-1">button1</button>
     <button id="btn-2">button2</button>
-    <p id="boo"></p>
+    <!--  -->
 </div>
+<!--  -->
+
+<!-- this is the last module that will display when the test finshes  -->
 <div id="review" style="display: none;">
-    <span>Congratulations you have received: </span><span id="score"></span><span> Marks!</span>
+    <span>Congratulations you have received: </span>
+    <!-- do not change the id -->
+    <span id="score"></span>
+    <!--  -->
+    <span> Marks!</span>
+    <span>View full result and ranking, click <a>Here</a></span>
 </div>
+<!--  -->
 
 <script type=text/javascript>
+    // game logic do not modify!!!!!
     $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     $(document).ready(function(){
         var rightAnswer = null;
@@ -36,14 +70,22 @@
         var points = 0;
         var userId = {{ current_user.id|safe }}
         $("#start").bind("click",function(){
-            //display intro to none
+            // do not modify
             $("#intro").css("display","none")
-            //display contont
             $("#content").css("display","block")
+            // do not modify
+
+            //####### Shuang this is for you ##########
+            // this is the time out callback i've set when start is pressed try impliment a countdown using js or css or both 
             setTimeout(timeOutSubmit, 30000)
+            //###############################
+
+            // do not modify
             this_clef = getRandomClef()
             setAnswers(this_clef);
+            // do not modify
         })
+        // do not modify
         $("#btn-1").bind("click",function(){
             if(event.target.innerHTML == correctanswer[1]){
                 points++;
@@ -57,6 +99,9 @@
             this_clef = getRandomClef()
             setAnswers(this_clef);
         })
+        // do not modify
+        
+        // do not modify
         $("#btn-2").bind("click",function(){
             if(event.target.innerHTML == correctanswer[1]){
                 points++;
@@ -70,7 +115,7 @@
             this_clef = getRandomClef()
             setAnswers(this_clef);
         })
-        
+        // do not modify
         function setAnswers(clef){
             canidates = getRandomCanidate();
             if(clef == "treble"){
@@ -98,5 +143,6 @@
             }) 
         }
     });
+    // gmae logic do not modify!!!!!
   </script>
 {% endblock %}

@@ -1,39 +1,59 @@
 {% extends 'content.html'%}
 
 {% block page %}
-
+<!-- title -->
 <h2>Try It your Self!</h2>
+<!--  -->
 <p>
+
     Click on the keybord below to see where the notes were placed on a stave <br>
 </p>
+
 <div>
+    <!-- same interactive button -->
     <p>Click this button to switch between accidentals</p>
     <button id="switch">Sharp</button>
+    <!--  -->
 </div>
+
+<!-- stave -->
 <div class="canvascontainer">
+    <!--you know what to do: don't touch lol -->
     <div id="canvas"></div>
+    <!--  -->
 </div>
+<!--  -->
+
+ <!-- this is the piano: apply your shrink magic, position it using the piano container class-->
 <div class="pianocontainer">
-  <ul class="set" id="piano">
-    <li class="white b" id="f/4">f/4</li>
-    <li class="black as" id="f#/4">f#/4</li>
-    <li class="white a" id="g/4">g/4</li>
-    <li class="black gs" id="g#/4">g#/4</li>
-    <li class="white g" id="a/4">a/4</li>
-    <li class="black fs" id="a#/4">a#/4</li>
-    <li class="white f" id="b/4">b/4</li>
-    <li class="white e" id="c/5">c/5</li>
-    <li class="black ds" id="c#/5">c#/5</li>
-    <li class="white d" id="d/5">d/5</li>
-    <li class="black cs" id="d#/5">d#/5</li>
-      <li class="white c" id="e/5">e/5</li>
-  </ul>
+    <!-- do not modify the innerhtml and id -->
+    <ul class="set" id="piano">
+        <li class="white b" id="f/4">f/4</li>
+        <li class="black as" id="f#/4">f#/4</li>
+        <li class="white a" id="g/4">g/4</li>
+        <li class="black gs" id="g#/4">g#/4</li>
+        <li class="white g" id="a/4">a/4</li>
+        <li class="black fs" id="a#/4">a#/4</li>
+        <li class="white f" id="b/4">b/4</li>
+        <li class="white e" id="c/5">c/5</li>
+        <li class="black ds" id="c#/5">c#/5</li>
+        <li class="white d" id="d/5">d/5</li>
+        <li class="black cs" id="d#/5">d#/5</li>
+        <li class="white c" id="e/5">e/5</li>
+    </ul>
+    <!--  -->
 </div>
+<!--  -->
+
 <div>
-    <p>Felt confortable? click <a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">HERE</a> to test yourself</p>
+    <!-- next page link -->
+    <p>Felt confident? click <a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">HERE</a> to test yourself</p>
+    <!--  -->
 </div>
+
 <script>
   $(document).ready(function(){
+    //game logic do not touch !!!!!!!
       Sharp = ["f/4","f#/4","g/4","g#/4","a/4","a#/4","b/4","c/5","c#/5","d/5","d#/5","e/5"]
       Flat = ["f/4","gb/4","g/4","ab/4","a/4","bb/4","b/4","c/5","db/5","d/5","eb/5","e/5"]
       init("canvas", "treble", "4/4",200);
@@ -61,6 +81,7 @@
                 }
             }
         })
+    //game logic do not touch !!!!!!!
   });
 </script>
 {% endblock %}

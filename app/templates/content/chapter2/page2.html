@@ -2,43 +2,50 @@
 
 {% block page %}
 <div class="textcontainer">
+    <h1>Time Signiture</h1>
+    <hr>
     <p>
         In music notation, a <strong>Bar</strong> represents a segment of time corrosponding to a spacific number of <strong>beats</strong> that are
-        are closed off by vertical boundries called <strong>bar line</strong>
+        are closed off by vertical boundries called <strong>bar lines.</strong>
     </p>
+    <div class="canvascontainer display">
+        <div class="stave" id="bar"></div>
+        <hr class="display">
+    </div>
     <p class="display">
         Similar to clefs, the <strong>Time signiture</strong> establishes the rhythmic context of a particular piece of music.
         <br>
+    </p>
+    <p class="display">
+        Time signitures consists of two figures positioned like a fraction symbol.
+        The top figure represents the <strong>amount of beats</strong> present in a bar, whereas the bottom figure determines
+        the <strong>note value</strong> of those beats. 
     </p>
     <div class="canvascontainer display">
         <div class="stave" id="timesigniture"></div>
         <hr class="display">
     </div>
     <p class="display">
-        The top figure represents the <strong>amount of beats</strong> present in any of the following bars, whereas the bottom figure determines
-        the <strong>note value</strong> of those beats. 
+        The example above displays a <strong> 4/4</strong> time signiture - also known as the common-time. <br>
+        The number 4 above indicates <strong>4 beats</strong> in a bar, whereas the bottom 4 represents the note value of <strong>crotchet</strong>. 
     </p>
-    <p class="display">
-        The example above shows a <strong> 4/4</strong> time signiture also known as the common-time. The number 4 above indicates <strong>4 beats</strong>  in a bar 
-        with a note value of <strong>crotchet</strong>. 
-    </p>
+    <hr>
+
     <div class="pagebutton display">
-        <span id="next"> <a href="{{url_for('index.notes', chapter='chapter2', page='page3')}}">Next</a> </span>
+        <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Previous</a>
+        <a href="{{url_for('index.notes', chapter='chapter2', page='page3')}}">Next</a>
     </div>
 </div>
 <script>
     $(document).ready(function(){
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
-        init("timesigniture", "treble", null,200);
+        var base1 = init("timesigniture","treble","4/4",200);
         var display = 0;
+        init("bar",null, null, 200)
         $(".textcontainer").bind('click',function(){
             if(display < paragraph.length){
                 paragraph[display].style.opacity = 1;
                 display++;
-            }
-            if(display == 3){
-                removestave("timesigniture");
-                init("timesigniture","treble","4/4",200);
             }
         })
     });

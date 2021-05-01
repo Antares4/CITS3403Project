@@ -1,20 +1,13 @@
 {%extends "content.html"%}
-
 {% block page %}
 <div class="textcontainer">
-    <h1>RHYTHM</h1>
+    <h1>KEY</h1>
     <p>
-        This module explores the concept of <strong>Rhythm</strong> in music notation.
+        This module will explore the concepts of <strong>Keys</strong> and intervals. <br>
+        Some concepts from previous modules may apply, it is recomanded to compelete those modules befor you continue
+        <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Revise Notation</a> <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Revise Rhythm</a>
         <hr class="display">
     </p>
-
-    <h6 class="display">What is Rhythm</h6>
-
-    <ul>
-        <li class="display">An set of rule that determines the <strong>occurance</strong> and <strong>duration</strong> of pitch(notes)</li>
-        <li class="display">Orgnization of music in an intuitive and readable manner</li>
-        <li class="display">Building block for longer passages and phrases</li>
-    </ul>
     <div class="pagebutton display">
         <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Learn More</a>
     </div>
