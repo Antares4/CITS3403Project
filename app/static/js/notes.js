@@ -1,18 +1,18 @@
 
-var stave;
-var context;
+
 
 const sharp = /[a-z]\#\/\d/;
 const flat = /[a-z]b\/\d/;
+const dotted = /[a-z]*\d*d/
 
 function init(element, clef, time,stavelength,keysig=null){
   VF = Vex.Flow;
   var div = document.getElementById(element)
   var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
   renderer.resize(stavelength, 200);
-  context = renderer.getContext();
+  var context = renderer.getContext();
   context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
-  stave= new VF.Stave(0, 0, stavelength);
+  var stave= new VF.Stave(0, 0, stavelength);
   if(clef){
     stave.addClef(clef);
   }
@@ -23,6 +23,8 @@ function init(element, clef, time,stavelength,keysig=null){
     stave.addKeySignature(keysig);
   }
   stave.setContext(context).draw();
+  base = [context,stave];
+  return base;
 }
 
 
@@ -36,7 +38,7 @@ function removestave(staveId){
 }
 
 
-function addnote(clef, e, dur){
+function addnote(clef, e, dur, context){
   var notes = [];
   for(i=0; i<dur.length; i++){
     notes[i] = new VF.StaveNote({clef: clef, keys: [e[i]], duration: dur[i]});
@@ -48,9 +50,12 @@ function addnote(clef, e, dur){
       notes[i].addAccidental(0, new VF.Accidental("b"));
       console.log("flat");
     }
+    if(dotted.test(dur[i])){
+      notes[i].addDotToAll();
+    }
   }
   var beams = VF.Beam.generateBeams(notes);
-  var formatter = new VF.Formatter.FormatAndDraw(context, stave, notes)
+  var formatter = new VF.Formatter.FormatAndDraw(context[0], context[1], notes)
   beams.forEach(function(b) {
     b.setContext(context).draw()
   })
