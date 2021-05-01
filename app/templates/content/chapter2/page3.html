@@ -36,6 +36,7 @@
         <hr class="display">
     </div>
     <hr>
+    <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Previous</a>
     <p><a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Next Module</a></p>
 </div>
 <script>
@@ -66,15 +67,15 @@
                     }
                 }               
             }
-            var base = init("notevalue","treble","4/4",400);
-            addnote("treble", notenames, notevals, base);
+            init("notevalue","treble","4/4",400);
+            addnote("treble", notenames, notevals);
         })
     });
     function initdotted() {
-        var base = init("dotted", "treble", "6/8",200);
+        init("dotted", "treble", "6/8",200);
         notes = ["c/4","c/4"]
         vals = ["qd","qd"]
-        addnote("treble", notes, vals, base);
+        addnote("treble", notes, vals);
     }
 </script>
 {% endblock %}

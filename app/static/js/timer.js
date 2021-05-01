@@ -27,8 +27,8 @@ function getRandomClef(){
 }
 
 function renderStaveNotes(element, note, clef){
-    var base = init(element,clef,null,200,null)
-    addnote(clef,[note],["q"], base);
+    init(element,clef,null,200,null)
+    addnote(clef,[note],["q"]);
 }
 
 

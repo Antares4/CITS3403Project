@@ -33,13 +33,13 @@
         init("clef", null, null,200);
         $("#treble").bind('click',function(){
             removestave("clef");
-            var base = init("clef","treble",null,200);
-            addnote("treble", ["c/4"], ["q"], base);
+            init("clef","treble",null,200);
+            addnote("treble", ["c/4"], ["q"]);
         })
         $("#bass").bind('click',function(){
             removestave("clef");
-            var base = init("clef","bass",null,200);
-            addnote("bass", ["c/4"], ["q"], base);
+            init("clef","bass",null,200);
+            addnote("bass", ["c/4"], ["q"]);
         })
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
         var display = 0;
