@@ -1,10 +1,13 @@
 {% extends 'content.html'%}
 
 {% block page %}
+<!-- text part basically same as page 2 -->
 <div class="textcontainer">
+  <!-- this is the title -->
   <h1>
     Note representation
   </h1>
+  <!--  -->
   <p>
     Now with a stave to work with , we are able to place some <strong>notes</strong>.
     <hr class="display">
@@ -15,21 +18,41 @@
     Identical notes of the next/previous cycle essentially represent the same note, but an octive higher/Lower. 
     <hr class="display">
   </p>
+
+  <!-- this is a span that will display the current note, please make it beautifull and position it so that it corrosponds to the stave -->
+  <!-- you can place it above/next/in front or any position relative tho the stave below -->
+  <!-- do not change this ID!!!!!!! -->
   <span id="display" style="width: 10px;"></span>
+  <!-- do not change this ID!!!!!!! -->
+
+
+  <!-- this is the stave section!!! -->
   <div class="canvascontainer display">
+
+    <!-- do not touch this part -->
     <div class="stave" id="notes"></div>
+    <!-- do not touch this part -->
+
   </div>
+  <!--  -->
+
+
+  <!-- these two buttons controls the raise and lower of notes -->
   <div class="slidingWindow display">
+    <!-- same as the ineractive button as previous pages -->
     <button id="down">&lt</button>
     <button id="up">&gt</button>
   </div>
+  <!-- prev/next page  same stuff-->
   <div class="pagebutton display">
     <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Previous</a> </span>
     <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">Next</a> </span>
   </div>
+  <!--  -->
 </div>
 <script>
       $(document).ready(function(){
+      // note logic do not modify!!!!
       const basicnotes = ["c/4","d/4","e/4","f/4","g/4","a/4","b/4","c/5","d/5","e/5","f/5","g/5","a/5","b/5"]
       var position = 6;
       init("notes", "treble", null,200);
@@ -69,6 +92,9 @@
               $('#up').css("display", "none");
           }  
       })
+      //note logic do not modify!!!!
+
+      //display logic, remove if u have removed previous
       var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
       var display = 0;
       $(".textcontainer").bind('click',function(){
@@ -77,6 +103,7 @@
               display++;
           }   
       })
+       //display logic, remove if u have removed previous
       });
 </script>
 {% endblock %}
