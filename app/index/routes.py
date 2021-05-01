@@ -61,8 +61,10 @@ def profile(userId):
         print(my_sub)
         return render_template("profile/profile.html",subs=my_sub)
 
-@bp.route('/a')
-def a():
-    a = request.args.get('a', 0, type=int)
-    b = request.args.get('b', 0, type=int)
-    return jsonify(result=a + b)
+
+@bp.route('/timedNote')
+def timedNote():
+    score = request.args.get('score', 0, type=int)
+    userId = request.args.get('user', 0, type=int)
+    return jsonify(result=score)
+

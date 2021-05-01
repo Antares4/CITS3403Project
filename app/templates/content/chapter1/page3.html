@@ -2,29 +2,26 @@
 
 {% block page %}
 <div class="textcontainer">
+  <h1>
+    Note representation
+  </h1>
   <p>
-    Now with a stave to work with , we are able to add some <strong>notes</strong>.
+    Now with a stave to work with , we are able to place some <strong>notes</strong>.
     <hr class="display">
   </p>
   <p class="display">
-    In western music notation, <strong>notes</strong> are named cyclically useing the Alphabets 
-    <strong>[A-G]</strong>. 
-    <hr class="display">
-  </p>
-  <p class="display">
-    For each step up the stave, the note incriments alphabetically(decrements stepping down the stave).
+    In western music notation, <strong>notes</strong> are named cyclically through the Alphabets 
+    <strong>[A-G]</strong>. For each step up the stave, the note incriments alphabetically(decrements stepping down the stave).
     Identical notes of the next/previous cycle essentially represent the same note, but an octive higher/Lower. 
     <hr class="display">
   </p>
-  <p class="display">
-    but there's more......
-    <hr class="display">
-  </p>
+  <span id="display" style="width: 10px;"></span>
   <div class="canvascontainer display">
     <div class="stave" id="notes"></div>
   </div>
   <div class="slidingWindow display">
-    <span id="down"> &lt </span><span id="display" style="width: 10px;"></span><span id="up"> &gt </span>
+    <button id="down">&lt</button>
+    <button id="up">&gt</button>
   </div>
   <div class="pagebutton display">
     <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Previous</a> </span>

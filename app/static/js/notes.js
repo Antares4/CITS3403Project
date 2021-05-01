@@ -6,7 +6,6 @@ const sharp = /[a-z]\#\/\d/;
 const flat = /[a-z]b\/\d/;
 
 function init(element, clef, time,stavelength,keysig=null){
-  console.log("init")
   VF = Vex.Flow;
   var div = document.getElementById(element)
   var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
@@ -24,7 +23,6 @@ function init(element, clef, time,stavelength,keysig=null){
     stave.addKeySignature(keysig);
   }
   stave.setContext(context).draw();
-
 }
 
 
@@ -57,3 +55,7 @@ function addnote(clef, e, dur){
     b.setContext(context).draw()
   })
 }
+
+
+
+

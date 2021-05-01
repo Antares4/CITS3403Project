@@ -7,14 +7,22 @@
         <li><a href="{{url_for('index.index')}}">Home</a></li>
         {% if current_user.is_authenticated and not current_user.isAdmin %}
             <li>
-                <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">content</a>
+                content
                 <div class="dropdown-content">
-                    <p>Hello World!</p>
+                    <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Notation</a>
+                    <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Rhythm</a>
+                    <a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Key</a>
                 </div>
             </li>
-            <li><a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">Assessment</a></li>
+            <li>
+                Assessment
+                <div class="dropdown-content">
+                    <a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">Intro</a>
+                    <a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">intermediate</a>
+                    <a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">Difficult</a>
+                </div>
+            </li>
         {% endif %}
-
         {% if not current_user.is_authenticated %}
             <li><a href="{{url_for('auth.login')}}">Login</a></li>
         {% endif %}

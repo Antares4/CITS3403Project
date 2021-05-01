@@ -1,7 +1,7 @@
 {%extends "base.html"%}
 
 {% block content %}
-<div class="container">
+<div>
     {% if current_user.isAdmin %}
         {% for usr in data.usrs %}
             {{usr.username}}
@@ -18,6 +18,15 @@
         {% endif %}
     {% endif %}
     {% if not current_user.isAdmin %}
+        <div class="profile">
+            Name:{{current_user.username}}
+            <br>
+            you have made:{{subs|length}} Submissions
+            <br>
+            last seen at: 
+            <br>
+            
+        </div>
         <p>not admin</p>
         {% for item in subs %}
             {%set item_id = item.id%}
