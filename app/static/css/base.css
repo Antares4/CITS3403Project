@@ -9,10 +9,10 @@
     width: 70%;
     margin: auto;
 }
-div p{
+/* div p{
     margin: 0% 20%;
     
-}
+} */
 .container h1{
     letter-spacing: 0.1ex;
     text-transform: uppercase;
@@ -27,15 +27,24 @@ div p{
     border-right: 1px solid black;
     height: 100ex;
 }
-nav{
+.navbar-fixed{
     min-height: 7ch;
-    border: 2px solid rgb(53, 51, 44);
+border: 2px solid rgb(53, 51, 44);
+display: flex;
+align-items: center;
+background-color: rgb(43, 41, 38);
+justify-content: space-around;
+top: 0px;
+left: 0px;
+right: 0px;
+position: fixed;
+}
+/* .unauth{
     display: flex;
     align-items: center;
-    background-color: rgb(43, 41, 38);
     justify-content: space-around;
-    position: fixed;
-}
+      */
+
 .logo{
     margin: 0ex;
     color: rgb(199, 194, 194);
@@ -43,7 +52,8 @@ nav{
     letter-spacing: 1px;
     font-size: 17px;
 }
-.items{
+
+/* .items{
     margin: 0ex;
     height: 100%;
     list-style-type: none;
@@ -66,8 +76,8 @@ nav{
     text-decoration: none;
     letter-spacing: 1px;
     cursor: pointer;
-}
-.items li:last-child{
+} */
+/* .items li:last-child{
     border-right: 1px solid black;
 }
 .items li:hover{
@@ -93,11 +103,7 @@ a:active{
 nav li:hover .dropdown-content{
     transition-delay: 0.2s;
     display:block;
-}
-.navbar-fixed{
-    position: fixed;
-    width: 100%;
-}
+} */
 .dropdown-content{
     position: absolute;
     display: none;

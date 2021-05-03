@@ -1,36 +1,47 @@
 <nav id="a" class="navbar-fixed">
-    <div>
-        <h3 class="logo">Sidenote</h3>
-    </div>
     <!-- display if loggedin -->
     <ul class="items">
-        <li><a href="{{url_for('index.index')}}">Home</a></li>
+        
+        {% if not current_user.is_authenticated %}
+
+        <div class="unauth">
+            <ul>
+                <h3 class="logo">Sidenote</h3>
+            </ul> 
+            <ul>
+                <a href="{{url_for('index.index')}}">Home</a>
+            </ul>
+            <ul>
+                <a href="{{url_for('auth.login')}}">Login</a>
+            </ul>
+        </div>
+        {% endif %}
         {% if current_user.is_authenticated and not current_user.isAdmin %}
-            <li>
+            <ul>
                 content
                 <div class="dropdown-content">
                     <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Notation</a>
                     <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Rhythm</a>
                     <a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Key</a>
                 </div>
-            </li>
-            <li>
+            </ul>
+            <ul>
                 Assessment
                 <div class="dropdown-content">
                     <a href="{{url_for('assessment.testSubmission', difficulty='intro')}}">Intro</a>
                     <a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">intermediate</a>
                     <a href="{{url_for('assessment.testSubmission', difficulty='difficult')}}">Difficult</a>
                 </div>
-            </li>
-        {% endif %}
-        {% if not current_user.is_authenticated %}
-            <li><a href="{{url_for('auth.login')}}">Login</a></li>
+            </ul>
         {% endif %}
 
         {% if current_user.is_authenticated %}
-            <li><a href="{{url_for('index.profile', userId=current_user.id)}}">Profile</a></li>
-            <li><a href="{{url_for('index.logout')}}">Log out</a></li>
+            <ul>
+                <a href="{{url_for('index.profile', userId=current_user.id)}}">Profile</a>
+            </ul>
+            <ul>
+                <a href="{{url_for('index.logout')}}">Log out</a>
+            </ul>
         {% endif %}
-
     </ul>
 </nav>
