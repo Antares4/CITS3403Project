@@ -34,6 +34,7 @@ nav{
     align-items: center;
     background-color: rgb(43, 41, 38);
     justify-content: space-around;
+    position: fixed;
 }
 .logo{
     margin: 0ex;
@@ -80,13 +81,22 @@ a{
     color: rgb(199, 194, 194);
     text-decoration: none;
 }
+
 a:hover{
     color: rgb(66, 71, 87);
+    text-decoration: none;
+}
+a:active{
+    color: rgb(180, 27, 53);
     text-decoration: none;
 }
 nav li:hover .dropdown-content{
     transition-delay: 0.2s;
     display:block;
+}
+.navbar-fixed{
+    position: fixed;
+    width: 100%;
 }
 .dropdown-content{
     position: absolute;
