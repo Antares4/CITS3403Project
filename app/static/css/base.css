@@ -30,6 +30,7 @@ div p{
     border-left: 1px solid black;
     border-right: 1px solid black;
     height: 100ex;
+    padding-top: 5rem;
 }
 nav{
     min-height: 7ch;
