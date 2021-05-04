@@ -6,8 +6,8 @@
 nav{
     position: fixed;
     z-index: 1;
+    width: 100%;
 }
-
 .under{
     justify-content: center;
     width: 70%;
@@ -31,9 +31,14 @@ div p{
     border-right: 1px solid black;
     height: 100ex;
 }
-
-
-
+nav{
+    min-height: 7ch;
+    border: 2px solid rgb(53, 51, 44);
+    display: flex;
+    align-items: center;
+    background-color: rgb(43, 41, 38);
+    justify-content: space-around;
+}
 .logo{
     margin: 0ex;
     color: rgb(199, 194, 194);
@@ -41,7 +46,6 @@ div p{
     letter-spacing: 1px;
     font-size: 17px;
 }
-
 .items{
     margin: 0ex;
     height: 100%;
@@ -80,13 +84,8 @@ a{
     color: rgb(199, 194, 194);
     text-decoration: none;
 }
-
 a:hover{
     color: rgb(66, 71, 87);
-    text-decoration: none;
-}
-a:active{
-    color: rgb(180, 27, 53);
     text-decoration: none;
 }
 nav li:hover .dropdown-content{
