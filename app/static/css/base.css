@@ -3,16 +3,20 @@
     padding: 0px;
     box-sizing: border-box;
 }
+nav{
+    position: fixed;
+    z-index: 1;
+}
 
 .under{
     justify-content: center;
     width: 70%;
     margin: auto;
 }
-/* div p{
+div p{
     margin: 0% 20%;
     
-} */
+}
 .container h1{
     letter-spacing: 0.1ex;
     text-transform: uppercase;
@@ -39,11 +43,7 @@ left: 0px;
 right: 0px;
 position: fixed;
 }
-/* .unauth{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-      */
+
 
 .logo{
     margin: 0ex;
@@ -53,7 +53,7 @@ position: fixed;
     font-size: 17px;
 }
 
-/* .items{
+.items{
     margin: 0ex;
     height: 100%;
     list-style-type: none;
@@ -76,8 +76,8 @@ position: fixed;
     text-decoration: none;
     letter-spacing: 1px;
     cursor: pointer;
-} */
-/* .items li:last-child{
+}
+.items li:last-child{
     border-right: 1px solid black;
 }
 .items li:hover{
@@ -103,7 +103,7 @@ a:active{
 nav li:hover .dropdown-content{
     transition-delay: 0.2s;
     display:block;
-} */
+}
 .dropdown-content{
     position: absolute;
     display: none;
