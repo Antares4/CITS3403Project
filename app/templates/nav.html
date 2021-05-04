@@ -1,51 +1,52 @@
-<header>
+
 <nav id="a" class="navbar-fixed">
     <!-- display if loggedin -->
+    <li>
+        <h3 class="logo">Sidenote</h3>
+    </li> 
     <ul class="items">
         
         {% if not current_user.is_authenticated %}
 
-        <div class="unauth">
-            <ul>
-                <li>
-                    <h3 class="logo">Sidenote</h3>
-                </li> 
-                <li>
-                    <a href="{{url_for('index.index')}}">Home</a>
-                </li>
-                <li>
-                    <a href="{{url_for('auth.login')}}">Login</a>
-                </li>
-            </ul>
-        </div>
+        <li>
+            <a href="{{url_for('index.index')}}">Home</a>
+        </li>
+        <li>
+            <a href="{{url_for('auth.login')}}">Login</a>
+         </li>
+            
+    
         {% endif %}
         {% if current_user.is_authenticated and not current_user.isAdmin %}
-            <ul>
+            <li>
+                <a href="{{url_for('index.index')}}">Home</a>
+            </li>
+        
+            <li>
                 content
                 <div class="dropdown-content">
                     <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Notation</a>
                     <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Rhythm</a>
                     <a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Key</a>
                 </div>
-            </ul>
-            <ul>
+            </li>
+            <li>
                 Assessment
                 <div class="dropdown-content">
                     <a href="{{url_for('assessment.testSubmission', difficulty='intro')}}">Intro</a>
                     <a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">intermediate</a>
                     <a href="{{url_for('assessment.testSubmission', difficulty='difficult')}}">Difficult</a>
                 </div>
-            </ul>
+            </li>
         {% endif %}
 
-        {% if current_user.is_authenticated %}
-            <li>
-                <a href="{{url_for('index.profile', userId=current_user.id)}}">Profile</a>
-            </li>
-            <li>
-                <a href="{{url_for('index.logout')}}">Log out</a>
-            </li>
+        {% if current_user.is_authenticated%}
+        <li>
+            <a href="{{url_for('index.profile', userId=current_user.id)}}">Profile</a>
+        </li>
+        <li>
+            <a href="{{url_for('index.logout')}}">Log out</a>
+        </li>
         {% endif %}
-    </ul>
+</ul>
 </nav>
-</header>

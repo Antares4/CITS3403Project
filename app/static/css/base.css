@@ -31,18 +31,7 @@ div p{
     border-right: 1px solid black;
     height: 100ex;
 }
-.navbar-fixed{
-    min-height: 7ch;
-border: 2px solid rgb(53, 51, 44);
-display: flex;
-align-items: center;
-background-color: rgb(43, 41, 38);
-justify-content: space-around;
-top: 0px;
-left: 0px;
-right: 0px;
-position: fixed;
-}
+
 
 
 .logo{
