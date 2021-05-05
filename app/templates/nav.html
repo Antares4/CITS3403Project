@@ -6,21 +6,21 @@
     <ul class="items">
         
         {% if not current_user.is_authenticated %}
-        <li>
+        <li class="navbar-option">
             <a href="{{url_for('index.index')}}">Home</a>
         </li>
-        <li>
+        <li class="navbar-option">
             <a href="{{url_for('auth.login')}}">Login</a>
          </li>
             
     
         {% endif %}
         {% if current_user.is_authenticated and not current_user.isAdmin %}
-            <li>
+            <li class="navbar-option">
                 <a href="{{url_for('index.index')}}">Home</a>
             </li>
         
-            <li>
+            <li class="navbar-option">
                 content
                 <div class="dropdown-content">
                     <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Notation</a>
@@ -28,7 +28,7 @@
                     <a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Key</a>
                 </div>
             </li>
-            <li>
+            <li class="navbar-option">
                 Assessment
                 <div class="dropdown-content">
                     <a href="{{url_for('assessment.testSubmission', difficulty='intro')}}">Intro</a>
@@ -39,10 +39,10 @@
         {% endif %}
 
         {% if current_user.is_authenticated%}
-        <li>
+        <li class="navbar-option">
             <a href="{{url_for('index.profile', userId=current_user.id)}}">Profile</a>
         </li>
-        <li>
+        <li class="navbar-option">
             <a href="{{url_for('index.logout')}}">Log out</a>
         </li>
         {% endif %}
