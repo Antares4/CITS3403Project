@@ -16,6 +16,8 @@ class users(UserMixin, db.Model):
     joinedAt = db.Column(db.DateTime)
     isActive = db.Column(db.Boolean)
     isAdmin = db.Column(db.Boolean)
+    noteHighScore = db.Column(db.Integer)
+    KeyHighScore = db.Column(db.Integer)
     submit = db.relationship("submission", backref="submitter")
 
     ###################################################
@@ -23,6 +25,8 @@ class users(UserMixin, db.Model):
     def __init__(self):
         self.isActive = True
         self.isAdmin = False
+        self.noteHighScore = 0
+        self.KeyHighScore = 0
     
     def is_active(self):
         return self.isActive
@@ -32,9 +36,6 @@ class users(UserMixin, db.Model):
         res = submission.query.filter_by(creater_id=self.id).all()
         return res
 
-    def get_id(self):
-        return self.id
-    
     def __repr__(self):
         return '<user %r>' % self.username
 
@@ -66,7 +67,7 @@ class answer(db.Model):
     
     def __init__(self):
         feedback = None
-        print("init answers")
+
     def __repr__(self):
         return '<ans>'
 

@@ -56,15 +56,15 @@
 <script>
     $(document).ready(function(){
         //do not touch! note logic section
-        init("clef", null, null,200);
+        init("clef", null, null,200,null);
         $("#treble").bind('click',function(){
             removestave("clef");
-            init("clef","treble",null,200);
+            init("clef","treble",null,200,null);
             addnote("treble", ["c/4"], ["q"]);
         })
         $("#bass").bind('click',function(){
             removestave("clef");
-            init("clef","bass",null,200);
+            init("clef","bass",null,200,null);
             addnote("bass", ["c/4"], ["q"]);
         })
         //do not touch! note logic section

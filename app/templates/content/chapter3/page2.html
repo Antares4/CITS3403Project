@@ -5,14 +5,26 @@
    <hr>
    <p>In music theory, a <strong>Key</strong> is a group of pitches that establishes the basis of a piece of music</p>
     <ol>
-        <li>The group features a center note called the <strong>Tonic</strong> and its corrosponding scale</li>
+        <li>The main pitches used in a piece of music usually form a particular group called a<strong>scale</strong> </li>
+        <li>The group features a center note called the <strong>Tonic</strong> and its <strong>6</strong> other corrosponding notes</li>
+        <li>Keys are named after their <strong>tonic</strong> note and belong to either the major or minor category</li>
     </ol>
+    <hr>
+    <p>Here is an example of a scale in the key of <strong>C Major</strong></p>
+    <div class="canvascontainer display">
+        <div class="stave" id="cmajor"></div>
+        <hr class="display">
+    </div>
+    <p>Click on learn more to learn about <strong>Key signiture</strong></p>
     <div class="pagebutton display">
-        <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Learn More</a>
+        <a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Previous</a>
+        <a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">Next</a>
     </div>
 </div>
 <script>
     $(document).ready(function(){
+        init("cmajor", "treble", null,400,"C")
+        addnote("treble",["c/4","d/4","e/4","f/4","g/4","a/4","b/4"],["w","w","w","w","w","w","w",])
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
         var display = 0;
         $(".textcontainer").bind('click',function(){

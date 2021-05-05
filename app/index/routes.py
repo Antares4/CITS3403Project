@@ -1,10 +1,11 @@
 from flask import Flask, request, url_for, redirect, render_template, flash, jsonify
 from flask_login import current_user, login_required, logout_user
 from app.index import bp
-from app.controller import getAllSubmissions, getAllUsers, getUserById, howManySubmissions, howManyUsers
+from app.controller import getAllSubmissions, getAllUsers, getUserById, howManySubmissions, howManyUsers, getNoteRanking, getKeyRanking
 from app import db
 from config import Config
 from app.model import users
+import json
 
 @bp.route('/')
 @bp.route('/index/<name>')
@@ -66,5 +67,53 @@ def profile(userId):
 def timedNote():
     score = request.args.get('score', 0, type=int)
     userId = request.args.get('user', 0, type=int)
-    return jsonify(result=score)
+    this_user = getUserById(userId)
+    if this_user.noteHighScore < score:
+        this_user.noteHighScore = score
+        db.session.commit()
+        result = {
+            'record': True,
+            'HighScore': score,
+            'ranking': getNoteRanking(userId),
+            'score': score
+        }
+        print("result is",result)
+    else:
+        result = {
+            'record': False,
+            'HighScore': this_user.noteHighScore,
+            'ranking': getNoteRanking(userId),
+            'score': score
+        }
+        print("result is",result)
+    db.session.commit()
+    jsonObj = json.dumps(result)
+    return jsonObj
 
+
+@bp.route('/timedKey')
+def timedKey():
+    score = request.args.get('score', 0, type=int)
+    userId = request.args.get('user', 0, type=int)
+    this_user = getUserById(userId)
+    if this_user.KeyHighScore < score:
+        this_user.KeyHighScore = score
+        db.session.commit()
+        result = {
+            'record': True,
+            'HighScore': score,
+            'ranking': getKeyRanking(userId),
+            'score': score
+        }
+        print("result is",result)
+    else:
+        result = {
+            'record': False,
+            'HighScore': this_user.KeyHighScore,
+            'ranking': getKeyRanking(userId),
+            'score': score
+        }
+        print("result is",result)
+    db.session.commit()
+    jsonObj = json.dumps(result)
+    return jsonObj

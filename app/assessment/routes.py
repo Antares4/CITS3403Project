@@ -55,7 +55,8 @@ def testSubmission(difficulty):
         db.session.commit()
 
         return redirect(url_for('index.index'))
-    return render_template('quiz/intermediate.html', title='Assessment', form=form)
+    route_assessment = "quiz/{}.html".format(difficulty)
+    return render_template(route_assessment, title='Assessment', form=form)
 
 
 @bp.route('/markSubmission/<toBeMarked>', methods=['GET','POST'])

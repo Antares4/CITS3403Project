@@ -1,0 +1,51 @@
+{%extends "content.html"%}
+{% block page %}
+<div class="textcontainer">
+    <h1>KEY signiture</h1>
+    <hr>
+    <p>To establish a key, we must indicate which group of notes(scale) we are after.</p> <br>
+    <p>In some scenario this may require a large amount of accidentals which is redundent and more vulnerable to errors</p><br>
+    <h5>Below is a representation of the key B major without keysigniture</h5>
+    <div class="canvascontainer display">
+        <div class="stave" id="Bmajor"></div>
+    </div>
+    <p>Therefore, to solve this problem, Key signitures were used to represent a given key</p>
+    <hr>
+    <p>
+        Key signitures consists of a gorup of accidentals located before the time signiture of a piece of music. <br> 
+        The role of those accidentals are no longer modifying <strong>one</strong> note, but to modify <strong>all</strong> notes on that 
+        spacific line/space
+    </p>
+    <hr>
+    <p>
+        The left passage is in the key of<strong>C Major</strong> where as the right passage is in <strong>A major</strong> <br>
+        However the two notes shown are identical despite the left having an accidental
+    </p>
+    <div style="display: inline-flex; justify-content: space-around;">
+        <div class="stave" id="Cmajorcomp"></div>
+        <div class="stave" id="Fmajorcomp"></div>
+    </div>
+    <div class="pagebutton display">
+        <a href="{{url_for('index.notes', chapter='chapter3', page='page2')}}">Previous</a>
+        <a href="{{url_for('index.notes', chapter='chapter3', page='page4')}}">Next</a>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        init("Bmajor", "treble", "4/4",400,"C")
+        addnote("treble",["b/4","c#/5","d#/5","e/5","f#/5","g#/5","a#/5"],["w","w","w","w","w","w","w"])
+        init("Cmajorcomp", "treble", "4/4",200,"C")
+        addnote("treble",["c#/5"],["w"])
+        init("Fmajorcomp", "treble", "4/4",200,"A")
+        addnote("treble",["c/5"],["w"])
+        var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
+        var display = 0;
+        $(".textcontainer").bind('click',function(){
+            if(display < paragraph.length){
+                paragraph[display].style.opacity = 1;
+                display++;
+            }
+        })
+    });
+</script>
+{% endblock %}

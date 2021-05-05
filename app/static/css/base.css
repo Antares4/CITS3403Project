@@ -114,3 +114,13 @@ nav li:hover .dropdown-content{
     justify-content: space-around;
 }
 
+.canvascontainer{
+    justify-content: center;
+    text-align: center;
+}
+
+.stave{
+    height: 100px;
+    align-self: center;
+    width: 30%;
+  }

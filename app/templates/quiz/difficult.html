@@ -5,20 +5,18 @@
         {{ form.hidden_tag() }}
         {% endif %}
         <p class="question question1">
-            This assessment will test your knowldge on music theory and history at an intermediate difficulty.
-            <hr>
-            Once you felt confortable with this moduel you may move on to the next level
+            This assessment may require knowldge beyond provided content and is sutible for ones seeking for more challenge.
             <hr>
         </p>
         <p>
             Look at this passage and answer the questions below
         </p> 
         <div class="canvascontainer display">
-            <div class="stave" id="Q1"></div>
+            <div id="Q1"></div>
         </div>
         <div id="question1">
             <p>                
-                Name three notes in this passage that does not belong to the key of A minor
+                Name three notes in this passage that does not belong to the key of F 
             </p>
             {% if form %}
                 {% if current_user.isAdmin%}
@@ -50,6 +48,7 @@
         </div>
         <div id="question2">  
             <p>
+
                 State one diffierece between bar 1 and bar 2.
             </p>
             {% if form %}
@@ -80,9 +79,10 @@
                 {% endif %}
             {% endfor %}
         </div>
+        <div id="Q5"></div>
         <div id="question3">
             <p>
-                What's the interval between the last two notes? Which note will you add to form a tonic triad in the key of g major? 
+                Compare this passage with the one above, is it correctly written two octive lower? Why and why not? 
             </p>
             {% if form %}
                 {% if current_user.isAdmin %}
@@ -145,11 +145,11 @@
             {% endfor %}
         </div>
 
-        <div>passage again</div>
+
 
         <div id="question5">
             <p>
-                Compare this passage with the one above, is it correctly written one octive higher? Why andy why not? 
+                What's the interval between the last two notes and which scale degree does the last note represent in the current key? Explain
             </p>                      
             {% if form %}
                 {% if current_user.isAdmin %}
@@ -192,7 +192,7 @@
     </style>
     <script>
         $(document).ready(function(){
-            intermediate("Q1")
+            difficult("Q1","Q5")
         })
         function validate(){
             var warnings = document.getElementsByClassName("warning")
