@@ -4,31 +4,39 @@
 <!-- do not change this line -->
 <div class="block" style="display: none;">
 <!-- do not change this line -->
-    
-    <!-- can you please get this section to be on the left side / change the class name if u want to fit ur css-->
-    <nav class="pageIndex">
-        <ul class="items">
-            <!-- can u make it so that when you click on notation it expands and review -->
+    <nav id="arrow" class="arrow-container">
+        <div class="arrow">
+            <div class="line-1"></div>
+            <div class="line-2"></div>
+        </div>
+        <ul class="chapter-content">
             <li>Notation</li>
-            <!-- review this part -->
-            <li><a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">What is Notation</a></li>
-            <li><a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Clefs</a></li>
-            <li><a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Note Representation</a></li>
-            <li><a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">More on Representation</a></li>
-            <li><a href="{{url_for('index.notes', chapter='chapter1', page='page5')}}">Accidentals</a></li>
-            <li><a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">Test your self</a></li>
-            <!-- this part -->
-            <!-- same thing for Rhythm section -->
-            <li>Rhythm</li>
-            <!-- thispart for rhythm -->
-            <li> <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">What is Rhythm</a></li>
-            <li> <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Time signiture</a></li>
-            <li> <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Note Values</a></li>
-            <!-- thispart for rhythm -->
-            <!-- key part yet to come but same as the previous two parts -->
         </ul>
     </nav>
-    
+    <!-- can you please get this section to be on the left side / change the class name if u want to fit ur css-->
+            <div class="pageIndex">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim et pariatur recusandae unde voluptate deserunt repellat provident, similique ullam dolores neque incidunt qui at ut fuga adipisci, eum doloribus eligendi?
+                <!-- <ul class="items"> -->
+            <!-- can u make it so that when you click on notation it expands and review -->
+                <!-- <li>Notation</li>  -->
+                <!-- review this part -->
+                <!-- <li><a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">What is Notation</a></li> -->
+                <!-- <li><a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Clefs</a></li> -->
+                <!-- <li><a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Note Representation</a></li> -->
+                <!-- <li><a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">More on Representation</a></li> -->
+                <!-- <li><a href="{{url_for('index.notes', chapter='chapter1', page='page5')}}">Accidentals</a></li> -->
+                <!-- <li><a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">Test your self</a></li> -->
+                <!-- this part -->
+                <!-- same thing for Rhythm section -->
+                <!-- <li>Rhythm</li> -->
+                <!-- thispart for rhythm -->
+                <!-- <li> <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">What is Rhythm</a></li> -->
+                <!-- <li> <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Time signiture</a></li> -->
+                <!-- <li> <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Note Values</a></li> -->
+                <!-- thispart for rhythm -->
+                <!-- key part yet to come but same as the previous two parts -->
+                 <!-- </ul> -->
+            </div>
     {% block page %}{% endblock %}
 
 <!-- do not change this line -->
