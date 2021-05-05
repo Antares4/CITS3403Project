@@ -2,12 +2,13 @@
 
 var context;
 var stave
-function getRandomCanidate(){
+// return two random numbers 
+function getRandomCanidate(range){
     var canidates = []
-    canidates[0] = Math.floor(Math.random() * 8) 
+    canidates[0] = Math.floor(Math.random() * range) 
     canidates[1] = canidates[0];
     while(canidates[1] == canidates[0]){
-        canidates[1] =  Math.floor(Math.random() * 8) 
+        canidates[1] =  Math.floor(Math.random() * range) 
     }
     return canidates
 }
@@ -24,6 +25,10 @@ function btnAssignReOrder(btn1ID, btn2ID, contents){
 function getRandomClef(){
     clef = Math.round(Math.random())
     return clef == 0 ? "treble" : "bass"
+}
+
+function renderStaveKeys(element, clef, key){
+    init(element,clef,null,200,key)
 }
 
 function renderStaveNotes(element, note, clef){

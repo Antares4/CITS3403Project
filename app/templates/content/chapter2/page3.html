@@ -44,7 +44,7 @@
         initdotted();
         notevalues = ["w","h","q","8","16"];
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
-        init("notevalue", "treble", "4/4",400);
+        init("notevalue", "treble", "4/4",400,null);
         var display = 0;
         $(".textcontainer").bind('click',function(){
             if(display < paragraph.length){
@@ -67,12 +67,12 @@
                     }
                 }               
             }
-            init("notevalue","treble","4/4",400);
+            init("notevalue","treble","4/4",400,null);
             addnote("treble", notenames, notevals);
         })
     });
     function initdotted() {
-        init("dotted", "treble", "6/8",200);
+        init("dotted", "treble", "6/8",200,null);
         notes = ["c/4","c/4"]
         vals = ["qd","qd"]
         addnote("treble", notes, vals);

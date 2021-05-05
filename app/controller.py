@@ -37,3 +37,28 @@ def getAnswerForSub(sub_id):
     answer_list = answer.query.filter_by(submissionId=sub_id).all()
     return answer_list
 
+def getNoteRanking(userid):
+    user_list = users.query.order_by(users.noteHighScore.desc()).all()
+    print(user_list)
+    for i in range(len(user_list)):
+        if user_list[i].id == userid:
+            ranking = i+1
+            break
+    if not ranking:
+        print("id not found")
+        return False
+        print(ranking)
+    return ranking
+
+def getKeyRanking(userid):
+    user_list = users.query.order_by(users.KeyHighScore.desc()).all()
+    print(user_list)
+    for i in range(len(user_list)):
+        if user_list[i].id == userid:
+            ranking = i+1
+            break
+    if not ranking:
+        print("id not found")
+        return False
+        print(ranking)
+    return ranking

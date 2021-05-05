@@ -15,6 +15,9 @@ def login():
         user = users.query.filter_by(username=form.username.data).first()
         if user:
             if check_password_hash(user.password,form.password.data):
+                if form.remember_me == True:
+                    login_user(user,remember=True)
+                    return redirect(url_for('index.index', name=user.username))
                 login_user(user)
                 return redirect(url_for('index.index', name=user.username))
             else:

@@ -11,7 +11,7 @@
         <!--  -->
         <p>
             <!-- make this eye catching, espically the "30"  -->
-            In this test you will have <strong>30</strong> seconds to test your familiraty with note recognition. 
+            In this test you will have <strong>30</strong> seconds to test your familiraty with Key recognition. 
         </p>
     </div>
     <!-- make this button bigger and  -->
@@ -69,10 +69,10 @@
     $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     $(document).ready(function(){
         var rightAnswer = null;
-        var basscanidateLiterals = [["c/3","C"],["d/3","D"],["e/3","E"],["f/3","F"],
-                            ["g/3","G"],["a/3","A"],["b/3","B"],["c/4","C"]]
-        var treblecanidateLiterals = [["c/4","C"],["d/4","D"],["e/4","E"],["f/4","F"],
-                            ["g/4","G"],["a/4","A"],["b/4","B"],["c/5","C"]]
+        var canidateLiterals = [["C","C"],["F","F"],["B","B"],["Eb","E flat"],
+                                ["Ab","A flat"],["Db","D flat"],["Gb","G flat"],
+                                ["Cb","C flat"],["G","G"],["D","D"],["A","A"],
+                                ["E","E"],["B","B"],["F#","F sharp"],["C#","C sharp"]]
         var currentpair = [];
         var correctanswer = null;
         var this_clef = null;
@@ -126,29 +126,22 @@
         })
         // do not modify
         function setAnswers(clef){
-            canidates = getRandomCanidate(8);
-            if(clef == "treble"){
-                currentpair[0] = treblecanidateLiterals[canidates[0]];
-                currentpair[1] = treblecanidateLiterals[canidates[1]];
-            }
-            else{
-                currentpair[0] = basscanidateLiterals[canidates[0]];
-                currentpair[1] = basscanidateLiterals[canidates[1]];
-            }
+            canidates = getRandomCanidate(15);
+            currentpair[0] = canidateLiterals[canidates[0]];
+            currentpair[1] = canidateLiterals[canidates[1]];
             //0 is always correct answer
             correctanswer = currentpair[0];
             btn_assign = Math.round(Math.random())
             btn_assign == 0 ? btnAssingInOrder("btn-1","btn-2",currentpair) : btnAssignReOrder("btn-1","btn-2",currentpair)
-            renderStaveNotes("note",currentpair[0][0],this_clef);
+            renderStaveKeys("note",this_clef,currentpair[0][0]);
         }
         function timeOutSubmit(){
-            $.getJSON($SCRIPT_ROOT + '/timedNote', {
+            $.getJSON($SCRIPT_ROOT + '/timedKey', {
                 score: points,
                 user : userId
                 }, function(data) {
                 $("#content").css("display","none")
                 $("#review").css("display","block")
-                console.log(data)
                 if(data.record == true){
                     document.getElementById("record").innerHTML = "New Record!"
                 }

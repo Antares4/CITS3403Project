@@ -16,6 +16,7 @@
   .stave{
     height: 100px;
     align-self: center;
+    width: 30%;
   }
 
   * {
