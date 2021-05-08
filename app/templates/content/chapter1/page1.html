@@ -3,7 +3,7 @@
 {% block page %}
 <!-- the text container class is needed for click and display to work -->
 <!-- you can remove it if u want to use an other class name to fit ur css -->
-<div class="textcontainer">
+<div class="text-container">
   <!-- NOTE: -->
   <!-- use hr to break between section you felt should be separated -->
   <!-- please make the tags consistent, as long as those texts were in the right order  -->
@@ -29,10 +29,11 @@
     </div>
       </div>
       <!-- this class is convinently set up for u to edit in base.css -->
-      <div class="pagebutton">
-        <!-- for the link to previous and next page can you create a single css class that will make the button look the same accross all pages -->
-        <!-- for Learn more can you place it in the center  -->
-        <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Learn More</a>
+      <div class="learn-wrapper">
+          <!-- for the link to previous and next page can you create a single css class that will make the button look the same accross all pages -->
+          <!-- for Learn more can you place it in the center  -->
+          <a class="learn-btn" href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Learn More</a>
+
       </div>
     </div>
 <!-- <script>

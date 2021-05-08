@@ -23,8 +23,7 @@ body {
 .container-fluid h1 {
   letter-spacing: 0.1ex;
   text-transform: uppercase;
-  font-size: 7ex;
-  padding-top: 10px;
+  font-size: 9ex;
 }
 .container-fluid {
   width: 100%;
@@ -165,10 +164,10 @@ a:hover {
 .block .arrow-container .chapter-content .page-num {
   margin-bottom: 8%;
 }
-.textcontainer {
+.text-container {
   height: 100vh;
 }
-.textcontainer .content-section {
+.text-container .content-section {
   display: inline-block;
   text-align: left;
   justify-content: left;
@@ -177,5 +176,49 @@ a:hover {
 }
 
 .content-page h1 {
-  padding: 10% 0 5% 0;
+  margin: 15% 0 5% 0;
+}
+.content-page p {
+  font-size: 3ex;
+}
+
+.learn-wrapper {
+  margin-top: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.learn-btn {
+  position: relative;
+  border: 1px solid black;
+  color: black;
+  background: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 20px;
+  width: 250px;
+  cursor: pointer;
+}
+
+.learn-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 700ms ease-in;
+  z-index: -1;
+}
+.learn-btn:hover:before,
+.learn-btn:focus:before {
+  transform: scaleX(1);
+}
+.learn-btn:hover,
+.learn-btn:focus {
+  color: white;
 }
