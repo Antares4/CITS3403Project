@@ -158,7 +158,7 @@ a:hover {
   left: 0;
 }
 .block .content-page {
-  width: 70%;
+  width: 76%;
 }
 .block .arrow-container .chapter-content .page-num {
   margin-bottom: 8%;
@@ -171,13 +171,11 @@ a:hover {
   text-align: left;
   justify-content: left;
   width: 100%;
-  grid-template-columns: 1fr;
 }
 
 .content-page h1 {
   margin: 15% 0 5% 0;
   padding: 20px 0px 20px 20px;
-
   background-color: rgb(216, 212, 212);
 }
 .content-page p {
@@ -224,4 +222,22 @@ a:hover {
 .learn-btn:focus {
   transition: 800ms;
   color: white;
+}
+.para {
+  display: inline-block;
+  text-align: left;
+  justify-content: left;
+  width: 100%;
+}
+.canvas-wrapper {
+  padding: 5%;
+  background-color: rgb(216, 212, 212);
+}
+.canvascontainer {
+  padding: 20px;
+  background-color: rgb(179, 174, 174);
+  padding-bottom: 5%;
+  display: flex;
+  justify-content: left;
+  align-items: left;
 }
