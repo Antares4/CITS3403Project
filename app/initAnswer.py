@@ -2,23 +2,23 @@ from app import db
 from app.model import automark
 
 def loadAnswer():
-    auto_intro_1 = automark("intro",1,"")  
-    auto_intro_2 = automark("intro",2,"")  
-    auto_intro_3 = automark("intro",3,"")  
-    auto_intro_4 = automark("intro",4,"")  
-    auto_intro_5 = automark("intro",5,"")  
+    auto_intro_1 = automark("intro",1,"G,E")  
+    auto_intro_2 = automark("intro",2,"minim")  
+    auto_intro_3 = automark("intro",3,"B")  
+    auto_intro_4 = automark("intro",4,"semibreave,minim,crotchet ,quaver,semiquaver")  
+    auto_intro_5 = automark("intro",5,"4/4,four four")  
 
-    auto_intermediate_1 = automark("intermediate",1,"")  
-    auto_intermediate_2 = automark("intermediate",2,"")  
-    auto_intermediate_3 = automark("intermediate",3,"")  
-    auto_intermediate_4 = automark("intermediate",4,"")  
-    auto_intermediate_5 = automark("intermediate",5,"")  
+    auto_intermediate_1 = automark("intermediate",1,"C#,quaver")  
+    auto_intermediate_2 = automark("intermediate",2,"compound,duple")  
+    auto_intermediate_3 = automark("intermediate",3,"six,6")  
+    auto_intermediate_4 = automark("intermediate",4,"Gb")  
+    auto_intermediate_5 = automark("intermediate",5,"F#,C#,G#")  
 
     auto_difficult_1 = automark("difficult",1,"F,Bb,G")
     auto_difficult_2 = automark("difficult",2,"F,Bb,C#,D,seventh,7th,lower")  
     auto_difficult_3 = automark("difficult",3,"no, D#")  
-    auto_difficult_4 = automark("difficult",4,"9/8,nine,eight")  
-    auto_difficult_5 = automark("difficult",5,"") 
+    auto_difficult_4 = automark("difficult",4,"9/8,nine eight")  
+    auto_difficult_5 = automark("difficult",5,"augmented fourth,supertonic") 
 
     db.session.add(auto_intro_1)  
     db.session.commit()

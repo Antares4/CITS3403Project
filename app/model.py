@@ -57,6 +57,13 @@ class submission(db.Model):
         self.marked = False
         print("submission init")
     
+    def validate(self):
+        if self.difficulty and self.creater_id and self.createdAt:
+            return True
+
+    def __repr__(self):
+        return '<submission %r>' % self.id
+    
         
 class answer(db.Model):
     __tablename__ = 'answer'
@@ -70,24 +77,22 @@ class answer(db.Model):
     
     def __init__(self):
         feedback = None
-
+    
+    def validate(self):
+        if not getSubmissionById(self.submissionId):
+            print("submission doesnot exist")
+            return False
+        else:
+            if self.submittedAnswer:
+                if len(self.submittedAnswer) < 400:
+                    if self.answerSeq:
+                        if self.answerSeq < 6:
+                            return True
+            else:
+                return False
     def __repr__(self):
         return '<ans>'
 
-class automark(db.Model):
-    __tablename__ = 'automark'
-
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    difficulty = db.Column(db.String(400))
-    answerSeq = db.Column(db.Integer)
-    wordmatch = db.Column(db.String(400))
-
-    def __init__(self, diff, seq, match):
-        self.difficulty = diff
-        self.answerSeq = seq
-        self.wordmatch = match
-    def __repr__(self):
-        return '<auto>'
 
 @login.user_loader
 def load_user(usr_id):

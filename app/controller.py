@@ -24,30 +24,39 @@ def getAllUsers():
 def getUserById(userId):
     usr = users.query.filter_by(id=userId).first()
     if usr==None:
-        print('cannot find the user with id:', userId)
+        print('cannot find user with id:', userId)
         return False
     else:
         return usr
 
 def getSubmissionById(sub_id):
     this_sub = submission.query.filter_by(id=sub_id).first()
-    return this_sub
+    if this_sub==None:
+        print('cannot find submission with id:', sub_id)
+        return False
+    else:
+        return this_sub
 
 def getAnswerForSub(sub_id):
     answer_list = answer.query.filter_by(submissionId=sub_id).all()
-    return answer_list
+    if answer_list==None:
+        print('cannot find answer for submission:', sub_id)
+        return False
+    else:
+        return answer_list
 
 def getNoteRanking(userid):
     user_list = users.query.order_by(users.noteHighScore.desc()).all()
-    print(user_list)
+    if user_list==None:
+        print('Ranking not avaliable')
+        return False
     for i in range(len(user_list)):
         if user_list[i].id == userid:
             ranking = i+1
             break
     if not ranking:
-        print("id not found")
+        print("id not found:",userid)
         return False
-        print(ranking)
     return ranking
 
 def getKeyRanking(userid):
