@@ -23,7 +23,7 @@ body {
 .container-fluid h1 {
   letter-spacing: 0.1ex;
   text-transform: uppercase;
-  font-size: 9ex;
+  font-size: 7ex;
 }
 .container-fluid {
   width: 100%;
@@ -159,7 +159,6 @@ a:hover {
 }
 .block .content-page {
   width: 70%;
-  padding-left: 7%;
 }
 .block .arrow-container .chapter-content .page-num {
   margin-bottom: 8%;
@@ -177,6 +176,9 @@ a:hover {
 
 .content-page h1 {
   margin: 15% 0 5% 0;
+  padding: 10px 10px 10px 10px;
+
+  background-color: rgb(216, 212, 212);
 }
 .content-page p {
   font-size: 3ex;
@@ -191,7 +193,7 @@ a:hover {
 .learn-btn {
   position: relative;
   /* border: 1px solid black; */
-  color: black;
+  color: rgb(43, 41, 38);
   background: none;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -208,6 +210,7 @@ a:hover {
   width: 100%;
   height: 100%;
   background-color: rgb(43, 41, 38);
+
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 700ms ease-in;
