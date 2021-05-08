@@ -1,113 +1,114 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
 }
-body{
-    /* width: 100vw; */
-    font-family: 'Zilla Slab', serif;
+body {
+  /* width: 100vw; */
+  font-family: "Zilla Slab", serif;
 }
-#a{
-    position: fixed;
-    z-index: 3;
-    width: 100%;
+#a {
+  position: fixed;
+  z-index: 3;
+  width: 100%;
 }
-.under{
-    justify-content: center;
-    width: 70%;
-    margin: auto;
+.under {
+  justify-content: center;
+  width: 70%;
+  margin: auto;
 }
-div p{
-    margin: 0% 20%;
-    
+/* div p {
+  margin: 0% 20%; Remove for now check if mess with anything later
+} */
+.container-fluid h1 {
+  letter-spacing: 0.1ex;
+  text-transform: uppercase;
+  font-size: 7ex;
+  padding-top: 10px;
 }
-.container-fluid h1{
-    letter-spacing: 0.1ex;
-    text-transform: uppercase;
-    font-size: 7ex;
-    padding-top: 10px;
+.container-fluid {
+  width: 100%;
+  text-align: center;
+  height: 100ex;
+  padding: 62px 0px 0px 0px;
 }
-.container-fluid{
-    width: 100%;
-    text-align: center; 
-    height: 100ex;
-    padding: 62px 0px 0px 0px; 
-} 
-#a{
-    min-height: 4rem;
-    display: flex;
-    align-items: center;
-    background-color: rgb(43, 41, 38);
-    justify-content: space-around;
+#a {
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  background-color: rgb(43, 41, 38);
+  justify-content: space-around;
+  box-shadow: 0px 1px 8px 1px rgb(43, 41, 38);
+  /* rgba(0, 0, 0, 0.2) */
 }
-.logo{
-    margin: 0;
-    color: rgb(199, 194, 194);
-    text-transform: capitalize;
-    letter-spacing: 1px;
-    font-size: 17px;
+.logo {
+  margin: 0;
+  color: rgb(199, 194, 194);
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  font-size: 17px;
 }
-.items{
-    margin: 0;
-    height: 100%;
-    list-style-type: none;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-around;
-    width: 30%;
+.items {
+  margin: 0;
+  height: 100%;
+  list-style-type: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  width: 30%;
 }
-.items li{
-    position:relative;
-    text-transform: uppercase;
-    padding: 3px 0px;
-    margin: 0ex;
-    display: inline-block;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    border-left: 1px solid black;
-    color: rgb(199, 194, 194);
-    text-decoration: none;
-    letter-spacing: 1px;
-    cursor: pointer;
+.items li {
+  position: relative;
+  text-transform: uppercase;
+  padding: 3px 0px;
+  margin: 0ex;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid black;
+  color: rgb(199, 194, 194);
+  text-decoration: none;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
-.items li:last-child{
-    border-right: 1px solid black;
+.items li:last-child {
+  border-right: 1px solid black;
 }
-.items li:hover{
-    transition: all 0.4s ease 0.01s;
-    color: rgb(199, 194, 194);
-    background-color: grey;
-    text-decoration: none;
-    letter-spacing: 1px;
+.items li:hover {
+  transition: all 0.4s ease 0.01s;
+  color: rgb(199, 194, 194);
+  background-color: grey;
+  text-decoration: none;
+  letter-spacing: 1px;
 }
-a{
-    color: rgb(199, 194, 194);
-    text-decoration: none;
+a {
+  color: rgb(199, 194, 194);
+  text-decoration: none;
 }
-a:hover{
-    color: rgb(66, 71, 87);
-    text-decoration: none;
+a:hover {
+  color: rgb(66, 71, 87);
+  text-decoration: none;
 }
-#a li:hover .dropdown-content{
-    transition-delay: 0.2s;
-    display:block;
+#a li:hover .dropdown-content {
+  transition-delay: 0.2s;
+  display: block;
 }
-.dropdown-content{
-    position: absolute;
-    display: none;
-    color: rgb(199, 194, 194);
-    background-color: grey;
-    width: auto;
-    z-index: inherit;
-    box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
+.dropdown-content {
+  position: absolute;
+  display: none;
+  color: rgb(199, 194, 194);
+  background-color: grey;
+  width: auto;
+  z-index: inherit;
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
 }
-.t{
-    background-color: red;
-    height: 400px;
+.t {
+  background-color: red;
+  height: 400px;
 }
-.pagebutton{
-    background-color: gray;
+.pagebutton {
+  background-color: gray;
 }
 
 /* .pageIndex{
@@ -118,73 +119,62 @@ a:hover{
     background-color: rgb(43, 41, 38);
     justify-content: space-around;
 } */
-.block{
-    border: 3px solid black;
-    width: 100%;
-    display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-    
+.block {
+  border: 3px solid black;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-.block .arrow-container{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 170px;
-    z-index: 2;
-    float: left;
-    overflow: auto;
-    background-color: rgb(43, 41, 38);
-
-
+.block .arrow-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 170px;
+  z-index: 2;
+  float: left;
+  overflow: auto;
+  background-color: rgb(43, 41, 38);
 }
-.block .arrow-container .chapter-content { 
-	display: inline-block; 
-	text-align: left; 
-    margin: 0;
-    margin-bottom: 100px;
-    padding-left: 10px;
-    padding-right: 10px;
-	}
-.block .arrow-container{
-        position: absolute;
-        width: 20%;
-        min-height: 40vh;
-        left: 0;
-    } 
-.block .content-page{
-        position: relative;
-        width: 70%;
-        min-height: 40vh;
-        height: 100vh;
-        float: left;
-        padding-left: 10%;
+.block .arrow-container .chapter-content {
+  display: inline-block;
+  text-align: left;
+  margin: 0;
+  margin-bottom: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-.block .arrow-container .chapter-content .page-num{
-    margin-bottom: 8%;
+.block .arrow-container {
+  position: fixed;
+  width: 15%;
+  min-height: 40vh;
+  left: 0;
+}
+.block .content-page {
+  width: 70%;
+  padding-left: 7%;
+}
+.block .arrow-container .chapter-content .page-num {
+  margin-bottom: 8%;
+}
+.textcontainer {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr;
+  /* grid-template-rows: 80% 10%; */
+}
+.content-section {
+  display: inline-block;
+  text-align: left;
+  justify-content: left;
+  margin-top: 2%;
+  /* box-shadow: 0px 1px 8px 1px rgb(43, 41, 38); */
 }
 
-/* .block .arrow-container .content-page{
-    width: 50vw;
-    float: right;
-    margin: 0;
-    /* width: 80% 
-    } */
-/* .pageIndex{
-    justify-content: center;
-    align-items: center;
-    width: 30vw;
-    height: 100vh;
-    border: 3px solid black;
-
+.content-page h1 {
+  padding: 10% 0 10% 0;
 }
-.content{
-    justify-content: center;
-    align-items: center;
-    width: 70vw;
-    height: 100vh;
-    border: 3px solid black;
-} */
