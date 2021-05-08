@@ -148,10 +148,14 @@ a:hover {
   padding-left: 10px;
   padding-right: 10px;
 }
+
 .block .arrow-container {
   position: fixed;
+  top: 0;
   width: 15%;
   min-height: 40vh;
+  padding-bottom: 0;
+  height: 100%;
   left: 0;
 }
 .block .content-page {
