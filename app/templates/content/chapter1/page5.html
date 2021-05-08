@@ -3,54 +3,70 @@
 {% block page %}
 <!-- title -->
 <div class="textcontainer">
-<h2>Try It your Self!</h2>
-<!--  -->
-<p>
+    <div class="content-section">
+        <h1>
+            Accidentals
+        </h1>
+        <!--  -->
 
-    Click on the keybord below to see where the notes were placed on a stave <br>
-</p>
+        <p>
+            To represent the black notes, we need modifyers called the <strong>Accidentals</strong>. 
+        </p>
+        
+        <p>
+            The black notes were identified by modifying existing white notes with accidentals.<br>
+            However, observe the keybord carefully, and you will notice that all of the black keys were juxtaposed by <strong>two</strong> white keys<br>
+    
+            This means that any black note can be named in two ways using its neighbouring white keys. 
+            To avoid ambiguity, two types of Accidentals - <strong>Sharp(#)</strong> and <strong>Flat(b)</strong> - were used to raise/lower a white key respectively.
 
-<div>
-    <!-- same interactive button -->
-    <p>Click this button to switch between accidentals</p>
-    <button id="switch">Sharp</button>
-    <!--  -->
-</div>
+        </p>
+        <h2>Try It your Self!</h2>
+        <!--  -->
+        <p>
+            Click on the keybord below to see where the notes were placed on a stave <br>
+        </p>
+
+        <div>
+            <!-- same interactive button -->
+            <p>Click this button to switch between accidentals</p>
+            <button id="switch">Sharp</button>
+            <!--  -->
+        </div>
 
 <!-- stave -->
-<div class="canvascontainer">
-    <!--you know what to do: don't touch lol -->
-    <div id="canvas"></div>
-    <!--  -->
-</div>
+        <div class="canvascontainer">
+            <!--you know what to do: don't touch lol -->
+            <div id="canvas"></div>
+            <!--  -->
+        </div>
 <!--  -->
-
+        
  <!-- this is the piano: apply your shrink magic, position it using the piano container class-->
-<div class="pianocontainer">
-    <!-- do not modify the innerhtml and id -->
-    <ul class="set" id="piano">
-        <li class="white b" id="f/4">f/4</li>
-        <li class="black as" id="f#/4">f#/4</li>
-        <li class="white a" id="g/4">g/4</li>
-        <li class="black gs" id="g#/4">g#/4</li>
-        <li class="white g" id="a/4">a/4</li>
-        <li class="black fs" id="a#/4">a#/4</li>
-        <li class="white f" id="b/4">b/4</li>
-        <li class="white e" id="c/5">c/5</li>
-        <li class="black ds" id="c#/5">c#/5</li>
-        <li class="white d" id="d/5">d/5</li>
-        <li class="black cs" id="d#/5">d#/5</li>
-        <li class="white c" id="e/5">e/5</li>
-    </ul>
-    <!--  -->
-</div>
-<!--  -->
-
-<div>
-    <!-- next page link -->
-    <p>Felt confident? click <a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">HERE</a> to test yourself</p>
-    <!--  -->
-</div>
+        <div class="pianocontainer">
+            <!-- do not modify the innerhtml and id -->
+            <ul class="set" id="piano">
+                <li class="white b" id="f/4">f/4</li>
+                <li class="black as" id="f#/4">f#/4</li>
+                <li class="white a" id="g/4">g/4</li>
+                <li class="black gs" id="g#/4">g#/4</li>
+                <li class="white g" id="a/4">a/4</li>
+                <li class="black fs" id="a#/4">a#/4</li>
+                <li class="white f" id="b/4">b/4</li>
+                <li class="white e" id="c/5">c/5</li>
+                <li class="black ds" id="c#/5">c#/5</li>
+                <li class="white d" id="d/5">d/5</li>
+                <li class="black cs" id="d#/5">d#/5</li>
+                <li class="white c" id="e/5">e/5</li>
+            </ul>
+            <!--  -->
+        </div>
+    </div>
+        <div class="pagebutton">
+            <!-- next page link -->
+            <p>Felt confident? click <a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">HERE</a> to test yourself</p>
+            <!--  -->
+        </div>
 </div>
 <script>
   $(document).ready(function(){

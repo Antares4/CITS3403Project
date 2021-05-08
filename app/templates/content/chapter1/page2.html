@@ -5,51 +5,52 @@
 <!-- strong are words i wanted to empathesis so can you give it a special font that you like? -->
 <div class="textcontainer">
   <!-- this is the title -->
-  <h2>CLEFS</h2>
+  <div class="content-section">
+    <div class="para">
+      <h1>
+        CLEFS
+      </h2>
   <!--  -->
-  <p>
-    In western music notation, <strong>notes</strong> reside either in one of 4 spaces or 5 horrizontal lines of a <strong>stave.</strong>
-    But inorder to place a note with it's intended meaning, some context must be established on a given stave.
-    <hr class="display">
-  </p>
-  <p class="display">
-    A <strong>clef</strong> determines which note a particular line/space will
-    represent. The <strong>trebel &#119070</strong> and <strong>bass &#119074</strong> clef were two of the most commonly used
-    in music notation.
-  </p>
-  <p>
-    Click the buttons to find out the position of middle "C" in respective clefs.
-  </p>
-
-
+      <p>
+        In western music notation, <strong>notes</strong> reside either in one of 4 spaces or 5 horrizontal lines of a <strong>stave.</strong>
+        But inorder to place a note with it's intended meaning, some context must be established on a given stave.
+        <hr >
+      </p>
+      <p >
+        A <strong>clef</strong> determines which note a particular line/space will
+        represent. The <strong>trebel &#119070</strong> and <strong>bass &#119074</strong> clef were two of the most commonly used
+        in music notation.
+      </p>
+      <p>
+        Click the buttons to find out the position of middle "C" in respective clefs.
+      </p>
   <!-- this is the stave section!!! -->
     <!-- the outer div is the stave contaier, you can modify it to fit ur css need -->
-    <div class="canvascontainer display">
+      <div class="canvascontainer ">
 
-      <!-- do not touch this part -->
-      <div class="stave" id="clef"></div>
-      <!--  -->
+        <!-- do not touch this part -->
+        <div class="stave" id="clef"></div>
+        <!--  -->
 
-    </div>
+      </div>
   <!--   -->
-  
-  
   <!-- these two buttons displays different clefs -->
-  <div class="display">
-    <!-- for buttons can you make a consistent css class that will make all buttons with that class the same apperance -->
-    <!-- would like to use for all the interactive buttons in the course and the timed tests -->
-    <button id="treble">treble</button>
-    <button id="bass">bass</button>
-  </div>
+    <div>
+      <!-- for buttons can you make a consistent css class that will make all buttons with that class the same apperance -->
+      <!-- would like to use for all the interactive buttons in the course and the timed tests -->
+      <button id="treble">treble</button>
+      <button id="bass">bass</button>
+    </div>
   <!--  -->
-
-  <!-- these are links to the next/previous page -->
-  <div class="pagebutton display">
-    <!-- please use the same css as the previous next/previus css class -->
-    <!-- i would suggest place those two buttons on bottom left and bottom right  -->
-    <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Previous</a> </span>
-    <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Next</a> </span>
   </div>
+    </div>
+  <!-- these are links to the next/previous page -->
+    <div class="pagebutton ">
+      <!-- please use the same css as the previous next/previus css class -->
+      <!-- i would suggest place those two buttons on bottom left and bottom right  -->
+      <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Previous</a> </span>
+      <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Next</a> </span>
+    </div>
   <!--  -->
 
 </div> 
@@ -72,14 +73,14 @@
 
         //display click thing same as page1 
         //remove it if you removed the one on page1
-        var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
-        var display = 0;
-        $(".textcontainer").bind('click',function(){
-            if(display < paragraph.length){
-                paragraph[display].style.opacity = 1;
-                display++;
-            }
-        })
+        // var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
+        // var display = 0;
+        // $(".textcontainer").bind('click',function(){
+        //     if(display < paragraph.length){
+        //         paragraph[display].style.opacity = 1;
+        //         display++;
+        //     }
+        // })
         //
     });
   </script>

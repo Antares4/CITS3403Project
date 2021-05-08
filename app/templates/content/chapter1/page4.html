@@ -3,74 +3,50 @@
 {% block page %}
 <!-- text part basically same as page 2 -->
 <div class="textcontainer">
-  <p>
     <!-- this is the title -->
-    <h2>
-      More representations
-    </h2>
+    <div class="content-section">
+      <div class="para"></div>
+        <h1>
+          More representations
+        </h1>
     <!--  -->
-
-    <hr>
-    Infact, in between an octive, exists <strong>12</strong> notes, instead of the <strong>7</strong> we have just learnt. <br>
-    This keybord demonstrates those 12 notes from F4 to E5. <br>
-    Notice how there are 5 black notes in total, which fill the missing pieces of the puzzle. <br>
-    Along with the 7 white notes, they form the <strong>12 tone equal temperament</strong> - a musical system that used predominantly in western Music notation
-  </p>
-
-  <!-- this is the piano: apply your shrink magic, position it using the piano container class-->
-  <div class="pianocontainer display">
-    <ul class="set" id="piano">
-      <!-- do not modify the innerhtml and id -->
-      <li class="white b" id="f/4">f/4</li>
-      <li class="black as" id="f#/4">f#/4</li>
-      <li class="white a" id="g/4">g/4</li>
-      <li class="black gs" id="g#/4">g#/4</li>
-      <li class="white g" id="a/4">a/4</li>
-      <li class="black fs" id="a#/4">a#/4</li>
-      <li class="white f" id="b/4">b/4</li>
-      <li class="white e" id="c/5">c/5</li>
-      <li class="black ds" id="c#/5">c#/5</li>
-      <li class="white d" id="d/5">d/5</li>
-      <li class="black cs" id="d#/5">d#/5</li>
-      <li class="white c" id="e/5">e/5</li>
-      <!--  -->
-    </ul>
-  </div>
+        <p>
+        Infact, in between an octive, exists <strong>12</strong> notes, instead of the <strong>7</strong> we have just learnt. <br>
+        This keybord demonstrates those 12 notes from F4 to E5. <br>
+        Notice how there are 5 black notes in total, which fill the missing pieces of the puzzle. <br>
+        Along with the 7 white notes, they form the <strong>12 tone equal temperament</strong> - a musical system that used predominantly in western Music notation
+        </p>
+    <!-- this is the piano: apply your shrink magic, position it using the piano container class-->
+      <div class="pianocontainer">
+        <ul class="set" id="piano">
+          <!-- do not modify the innerhtml and id -->
+          <li class="white b" id="f/4">f/4</li>
+          <li class="black as" id="f#/4">f#/4</li>
+          <li class="white a" id="g/4">g/4</li>
+          <li class="black gs" id="g#/4">g#/4</li>
+          <li class="white g" id="a/4">a/4</li>
+          <li class="black fs" id="a#/4">a#/4</li>
+          <li class="white f" id="b/4">b/4</li>
+          <li class="white e" id="c/5">c/5</li>
+          <li class="black ds" id="c#/5">c#/5</li>
+          <li class="white d" id="d/5">d/5</li>
+          <li class="black cs" id="d#/5">d#/5</li>
+          <li class="white c" id="e/5">e/5</li>
+          <!--  -->
+        </ul>
+      </div>
   <!--  -->
   <!-- this should be another title but smaller -->
-  <h2>
-    Accidentals
-  </h2>
-  <!--  -->
-
-  <hr>
-
-  <p class="display">
-    To represent the black notes, we need modifyers called the <strong>Accidentals</strong>. 
-  </p>
-
-  <p class="display">
-    The black notes were identified by modifying existing white notes with accidentals.<br>
-    However, observe the keybord carefully, and you will notice that all of the black keys were juxtaposed by <strong>two</strong> white keys<br>
-    <hr>
-    This means that any black note can be named in two ways using its neighbouring white keys. 
-    To avoid ambiguity, two types of Accidentals - <strong>Sharp(#)</strong> and <strong>Flat(b)</strong> - were used to raise/lower a white key respectively.
-    <hr class="display">
-  </p>
-
-  <p class="display">
-    Click on the next page to learn more 
-  </p>
 
  <!-- prev/next page  same stuff-->
-  <div class="pagebutton display">
+  <div class="pagebutton">
     <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Previous</a> </span>
     <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page5')}}">Next</a> </span>
   </div>
   <!--  -->
-
 </div>
-<script>
+</div>
+<!-- <script>
   $(document).ready(function(){
       //display logic, remove if u have removed previous
       var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
@@ -83,5 +59,5 @@
       })
       //display logic, remove if u have removed previous
   });
-</script>
+</script> -->
 {% endblock %}
