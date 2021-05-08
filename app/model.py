@@ -59,10 +59,13 @@ class submission(db.Model):
     
         
 class answer(db.Model):
+    __tablename__ = 'answer'
+
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     answerSeq = db.Column(db.Integer)
     submittedAnswer = db.Column(db.String(400))
     feedback = db.Column(db.String(400))
+    markreceived = db.Column(db.Integer)
     submissionId = db.Column(db.Integer, db.ForeignKey("submission.id"))
     
     def __init__(self):
@@ -70,6 +73,21 @@ class answer(db.Model):
 
     def __repr__(self):
         return '<ans>'
+
+class automark(db.Model):
+    __tablename__ = 'automark'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    difficulty = db.Column(db.String(400))
+    answerSeq = db.Column(db.Integer)
+    wordmatch = db.Column(db.String(400))
+
+    def __init__(self, diff, seq, match):
+        self.difficulty = diff
+        self.answerSeq = seq
+        self.wordmatch = match
+    def __repr__(self):
+        return '<auto>'
 
 @login.user_loader
 def load_user(usr_id):
