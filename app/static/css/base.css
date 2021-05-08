@@ -121,10 +121,11 @@ a:hover {
 .block {
   border: 3px solid black;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  overflow: auto;
 }
 
 .block .arrow-container {
@@ -165,27 +166,16 @@ a:hover {
   margin-bottom: 8%;
 }
 .textcontainer {
-  display: grid;
-  height: 100%;
-  width: 100%;
-  grid-template-columns: 1fr;
-  bottom: 0;
+  height: 100vh;
 }
-.content-section {
+.textcontainer .content-section {
   display: inline-block;
   text-align: left;
   justify-content: left;
   width: 100%;
-  height: 100vh;
-
-  /* box-shadow: 0px 1px 8px 1px rgb(43, 41, 38); */
-}
-/* .content-section {
-  display: grid;
-  height: 100vh;
-  width: 100%;
   grid-template-columns: 1fr;
-} */
+}
+
 .content-page h1 {
   padding: 10% 0 5% 0;
 }
