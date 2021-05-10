@@ -16,7 +16,7 @@
         </div>
         <div id="question1">
             <p>                
-                Name three notes in this passage that does not belong to the key of F 
+                Name three notes in this passage that does not belong to the key of <strong>A</strong>
             </p>
             {% if form %}
                 {% if current_user.isAdmin%}
@@ -37,19 +37,23 @@
                 <p>{{form.Q1.lable}}</p>
                 {% endif %}
             {% endif %}   
-            {% for item in responses %}
-                {% if item.answerSeq == 1 %}
-                <p>
-                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                    <p><span>Feedback for q1:</span> {{item.feedback}}</p>
-                </p>
-                {% endif %}
-            {% endfor %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 1 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        {% if item.feedback %}
+                        <p><span>Feedback for q1:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
         </div>
         <div id="question2">  
             <p>
-
-                State one diffierece between bar 1 and bar 2.
+                State two diffierece between bar 1 and bar 2.
             </p>
             {% if form %}
                 {% if current_user.isAdmin %}
@@ -70,14 +74,18 @@
                 <p>{{form.Q2.lable}}</p>
                 {% endif %}
             {% endif %}
-            {% for item in responses %}
-                {% if item.answerSeq == 2 %}
-                <p>
-                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                    <p><span>Feedback for q2:</span> {{item.feedback}}</p>
-                </p>
-                {% endif %}
-            {% endfor %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 2 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        {% if item.feedback %}
+                        <p><span>Feedback for q2:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
         <div id="Q5"></div>
         <div id="question3">
@@ -103,14 +111,18 @@
                 <p>{{form.Q3.lable}}</p>
                 {% endif %}
             {% endif %}
-            {% for item in responses %}
-                {% if item.answerSeq == 3 %}
-                <p>
-                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                    <p><span>Feedback for q3:</span> {{item.feedback}}</p>
-                </p>
-                {% endif %}
-            {% endfor %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 3 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        {% if item.feedback %}
+                        <p><span>Feedback for q3:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
         <div id="question4">    
             <p>
@@ -135,14 +147,18 @@
                 <p>{{form.Q4.lable}}</p>
                 {% endif %}
             {% endif %}
-            {% for item in responses %}
-                {% if item.answerSeq == 4 %}
-                <p>
-                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                    <p><span>Feedback for q4:</span> {{item.feedback}}</p>
-                </p>
-                {% endif %}
-            {% endfor %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 4 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        {% if item.feedback %}
+                        <p><span>Feedback for q4:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
 
 
@@ -170,14 +186,19 @@
                     <p>{{form.Q5.lable}}</p>
                     {% endif %}
             {% endif %}
-            {% for item in responses %}
-                {% if item.answerSeq == 5 %}
-                <p>
-                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                    <p><span>Feedback for q4:</span> {{item.feedback}}</p>
-                </p>
-                {% endif %}
-            {% endfor %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 5 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        
+                        {% if item.feedback %}
+                        <p><span>Feedback for q5:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
         {% if form %}
         <p>{{ form.submit() }}</p>
