@@ -35,7 +35,7 @@ def profile(userId):
     usr = getUserById(userId)
     if usr.isAdmin:
         page = request.args.get('page', 1, type=int)
-        all_sub = getAllSubmissions().paginate(page, 2, False)
+        all_sub = getAllSubmissions().paginate(page, 5, False)
         ###########
         if all_sub.has_next:
             next_sub_page = url_for('index.profile', page=all_sub.next_num, userId=userId) 
@@ -61,7 +61,7 @@ def profile(userId):
         return render_template("profile/profile.html",data=info)
     else:
         page = request.args.get('page', 1, type=int)
-        my_sub = submission.query.filter_by(creater_id=userId).paginate(page, 2, False)
+        my_sub = submission.query.filter_by(creater_id=userId).order_by(submission.createdAt.desc()).paginate(page, 5, False)
         ###########
         if my_sub.has_next:
             next_sub_page = url_for('index.profile', page=my_sub.next_num, userId=userId) 

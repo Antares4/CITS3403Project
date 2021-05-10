@@ -87,10 +87,40 @@ def feedbackAssessment(sub,form,responses):
         return False
 
 def autoMark(submission):
-    intro = ["G,E","minim","B","semibreave,minim,crotchet ,quaver,semiquaver","4/4,four four"]
-    intermediate = ["C#,quaver","compound,duple","six,6","Gb","F#,C#,G#"]
-    difficult = ["F,Bb,G","F,Bb,C#,D,seventh,7th,lower","no, D#","9/8,nine eight","augmented fourth,supertonic"]
-    print("submission is: ", submission)
+    intro = ["g,e","minim","b","semibreave,minim,crotchet ,quaver,semiquaver","4/4,four four"]
+    intermediate = ["c#,quaver","compound,duple","six,6","gb","f#,c#,g#"]
+    difficult = ["f,bb,g","f,bb,c#,d,seventh,7th,lower","no, d#","9/8,nine,eight","augmented,fourth,supertonic"]
+    ans_list = getAnswerForSub(submission.id)
+    if submission.difficulty == "intro":
+        index = intro
+    elif submission.difficulty == "intermediate":
+        index = intermediate
+    elif submission.difficulty == "difficult":
+        index = difficult
+    else:
+        print("unknown difficulty")
+        return False
+    total = 0
+    for ans in ans_list:
+        for i in range(len(index)):
+            if i == ans.answerSeq-1:
+                match = index[i].split(",")
+                print(match)
+                orig = ans.submittedAnswer.split(" ")
+                print(orig)
+                for item in orig:
+                    if item.lower() in match:
+                        ans.markreceived = True
+                        total += 1
+                        break
+    submission.totalmark = total
+    print(total)
+    try:
+        db.session.commit()
+    except SQLAlchemyError as e:
+        print("submit:", str(e))
+        return False
+    return True
 
 
 def createSubmission(sid, difficulty, form):

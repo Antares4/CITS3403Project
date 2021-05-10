@@ -81,7 +81,7 @@ class answer(db.Model):
     answerSeq = db.Column(db.Integer)
     submittedAnswer = db.Column(db.String(400))
     feedback = db.Column(db.String(400))
-    markreceived = db.Column(db.Integer)
+    markreceived = db.Column(db.Boolean)
     submissionId = db.Column(db.Integer, db.ForeignKey("submission.id"))
 
     def __init__(self):

@@ -76,7 +76,6 @@
                     {% endif %}
                 {% endfor %}
             </table>
-            
             {% if data._links.sub_prev %}
                 <a href="{{ data._links.sub_prev }}">Newer sub</a>
             {% endif %}
@@ -84,7 +83,6 @@
                 <a href="{{ data._links.sub_next }}">Older sub</a>
             {% endif %}
         </div>
-        
     {% endif %}
     {% if not current_user.isAdmin %}
         <div class="profile">
