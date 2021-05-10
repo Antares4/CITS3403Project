@@ -53,11 +53,9 @@ def viewSubmission(subId):
     if current_user.isAdmin:
         return redirect(url_for('index.index'))
     else:
-        print("in")
         this_sub = getSubmissionById(int(subId))
         user_responses = getAnswerForSub(int(subId))
         diff = this_sub.difficulty
         route_mark = "quiz/{}.html".format(diff)
-        print(user_responses)
         return render_template(route_mark, title='ViewSubmission', form=False, responses=user_responses)
 

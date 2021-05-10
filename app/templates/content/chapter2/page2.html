@@ -38,8 +38,11 @@
 </div>
 <script>
     $(document).ready(function(){
+        //stave
+        init("timesigniture","treble","4/4",200);
+        
+        //
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
-        var base1 = init("timesigniture","treble","4/4",200);
         var display = 0;
         init("bar",null, null, 200,null)
         $(".textcontainer").bind('click',function(){
