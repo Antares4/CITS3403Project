@@ -13,10 +13,12 @@
     transition-duration: 0.2s;
   } */
 
+
 .stave {
   height: 100px;
   align-self: center;
 }
+
 
 * {
   box-sizing: border-box;

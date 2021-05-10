@@ -34,23 +34,33 @@
                     <p>{{form.F1}}</p>
                     <p>{{form.F1.lable}}</p>
                 {% endif %}
+
                 {% if not current_user.isAdmin%}
                 <p>{{form.Q1(class="response")}}</p>
                 <p>{{form.Q1.lable}}</p>
                 {% endif %}
-            {% endif %}   
-            {% for item in responses %}
-                {% if item.answerSeq == 1 %}
-                <p>
-                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                    <p><span>Feedback for q1:</span> {{item.feedback}}</p>
-                </p>
-                {% endif %}
-            {% endfor %}
+            {% endif %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 1 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        
+
+                        <p><span>mark for q1:</span> {{item.markreceived}}</p>
+
+
+                        {% if item.feedback %}
+                        <p><span>Feedback for q1:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
         <div id="question2">
             <p>
-                Howmany semiquavers does the last note worth?
+                What's the value of the first note in the second bar?
             </p>
             {% if form %}
                 {% if current_user.isAdmin %}
@@ -71,18 +81,22 @@
                 <p>{{form.Q2.lable}}</p>
                 {% endif %}
             {% endif %}
-            {% for item in responses %}
-                {% if item.answerSeq == 2 %}
-                <p>
-                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                    <p><span>Feedback for q2:</span> {{item.feedback}}</p>
-                </p>
-                {% endif %}
-            {% endfor %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 2 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        {% if item.feedback %}
+                        <p><span>Feedback for q2:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %} 
         </div>
         <div id="question3">
             <p>
-                Name a note that is a perfect 5th above the last note 
+                Name a note that is 7 steps above the last note 
             </p>
             {% if form %}
                 {% if current_user.isAdmin %}
@@ -103,14 +117,18 @@
                 <p>{{form.Q3.lable}}</p>
                 {% endif %}
             {% endif %}
-            {% for item in responses %}
-                {% if item.answerSeq == 3 %}
-                <p>
-                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                    <p><span>Feedback for q3:</span> {{item.feedback}}</p>
-                </p>
-                {% endif %}
-            {% endfor %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 3 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        {% if item.feedback %}
+                        <p><span>Feedback for q3:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
         <div id="question4">
             <p>
@@ -135,14 +153,18 @@
                 <p>{{form.Q4.lable}}</p>
                 {% endif %}
             {% endif %}
-            {% for item in responses %}
-                {% if item.answerSeq == 4 %}
-                <p>
-                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                    <p><span>Feedback for q4:</span> {{item.feedback}}</p>
-                </p>
-                {% endif %}
-            {% endfor %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 4 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        {% if item.feedback %}
+                        <p><span>Feedback for q4:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
         <div id="question5">
             <p>
@@ -167,14 +189,18 @@
                     <p>{{form.Q5.lable}}</p>
                     {% endif %}
             {% endif %}
-            {% for item in responses %}
-                {% if item.answerSeq == 5 %}
-                <p>
-                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                    <p><span>Feedback for q4:</span> {{item.feedback}}</p>
-                </p>
-                {% endif %}
-            {% endfor %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 5 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        {% if item.feedback %}
+                        <p><span>Feedback for q5:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
         {% if form %}
         <p>{{ form.submit() }}</p>
@@ -189,7 +215,7 @@
     </style>
     <script>
         $(document).ready(function(){
-            intermediate("Q1")
+            intro("Q1")
         })
 
 

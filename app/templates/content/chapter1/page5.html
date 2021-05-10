@@ -76,12 +76,12 @@
     //game logic do not touch !!!!!!!
       Sharp = ["f/4","f#/4","g/4","g#/4","a/4","a#/4","b/4","c/5","c#/5","d/5","d#/5","e/5"]
       Flat = ["f/4","gb/4","g/4","ab/4","a/4","bb/4","b/4","c/5","db/5","d/5","eb/5","e/5"]
-      init("canvas", "treble", "4/4",200);
+      init("canvas", "treble", "4/4",200,null);
       var keys = document.getElementById("piano").querySelectorAll('li');
       for(i=0; i<keys.length; i++){
           keys[i].addEventListener("click", function(){
           removestave("canvas");
-          init("canvas", "treble", "4/4",200);
+          init("canvas", "treble", "4/4",200,null);
           console.log(this.innerHTML);
           note = [this.innerHTML];
           addnote("treble",[this.innerHTML],["q"]);

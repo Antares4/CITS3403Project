@@ -2,6 +2,7 @@ from flask import Flask, request, url_for, redirect, render_template, flash, jso
 from app.auth import bp
 from app.auth.forms import LoginForm
 from app.model import users
+from app.controller import updateLoginTime
 from app import db
 from flask_login import current_user, login_user
 from werkzeug.security import check_password_hash
@@ -15,7 +16,11 @@ def login():
         user = users.query.filter_by(username=form.username.data).first()
         if user:
             if check_password_hash(user.password,form.password.data):
+                if form.remember_me == True:
+                    login_user(user,remember=True)
+                    return redirect(url_for('index.index', name=user.username))
                 login_user(user)
+                updateLoginTime(user)
                 return redirect(url_for('index.index', name=user.username))
             else:
                 flash("invalid Password")

@@ -1,10 +1,12 @@
 from flask import Flask, request, url_for, redirect, render_template, flash, jsonify
 from flask_login import current_user, login_required, logout_user
 from app.index import bp
-from app.controller import getAllSubmissions, getAllUsers, getUserById, howManySubmissions, howManyUsers
+from app.controller import getAllSubmissions, getAllUsers, getUserById, howManySubmissions, howManyUsers, getNoteRanking, getKeyRanking
 from app import db
+from app.model import submission
 from config import Config
 from app.model import users
+import json
 
 @bp.route('/')
 @bp.route('/index/<name>')
@@ -50,6 +52,7 @@ def profile(userId):
             'usrs'  : all_user,
             'subCount' : howManySubmissions(),
             'usrCount' : howManyUsers(),
+
             '_links': {
                 'sub_prev' : prev_sub_page,
                 'sub_next' : next_sub_page, 
@@ -57,14 +60,80 @@ def profile(userId):
         }
         return render_template("profile/profile.html",data=info)
     else:
-        my_sub = usr.getSubmissions(usr)
-        print(my_sub)
-        return render_template("profile/profile.html",subs=my_sub)
+        page = request.args.get('page', 1, type=int)
+        my_sub = submission.query.filter_by(creater_id=userId).paginate(page, 2, False)
+        ###########
+        if my_sub.has_next:
+            next_sub_page = url_for('index.profile', page=my_sub.next_num, userId=userId) 
+        else:
+            next_sub_page = None
+        if my_sub.has_prev:
+            prev_sub_page = url_for('index.profile', page=my_sub.prev_num, userId=userId) 
+        else:
+            prev_sub_page = None
+        info = {
+            'subs'  : my_sub.items,
+            'noteRank' : getNoteRanking(int(userId)),
+            'keyRank' : getKeyRanking(int(userId)),
+            '_links': {
+                'sub_prev' : prev_sub_page,
+                'sub_next' : next_sub_page, 
+            }
+        }
+        return render_template("profile/profile.html",data=info)
 
 
 @bp.route('/timedNote')
 def timedNote():
     score = request.args.get('score', 0, type=int)
     userId = request.args.get('user', 0, type=int)
-    return jsonify(result=score)
+    this_user = getUserById(userId)
+    if this_user.noteHighScore < score:
+        this_user.noteHighScore = score
+        db.session.commit()
+        result = {
+            'record': True,
+            'HighScore': score,
+            'ranking': getNoteRanking(userId),
+            'score': score
+        }
+        print("result is",result)
+    else:
+        result = {
+            'record': False,
+            'HighScore': this_user.noteHighScore,
+            'ranking': getNoteRanking(userId),
+            'score': score
+        }
+        print("result is",result)
+    db.session.commit()
+    jsonObj = json.dumps(result)
+    return jsonObj
 
+
+@bp.route('/timedKey')
+def timedKey():
+    score = request.args.get('score', 0, type=int)
+    userId = request.args.get('user', 0, type=int)
+    this_user = getUserById(userId)
+    if this_user.KeyHighScore < score:
+        this_user.KeyHighScore = score
+        db.session.commit()
+        result = {
+            'record': True,
+            'HighScore': score,
+            'ranking': getKeyRanking(userId),
+            'score': score
+        }
+        print("result is",result)
+    else:
+        result = {
+            'record': False,
+            'HighScore': this_user.KeyHighScore,
+            'ranking': getKeyRanking(userId),
+            'score': score
+        }
+        print("result is",result)
+    db.session.commit()
+    jsonObj = json.dumps(result)
+    return jsonObj

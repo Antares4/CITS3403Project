@@ -59,7 +59,7 @@
       // note logic do not modify!!!!
       const basicnotes = ["c/4","d/4","e/4","f/4","g/4","a/4","b/4","c/5","d/5","e/5","f/5","g/5","a/5","b/5"]
       var position = 6;
-      init("notes", "treble", null,200);
+      init("notes", "treble", null,200,null);
       addnote("treble", [basicnotes[position]], ["q"]);
       $("#display").text(basicnotes[position]);
       $("#down").bind('click',function(){
@@ -71,7 +71,7 @@
               position--;
               console.log("movedown",position)
               removestave("notes");
-              init("notes", "treble", null,200);
+              init("notes", "treble", null,200,null);
               addnote("treble", [basicnotes[position]], ["q"]); 
               $("#display").text(basicnotes[position])
           }
@@ -88,7 +88,7 @@
               position++;
               console.log("moveup",position)
               removestave("notes")
-              init("notes", "treble", null,200);
+              init("notes", "treble", null,200,null);
               addnote("treble", [basicnotes[position]], ["q"]);  
               $("#display").text(basicnotes[position])
           }

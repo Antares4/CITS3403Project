@@ -5,7 +5,7 @@ var context;
 const sharp = /[a-z]\#\/\d/;
 const flat = /[a-z]b\/\d/;
 const dotted = /[a-z]*\d*d/;
-function init(element, clef, time,stavelength){
+function init(element, clef, time,stavelength, key){
   console.log("init")
   VF = Vex.Flow;
 
@@ -27,6 +27,9 @@ function init(element, clef, time,stavelength){
   }
   if(time){
     stave.addTimeSignature(time);
+  }
+  if(key){
+    stave.addKeySignature(key)
   }
   // Connect it to the rendering context and draw!
   stave.setContext(context).draw();
