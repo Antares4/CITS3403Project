@@ -3,35 +3,145 @@
 {% block content %}
 <div>
     {% if current_user.isAdmin %}
-        {% for usr in data.usrs %}
-            {{usr.username}}
-        {% endfor %}
-        {% for sub in data.subs %}
-            {%set item_id = sub.id%}
-            <a href="{{url_for('assessment.markSubmission', toBeMarked=item_id)}}">link</a>
-        {% endfor %}
-        {% if data._links.sub_prev %}
-            <a href="{{ data._links.sub_prev }}">Newer sub</a>
-        {% endif %}
-        {% if data._links.sub_next %}
-            <a href="{{ data._links.sub_next }}">Older sub</a>
-        {% endif %}
+        <div>
+            Submission count: {{data.subCount}} 
+        </div>
+        <div>
+            User count:  {{data.usrCount}} 
+        </div>
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Last Login At</th>
+            </tr>
+            {% for usr in data.usrs %}
+                {% if not usr.isAdmin %}
+                <tr>
+                    <td>{{usr.username}}</td>
+                    <td>{{usr.firstname}}</td>
+                    <td>{{usr.lastname}}</td>
+                    <td>{{usr.email}}</td>
+                    <td>{{usr.lastLogin}}</td>
+                    <td><a href="{{url_for('register.deleteUser', userId=usr.id)}}">delete</a></td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+        <div>
+            <table>
+                <tr>
+                    <th>
+                        Submission from
+                    </th>
+                    <th>
+                        created at
+                    </th>
+                    <th>
+                        difficulty
+                    </th>
+                    <th>
+                        marked at 
+                    </th>
+                </tr>
+                {% for sub in data.subs %}
+                    {% if not sub.marked %}
+                    <tr>
+                        <td>
+                            {% set  user_name = namespace(value="") %}
+                            {%set item_id = sub.id%}
+                            {% for usr in data.usrs %}
+                                {% if sub.creater_id == usr.id %}
+                                    {% set user_name.value = usr.username%}
+                                {% endif %}
+                            {% endfor %}
+                            <a href="{{url_for('assessment.markSubmission', toBeMarked=item_id)}}">{{user_name.value}}</a>
+                        </td>
+                        <td>
+                            {{sub.createdAt}}
+                        </td>
+                        <td>
+                            {{sub.difficulty}}
+                        </td>
+                        <td>
+                            {% if sub.marked %}
+                                {{sub.markedAt}}
+                            {% else %}
+                                No record
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+            
+            {% if data._links.sub_prev %}
+                <a href="{{ data._links.sub_prev }}">Newer sub</a>
+            {% endif %}
+            {% if data._links.sub_next %}
+                <a href="{{ data._links.sub_next }}">Older sub</a>
+            {% endif %}
+        </div>
+        
     {% endif %}
     {% if not current_user.isAdmin %}
         <div class="profile">
             Name:{{current_user.username}}
             <br>
-            you have made:{{subs|length}} Submissions
+            you have made:{{data.subs|length}} Submissions
             <br>
-            last seen at: 
+            last seen at: <span>{{current_user.lastLogin}}</span>
+            <br>
+            Note Ranking: <span>{{data.noteRank}}</span>
+            Key Ranking : <span>{{data.keyRank}}</span>
             <br>
             
+            <table>
+                <tr>
+                    <th>Difficulty</th>
+                    <th>Submitted At</th>
+                    <th>Marks Received</th>
+                    <th>Status</th>
+                    <th>Feedback</th>
+                </tr>
+                {% for sub in data.subs %}
+                <tr>
+                    <td>
+                        {{sub.difficulty}}
+                    </td>                   
+                    <td>
+                        {{sub.createdAt}}
+                    </td>
+                    <td>
+                        {{sub.totalmark}}
+                    </td>
+                    <td>
+                        {{sub.passed}}
+                    </td>
+                    <td>
+                        {% if sub.feedback %}
+                        {%set item_id=sub.id%}
+                        <a href="{{url_for('assessment.viewSubmission', subId=item_id)}}">feedback</a>
+                        {% else %}
+                        <span>None</span>
+                        {% endif %}
+
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            
+            {% if data._links.sub_prev %}
+                <a href="{{ data._links.sub_prev }}">Newer sub</a>
+            {% endif %}
+            {% if data._links.sub_next %}
+                <a href="{{ data._links.sub_next }}">Older sub</a>
+            {% endif %}
         </div>
         <p>not admin</p>
-        {% for item in subs %}
-            {%set item_id = item.id%}
-            <a href="{{url_for('assessment.viewSubmission', subId=item_id)}}">link</a>
-        {% endfor %}
+        
     {% endif %}
 </div>
 {% endblock %}

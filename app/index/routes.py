@@ -3,6 +3,7 @@ from flask_login import current_user, login_required, logout_user
 from app.index import bp
 from app.controller import getAllSubmissions, getAllUsers, getUserById, howManySubmissions, howManyUsers, getNoteRanking, getKeyRanking
 from app import db
+from app.model import submission
 from config import Config
 from app.model import users
 import json
@@ -51,6 +52,7 @@ def profile(userId):
             'usrs'  : all_user,
             'subCount' : howManySubmissions(),
             'usrCount' : howManyUsers(),
+
             '_links': {
                 'sub_prev' : prev_sub_page,
                 'sub_next' : next_sub_page, 
@@ -58,9 +60,27 @@ def profile(userId):
         }
         return render_template("profile/profile.html",data=info)
     else:
-        my_sub = usr.getSubmissions(usr)
-        print(my_sub)
-        return render_template("profile/profile.html",subs=my_sub)
+        page = request.args.get('page', 1, type=int)
+        my_sub = submission.query.filter_by(creater_id=userId).paginate(page, 2, False)
+        ###########
+        if my_sub.has_next:
+            next_sub_page = url_for('index.profile', page=my_sub.next_num, userId=userId) 
+        else:
+            next_sub_page = None
+        if my_sub.has_prev:
+            prev_sub_page = url_for('index.profile', page=my_sub.prev_num, userId=userId) 
+        else:
+            prev_sub_page = None
+        info = {
+            'subs'  : my_sub.items,
+            'noteRank' : getNoteRanking(int(userId)),
+            'keyRank' : getKeyRanking(int(userId)),
+            '_links': {
+                'sub_prev' : prev_sub_page,
+                'sub_next' : next_sub_page, 
+            }
+        }
+        return render_template("profile/profile.html",data=info)
 
 
 @bp.route('/timedNote')
