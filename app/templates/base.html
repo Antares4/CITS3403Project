@@ -12,7 +12,7 @@
     </head>
     <body>
         {% include "nav.html" %}
-        <div class="container">
+        <div class="container-fluid">
             {% with messages = get_flashed_messages() %}
             {% if messages %}
             <ul class="under">
@@ -23,7 +23,8 @@
             {% endif %}
             {% endwith %}
             {% block content %}{% endblock %}
-    </div>
+        
+        </div>
         {% include "imports/importfoot.html"%}
     </body> 
 </html>
