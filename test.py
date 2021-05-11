@@ -63,7 +63,6 @@ class userModelCase(unittest.TestCase):
         self.assertTrue(createUser(valid_usr, valid_password))
         self.assertFalse(createUser(valid_usr, invalid_password))
         self.assertFalse(createUser(invalid_usr, valid_password))
-    
     def test_remove_user(self):
         user_id = 0
         submission1 = submission()
@@ -139,6 +138,7 @@ class submissionModelCase(unittest.TestCase):
         db.session.add(answer2)
         db.session.add(answer3)
         db.session.commit()
+    
     def tearDown(self):
         db.session.remove()
         db.drop_all()
@@ -153,6 +153,8 @@ class submissionModelCase(unittest.TestCase):
         self.assertTrue(getSubmissionById(2))
         self.assertEqual(getSubmissionById(1).creater_id, 1)
         self.assertEqual(getAnswerForSub(1)[2].answerSeq, answer4.answerSeq)
+    def test_automark(self):
+        pass
 
 
 

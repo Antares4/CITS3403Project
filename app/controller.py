@@ -298,7 +298,9 @@ def getUserProfile(page, userId):
     info = {
         'subs'  : my_sub.items,
         'noteRank' : getNoteRanking(int(userId)),
+        'notelist': getNoteList(),
         'keyRank' : getKeyRanking(int(userId)),
+        'keylist':getKeyList(),
         '_links': {
             'sub_prev' : prev_sub_page,
             'sub_next' : next_sub_page, 
@@ -352,3 +354,13 @@ def processKeyScore(userId,score):
         print("result is",result)
     db.session.commit()
     return result
+
+def getNoteList():
+    top_users = users.query.filter_by(isAdmin=False).order_by(users.noteHighScore.desc()).limit(5).all()
+    print("users",top_users)
+    return top_users
+
+def getKeyList():
+    top_users = users.query.filter_by(isAdmin=False).order_by(users.KeyHighScore.desc()).limit(5).all()
+    print("users",top_users)
+    return top_users
