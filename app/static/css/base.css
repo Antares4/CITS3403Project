@@ -248,3 +248,52 @@ a:hover {
   justify-content: left;
   align-items: left;
 }
+
+.all-wrapper{
+  padding-top: 8%;
+}
+
+.content-button{
+  justify-content: center;
+  user-select:none;
+  -moz-user-select:none;
+  -webkit-user-select:none;
+  -ms-user-select:none;
+  display: inline-flex;
+  height: 5ch;
+  width: 10ch;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(0, 0, 0);
+  border-radius: 0ch;
+  box-shadow: 0px 1px 8px 1px rgb(43, 41, 38);
+}
+
+.content-button:hover{
+  color: rgb(39, 39, 39);
+  background-color: rgb(228, 228, 228);
+  box-shadow: 0px 2px 9px 2px rgb(43, 41, 38);
+  transition: all 0.4s ease 0.01s;
+}
+.button-container{
+  height: 10ch;
+  width: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+
+.content-note{
+  background-color: rgb(255, 255, 255);
+  height: 5ch;
+  width: 15ch;
+  text-transform: uppercase;
+  display: inline-flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background: rgb(148, 148, 148); /* Old browsers */
+  background: -moz-linear-gradient(left,  rgb(255, 255, 255) 1%, rgb(221, 221, 221) 20%,rgb(221, 221, 221) 80%, rgb(255, 255, 255) 100%); /* FF3.6+ */
+  background: -webkit-linear-gradient(left,  rgb(255, 255, 255) 1%,rgb(221, 221, 221) 20%,rgb(221, 221, 221) 80%,rgb(255, 255, 255) 100%); /* Chrome10+,Safari5.1+ */
+}

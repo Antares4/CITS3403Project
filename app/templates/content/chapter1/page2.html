@@ -36,11 +36,11 @@
         <!--  -->
 
       </div>
-      <div>
+      <div class="button-container">
         <!-- for buttons can you make a consistent css class that will make all buttons with that class the same apperance -->
         <!-- would like to use for all the interactive buttons in the course and the timed tests -->
-        <button id="treble">treble</button>
-        <button id="bass">bass</button>
+        <span class="content-button" id="treble">treble</span>
+        <span class="content-button" id="bass">bass</span>
       </div>
     </div>
   <!--   -->
@@ -50,7 +50,7 @@
   </div>
     </div>
   <!-- these are links to the next/previous page -->
-    <div class="pagebutton ">
+    <div class="pagebutton">
       <!-- please use the same css as the previous next/previus css class -->
       <!-- i would suggest place those two buttons on bottom left and bottom right  -->
       <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Previous</a> </span>

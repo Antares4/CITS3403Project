@@ -24,26 +24,27 @@
   <!-- this is a span that will display the current note, please make it beautifull and position it so that it corrosponds to the stave -->
   <!-- you can place it above/next/in front or any position relative tho the stave below -->
   <!-- do not change this ID!!!!!!! -->
-      <span id="display" style="width: 10px;"></span>
+      
       <!-- do not change this ID!!!!!!! -->
 
 
       <!-- this is the stave section!!! -->
       <div class="canvascontainer ">
-
+        
         <!-- do not touch this part -->
         <div class="stave" id="notes"></div>
         <!-- do not touch this part -->
-
+        
       </div>
   <!--  -->
 
 
   <!-- these two buttons controls the raise and lower of notes -->
-      <div class="slidingWindow">
+      <div  class="button-container">
         <!-- same as the ineractive button as previous pages -->
-        <button id="down">&lt</button>
-        <button id="up">&gt</button>
+        <span class="content-button" id="down">&lt</span>
+        <span class="content-note" id="display" ></span>
+        <span class="content-button" id="up">&gt</span>
       </div>
   </div>
     </div>
@@ -65,7 +66,7 @@
       $("#down").bind('click',function(){
           console.log("clicked");
           if(position == basicnotes.length-1){
-              $('#up').css("display", "inline");
+              $('#up').css("opacity", "1");
           }
           if(position > 0 ){
               position--;
@@ -76,13 +77,13 @@
               $("#display").text(basicnotes[position])
           }
           if(position == 0){
-              $('#down').css("display", "none");
+              $('#down').css("opacity", "0");
           }
       })
       $("#up").bind('click',function(){
           console.log("up")
           if(position == 0){
-              $('#down').css("display", "inline");
+              $('#down').css("opacity", "1");
           }
           if(position < basicnotes.length-1){
               position++;
@@ -93,7 +94,7 @@
               $("#display").text(basicnotes[position])
           }
           if(position == basicnotes.length-1){
-              $('#up').css("display", "none");
+              $('#up').css("opacity", "0");
           }  
       })
       //note logic do not modify!!!!
