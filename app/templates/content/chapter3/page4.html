@@ -1,5 +1,6 @@
 {%extends "content.html"%}
 {% block page %}
+<!-- this is to make the table look not that shitty make our own table pls -->
 <style>
     table {
       font-family: arial, sans-serif;
@@ -22,6 +23,7 @@
     <h1>Recognize Key</h1>
     <hr>
     <p>Click on the cells of this table to see how each key is represented on the stave</p>
+    <!-- td is used to select and id needed for rendering -->
     <table id="keysig">
         <tr>
           <th>Number of:</th>
@@ -62,6 +64,7 @@
         The Key of: <span id="keyname"></span>
     </div>
     <div class="canvascontainer display">
+        <!-- id no modify -->
         <div class="stave" id="key"></div>
     </div>
     <p>Remembering this table seams to be an difficult task, but fortunatly there are some techniques to quickly identify a key signture.</p>
@@ -77,6 +80,7 @@
     </ol>
     <p>The example below has <strong>4</strong> flats in the order[B, E, {A}, D]. Therefore, the key is A flat major. </p>
     <div class="canvascontainer display">
+        <!-- id no modify -->
         <div class="stave" id="flat"></div>
     </div>
     <hr>
@@ -88,6 +92,7 @@
     <p>The order of Sharps can be simply obtained by reversing the order of flats:[F , C , G , D , A , E , B]</p>
     <p>This is the key of B major because the last Sharp: <strong>A#</strong> is one step below B</p>
     <div class="canvascontainer display">
+        <!-- id no modify -->
         <div class="stave" id="sharp"></div>
     </div>
     <div class="pianocontainer">
@@ -128,6 +133,7 @@
             })
         }
         
+        //display
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
         var display = 0;
         $(".textcontainer").bind('click',function(){
@@ -136,6 +142,7 @@
                 display++;
             }
         })
+        //
     });
 </script>
 {% endblock %}

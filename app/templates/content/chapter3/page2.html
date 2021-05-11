@@ -25,6 +25,8 @@
     $(document).ready(function(){
         init("cmajor", "treble", null,400,"C")
         addnote("treble",["c/4","d/4","e/4","f/4","g/4","a/4","b/4"],["w","w","w","w","w","w","w",])
+        
+        //display
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
         var display = 0;
         $(".textcontainer").bind('click',function(){
@@ -33,6 +35,7 @@
                 display++;
             }
         })
+        //
     });
 </script>
 {% endblock %}

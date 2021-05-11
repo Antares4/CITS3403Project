@@ -12,6 +12,7 @@
     <p class="display">
         Click on the following to see howmany of each note fits in a 4/4 bar
     </p>
+    <!-- notedemo class needed for js -->
     <div class="notedemo display">
         <button value=0>semibreve</button>
         <button value=1>minim</button>
@@ -20,7 +21,9 @@
         <button value=4>semiquaver</button>
     </div>
     <div class="canvascontainer display">
+        <!-- no modify -->
         <div class="stave" id="notevalue"></div>
+        <!--  -->
         <hr class="display">
     </div>
     <p>
@@ -32,7 +35,9 @@
         Here is an example a 6/8 bar that a duration of 6 quavers, which will fit exactly two <strong>dotted</strong> crotchets
     </p>
     <div class="canvascontainer display">
+        <!-- no modify -->
         <div class="stave" id="dotted"></div>
+        <!--  -->
         <hr class="display">
     </div>
     <hr>
@@ -43,8 +48,10 @@
     $(document).ready(function(){
         initdotted();
         notevalues = ["w","h","q","8","16"];
-        var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
         init("notevalue", "treble", "4/4",400,null);
+
+        //display thing
+        var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
         var display = 0;
         $(".textcontainer").bind('click',function(){
             if(display < paragraph.length){
@@ -52,6 +59,8 @@
                 display++;
             }
         })
+        //
+
         $(".notedemo > button").bind('click',function(){
             removestave("notevalue");
             notenames=[];

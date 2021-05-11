@@ -35,6 +35,8 @@ class users(UserMixin, db.Model):
     def validate(self):
         if self.username and self.email and self.firstname and self.lastname:
             return True
+        else:
+            return False
 
     #@staticmethod
     def getSubmissions(self):

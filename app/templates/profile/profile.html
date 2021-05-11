@@ -2,13 +2,17 @@
 
 {% block content %}
 <div>
+    <!--  if is admin -->
     {% if current_user.isAdmin %}
+    <!-- this possibly in a square  -->
         <div>
             Submission count: {{data.subCount}} 
         </div>
+    <!-- this one same next to the one above -->
         <div>
             User count:  {{data.usrCount}} 
         </div>
+    <!-- user table that does not have paging thinking of use a drop down menu to shrink size -->
         <table>
             <tr>
                 <th>Username</th>
@@ -30,7 +34,9 @@
                 {% endif %}
             {% endfor %}
         </table>
+
         <div>
+            <!-- submission table -->
             <table>
                 <tr>
                     <th>
@@ -76,26 +82,47 @@
                     {% endif %}
                 {% endfor %}
             </table>
+            <!--  -->
+            <!-- link for submission pages -->
             {% if data._links.sub_prev %}
                 <a href="{{ data._links.sub_prev }}">Newer sub</a>
             {% endif %}
             {% if data._links.sub_next %}
                 <a href="{{ data._links.sub_next }}">Older sub</a>
             {% endif %}
+            <!--  -->
         </div>
     {% endif %}
+    <!-- if is user -->
     {% if not current_user.isAdmin %}
         <div class="profile">
+            <!-- these basic info be placed left -->
             Name:{{current_user.username}}
             <br>
             you have made:{{data.subs|length}} Submissions
             <br>
-            last seen at: <span>{{current_user.lastLogin}}</span>
+            last seen at: <span class="trim-time">{{current_user.lastLogin}}</span>
             <br>
             Note Ranking: <span>{{data.noteRank}}</span>
+            <table>
+                {% for topuser in data.notelist %}
+                <tr>
+                    <td>{{topuser.username}}</td>
+                    <td>{{topuser.noteHighScore}}</td>
+                </tr>
+                {% endfor %}
+            </table>
             Key Ranking : <span>{{data.keyRank}}</span>
+            <table>
+                {% for topuser in data.keylist %}
+                <tr>
+                    <td>{{topuser.username}}</td>
+                    <td>{{topuser.KeyHighScore}}</td>
+                </tr>
+                {% endfor %}
+            </table>
             <br>
-            
+            <!-- table of submissions preferably in the same style as the admin one -->
             <table>
                 <tr>
                     <th>Difficulty</th>
@@ -130,7 +157,7 @@
                 </tr>
                 {% endfor %}
             </table>
-            
+            <!-- smae links -->
             {% if data._links.sub_prev %}
                 <a href="{{ data._links.sub_prev }}">Newer sub</a>
             {% endif %}
@@ -143,3 +170,4 @@
     {% endif %}
 </div>
 {% endblock %}
+

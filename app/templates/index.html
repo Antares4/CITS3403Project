@@ -2,7 +2,7 @@
 
 {% block content %}
         <h1>
-            This is the title
+            SideNote
         </h1>
         <h2>
             {% if not use==None %}
@@ -10,13 +10,19 @@
             {% endif %}
         </h2>
         <p>
-            <span style="font-size: large;">In this course</span> you will learn about the basics musical theory 
-            including concepts of notation, keys, chords and more. 
+            Your first step in music theory
         </p>
-        <a href="{{ url_for('auth.login') }}">LOGIN</a>
+        <p>You will learn about</p>
+        <ul>
+            <li>Basic knowledge of music theory</li>
+            <li>Music Notation</li>
+            <li>Rhythm</li>
+            <li>Keys and scales</li>
+        </ul>
         <br>
-        <a href="{{ url_for('register.register') }}">Register</a>
-        <br>
-        <a href="{{ url_for('index.demo') }}">demo</a>
+        {% if not current_user.is_authenticated %}
+        <p><a href="{{ url_for('register.register') }}">Register</a> <br></p>
+        {% endif %}
 {% endblock %}
 
+<!-- insert into users values('5','guang','sha384$mQ0gvQVv$db2ad8ac65507679ac663aa251f2c82cf25885fa7b2d691a1f334d9cd9708d266f9718e228af961a0f040909bc76a094','abc@abc.com','guang','yu','2021-05-11 14:44:58.644682',1,1,0,0); -->

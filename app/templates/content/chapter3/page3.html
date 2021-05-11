@@ -7,6 +7,7 @@
     <p>In some scenario this may require repetitive use of accidentals through out a piece of music which is redundent and more vulnerable to errors</p><br>
     <h5>Below is a representation of the key B major without keysigniture</h5>
     <div class="canvascontainer display">
+        <!-- id no modify -->
         <div class="stave" id="Bmajor"></div>
     </div>
     <p>To solve this problem, Key signitures were used to represent keys</p>
@@ -21,6 +22,7 @@
         The left passage is in the key of<strong>C Major</strong> where as the right passage is in <strong>A major</strong> <br>
         However the two notes shown are identical despite the left having an accidental
     </p>
+    <!-- this needs to be side by side in the right order -->
     <div style="display: inline-flex; justify-content: space-around;">
         <div class="stave" id="Cmajorcomp"></div>
         <div class="stave" id="Fmajorcomp"></div>
@@ -38,6 +40,8 @@
         addnote("treble",["c#/5"],["w"])
         init("Fmajorcomp", "treble", "4/4",200,"A")
         addnote("treble",["c/5"],["w"])
+
+        // display thing
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
         var display = 0;
         $(".textcontainer").bind('click',function(){
@@ -46,6 +50,7 @@
                 display++;
             }
         })
+        //
     });
 </script>
 {% endblock %}

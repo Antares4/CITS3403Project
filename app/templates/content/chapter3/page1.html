@@ -14,6 +14,7 @@
 </div>
 <script>
     $(document).ready(function(){
+        //display
         var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
         var display = 0;
         $(".textcontainer").bind('click',function(){
@@ -22,6 +23,7 @@
                 display++;
             }
         })
+        //
     });
 </script>
 {% endblock %}
