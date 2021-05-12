@@ -1,2 +1,7 @@
 venv
 *.db
+flask
+app/__pycache__
+__pycache__
+migrations
+.DS_Store
