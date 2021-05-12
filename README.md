@@ -1,4 +1,5 @@
 # CITS3403Project
+
 Sidenote music learning webapp written for [CITS3403-Project](https://teaching.csse.uwa.edu.au/units/CITS3403/) semester 1, 2021.
 
 ## Features
@@ -155,5 +156,6 @@ $ python3 tests.py
 - [jQuery](https://jquery.com/)
 - [VexFlow](https://github.com/0xfe/vexflow)
 - [GoogleFont](https://fonts.google.com/specimen/Zilla+Slab#standard-styles)
+
 
 
