@@ -48,5 +48,44 @@ sidenote.py                               ---Application---
 test.py                                   ---Unittest---
     
 ```
+### Model representations 
+```
+users(
+    'id' Integer, PRIMRARY KEY AUTOINCRIMENT NOT NULL
+    'username' String(100), UNIQUE NOT NULL
+    'password' String(96), NOT NULL
+    'email' String(128), UNIQUE NOT NULL
+    'firstname' String(130), NOT NULL
+    'lastname' String(130), NOT NULL
+    'lastLogin' DateTime,
+    'isActive' Boolean,
+    'isAdmin' Boolean,
+    'noteHighScore' Integer,
+    'KeyHighScore' Integer,
+)
 
+submission(
+    'id' Integer, PRIMRARY KEY AUTOINCRIMENT NOT NULL
+    'createdAt' DateTime, NOT NULL
+    'markedAt' DateTime,
+    'feedback' Boolean,
+    'totalmark' Integer,
+    'difficulty' String(30), NOT NULL
+    'passed' Boolean,
+    'creater_id' FOREIGNKEY, REFERENCES users("id") NOT NULL
+)
+
+answer(
+    'id' Integer, PRIMRARY KEY AUTOINCRIMENT NOT NULL
+    'answerSeq' Integer, NOT NULL
+    'submittedAnswer' String(400), NOT NULL
+    'feedback' String(400),
+    'markreceived' Boolean,
+    'submissionId' FOREIGNKEY, REFERENCES submission("id") NOT NULL
+)
+```
 ### User types 
+![Anonymous](https://img.shields.io/badge/-Anonymous-black.svg)
+![Registed Users](https://img.shields.io/badge/-User-yellow.svg)
+![Admin Users](https://img.shields.io/badge/-Admin-blue.svg)
+
