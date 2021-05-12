@@ -86,6 +86,74 @@ answer(
 ```
 ### User types 
 ![Anonymous](https://img.shields.io/badge/-Anonymous-black.svg)
+- Can view introduction 
+- Can register to become an user
+
 ![Registed Users](https://img.shields.io/badge/-User-yellow.svg)
+- Can login and logout useing username and password
+- Can view provided content
+- Can create submissions 
+- Can compelete Timed assessment
+- Can view feedback on performance/assessment
+- Can view global user performance on timed assessment
+
 ![Admin Users](https://img.shields.io/badge/-Admin-blue.svg)
+- Can login and logout useing username and password
+- Can delete users
+- Can provide feedback* on a submission
+- Can view useage statistic 
+
+### Submission type 
+![Compeleted Submission](https://img.shields.io/badge/Sub-Compeleted-orange.svg)  
+A user can chose to compelete and submit assessment at desired difficulty.
+Automark result will be avliable after submission. 
+
+![Marked Submission](https://img.shields.io/badge/Sub-Marked-greed.svg)  
+Manuel feedback become visible to users once the marker have submitted the feedback. 
+
+## Project Management 
+
+* Planing phase  
+
+      > Inital planing were carried out to outline the content, scope and workflow. 
+      > Estimation were made on required framework, library and implimentation time.
+      
+* Agile Methodology 
+
+      > Scope of each Iterations were outlined based on the analysis on requirements constructed from user storys.
+      > Determine functionalities that needs to be delivered.
+
+* Implimentation phase
+
+      > Writing code.
+
+* Testing
+
+      > Basic unittest were automated and carried out at each iteration.
+
+
+## Install
+```
+$ sudo apt install python3
+$ sudo apt install python3-pip
+$ sudo apt-get install python3-setuptools
+$ sudo apt install python3-flask
+$ git clone
+$ pip3 install -r requirements.txt
+$ export FLASK_APP=sidenote.py
+```
+## Launch
+```
+$ flask run
+```
+## Unittest
+```
+$ python3 tests.py
+```
+## Libraries Used
+- [Bootstrap](https://getbootstrap.com/)
+- [jQuery](https://jquery.com/)
+- [VexFlow](https://github.com/0xfe/vexflow)
+- [GoogleFont](https://fonts.google.com/specimen/Zilla+Slab#standard-styles)
+
 
