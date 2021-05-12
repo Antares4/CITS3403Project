@@ -51,13 +51,13 @@ class submission(db.Model):
     __tablename__ = 'submission'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    createdAt = db.Column(db.DateTime)
+    createdAt = db.Column(db.DateTime, nullable=False)
     markedAt = db.Column(db.DateTime)
     feedback = db.Column(db.Boolean)
     totalmark = db.Column(db.Integer)
-    difficulty = db.Column(db.String(30))
+    difficulty = db.Column(db.String(30), nullable=False)
     passed = db.Column(db.Boolean)
-    creater_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    creater_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     answers = db.relationship("answer", backref="submission")
 
     def __init__(self):

@@ -117,7 +117,7 @@ def autoMark(submission):
                         total += 1
                         break
     submission.totalmark = total
-    print(total)
+    submission.passed = True if total < 2 else False
     try:
         db.session.commit()
     except SQLAlchemyError as e:
