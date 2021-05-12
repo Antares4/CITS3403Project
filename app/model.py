@@ -2,7 +2,7 @@ from app import db, login
 from flask_login import UserMixin
 from datetime import datetime
 from flask import url_for, redirect
-
+from werkzeug.security import generate_password_hash, check_password_hash
 class users(UserMixin, db.Model):
 
     __tablename__ = 'users'
@@ -29,6 +29,12 @@ class users(UserMixin, db.Model):
         self.lastLogin = None
         self.KeyHighScore = 0
     
+    def set_password(self, pwd):
+        self.password = generate_password_hash(pwd, method="sha384")
+
+    def check_password(self, pwd):
+        return check_password_hash(self.password, pwd)
+
     def is_active(self):
         return self.isActive
 
@@ -38,10 +44,10 @@ class users(UserMixin, db.Model):
         else:
             return False
 
-    #@staticmethod
     def getSubmissions(self):
         res = submission.query.filter_by(creater_id=self.id).all()
         return res
+
 
     def __repr__(self):
         return '<user %r>' % self.username
@@ -88,7 +94,7 @@ class answer(db.Model):
 
     def __init__(self):
         feedback = None
-        markreceived = 1
+        markreceived = False
 
     def validate(self):
         if self.answerSeq and self.submittedAnswer and submissionId:
@@ -107,7 +113,7 @@ def load_user(usr_id):
 
 @login.unauthorized_handler
 def unauthorized():
-    return redirect(url_for("index.index"))
+    return redirect(url_for("auth.login"))
 
 #.headers on
 #.open app.db

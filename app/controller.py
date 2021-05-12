@@ -3,7 +3,6 @@ from app import db
 from flask_login import current_user, login_user, logout_user
 from sqlalchemy.orm.attributes import flag_modified
 from sqlalchemy.exc import SQLAlchemyError
-from werkzeug.security import generate_password_hash
 import sys
 from datetime import datetime
 
@@ -11,8 +10,7 @@ from datetime import datetime
 def createUser(user,password):
     if user.validate() and password!="":
         try:
-            hash_pwd = generate_password_hash(password, method="sha384")
-            user.password = hash_pwd
+            user.set_password(password)
             db.session.add(user)
             db.session.commit()
         except SQLAlchemyError as e:
@@ -94,6 +92,8 @@ def autoMark(submission):
     intermediate = ["c#,quaver","compound,duple","six,6","gb","f#,c#,g#"]
     difficult = ["f,bb,g","f,bb,c#,d,seventh,7th,lower","no, d#","9/8,nine,eight","augmented,fourth,supertonic"]
     ans_list = getAnswerForSub(submission.id)
+    for item in ans_list:
+        print("item",item.submittedAnswer, item.answerSeq)
     if submission.difficulty == "intro":
         index = intro
     elif submission.difficulty == "intermediate":
@@ -108,14 +108,17 @@ def autoMark(submission):
         for i in range(len(index)):
             if i == ans.answerSeq-1:
                 match = index[i].split(",")
-                print(match)
+                print(match, i)
                 orig = ans.submittedAnswer.split(" ")
                 print(orig)
                 for item in orig:
                     if item.lower() in match:
+                        print("markReceived")
                         ans.markreceived = True
                         total += 1
                         break
+        if not ans.markreceived:
+            ans.markreceived = False
     submission.totalmark = total
     submission.passed = True if total < 2 else False
     try:

@@ -5,7 +5,7 @@ from app.model import users
 from app.controller import updateLoginTime
 from app import db
 from flask_login import current_user, login_user
-from werkzeug.security import check_password_hash
+
 
 
 
@@ -15,11 +15,8 @@ def login():
     if form.validate_on_submit():
         user = users.query.filter_by(username=form.username.data).first()
         if user:
-            if check_password_hash(user.password,form.password.data):
-                if form.remember_me == True:
-                    login_user(user,remember=True)
-                    return redirect(url_for('index.index', name=user.username))
-                login_user(user)
+            if user.check_password(form.password.data):
+                login_user(user,remember=form.remember_me.data)
                 updateLoginTime(user)
                 return redirect(url_for('index.index', name=user.username))
             else:
