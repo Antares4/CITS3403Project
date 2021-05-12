@@ -297,3 +297,46 @@ a:hover {
   background: -moz-linear-gradient(left,  rgb(255, 255, 255) 1%, rgb(221, 221, 221) 20%,rgb(221, 221, 221) 80%, rgb(255, 255, 255) 100%); /* FF3.6+ */
   background: -webkit-linear-gradient(left,  rgb(255, 255, 255) 1%,rgb(221, 221, 221) 20%,rgb(221, 221, 221) 80%,rgb(255, 255, 255) 100%); /* Chrome10+,Safari5.1+ */
 }
+
+.rank-upper{
+  padding-top: 20px;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(23, 23, 26);
+  height: 200px;
+  width: 200px;
+  z-index: 0;
+  grid-area: overlap;
+  box-shadow: 0px 2px 9px 2px rgb(43, 41, 38);
+}
+
+.rank-upper:hover{
+  opacity: 0;
+  transition: all 0.4s ease 0.01s;
+}
+
+.rank-under{
+  background-color: rgb(224, 224, 224);
+  height: 200px;
+  width: 200px;
+  z-index: -1;
+  grid-area: overlap;
+  box-shadow: 0px 1px 7px 1px rgb(43, 41, 38);
+}
+
+.rank-container{
+  border-color: black;
+  border-style: solid;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "overlap";
+}
+
+.highlight{
+  font-size: 2em;
+  font-family: "Zilla Slab", serif;
+}
