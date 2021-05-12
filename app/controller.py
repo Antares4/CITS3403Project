@@ -62,29 +62,31 @@ def updateLoginTime(user):
 
 def feedbackAssessment(sub,form,responses):
     if sub and form and responses:
-        for item in responses:
-            if item.answerSeq == 1:
-                item.feedback = form.F1.data
-            elif item.answerSeq == 2:
-                item.feedback = form.F2.data
-            elif item.answerSeq == 3:
-                item.feedback = form.F3.data
-            elif item.answerSeq == 4:
-                item.feedback = form.F4.data
-            elif item.answerSeq == 5:
-                item.feedback = form.F5.data
-            db.session.add(item)
-        sub.markedAt = datetime.utcnow()
-        sub.feedback = True
-        db.session.add(sub)
+        for i in range(len(responses)):
+            if not isinstance(responses[i],answer):
+                raise TypeError
         try:
+            for item in responses:
+                if item.answerSeq == 1:
+                    item.feedback = form.F1.data
+                elif item.answerSeq == 2:
+                    item.feedback = form.F2.data
+                elif item.answerSeq == 3:
+                    item.feedback = form.F3.data
+                elif item.answerSeq == 4:
+                    item.feedback = form.F4.data
+                elif item.answerSeq == 5:
+                    item.feedback = form.F5.data
+                db.session.add(item)
+            sub.markedAt = datetime.utcnow()
+            sub.feedback = True
+            db.session.add(sub)
             db.session.commit()
         except SQLAlchemyError as e:
             print("submit:", str(e))
-            return False
+            raise TypeError
         return True
     else:
-        print("missing object")
         return False
 
 def autoMark(submission):
@@ -130,6 +132,9 @@ def autoMark(submission):
 
 
 def createSubmission(sid, difficulty, form):
+    valid_dif = ["intro","intermediate","difficult"]
+    if difficulty not in valid_dif or users.query.filter_by(id=sid).first() == None:
+        raise ValueError
     sub = submission()
     sub.difficulty = difficulty
     sub.creater_id = sid
@@ -138,7 +143,7 @@ def createSubmission(sid, difficulty, form):
         db.session.commit()
     except SQLAlchemyError as e:
         print("submit:", str(e))
-        return None
+        raise TypeError
     
     ans1 = answer()
     ans1.answerSeq=1
@@ -176,7 +181,7 @@ def createSubmission(sid, difficulty, form):
         db.session.commit()
     except SQLAlchemyError as e:
         print("submit:", str(e))
-        return None
+        raise TypeError
     return sub
 
 
@@ -228,40 +233,46 @@ def getNoteRanking(userid):
     ranking = None
     adminCount = 0
     user_list = users.query.order_by(users.noteHighScore.desc()).all()
-    if user_list==None:
-        print('Ranking not avaliable')
+    if user_list != None:
+        if user_list==None:
+            print('Ranking not avaliable')
+            return False
+        for i in range(len(user_list)):
+            if user_list[i].isAdmin:
+                adminCount += 1
+            if user_list[i].id == userid:
+                ranking = i+1
+                ranking -= adminCount
+                break
+        if not ranking:
+            print("id not found:",userid)
+            return False
+        return ranking
+    else:
         return False
-    for i in range(len(user_list)):
-        if user_list[i].isAdmin:
-            adminCount += 1
-        if user_list[i].id == userid:
-            ranking = i+1
-            ranking -= adminCount
-            break
-    if not ranking:
-        print("id not found:",userid)
-        return False
-    return ranking
-
+        
 def getKeyRanking(userid):
     ranking = None
     adminCount = 0
     user_list = users.query.order_by(users.KeyHighScore.desc()).all()
-    for i in range(len(user_list)):
-        if user_list[i].isAdmin:
-            adminCount += 1
-        if user_list[i].id == userid:
-            ranking = i+1
-            ranking -= adminCount
-            break
-    if not ranking:
-        print("id not found")
+    if user_list != None:
+        for i in range(len(user_list)):
+            if user_list[i].isAdmin:
+                adminCount += 1
+            if user_list[i].id == userid:
+                ranking = i+1
+                ranking -= adminCount
+                break
+        if not ranking:
+            print("id not found")
+            return False
+        return ranking
+    else:
         return False
-    return ranking
 
 
 def getAdminProfile(page, userId):
-    all_sub = getAllSubmissions().paginate(page, 5, False)
+    all_sub = getAllSubmissions().paginate(page, 10, False)
     ###########
     if all_sub.has_next:
         next_sub_page = url_for('index.profile', page=all_sub.next_num, userId=userId) 
@@ -288,7 +299,7 @@ def getAdminProfile(page, userId):
 
 
 def getUserProfile(page, userId):
-    my_sub = submission.query.filter_by(creater_id=userId).order_by(submission.createdAt.desc()).paginate(page, 5, False)
+    my_sub = submission.query.filter_by(creater_id=userId).order_by(submission.createdAt.desc()).paginate(page, 10, False)
     ###########
     if my_sub.has_next:
         next_sub_page = url_for('index.profile', page=my_sub.next_num, userId=userId) 
@@ -359,11 +370,11 @@ def processKeyScore(userId,score):
     return result
 
 def getNoteList():
-    top_users = users.query.filter_by(isAdmin=False).order_by(users.noteHighScore.desc()).limit(5).all()
+    top_users = users.query.filter_by(isAdmin=False).order_by(users.noteHighScore.desc()).limit(10).all()
     print("users",top_users)
     return top_users
 
 def getKeyList():
-    top_users = users.query.filter_by(isAdmin=False).order_by(users.KeyHighScore.desc()).limit(5).all()
+    top_users = users.query.filter_by(isAdmin=False).order_by(users.KeyHighScore.desc()).limit(10).all()
     print("users",top_users)
     return top_users

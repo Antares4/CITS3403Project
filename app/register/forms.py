@@ -20,3 +20,7 @@ class RegisterForm(FlaskForm):
         usr = users.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Please enter a different email address.')
+    
+    def password_validate(self, password):
+        if len(password) < 6:
+            raise ValidationError("Password has to be atleast 6 characters long")
