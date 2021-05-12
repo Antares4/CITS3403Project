@@ -6,7 +6,7 @@ Sidenote music learning webapp written for [CITS3403-Project](https://teaching.c
 Sidenote support online interactive learning of basic music theory where a users can complete formative assessments to reflect on their learning progress.
 
 - A list of **learning modules** were avalible for ![Registed Users](https://img.shields.io/badge/-User-yellow.svg) to complete. 
-- Summative assessments are provided to assess level of understanding through **marks** and possibly manual **feedback**. 
+- Summative and formative **assessments** are provided to assess level of understanding through **marks** and possibly manual **feedback**. 
 
 ## Design 
 ### Code structure 
