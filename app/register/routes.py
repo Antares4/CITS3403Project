@@ -8,7 +8,7 @@ from app import db
 from datetime import datetime
 
 
-@bp.route('/register', methods=['GET','POST'])
+@bp.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
@@ -24,12 +24,12 @@ def register():
         #########################################
         if(form.password.data != form.confirmpassword.data):
             flash("password does not match, try again")
-            return render_template("register.html", form = form)
-        elif createUser(user,form.password.data):
+            return render_template("register.html", form=form)
+        elif createUser(user, form.password.data):
             return redirect(url_for('auth.login'))
         else:
-            flask("Validation error")
-            return render_template("register.html", form = form)
+            flash("Validation error")
+            return render_template("register.html", form=form)
     elif(request.method == 'POST' and not form.validate_on_submit()):
         flash('unable to register')
     return render_template('register.html', title='Register', form=form)
