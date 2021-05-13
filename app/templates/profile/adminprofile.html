@@ -1,0 +1,135 @@
+{%extends "base.html"%}
+
+{% block content %}
+
+<div class="all-wrapper" style="display: none;" >
+    <!--  if is admin -->
+    <div class="header">
+        <h1>
+            admin
+        </h1>
+    </div>
+    <!-- this possibly in a square  -->
+        <div class="rank-wrapper">
+            <div class="rank-container">
+                <div class="submission-upper white">
+                    <span class="highlight">Submissions</span>
+                    <br>
+                    <span class="highlight">{{data.subCount}} </span> 
+                </div>
+            </div>
+            <!-- this one same next to the one above -->
+            <div class="rank-container">
+                <div class="submission-upper white">
+                    <span class="highlight">Total Users</span>
+                    <br>
+                    <span class="highlight">{{data.usrCount}} </span>
+                </div>
+            </div>
+        </div>
+    <!-- user table that does not have paging thinking of use a drop down menu to shrink size -->
+        <table>
+            <div class="user-info">
+                <div class="collopse">
+                    <div><span class="highlight" style="padding-left: 4%;">Users</span></div>
+                    {% for usr in data.usrs %}
+                        {% if not usr.isAdmin %}
+                            <div class="userheader">
+                                {{usr.username}} <br>
+                            </div>
+                            <div class="usercontent">
+                                First Name: {{usr.firstname}} <br>
+                                Last Name: {{usr.lastname}} <br>
+                                Email: {{usr.email}} <br>
+                                Last Login At <span class="trim-time">{{usr.lastLogin}}</span> <br>
+                                <span><a href="{{url_for('register.deleteUser', userId=usr.id)}}">delete</a></span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </table>
+
+        <div class="submissions">
+            <!-- submission table -->
+            <table>
+                <tr>
+                    <th>
+                        Submission from
+                    </th>
+                    <th>
+                        created at
+                    </th>
+                    <th>
+                        difficulty
+                    </th>
+                    <th>
+                        marked at 
+                    </th>
+                </tr>
+                {% for sub in data.subs %}
+                    {% if not sub.marked %}
+                    <tr>
+                        <td>
+                            {% set  user_name = namespace(value="") %}
+                            {%set item_id = sub.id%}
+                            {% for usr in data.usrs %}
+                                {% if sub.creater_id == usr.id %}
+                                    {% set user_name.value = usr.username%}
+                                {% endif %}
+                            {% endfor %}
+                            <a href="{{url_for('assessment.markSubmission', toBeMarked=item_id)}}">{{user_name.value}}</a>
+                        </td>
+                        <td class="trim-time">{{sub.createdAt}}</td>
+                        <td>
+                            {{sub.difficulty}}
+                        </td>
+                        <td>
+                            {% if sub.marked %}
+                                {{sub.markedAt}}
+                            {% else %}
+                                No record
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+            <!--  -->
+            
+            <!--  -->
+        </div>
+        <div id="sublinks" class="links">
+            <!-- link for submission pages -->
+            {% if data._links.sub_prev %}
+                <a id="new" class="content-button" href="{{ data._links.sub_prev }}">Newer sub</a>
+            {% endif %}
+            {% if data._links.sub_next %}
+                <a id="old" class="content-button" href="{{ data._links.sub_next }}">Older sub</a>
+            {% endif %}
+        </div>
+</div>
+<script type="text/javascript">
+    //don't touch this part!!!!!!! and do not change class name of block 
+    //this function will fade in the entire div(including the page content) so it doesn't flash on load!!!!
+    $(document).ready(function() {
+        $(".all-wrapper").fadeIn(500);
+        if(document.getElementById("new") == null && document.getElementById("old") !=null){
+            document.getElementById("sublinks").classList.toggle("links-right")
+        }
+        var users = document.getElementsByClassName("userheader");
+        var i;
+        for (i = 0; i < users.length; i++) {
+        users[i].addEventListener("click", function() {
+            var usercontent = this.nextElementSibling;
+            if (usercontent.style.maxHeight){
+            usercontent.style.maxHeight = null;
+            } else {
+            usercontent.style.maxHeight = usercontent.scrollHeight + "px";
+            }
+        });
+        }
+    });
+    ///
+</script>
+{% endblock %}

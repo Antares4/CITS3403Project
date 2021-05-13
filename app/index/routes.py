@@ -32,11 +32,11 @@ def profile(userId):
     if usr.isAdmin:
         page = request.args.get('page', 1, type=int)
         info = getAdminProfile(page, userId)
-        return render_template("profile/profile.html",data=info)
+        return render_template("profile/adminprofile.html",data=info)
     else:
         page = request.args.get('page', 1, type=int)
         info = getUserProfile(page, userId)
-        return render_template("profile/profile.html",data=info, key=dict(getKeyRanking=getKeyRanking, getNoteRanking=getNoteRanking))
+        return render_template("profile/userprofile.html",data=info, key=dict(getKeyRanking=getKeyRanking, getNoteRanking=getNoteRanking))
 
 
 @bp.route('/timedNote')

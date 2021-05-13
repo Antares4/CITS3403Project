@@ -1,133 +1,67 @@
 {%extends "base.html"%}
 
 {% block content %}
-<!-- style="display: none;" -->
-<div class="all-wrapper" >
-    <!--  if is admin -->
-    {% if current_user.isAdmin %}
-    <!-- this possibly in a square  -->
-        <div>
-            Submission count: {{data.subCount}} 
-        </div>
-    <!-- this one same next to the one above -->
-        <div>
-            User count:  {{data.usrCount}} 
-        </div>
-    <!-- user table that does not have paging thinking of use a drop down menu to shrink size -->
-        <table>
-            <tr>
-                <th>Username</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Last Login At</th>
-            </tr>
-            {% for usr in data.usrs %}
-                {% if not usr.isAdmin %}
-                <tr>
-                    <td>{{usr.username}}</td>
-                    <td>{{usr.firstname}}</td>
-                    <td>{{usr.lastname}}</td>
-                    <td>{{usr.email}}</td>
-                    <td>{{usr.lastLogin}}</td>
-                    <td><a href="{{url_for('register.deleteUser', userId=usr.id)}}">delete</a></td>
-                </tr>
-                {% endif %}
-            {% endfor %}
-        </table>
 
-        <div>
-            <!-- submission table -->
-            <table>
-                <tr>
-                    <th>
-                        Submission from
-                    </th>
-                    <th>
-                        created at
-                    </th>
-                    <th>
-                        difficulty
-                    </th>
-                    <th>
-                        marked at 
-                    </th>
-                </tr>
-                {% for sub in data.subs %}
-                    {% if not sub.marked %}
-                    <tr>
-                        <td>
-                            {% set  user_name = namespace(value="") %}
-                            {%set item_id = sub.id%}
-                            {% for usr in data.usrs %}
-                                {% if sub.creater_id == usr.id %}
-                                    {% set user_name.value = usr.username%}
-                                {% endif %}
-                            {% endfor %}
-                            <a href="{{url_for('assessment.markSubmission', toBeMarked=item_id)}}">{{user_name.value}}</a>
-                        </td>
-                        <td>
-                            {{sub.createdAt}}
-                        </td>
-                        <td>
-                            {{sub.difficulty}}
-                        </td>
-                        <td>
-                            {% if sub.marked %}
-                                {{sub.markedAt}}
-                            {% else %}
-                                No record
-                            {% endif %}
-                        </td>
-                    </tr>
-                    {% endif %}
-                {% endfor %}
-            </table>
-            <!--  -->
-            <!-- link for submission pages -->
-            {% if data._links.sub_prev %}
-                <a href="{{ data._links.sub_prev }}">Newer sub</a>
-            {% endif %}
-            {% if data._links.sub_next %}
-                <a href="{{ data._links.sub_next }}">Older sub</a>
-            {% endif %}
-            <!--  -->
-        </div>
-    {% endif %}
+<div class="all-wrapper" style="display: none;" >
+    <!--  if is admin -->
+
     <!-- if is user -->
-    {% if not current_user.isAdmin %}
-        
+
         <div class="header">
             <h1>
-                profile
+                {{current_user.username}}
             </h1>
         </div>
 
             <!-- these basic info be placed left -->
-            <div class="user-info">
-                Name:{{current_user.username}}
+            <div class="user-profile">
+                <img class="user-image" src="/static/image/Sample1.png" alt="Icon">
                 <br>
-                you have made:{{data.subs|length}} Submissions
+                <strong>Username</strong>
                 <br>
-                last seen at: 
+                {{current_user.username}}
+                <br>
+                <strong>Last login</strong>
                 <br>
                 <span class="trim-time">{{current_user.lastLogin}}</span>
+                <br>
+                <strong>Submissions</strong>
+                <br>
+                {{data.subs|length}} 
+                <br>
+                <strong>Email</strong>
+                <br>
+                {{current_user.email}}
+                <br>
+                <strong>Firstname</strong>
+                <br> 
+                {{current_user.firstname}}
+                <br>
+                <strong>Lastname</strong>
+                <br>
+                {{current_user.lastname}}
+                
             </div>
             <div class="rank-wrapper">
                 <div class="rank-container">
-                    <div class="rank-upper black">
+                    <a class="rank-upper black" href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">
                         Note High Score 
                         <br>
                         <span class="highlight">{{current_user.noteHighScore}}</span> <br>
                         Rank
                         <br>
                         <span class="highlight">{{data.noteRank}}</span> 
-                    </div>
+                    </a>
                     <div class="rank-under gray">
                         <table>
                             <tr>
+                                <th colspan="3">
+                                    Challenge
+                                </th>
+                            </tr>
+                            <tr>
                                 <th>
-                                    Name
+                                    User
                                 </th>
                                 <th>
                                     Score
@@ -147,19 +81,24 @@
                     </div>
                 </div>
                 <div class="rank-container">
-                    <div class="rank-upper white">
+                    <a class="rank-upper white" href="{{url_for('index.notes', chapter='chapter3', page='page5')}}">
                         Key High Score 
                         <br>
                         <span class="highlight">{{current_user.KeyHighScore}}</span> <br>
                         Ranking
                         <br>
                         <span class="highlight">{{data.keyRank}}</span> 
-                    </div>
+                    </a>
                     <div class="rank-under gray">
                         <table>
                             <tr>
+                                <th colspan="3">
+                                    Challenge
+                                </th>
+                            </tr>
+                            <tr>
                                 <th>
-                                    Name
+                                    User
                                 </th>
                                 <th>
                                     Score
@@ -217,28 +156,27 @@
                     {% endfor %}
                 </table>
             </div>
-            
             <!-- smae links -->
-            <div class="links">
+            <div id="sublinks" class="links">
 
                     {% if data._links.sub_prev %}
-                    <a  class="content-button" href="{{ data._links.sub_prev }}">Newer sub</a>
+                    <a id="new" class="content-button" href="{{ data._links.sub_prev }}">Newer sub</a>
                     {% endif %}
 
                     {% if data._links.sub_next %}
-                    <a class="content-button" href="{{ data._links.sub_next }}">Older sub</a>
+                    <a id="old" class="content-button" href="{{ data._links.sub_next }}">Older sub</a>
                     {% endif %}
             </div>
-
-        
-    {% endif %}
 </div>
 <script type="text/javascript">
     //don't touch this part!!!!!!! and do not change class name of block 
     //this function will fade in the entire div(including the page content) so it doesn't flash on load!!!!
-    // $(document).ready(function() {
-    //     $(".all-wrapper").fadeIn(500);
-    // });
+    $(document).ready(function() {
+        $(".all-wrapper").fadeIn(500);
+        if(document.getElementById("new") == null && document.getElementById("old") !=null){
+            document.getElementById("sublinks").classList.toggle("links-right")
+        }
+    });
     ///
 </script>
 {% endblock %}

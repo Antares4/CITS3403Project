@@ -315,7 +315,6 @@ def getUserProfile(page, userId):
         'notelist': getNoteList(),
         'keyRank' : getKeyRanking(int(userId)),
         'keylist':getKeyList(),
-        'getKeyRanking': getKeyRanking,
         '_links': {
             'sub_prev' : prev_sub_page,
             'sub_next' : next_sub_page, 
