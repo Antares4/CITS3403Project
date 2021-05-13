@@ -1,3 +1,4 @@
+from flask import url_for
 from app.model import users, submission, answer
 from app import db
 from flask_login import current_user, login_user, logout_user
@@ -122,7 +123,7 @@ def autoMark(submission):
         if not ans.markreceived:
             ans.markreceived = False
     submission.totalmark = total
-    submission.passed = True if total < 2 else False
+    submission.passed = False if total < 2 else True
     try:
         db.session.commit()
     except SQLAlchemyError as e:
@@ -289,7 +290,6 @@ def getAdminProfile(page, userId):
         'usrs'  : all_user,
         'subCount' : howManySubmissions(),
         'usrCount' : howManyUsers(),
-
         '_links': {
             'sub_prev' : prev_sub_page,
             'sub_next' : next_sub_page, 
@@ -315,6 +315,7 @@ def getUserProfile(page, userId):
         'notelist': getNoteList(),
         'keyRank' : getKeyRanking(int(userId)),
         'keylist':getKeyList(),
+        'getKeyRanking': getKeyRanking,
         '_links': {
             'sub_prev' : prev_sub_page,
             'sub_next' : next_sub_page, 

@@ -2,11 +2,9 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-}
-body {
-  /* width: 100vw; */
   font-family: "Zilla Slab", serif;
 }
+
 #a {
   position: fixed;
   z-index: 3;
@@ -249,9 +247,7 @@ a:hover {
   align-items: left;
 }
 
-.all-wrapper{
-  padding-top: 8%;
-}
+
 
 .content-button{
   justify-content: center;
@@ -267,7 +263,7 @@ a:hover {
   color: white;
   background-color: rgb(0, 0, 0);
   border-radius: 0ch;
-  box-shadow: 0px 1px 8px 1px rgb(43, 41, 38);
+  box-shadow: 0px 1px 5px 1px rgb(43, 41, 38);
 }
 
 .content-button:hover{
@@ -301,16 +297,13 @@ a:hover {
 .rank-upper{
   padding-top: 20px;
   display: inline-block;
-  color: white;
   text-align: center;
   justify-content: center;
   align-items: center;
-  background-color: rgb(23, 23, 26);
-  height: 200px;
-  width: 200px;
-  z-index: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
   grid-area: overlap;
-  box-shadow: 0px 2px 9px 2px rgb(43, 41, 38);
 }
 
 .rank-upper:hover{
@@ -320,23 +313,118 @@ a:hover {
 
 .rank-under{
   background-color: rgb(224, 224, 224);
-  height: 200px;
-  width: 200px;
-  z-index: -1;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
   grid-area: overlap;
-  box-shadow: 0px 1px 7px 1px rgb(43, 41, 38);
 }
 
 .rank-container{
-  border-color: black;
-  border-style: solid;
   display: grid;
+  width: 100%;
+  height: 100%;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "overlap";
 }
 
+.all-wrapper{
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 80px;
+  height: 100vh;
+  display: grid;
+  grid-template-columns:300px 1fr;
+  grid-template-rows: 70px 200px 310px 70px;
+  grid-template-areas: 
+  "title title"
+  "user ranking"
+  "user subs"
+  "user page";
+}
+
 .highlight{
   font-size: 2em;
   font-family: "Zilla Slab", serif;
+}
+
+.rank-wrapper{
+  border-style: solid;
+  justify-self: center;
+  align-self: center;
+  align-items: center;
+  justify-items: center;
+  height: 200px;
+  width: 100%;
+  display: inline-flex;
+  justify-content: space-evenly;
+  grid-area: ranking;
+}
+
+.black{
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+.white{
+  background-color: white;
+  color: black;
+}
+
+.gray{
+  color: black;
+  background-color: rgb(223, 223, 223);
+}
+
+.user-info{
+  text-align: left;
+  display: block;
+  padding-top: 2%;
+  align-self: center;
+  justify-content: center;
+  grid-area: user;
+}
+
+.header{
+  grid-area: title;
+}
+.header h1{
+
+  background-color: rgb(216, 212, 212);
+}
+.submissions{
+  grid-area: subs;
+}
+
+
+.submissions table tr:nth-child(1n+2):nth-child(odd){
+  background-color: rgb(211, 211, 211);
+  color: rgb(43, 43, 43);
+}
+
+.submissions table .first{
+  background-color: rgb(33, 32, 46);
+  color: white;
+}
+.submissions table{
+  width: 100%;
+  height: auto;
+}
+
+.links{
+  display: flex;
+  justify-content: space-evenly;
+  grid-area: page;
+}
+
+table a{
+  color: black;
+}
+
+.rank-under table{
+  width: 100%;
+}
+
+.rank-under.white table:nth-child(odd){
+  background-color: rgb(255, 255, 255);
 }
