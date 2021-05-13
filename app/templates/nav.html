@@ -1,7 +1,6 @@
 
 <nav id="a" class="top-nav">
     <!-- display if loggedin -->
-    
         <h3 class="logo">Sidenote</h3>
     <ul class="items">
         
@@ -43,7 +42,7 @@
             <a href="{{url_for('index.profile', userId=current_user.id)}}">Profile</a>
         </li>
         <li class="navbar-option">
-            <a href="{{url_for('index.logout')}}">Log out</a>
+            <a href="{{url_for('index.logout')}}">Logout</a>
         </li>
         {% endif %}
 </ul>
