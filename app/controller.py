@@ -10,14 +10,18 @@ from datetime import datetime
 
 def createUser(user,password):
     if user.validate() and password!="":
-        try:
-            user.set_password(password)
-            db.session.add(user)
-            db.session.commit()
-        except SQLAlchemyError as e:
-            print("user creation raised an esception:", str(e))
+        if not users.query.filter_by(username=user.username).first():
+            try:
+                user.set_password(password)
+                db.session.add(user)
+                db.session.commit()
+            except SQLAlchemyError as e:
+                print("user creation raised an esception:", str(e))
+                return False
+            return True
+        else:
+            print("username existed")
             return False
-        return True
     else:
         print("Missing data")
         return False
