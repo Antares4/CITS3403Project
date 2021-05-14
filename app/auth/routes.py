@@ -20,12 +20,12 @@ def login():
                 updateLoginTime(user)
                 return redirect(url_for('index.index', name=user.username))
             else:
-                flash("invalid Password")
+                flash("Invalid Password")
                 return render_template('login.html', title='Sign In', form=form)
         else:
-            flash("invalid username")
+            flash("Invalid Username")
             return render_template('login.html', title='Sign In', form=form)
     elif(request.method == 'POST' and form.validate_on_submit() != True):
-        flash('empty field')
+        flash('Empty Field')
     return render_template('login.html', title='Sign In', form=form)
 

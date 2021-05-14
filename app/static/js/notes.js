@@ -14,7 +14,7 @@ function init(element, clef, time,stavelength, key){
   var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 
   // Configure the rendering context.
-  renderer.resize(stavelength, 200);
+  renderer.resize(stavelength, 100);
   context = renderer.getContext();
   context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
 

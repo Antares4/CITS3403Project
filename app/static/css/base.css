@@ -244,6 +244,9 @@ a:hover {
   color: white;
 }
 .canvascontainer {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: 20px;
   background-color: rgb(214, 214, 214);
   padding-bottom: 5%;
@@ -309,5 +312,7 @@ a:hover {
   ); /* Chrome10+,Safari5.1+ */
 }
 
-
+.warning{
+  color: red;
+}
 
