@@ -4,6 +4,19 @@
   box-sizing: border-box;
   font-family: "Zilla Slab", serif;
 }
+.all-wrapper.bob {
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  flex-direction: column;
+  align-content: flex-end;
+}
+p {
+  margin: 1rem 0 1rem 0;
+}
+.content-page ol {
+  list-style-position: inside;
+}
 hr.intro-page {
   margin-top: 5%;
   width: 55%;
@@ -127,8 +140,18 @@ a:hover {
     "nav-top"
     "content-block";
 }
+
 .top-nav {
   grid-area: nav-top;
+}
+.block {
+  grid-area: content-block;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  grid-template-areas: "sidebar content-section";
+  overflow: auto;
 }
 .block {
   grid-area: content-block;
@@ -241,6 +264,7 @@ a:hover {
 }
 .canvas-wrapper {
   padding: 5%;
+  margin: 10px 0 10px 0;
   background-color: rgb(87, 87, 87);
 }
 .canvas-wrapper p {
