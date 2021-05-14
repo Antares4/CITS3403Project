@@ -2,12 +2,12 @@
 
 {% block content %}
     
-    <form action="" method="post" novalidate>
-        <h1>Sign In</h1>
+    <form id="loginform" method="post" onsubmit="loginValidate();" novalidate>
+        <h1 id="headtitle">Sign In</h1>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
           {% for message in messages %}
-            {{ message }}
+            <span class="warning">[{{ message }}]</span>
           {% endfor %}
         {% endif %}
         {% endwith %}
@@ -15,7 +15,7 @@
         <p>
             {{ form.username.label }}
             <br>
-            {{ form.username(size=32) }}
+            {{ form.username(size=32, id="loginname") }}
             {% for error in form.username.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
@@ -24,7 +24,7 @@
         <p>
             {{ form.password.label }}
             <br>
-            {{ form.password(size=32) }}
+            {{ form.password(size=32, id="loginpwd") }}
             {% for error in form.password.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
