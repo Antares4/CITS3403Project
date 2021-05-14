@@ -29,7 +29,7 @@ class SystemTest(unittest.TestCase):
             peter.firstname='sdsfs'
             peter.lastname='shejg'
             peter.email='adsfea32f@student.uwa.edu.au'
-            peter.set_password("admin")
+            peter.set_password("adminnnn")
             peter.isAdmin=True
             
             shuang=users()
@@ -153,7 +153,23 @@ class SystemTest(unittest.TestCase):
     def test_login(self):
         self.driver.get("http://localhost:5000/login")
         self.driver.implicitly_wait(4)
+        test_user = users.query.filter_by(username="fefe").first()
+        self.assertIsInstance(test_user,users)
+
+        test_username = test_user.username
+        test_password = "adminnnn"
+        print(test_password)
+        print(test_username)
+        username = self.driver.find_element_by_id("loginname")
+        password = self.driver.find_element_by_id("loginpwd")
+        submit = self.driver.find_element_by_id("submit")
+
+        username.send_keys(test_username)
+        password.send_keys(test_password)
+        submit.click()
         time.sleep(2)
+        logout = self.driver.find_element_by_link_text("LOGOUT")
+        self.assertIsNotNone(logout)
 
 if __name__=='__main__':
     unittest.main(verbosity=2)
