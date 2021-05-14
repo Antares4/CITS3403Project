@@ -13,6 +13,7 @@ def testSubmission(difficulty):
     if current_user.isAdmin:
         return False
     form = submissionForm()
+    route_assessment = "quiz/{}.html".format(difficulty)
     if form.validate_on_submit():
         sub = createSubmission(current_user.id, difficulty, form)
         print(sub)
@@ -22,7 +23,9 @@ def testSubmission(difficulty):
             print("createSubmission failed")
             return render_template(route_assessment, title='Assessment', form=form)
         return redirect(url_for('index.index'))
-    route_assessment = "quiz/{}.html".format(difficulty)
+    elif request.method == 'POST' and not form.validate_on_submit():
+        flash("no empty fields")
+        return render_template(route_assessment, title='Assessment', form=form)
     return render_template(route_assessment, title='Assessment', form=form)
 
 
