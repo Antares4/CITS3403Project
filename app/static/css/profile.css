@@ -1,0 +1,227 @@
+.rank-upper{
+    padding-top: 20px;
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    grid-area: overlap;
+  }
+  
+  .rank-upper:hover{
+    opacity: 0;
+    transition: all 0.4s ease 0.01s;
+  }
+  
+  .rank-under{
+    background-color: rgb(224, 224, 224);
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    grid-area: overlap;
+  }
+  
+  .rank-container{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "overlap";
+  }
+  
+  .all-wrapper{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 65px;
+    height: 100vh;
+    display: grid;
+    grid-template-columns:300px 1fr;
+    grid-template-rows: 70px 200px 310px 70px 20px;
+    grid-template-areas: 
+    "title title"
+    "user ranking"
+    "user subs"
+    "user page"
+    "footer footer";
+  }
+  
+  .highlight{
+    font-size: 2em;
+    font-family: "Zilla Slab", serif;
+  }
+  
+  .rank-wrapper{
+    /* border-style: solid; */
+    justify-self: center;
+    align-self: center;
+    align-items: center;
+    justify-items: center;
+    height: 200px;
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-evenly;
+    grid-area: ranking;
+  }
+  
+  .black{
+    background-color: rgb(0, 0, 0);
+    color: white;
+  }
+  
+  .white{
+    background-color: white;
+    color: black;
+    border-style: solid;
+    border-width: 1px;
+  }
+  
+  .gray{
+    color: black;
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 1px;
+  }
+  
+  .user-profile{
+    padding-left: 7%;
+    text-align: left;
+    display: block;
+    padding-top: 2%;
+    /* align-self: center;
+    justify-content: center; */
+    grid-area: user;
+    border-left: solid;
+    border-width: 1px;
+  }
+  
+  .header{
+    height: auto;
+    justify-items: center;
+    grid-area: title;
+  }
+  .header h1{
+    border-left: 1px solid;
+    border-right: 1px solid;
+    height: 100%;
+    background-color: rgb(216, 212, 212);
+  }
+  .submissions{
+    grid-area: subs;
+  }
+  
+  
+  .submissions table tr:nth-child(1n+2):nth-child(odd){
+    background-color: rgb(211, 211, 211);
+    color: rgb(43, 43, 43);
+  }
+  
+  .submissions table .first{
+    background-color: rgb(33, 32, 46);
+    color: white;
+  }
+  .submissions table{
+    width: 100%;
+    height: auto;
+  }
+  
+  .links{
+    display: flex;
+    justify-content: space-between;
+    grid-area: page;
+  }
+  .links-right{
+    display: flex;
+    justify-content: flex-end;
+    grid-area: page;
+  }
+  
+  table a{
+    color: black;
+  }
+  
+  .rank-under table{
+    width: 100%;
+  }
+  
+  
+  .rank-under table tr:nth-child(1n+2):nth-child(even){
+    background-color: rgb(236, 236, 236);
+  }
+  
+  .user-image{
+    max-width: 80%;
+    max-height: 80%;
+  }
+  
+  .submission-upper{
+    padding-top: 60px;
+    display: inline-block;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .collopse{
+    height: 100%;
+    background-color:rgb(43, 41, 38);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    overflow: auto;
+  }
+  
+  .user-info{
+    height: 100%;
+    text-align: left;
+    display: block;
+    /* align-self: center;
+    justify-content: center; */
+    grid-area: user;
+    border-left: solid;
+    border-width: 1px;
+  }
+  
+  .userheader{
+    padding-left: 4%;
+    font-size: 20px;
+    background-color: rgb(78, 78, 78);
+    user-select: none;
+  
+  }
+  
+  .userheader:hover{
+    background-color: rgb(95, 95, 95);
+  }
+  
+  .usercontent{
+    padding-left: 4%;
+    max-height: 0;
+    overflow: hidden;
+    color: black;
+    background-color: #e4e4e4;
+    transition: all 0.2s ease-out;
+  }
+  
+  .usercontent a{
+    color: black;
+    width: 100%;
+  }
+
+  .usercontent a:hover{
+    width: 100%;
+    color: white;
+    background-color: rgb(95, 95, 95);
+  }
+  
+.foot{
+    grid-area: footer;
+}

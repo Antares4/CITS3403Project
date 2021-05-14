@@ -1,7 +1,7 @@
 from flask import Flask, request, url_for, redirect, render_template, flash, jsonify
 from flask_login import current_user, login_required, logout_user
 from app.index import bp
-from app.controller import getUserById, getAdminProfile, getUserProfile, processNoteScore, processKeyScore
+from app.controller import getUserById, getAdminProfile, getUserProfile, processNoteScore, processKeyScore, getKeyRanking,getNoteRanking
 from app import db
 from app.model import submission
 from config import Config
@@ -32,11 +32,11 @@ def profile(userId):
     if usr.isAdmin:
         page = request.args.get('page', 1, type=int)
         info = getAdminProfile(page, userId)
-        return render_template("profile/profile.html",data=info)
+        return render_template("profile/adminprofile.html",data=info)
     else:
         page = request.args.get('page', 1, type=int)
         info = getUserProfile(page, userId)
-        return render_template("profile/profile.html",data=info)
+        return render_template("profile/userprofile.html",data=info, key=dict(getKeyRanking=getKeyRanking, getNoteRanking=getNoteRanking))
 
 
 @bp.route('/timedNote')
