@@ -6,6 +6,7 @@
         {% include "imports/importhead.html" %}
     </head>
     <body>
+    <div class="grid-wrapper">
         {% include "nav.html" %}
         <div class="container-fluid">
             {% with messages = get_flashed_messages() %}
@@ -19,6 +20,7 @@
             {% endwith %}
             {% block content %}{% endblock %}
         </div>
-        {% include "imports/importfoot.html" %}
+        {% include "imports/importfoot.html"%}
+    </div>
     </body> 
 </html>
