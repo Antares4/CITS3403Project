@@ -1,19 +1,23 @@
 {%extends "assessment.html"%}
 {% block page %}
+<div class="assessment-wrapper">
     <form method="post" onsubmit="submissionvalidate();" novalidate>
         {% if form %}
         {{ form.hidden_tag() }}
         {% endif %}
+        <h1>Assessment - Level 3</h1>
+        <hr>
         <p class="question question1">
             This assessment may require knowldge beyond provided content and is sutible for ones seeking for more challenge.
-            <hr>
         </p>
         <p>
             Look at this passage and answer the questions below
         </p> 
+
         <div class="canvascontainer display">
             <div id="Q1"></div>
         </div>
+
         <div id="question1">
             <p>                
                 Name three notes in this passage that does not belong to the key of <strong>A</strong>
@@ -203,8 +207,8 @@
         {% if form %}
         <p>{{ form.submit() }}</p>
         {% endif %}
-
     </form>
+</div>
     <style>
         textarea{
             width: 300px;

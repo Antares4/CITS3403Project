@@ -198,7 +198,7 @@ def howManySubmissions():
     return(len(sub))
 
 def howManyUsers():
-    usr = users.query.all()
+    usr = users.query.filter_by(isAdmin=False).all()
     return(len(usr))
 
 def getAllSubmissions():
@@ -374,11 +374,11 @@ def processKeyScore(userId,score):
     return result
 
 def getNoteList():
-    top_users = users.query.filter_by(isAdmin=False).order_by(users.noteHighScore.desc()).limit(10).all()
+    top_users = users.query.filter_by(isAdmin=False).order_by(users.noteHighScore.desc()).limit(7).all()
     print("users",top_users)
     return top_users
 
 def getKeyList():
-    top_users = users.query.filter_by(isAdmin=False).order_by(users.KeyHighScore.desc()).limit(10).all()
+    top_users = users.query.filter_by(isAdmin=False).order_by(users.KeyHighScore.desc()).limit(7).all()
     print("users",top_users)
     return top_users

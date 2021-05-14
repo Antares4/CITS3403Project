@@ -33,13 +33,14 @@
   }
   
   .all-wrapper{
+    border-right: solid 1px black;
     padding-left: 10%;
     padding-right: 10%;
     padding-top: 65px;
     height: 100vh;
     display: grid;
     grid-template-columns:300px 1fr;
-    grid-template-rows: 70px 200px 310px 70px 20px;
+    grid-template-rows: 70px 200px 310px 70px 25px;
     grid-template-areas: 
     "title title"
     "user ranking"
@@ -67,7 +68,7 @@
   }
   
   .black{
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(32, 32, 32);
     color: white;
   }
   
@@ -110,6 +111,9 @@
   }
   .submissions{
     grid-area: subs;
+    border-right: solid black 1px;
+    border-left: solid black 1px;
+    border-top: solid black 1px;
   }
   
   
@@ -118,8 +122,8 @@
     color: rgb(43, 43, 43);
   }
   
-  .submissions table .first{
-    background-color: rgb(33, 32, 46);
+  .first{
+    background-color: rgb(22, 22, 29);
     color: white;
   }
   .submissions table{
@@ -131,6 +135,8 @@
     display: flex;
     justify-content: space-between;
     grid-area: page;
+    border-right: solid black 1px;
+    border-left: solid black 1px;
   }
   .links-right{
     display: flex;
@@ -158,12 +164,18 @@
   
   .submission-upper{
     padding-top: 60px;
+    border-right: 2px rgb(0, 0, 0);
     display: inline-block;
     text-align: center;
     justify-items: center;
     align-items: center;
     height: 100%;
     width: 100%;
+  }
+
+  .submission-upper:nth-child(odd){
+    border-style: solid;
+    border-right: 2px rgb(211, 211, 211);
   }
   
   .collopse{
@@ -224,4 +236,25 @@
   
 .foot{
     grid-area: footer;
+}
+
+
+
+
+/* this is for assessment */
+
+h1 {
+  letter-spacing: 0.1ex;
+  text-transform: uppercase;
+  font-size: 7ex;
+}
+
+
+footer{
+  color: white;
+  background-color: rgb(19, 19, 19);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem; 
 }

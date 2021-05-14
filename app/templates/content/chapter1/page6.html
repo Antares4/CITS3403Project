@@ -22,11 +22,11 @@
 
 <!-- Start button triggers display of this module which will also take up the whole page-->
 <div id="content" style="display: none;">
-
+    <h1>Note Reaction test</h1>
     <!-- you need to impliment either a text timer e.g 1:30 or a css graphic one which ever one you prefer -->
-    <span>timer</span>
+    <span id="timer">timer</span>
     <!--  -->
-
+    <div id="score">0</div>
     <!-- this div you can use to position the stave -->
     <div>
 
@@ -79,7 +79,10 @@
         var correctanswer = null;
         var this_clef = null;
         var points = 0;
+        var timeLeft = 30;
         var userId = {{ current_user.id|safe }}
+        var time_div = document.getElementById("timer");
+        var score = document.getElementById("score");
         $("#start").bind("click",function(){
             // do not modify
             $("#intro").css("display","none")
@@ -88,7 +91,7 @@
 
             //####### Shuang this is for you ##########
             // this is the time out callback i've set when start is pressed try impliment a countdown using js or css or both 
-            setTimeout(timeOutSubmit, 30000)
+            timer = setInterval(countdown, 1000);
             //###############################
 
             // do not modify
@@ -106,6 +109,7 @@
                     points--;
                 }
             }
+            score.innerHTML = points;
             removestave("note");
             this_clef = getRandomClef()
             setAnswers(this_clef);
@@ -122,6 +126,7 @@
                     points--;
                 }
             }
+            score.innerHTML = points;
             removestave("note");
             this_clef = getRandomClef();
             setAnswers(this_clef);
@@ -158,6 +163,16 @@
                 document.getElementById("ranking").innerHTML = data.ranking;
                 document.getElementById("score").innerHTML = data.score;
             }) 
+        }
+        function countdown(){
+            if (timeLeft == -1) {
+                clearTimeout(timer);
+                timeOutSubmit();
+            } 
+            else {
+                time_div.innerHTML = timeLeft + ' seconds remaining';
+                timeLeft--;
+            }
         }
     });
     // gmae logic do not modify!!!!!
