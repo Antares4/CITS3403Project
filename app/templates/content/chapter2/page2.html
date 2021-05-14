@@ -1,37 +1,38 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<div class="textcontainer">
+<div class="textcontainer content-section">
+    <div class="para">
     <h1>Time Signiture</h1>
     <hr>
     <p>
         In music notation, a <strong>Bar</strong> represents a segment of time corrosponding to a spacific number of <strong>beats</strong> that are
         are closed off by vertical boundries called <strong>bar lines.</strong>
     </p>
-    <div class="canvascontainer display">
-        <div class="stave" id="bar"></div>
-        <hr class="display">
+    <div class="canvas-wrapper">
+        <div class="canvascontainer">
+            <div class="stave" id="bar"></div>
+        </div>
     </div>
-    <p class="display">
+    <p >
         Similar to clefs, the <strong>Time signiture</strong> establishes the rhythmic context of a piece of music.
         <br>
     </p>
-    <p class="display">
+    <p >
         Time signitures consists of two figures positioned like a fraction symbol.
         The top figure represents the <strong>amount of beats</strong> present in a bar, whereas the bottom figure determines
         the <strong>note value</strong> of those beats. 
     </p>
-    <p class="display">
+    <p>
         This is an example of a <strong> 4/4</strong> time signiture - also known as the common-time. <br>
         The number 4 above indicates that there are <strong>4 beats</strong> in a bar, whereas the bottom 4 represents the note value of <strong>crotchet</strong>. 
     </p>
-    <div class="canvascontainer display">
+    <div class="canvascontainer">
         <div class="stave" id="timesigniture"></div>
-        <hr class="display">
     </div>
     <hr>
-
-    <div class="pagebutton display">
+</div>
+    <div class="pagebutton">
         <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Previous</a>
         <a href="{{url_for('index.notes', chapter='chapter2', page='page3')}}">Next</a>
     </div>

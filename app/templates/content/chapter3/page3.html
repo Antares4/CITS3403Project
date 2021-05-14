@@ -1,6 +1,7 @@
 {%extends "content.html"%}
 {% block page %}
-<div class="textcontainer">
+<div class="textcontainer content-section">
+    <div class="para">
     <h1>KEY signiture</h1>
     <hr>
     <p>To establish a key, we must indicate which group of notes(scale) we are after.</p> <br>
@@ -27,6 +28,7 @@
         <div class="stave" id="Cmajorcomp"></div>
         <div class="stave" id="Fmajorcomp"></div>
     </div>
+</div>
     <div class="pagebutton display">
         <a href="{{url_for('index.notes', chapter='chapter3', page='page2')}}">Previous</a>
         <a href="{{url_for('index.notes', chapter='chapter3', page='page4')}}">Next</a>
