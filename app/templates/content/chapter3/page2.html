@@ -20,11 +20,12 @@
             </div>
         </div>
         </div>
-        <div class="pagebutton">
-            <a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Previous</a>
-            <a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">Next</a>
-        </div>
+        
     </div>
+    <div class="pagebutton">
+            <span id="previous"><a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">&lt Previous</a></span>
+            <span id="next"><a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">Next &gt</a></span>
+        </div>
 <!-- For page 2 of chapter 3 used to force footer down -->
 
     <div class="empty"></div>

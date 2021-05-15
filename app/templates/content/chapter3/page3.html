@@ -10,7 +10,7 @@
         <li> To establish a key, we must indicate which group of notes(scale) we are after.</li></ol>
     <p>In some scenario this may require repetitive use of accidentals through out a piece of music which is redundent and more vulnerable to errors.</p>
     <div class="canvas-wrapper">
-        <p>Below is a representation of the key B major without key signatures.
+        <p>Below is a representation of the key B major without key signatures
     </p>
     <div class="canvascontainer ">
         <!-- id no modify -->
@@ -39,10 +39,11 @@
     </div>
 </div>
 </div>
-    <div class="pagebuttons">
-        <a href="{{url_for('index.notes', chapter='chapter3', page='page2')}}">Previous</a>
-        <a href="{{url_for('index.notes', chapter='chapter3', page='page4')}}">Next</a>
-    </div>
+    
+</div>
+<div class="pagebutton">
+    <span id="previous"><a href="{{url_for('index.notes', chapter='chapter3', page='page2')}}">&lt Previous</a></span>
+    <span id="next"> <a href="{{url_for('index.notes', chapter='chapter3', page='page4')}}">Next &gt</a></span>
 </div>
 <div class="footer-container normal">
     <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>

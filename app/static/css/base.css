@@ -569,3 +569,54 @@ a:hover {
   height: 40px;
   margin-bottom: 20px;
 }
+.pagebutton {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.pagebutton #previous {
+  width: 180px;
+  height: 40px;
+  transform: translate(-150px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  justify-self: flex-start;
+  margin-bottom: 30px;
+
+  transition: transform 300ms ease-out;
+}
+.pagebutton {
+  width: 100%;
+}
+.pagebutton #next {
+  width: 180px;
+  height: 40px;
+  transform: translate(150px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+  background-color: black;
+  color: white;
+  justify-self: flex-end;
+  margin-bottom: 20px;
+  transition: transform 300ms ease-out;
+}
+.pagebutton #previous:hover {
+  transform: translate(0px);
+}
+.pagebutton #next:hover {
+  transform: translate(0px);
+}
+
+.textcontainer {
+  overflow-x: hidden;
+}
+.test-self {
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

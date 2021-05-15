@@ -2,7 +2,7 @@
 
 {% block page %}
 <!-- text part basically same as page 2 -->
-<div class="textcontainer">
+<div class="textcontainer rep">
     <!-- this is the title -->
     <div class="content-section">
       <div class="para">
@@ -48,12 +48,13 @@
   <!-- this should be another title but smaller -->
 
  <!-- prev/next page  same stuff-->
-  <div class="pagebutton">
-    <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Previous</a> </span>
-    <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page5')}}">Next</a> </span>
-  </div>
+  
   <!--  -->
 
+</div>
+<div class="pagebutton">
+  <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">&lt Previous</a> </span>
+  <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page5')}}">Next &gt</a> </span>
 </div>
 <div class="footer-container normal">
   <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>

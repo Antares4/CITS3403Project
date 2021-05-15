@@ -69,13 +69,18 @@
     </div>
     </div>
     
-        <div class="pagebutton">
+        <div class="test-self">
             <!-- next page link -->
             <p>Felt confident? click <a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">HERE</a> to test yourself</p>
             <!--  -->
         </div>
     
 </div>
+<div class="pagebutton">
+    <span id="previous"><a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">&lt Previous</a></span>
+    <span id="next"><a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Next Module </a></span>
+    
+    </div>
 <div class="footer-container normal">
     <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
  </div>
