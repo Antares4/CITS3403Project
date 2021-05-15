@@ -22,7 +22,7 @@ def testSubmission(difficulty):
         else: 
             print("createSubmission failed")
             return render_template(route_assessment, title='Assessment', form=form)
-        return redirect(url_for('index.index'))
+        return redirect(url_for('index.profile', userId=current_user.id))
     elif request.method == 'POST' and not form.validate_on_submit():
         flash("no empty fields")
         return render_template(route_assessment, title='Assessment', form=form)

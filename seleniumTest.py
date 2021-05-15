@@ -4,7 +4,8 @@ from app.model import users, submission, answer
 from app import initapp, db
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
+from selenium.webdriver.common.action_chains import ActionChains
+DRIVER = SECRET_KEY = os.environ.get('DRIVER') or './chromedriver.exe'
 class testConfig():
     basedir=os.path.abspath(os.path.dirname(__file__))
     #SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
@@ -13,7 +14,7 @@ class testConfig():
 class SystemTest(unittest.TestCase):
     driver = None
     def setUp(self):
-        self.driver = webdriver.Chrome('./chromedriver.exe')
+        self.driver = webdriver.Chrome(DRIVER)
 
         if not self.driver:
             self.skipTest("browser not ready")
@@ -33,11 +34,11 @@ class SystemTest(unittest.TestCase):
             peter.isAdmin=True
             
             shuang=users()
-            shuang.username='aceace'
+            shuang.username='name'
             shuang.firstname='shuang'
             shuang.lastname='zheng'
             shuang.email='2234990@gmail.com'
-            shuang.set_password("asdfasdfefefe")
+            shuang.set_password("goodmorning")
             shuang.noteHighScore = 3
             shuang.KeyHighScore = 2
             shuang.isAdmin=False
@@ -158,8 +159,7 @@ class SystemTest(unittest.TestCase):
 
         test_username = test_user.username
         test_password = "adminnnn"
-        print(test_password)
-        print(test_username)
+
         username = self.driver.find_element_by_id("loginname")
         password = self.driver.find_element_by_id("loginpwd")
         submit = self.driver.find_element_by_id("submit")
@@ -170,6 +170,43 @@ class SystemTest(unittest.TestCase):
         time.sleep(2)
         logout = self.driver.find_element_by_link_text("LOGOUT")
         self.assertIsNotNone(logout)
+
+    def test_submission(self):
+        self.driver.get("http://localhost:5000/login")
+        self.driver.implicitly_wait(1)
+        test_user = users.query.filter_by(username="name").first()
+        self.assertIsInstance(test_user,users)
+
+        test_username = test_user.username
+        test_password = "goodmorning"
+
+        username = self.driver.find_element_by_id("loginname")
+        password = self.driver.find_element_by_id("loginpwd")
+        submit = self.driver.find_element_by_id("submit")
+
+        username.send_keys(test_username)
+        password.send_keys(test_password)
+        submit.click()
+        hoverElement = self.driver.find_element_by_id("assessment")
+        action = ActionChains(self.driver)
+        action.move_to_element(hoverElement).perform()
+        intro = self.driver.find_element_by_link_text("INTRO")
+        intro.click()
+        self.driver.implicitly_wait(4)
+        textbox = self.driver.find_elements(By.CLASS_NAME, "response")
+        textbox[0].send_keys("G")
+        textbox[1].send_keys("G")
+        textbox[2].send_keys("G")
+        textbox[3].send_keys("G")
+        textbox[4].send_keys("G")
+        submit_assess = self.driver.find_element_by_id("submit")
+        submit_assess.click()
+        header = self.driver.find_element_by_id("currentname")
+        self.assertEqual(header.get_attribute("innerHTML"),test_username)
+        time.sleep(2)
+
+
+
 
 if __name__=='__main__':
     unittest.main(verbosity=2)
