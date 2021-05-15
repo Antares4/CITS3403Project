@@ -4,13 +4,7 @@
   box-sizing: border-box;
   font-family: "Zilla Slab", serif;
 }
-.all-wrapper.bob {
-  display: flex;
-  justify-content: center;
-  justify-content: center;
-  flex-direction: column;
-  align-content: flex-end;
-}
+
 p {
   margin: 1rem 0 1rem 0;
 }
@@ -334,4 +328,11 @@ a:hover {
     rgb(221, 221, 221) 80%,
     rgb(255, 255, 255) 100%
   ); /* Chrome10+,Safari5.1+ */
+}
+.all-wrapper.bob {
+  display: flex;
+  justify-content: center;
+  justify-content: center;
+  flex-direction: column;
+  align-content: flex-end;
 }
