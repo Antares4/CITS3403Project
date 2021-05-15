@@ -97,9 +97,9 @@ answer(
 - Can login and logout useing username and password
 - Can view provided content
 - Can create submissions 
-- Can compelete Timed assessment
-- Can view feedback on performance/assessment
-- Can view global user performance on timed assessment
+- Can compelete Timed assessments
+- Can view feedback on performance/assessments
+- Can view global user performance on timed assessments
 
 ![Admin Users](https://img.shields.io/badge/-Admin-blue.svg)
 - Can login and logout useing username and password
@@ -124,7 +124,7 @@ Manuel feedback become visible to users once the marker have submitted the feedb
       
 * Agile Methodology 
 
-      > Scope of each Iterations were outlined based on the analysis on requirements constructed from user storys.
+      > Scope of each iterations were outlined based on the analysis of requirements constructed from user storys.
       > Determine functionalities that needs to be delivered.
 
 * Implimentation phase
