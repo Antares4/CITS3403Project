@@ -4,65 +4,83 @@
 <!-- each module needs to take up the entire page -->
 
 <!-- intro module will be displayed at the beginning-->
-<div class="textcontainer content-section">
-<div id="intro">
-    <div>
-        <!-- header -->
-        <h1>Key Reaction test</h1>
-        <!--  -->
-        <p>
-            <!-- make this eye catching, espically the "30"  -->
-            In this test you will have <strong>30</strong> seconds to test your familiraty with Key recognition. 
-        </p>
+<div class="textcontainer">
+    <div class="content-section quiz"> 
+        <div id="intro">
+            <h1>Note Reaction test</h1>
+
+        <div class="summary" >
+            <!-- header -->
+            <!--  -->
+            <p>
+                <!-- make this eye catching, espically the "30"  -->
+                In this test you will have <strong>30</strong> seconds to test your familiarity with note recognition. 
+            </p>
+            <span class="content-button note" id="start">Start</span>
+        </div>
+        <!-- make this button bigger and  -->
+    
+        </div>
+
+    <!--  -->
+
+    <!-- Start button triggers display of this module which will also take up the whole page-->
+        <div id="content" style="display: none;">
+            
+                <h1 class="header-section">Note Reaction test</h1>
+            <!-- you need to impliment either a text timer e.g 1:30 or a css graphic one which ever one you prefer -->
+            <span id="timer">30 seconds remaining</span>
+            <div class="timer-section">
+                <div class="bar"></div>
+                
+            </div>
+            <div class="score-section">
+                <!--  -->
+                Current score :  <strong id="score">0</strong>
+            </div>
+            <!-- this div you can use to position the stave -->
+            <div class="stave-section">
+                <!-- do not touch !!!!! -->
+                <p>Name the following note.</p>
+                <div>
+                    <div class="stave" id="note"></div>
+                </div>
+
+                <!-- do not touch !!!!! -->
+            </div>
+            <!--  -->
+            <div class="btn-section">
+            <!-- these two buttons needs to be large to be clicked on easily -->
+            <!-- please use contrasting color -->
+                <span class="content-button large"  id="btn-1">button1</span>
+                <span class="content-button large"  id="btn-2">button2</span>
+            <!--  -->
+            </div>
+        </div>
+    <!--  -->
+
+    <!-- this is the last module that will display when the test finshes  -->
+        <div class="review-hr" id="review" style="display: none;">
+            <h1 id="record"></h1>
+            <span>you have received: </span>
+            <!-- do not change the id -->
+            <span id="finalscore"></span>
+
+            <!--  -->
+            <span> Marks!</span>
+            <hr>
+            <span>Highest score:</span> 
+            <span id="highscore"></span>
+            <hr>
+            <span>Current Ranking:</span>
+            <span id="ranking"></span>
+            <hr>
+            <span>View full result and ranking, click <a href="{{url_for('index.profile', userId=current_user.id)}}">Here</a></span>
+        </div>
     </div>
-    <!-- make this button bigger and  -->
-    <button id="start">Start</button>
-</div>
-<!--  -->
-
-<!-- Start button triggers display of this module which will also take up the whole page-->
-<div id="content" style="display: none;">
-    <h1>Key Reaction test</h1>
-    <!-- you need to impliment either a text timer e.g 1:30 or a css graphic one which ever one you prefer -->
-    <span id="timer">timer</span>
-    <!--  -->
-    <div id="score">0</div>
-    <!-- this div you can use to position the stave -->
-    <div>
-
-        <!-- do not touch !!!!! -->
-        <div class="stave" id="note"></div>
-        <!-- do not touch !!!!! -->
-
-    </div>
-    <!--  -->
-
-    <!-- these two buttons needs to be large to be clicked on easily -->
-    <!-- please use contrasting color -->
-    <button id="btn-1">button1</button>
-    <button id="btn-2">button2</button>
-    <!--  -->
-</div>
-<!--  -->
-
-<!-- this is the last module that will display when the test finshes  -->
-<div id="review" style="display: none;">
-    <h1 id="record"></h1>
-    <span>you have received: </span>
-    <!-- do not change the id -->
-    <span id="score"></span>
-
-    <!--  -->
-    <span> Marks!</span>
-    <hr>
-    <span>Highest score:</span> 
-    <span id="highscore"></span>
-    <hr>
-    <span>Current Ranking:</span>
-    <span id="ranking"></span>
-    <hr>
-    <span>View full result and ranking, click <a href="{{url_for('index.profile', userId=current_user.id)}}">Here</a></span>
-</div>
+<div class="footer-container">
+    <footer>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
+ </div>
 </div>
 <!--  -->
 
@@ -153,9 +171,12 @@
                 if(data.record == true){
                     document.getElementById("record").innerHTML = "New Record!"
                 }
+                else{
+                    document.getElementById("record").innerHTML = "Well Done!"
+                }
                 document.getElementById("highscore").innerHTML = data.HighScore
                 document.getElementById("ranking").innerHTML = data.ranking;
-                document.getElementById("score").innerHTML = data.score;
+                document.getElementById("finalscore").innerHTML = data.score;
             }) 
         }
         function countdown(){

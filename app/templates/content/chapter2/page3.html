@@ -1,7 +1,8 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<div class="textcontainer content-section">
+<div class="textcontainer">
+    <div class="content-section">
     <div class="para">
     <h1>Note Values</h1>
     <p>
@@ -10,34 +11,40 @@
         <strong>semiquaver &#119137</strong>. <br>
         Each with duration halving the previous. 
     </p>
-    <p>
-        Click on the following to see howmany of each note fits in a 4/4 bar
-    </p>
+   
     <!-- notedemo class needed for js -->
     <div class="canvas-wrapper">
-    <div class="notedemo">
-        <button value=0>semibreve</button>
-        <button value=1>minim</button>
-        <button value=2>crotchet</button>
-        <button value=3>quaver</button>
-        <button value=4>semiquaver</button>
-    </div>
+        <p>
+            Click on the following to see howmany of each note fits in a 4/4 bar
+        </p>
+    
     
     <div class="canvascontainer">
         <!-- no modify -->
         <div class="stave" id="notevalue"></div>
         <!--  -->
+        
     </div>
-
+    <div class="notedemo">
+        <button class="content-button" value=0>semibreve</button>
+        <button class="content-button" value=1>minim</button>
+        <button class="content-button" value=2>crotchet</button>
+        <button class="content-button" value=3>quaver</button>
+        <button class="content-button" value=4>semiquaver</button>
     </div>
+    </div>
+    <hr>
     <p>
-        The note values are not set in stone however as they can also be changed by <strong>dot</strong> modifyers <br>
-        This modifyer extends the notevalue of it's host note by half of it's own value. <br>
-        For example, A crotchet is normally equivilent to <strong>2</strong> quavers, however a <strong>dotted</strong> crotchet will instead be equivilent to <strong>3</strong> quavers
+        The note values are not set in stone however as they can also be changed by the <strong>dot</strong> modifier.
+        <ol class="list-stff">
+            <li>This modifyer extends the note value of it's host note by <strong>half</strong> of it's own value.</li>
+        </ol>
     </p>
+        <p>For example, A crotchet is normally equivilent to <strong>2</strong> quavers, however a <strong>dotted</strong> crotchet will instead be equivilent to <strong>3</strong> quavers.
+        </p>
     <div class="canvas-wrapper">
     <p>
-        Here is an example a 6/8 bar that a duration of 6 quavers, which will fit exactly two <strong>dotted</strong> crotchets
+        Here is an example a 6/8 bar that a duration of 6 quavers, which will fit exactly two <strong>dotted</strong> crotchets.
     </p>
     <div class="canvas-wrapper">
     <div class="canvascontainer">
@@ -50,8 +57,15 @@
 </div>
 </div>
     <hr>
-    <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Previous</a>
-    <p><a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Next Module</a></p>
+</div>
+<div class="pagebutton">
+<span id="previous"><a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">&lt Previous</a></span>
+<span id="next"><a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Next Module</a></span>
+
+</div>
+<div class="footer-container normal">
+    <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
+ </div>
 </div>
 <script>
     $(document).ready(function(){
@@ -70,7 +84,7 @@
         })
         //
 
-        $(".notedemo > button").bind('click',function(){
+        $(".notedemo > .content-button").bind('click',function(){
             removestave("notevalue");
             notenames=[];
             notevals=[];

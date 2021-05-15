@@ -1,25 +1,9 @@
 {%extends "content.html"%}
 {% block page %}
 <!-- this is to make the table look not that shitty make our own table pls -->
-<style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-    
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-</style>
 
-<div class="textcontainer content-section">
+<div class="textcontainer">
+    <div class="content-section">
     <div class="para">
     <h1>Recognize Key</h1>
     <hr>
@@ -70,12 +54,14 @@
         <div class="stave" id="key"></div>
     </div>
 </div>
-    <p>Remembering this table seams to be an difficult task, but fortunatly there are some techniques to quickly identify a key signture.</p>
+<ol class="list-stff">
+    <li> Remembering this table seams to be an difficult task, but fortunately there are some techniques to quickly identify a key signatures.</li>
+</ol>
     <h3>
         Flats
     </h3>
     <hr>
-    <p>For key signature with flats the key is always the <strong>second last</strong> flat</p>
+    <p>For key signature with Flats, the key is always the <strong>second last</strong> flat</p>
     <ol>
         <li>Count the number of flats</li>
         <li>Remember the order in which the flats occurs: <strong>[B , E , A , D , G , C , F]</strong> </li>
@@ -93,16 +79,19 @@
     <h3>
         Sharps
     </h3>
-    <p>For key signature in Sharps, the key is the notename <strong>one step above</strong> the <strong>last Sharp</strong></p>
     <hr>
-    <p>The order of Sharps can be simply obtained by reversing the order of flats:[F , C , G , D , A , E , B]</p>
-    <p>This is the key of B major because the last Sharp: <strong>A#</strong> is one step below B</p>
+    <p>For key signature in Sharps, the key is the notename <strong>one step above</strong> the <strong>last Sharp</strong></p>
+    <ol>
+        <li>The order of Sharps can be simply obtained by reversing the order of flats:[F , C , G , D , A , E , B]</li>
+        <li>Name the note one step above the last sharp.</li>
+    </ol>
     <div class="canvas-wrapper">
+        <p>This is the key of B major because the last Sharp: <strong>A#</strong> is one step below B</p>
     <div class="canvascontainer">
         <!-- id no modify -->
         <div class="stave" id="sharp"></div>
     </div>
-</div>
+    <hr>
     <div class="pianocontainer">
         <ul class="set" id="piano">
             <li class="white f" id="f/4">F</li>
@@ -120,12 +109,24 @@
         </ul>
     </div>
 </div>
+    
 </div>
-    <a href="{{url_for('index.notes', chapter='chapter3', page='page5')}}">Test your self</a>
-    <div class="pagebutton display">
-        <a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">Previous</a>
+</div>
+<div class="test-self">
+    <!-- next page link -->
+    <p>Felt confident? click <a href="{{url_for('index.notes', chapter='chapter3', page='page5')}}">HERE</a> to test yourself</p>
+    <!--  -->
+</div>
+    
+</div>
+<div class="pagebutton">
+    <span id="previous"><a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">&lt Previous</a></span>
+    <span id="next"><a href="{{url_for('assessment.testSubmission', difficulty='intro')}}">Intro Assessment</a></span>
+    
     </div>
-
+<div class="footer-container normal">
+    <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
+ </div>
 </div>
 <script>
     $(document).ready(function(){

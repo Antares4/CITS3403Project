@@ -1,19 +1,22 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<div class="textcontainer content-section">
+<div class="textcontainer">
+    <div class="content-section">
     <div class="para">
     <h1>Time Signiture</h1>
     <hr>
     <p>
-        In music notation, a <strong>Bar</strong> represents a segment of time corrosponding to a spacific number of <strong>beats</strong> that are
-        are closed off by vertical boundries called <strong>bar lines.</strong>
+        In music notation, a <strong>Bar</strong> represents a segment of time corresponding
+        to a specific number of <strong>beats</strong> that are closed off by vertical boundaries called <strong>bar lines.</strong>
     </p>
     <div class="canvas-wrapper">
+        <p>This is a <strong>bar</strong>.</p>
         <div class="canvascontainer">
             <div class="stave" id="bar"></div>
         </div>
     </div>
+    <hr>
     <p >
         Similar to clefs, the <strong>Time signiture</strong> establishes the rhythmic context of a piece of music.
         <br>
@@ -35,10 +38,15 @@
 </div>
     <hr>
 </div>
+</div>
     <div class="pagebutton">
-        <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Previous</a>
-        <a href="{{url_for('index.notes', chapter='chapter2', page='page3')}}">Next</a>
+        <span id="previous"><a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}"> &lt Previous</a></span>
+        <span id="next"><a href="{{url_for('index.notes', chapter='chapter2', page='page3')}}">Next &gt</a></span>
     </div>
+
+    <div class="footer-container normal">
+        <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
+     </div>
 </div>
 <script>
     $(document).ready(function(){

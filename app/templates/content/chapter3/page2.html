@@ -1,28 +1,37 @@
 {%extends "content.html"%}
 {% block page %}
-<div class="textcontainer content-section">
-    <div class="para">
-   <h1>What is a key</h1>
-   <hr>
-   <p>A <strong>Key</strong> represents a group of core pitches used in a piece of music where melody, chords, and bassline are all derived from.</p>
-    <ol>
-        <li>This group features a center note called the <strong>Tonic</strong> and its <strong>6</strong> other corrosponding notes</li>
-        <li>Keys are named after their <strong>tonic</strong> note and belong to either the major or minor category</li>
-        <li>A scale displays this group of notes in sequence</li>
-    </ol>
-    <hr>
-    <div class="canvas-wrapper">
-    <p>Here is an example of a scale in the key of <strong>C Major</strong> starting from the tonic <strong>C</strong></p>
-    <div class="canvascontainer">
-        <div class="stave" id="cmajor"></div>
+<div class="textcontainer ">
+    <div class="content-section">
+        <div class="para">
+            <h1>What is a key</h1>
+                <hr>
+                <p>A <strong>Key</strong> represents a group of core pitches used in a piece of music where melody, chords, and bassline are all derived from.</p>
+                <ol>
+                    <li>This group features a center note called the <strong>Tonic</strong> and its <strong>6</strong> other corresponding
+                        notes.</li>
+                    <li>Keys are named after their <strong>tonic</strong> note and belong to either the major or minor category.</li>
+                    <li>A scale displays this group of notes in sequence.</li>
+                </ol>
+            <hr>
+        <div class="canvas-wrapper">
+            <p>Here is an example of a scale in the key of <strong>C Major</strong> starting from the tonic <strong>C</strong></p>
+            <div class="canvascontainer">
+                <div class="stave" id="cmajor"></div>
+            </div>
+        </div>
+        </div>
+        
     </div>
-</div>
-    <p>Click on learn more to learn about <strong>Key signiture</strong></p>
-</div>
     <div class="pagebutton">
-        <a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Previous</a>
-        <a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">Next</a>
-    </div>
+            <span id="previous"><a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">&lt Previous</a></span>
+            <span id="next"><a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">Next &gt</a></span>
+        </div>
+<!-- For page 2 of chapter 3 used to force footer down -->
+
+    <div class="empty"></div>
+    <div class="footer-container normal">
+        <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
+     </div>
 </div>
 <script>
     $(document).ready(function(){
