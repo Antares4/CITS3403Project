@@ -36,13 +36,14 @@ app/                                      <--Main App Module-->
                           assessment.js   ---Note rendering for assessment module useing VexFlow---
                           timer.js        ---Timed test functionality---
                           formattime.js   ---Reformat utc time---
+                          validate.js     ---Form validation--
       templates/                          <--Templates-->
                 content/                   
                 imports/
                 profile/
                 quiz/
                 ....html
-      __init__.py                         ---Blueprint registration and creating app onject---
+      __init__.py                         ---Blueprint registration and creating app object---
       controller.py                       ---CURD and Ajax response---
       model.py                            ---user and submission model---
 config.py                                 ---configuration---
