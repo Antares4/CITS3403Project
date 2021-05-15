@@ -174,6 +174,6 @@ $ python3 -W ignore seleniumTest.py
 - [VexFlow](https://github.com/0xfe/vexflow)
 - [GoogleFont](https://fonts.google.com/specimen/Zilla+Slab#standard-styles)
 
-## Acknoldgment
-- ![CITS3403 Lecture material] by Dr Tim French(https://teaching.csse.uwa.edu.au/units/CITS3403/)
-- ![FLASK MEGA tutorial] by Miguel Grinberg(https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
+## Acknowledgment
+- [CITS3403 Lecture material](https://teaching.csse.uwa.edu.au/units/CITS3403/) by Dr Tim French
+- [FLASK MEGA tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by Miguel Grinberg
