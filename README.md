@@ -36,17 +36,19 @@ app/                                      <--Main App Module-->
                           assessment.js   ---Note rendering for assessment module useing VexFlow---
                           timer.js        ---Timed test functionality---
                           formattime.js   ---Reformat utc time---
+                          validate.js     ---Form validation--
       templates/                          <--Templates-->
                 content/                   
                 imports/
                 profile/
                 quiz/
                 ....html
-      __init__.py                         ---Blueprint registration and creating app onject---
+      __init__.py                         ---Blueprint registration and creating app object---
       controller.py                       ---CURD and Ajax response---
       model.py                            ---user and submission model---
 config.py                                 ---configuration---
 sidenote.py                               ---Application---
+seleniumTest.py                           ---User test---
 test.py                                   ---Unittest---
     
 ```
@@ -95,9 +97,9 @@ answer(
 - Can login and logout useing username and password
 - Can view provided content
 - Can create submissions 
-- Can compelete Timed assessment
-- Can view feedback on performance/assessment
-- Can view global user performance on timed assessment
+- Can compelete Timed assessments
+- Can view feedback on performance/assessments
+- Can view global user performance on timed assessments
 
 ![Admin Users](https://img.shields.io/badge/-Admin-blue.svg)
 - Can login and logout useing username and password
@@ -122,7 +124,7 @@ Manuel feedback become visible to users once the marker have submitted the feedb
       
 * Agile Methodology 
 
-      > Scope of each Iterations were outlined based on the analysis on requirements constructed from user storys.
+      > Scope of each iterations were outlined based on the analysis of requirements constructed from user storys.
       > Determine functionalities that needs to be delivered.
 
 * Implimentation phase
@@ -132,7 +134,17 @@ Manuel feedback become visible to users once the marker have submitted the feedb
 * Testing
 
       > Basic unittest were automated and carried out at each iteration.
+## Testing
+### Unit test coverage 
+- ***CURD operation*** on user and submission model 
+- User ***login*** and ***registration*** control mechanism and validation
+- Submission control and validation 
+- Auto marking 
 
+### Selenium test coverage
+- User register case
+- User Login case
+- User submission case
 
 ## Install
 ```
@@ -150,7 +162,12 @@ $ flask run
 ```
 ## Unittest
 ```
-$ python3 tests.py
+$ python3 -W ignore test.py
+```
+## Selenium Test
+```
+$ export DRIVER='**your_web_driver_location**'
+$ python3 -W ignore seleniumTest.py
 ```
 ## Libraries Used
 - [Bootstrap](https://getbootstrap.com/)
@@ -158,5 +175,6 @@ $ python3 tests.py
 - [VexFlow](https://github.com/0xfe/vexflow)
 - [GoogleFont](https://fonts.google.com/specimen/Zilla+Slab#standard-styles)
 
-
-
+## Acknowledgment
+- [CITS3403 Lecture material](https://teaching.csse.uwa.edu.au/units/CITS3403/) by Dr Tim French
+- [FLASK MEGA tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by Miguel Grinberg
