@@ -2,20 +2,16 @@
 
 {% block content %}
     
-    <form action="" method="post" novalidate>
-        <h1>Sign In</h1>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          {% for message in messages %}
-            {{ message }}
-          {% endfor %}
-        {% endif %}
-        {% endwith %}
+    <form id="loginform" method="post" onsubmit="loginValidate();" novalidate>
+        <h1 id="headtitle">Sign In</h1>
         {{ form.hidden_tag() }}
+        {% if msg %}
+        <span class="warning">{{msg}}</span>
+        {% endif %}
         <p>
             {{ form.username.label }}
             <br>
-            {{ form.username(size=32) }}
+            {{ form.username(size=32, id="loginname") }}
             {% for error in form.username.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
@@ -24,14 +20,14 @@
         <p>
             {{ form.password.label }}
             <br>
-            {{ form.password(size=32) }}
+            {{ form.password(size=32, id="loginpwd") }}
             {% for error in form.password.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
+        <p>{{ form.submit(id="submit") }}</p>
 
         <div>
           don't have an account? <a href="{{ url_for('register.register') }}">Register</a>

@@ -36,5 +36,4 @@ function renderStaveNotes(element, note, clef){
     addnote(clef,[note],["q"]);
 }
 
-
-
+document.getElementById

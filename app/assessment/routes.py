@@ -35,8 +35,10 @@ def markSubmission(toBeMarked):
     if not current_user.isAdmin:
         return redirect(url_for('index.index'))
     else:
-        form = markingForm()
         this_sub = getSubmissionById(int(toBeMarked))
+        diff = this_sub.difficulty
+        route_mark = "quiz/{}.html".format(diff)
+        form = markingForm()
         user_responses = getAnswerForSub(int(toBeMarked))
         if form.validate_on_submit():
             if feedbackAssessment(this_sub, form, user_responses):
@@ -44,8 +46,8 @@ def markSubmission(toBeMarked):
             else:
                 print("submission failed")
                 return render_template(route_mark, title='Marking', form=form, responses=user_responses)
-        diff = this_sub.difficulty
-        route_mark = "quiz/{}.html".format(diff)
+        
+
         return render_template(route_mark, title='Marking', form=form, responses=user_responses)
 
 

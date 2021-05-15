@@ -28,8 +28,7 @@ def register():
         elif createUser(user, form.password.data):
             return redirect(url_for('auth.login'))
         else:
-            flash("Validation error")
-            return render_template("register.html", form=form)
+            return render_template("register.html", form=form, userExist="[Username already exist.]")
     elif(request.method == 'POST' and not form.validate_on_submit()):
         flash('unable to register')
     return render_template('register.html', title='Register', form=form)

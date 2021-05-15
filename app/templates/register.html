@@ -1,22 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <form action="" method="post" novalidate>
-        <h1>Sign In</h1>
+    <form id="registerform" method="post" onsubmit="registerValidate();" novalidate>
+        <h1>Register</h1>
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}
             <br>
-            {{ form.username(size=32) }}
-            {% for error in form.username.errors %}
+            {{ form.username(size=32,id="regUsrName") }}
             <br>
+            {% if userExist %}
+                <span class="warning">{{userExist}}</span>
+            {% endif %}
+            {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
             {{ form.password.label }}
             <br>
-            {{ form.password(size=32) }}
+            {{ form.password(size=32,id="regPwd") }}
             {% for error in form.password.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
@@ -25,7 +28,7 @@
         <p>
             {{ form.confirmpassword.label }}
             <br>
-            {{ form.confirmpassword(size=32) }}
+            {{ form.confirmpassword(size=32,id="regCfmPwd") }}
             {% for error in form.confirmpassword.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
@@ -34,7 +37,7 @@
         <p>
             {{ form.firstname.label }}
             <br>
-            {{ form.firstname(size=32) }}
+            {{ form.firstname(size=32,id="regFirst") }}
             {% for error in form.firstname.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
@@ -43,7 +46,7 @@
         <p>
             {{ form.lastname.label }}
             <br>
-            {{ form.lastname(size=32) }}
+            {{ form.lastname(size=32,id="regLast") }}
             {% for error in form.lastname.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
@@ -52,12 +55,13 @@
         <p>
             {{ form.email.label }}
             <br>
-            {{ form.email(size=32) }}
+            {{ form.email(size=32,id="regEmail") }}
             {% for error in form.email.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.submit() }}</p>
+        <p>{{ form.submit(id="submit") }}</p>
     </form>
+    <script src="/static/js/validate.js"></script>
 {% endblock %}

@@ -12,7 +12,7 @@ from app import initapp, db
 class testConfig():
     basedir=os.path.abspath(os.path.dirname(__file__))
     SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
-    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, "text.db")
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, "test.db")
 
 class userControlCase(unittest.TestCase):
     def setUp(self):

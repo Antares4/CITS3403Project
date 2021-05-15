@@ -174,7 +174,7 @@ a:hover {
   width: 170px;
   z-index: 2;
   overflow: auto;
-  background-color: rgb(43, 41, 38);
+  background-color: rgb(36, 35, 33);
 }
 .block .arrow-container .chapter-content {
   display: inline-block;
@@ -265,6 +265,9 @@ a:hover {
   color: white;
 }
 .canvascontainer {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: 20px;
   background-color: rgb(214, 214, 214);
   padding-bottom: 5%;
@@ -329,6 +332,7 @@ a:hover {
     rgb(255, 255, 255) 100%
   ); /* Chrome10+,Safari5.1+ */
 }
+
 .all-wrapper.bob {
   display: flex;
   justify-content: center;
@@ -336,3 +340,8 @@ a:hover {
   flex-direction: column;
   align-content: flex-end;
 }
+
+.warning{
+  color: red;
+}
+

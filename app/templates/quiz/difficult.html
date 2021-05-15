@@ -1,19 +1,23 @@
 {%extends "assessment.html"%}
 {% block page %}
+<div class="assessment-wrapper">
     <form method="post" onsubmit="submissionvalidate();" novalidate>
         {% if form %}
         {{ form.hidden_tag() }}
         {% endif %}
+        <h1>Assessment - III</h1>
+        <hr>
         <p class="question question1">
             This assessment may require knowldge beyond provided content and is sutible for ones seeking for more challenge.
-            <hr>
         </p>
         <p>
             Look at this passage and answer the questions below
         </p> 
+
         <div class="canvascontainer display">
             <div id="Q1"></div>
         </div>
+
         <div id="question1">
             <p>                
                 Name three notes in this passage that does not belong to the key of <strong>A</strong>
@@ -41,6 +45,11 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 1 %}
                     <p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p>&#10005</p>
+                        {% endif %}
                         <p><span>your response:</span> {{item.submittedAnswer}}</p>
                         {% if item.feedback %}
                         <p><span>Feedback for q1:</span> {{item.feedback}}</p>
@@ -78,6 +87,11 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 2 %}
                     <p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p>&#10005</p>
+                        {% endif %}
                         <p><span>your response:</span> {{item.submittedAnswer}}</p>
                         {% if item.feedback %}
                         <p><span>Feedback for q2:</span> {{item.feedback}}</p>
@@ -115,6 +129,11 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 3 %}
                     <p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p>&#10005</p>
+                        {% endif %}
                         <p><span>your response:</span> {{item.submittedAnswer}}</p>
                         {% if item.feedback %}
                         <p><span>Feedback for q3:</span> {{item.feedback}}</p>
@@ -151,6 +170,11 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 4 %}
                     <p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p>&#10005</p>
+                        {% endif %}
                         <p><span>your response:</span> {{item.submittedAnswer}}</p>
                         {% if item.feedback %}
                         <p><span>Feedback for q4:</span> {{item.feedback}}</p>
@@ -190,8 +214,12 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 5 %}
                     <p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p>&#10005</p>
+                        {% endif %}
                         <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                        
                         {% if item.feedback %}
                         <p><span>Feedback for q5:</span> {{item.feedback}}</p>
                         {% endif %}
@@ -203,8 +231,8 @@
         {% if form %}
         <p>{{ form.submit() }}</p>
         {% endif %}
-
     </form>
+</div>
     <style>
         textarea{
             width: 300px;

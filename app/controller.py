@@ -10,14 +10,18 @@ from datetime import datetime
 
 def createUser(user,password):
     if user.validate() and password!="":
-        try:
-            user.set_password(password)
-            db.session.add(user)
-            db.session.commit()
-        except SQLAlchemyError as e:
-            print("user creation raised an esception:", str(e))
+        if not users.query.filter_by(username=user.username).first():
+            try:
+                user.set_password(password)
+                db.session.add(user)
+                db.session.commit()
+            except SQLAlchemyError as e:
+                print("user creation raised an esception:", str(e))
+                return False
+            return True
+        else:
+            print("username existed")
             return False
-        return True
     else:
         print("Missing data")
         return False
@@ -194,7 +198,7 @@ def howManySubmissions():
     return(len(sub))
 
 def howManyUsers():
-    usr = users.query.all()
+    usr = users.query.filter_by(isAdmin=False).all()
     return(len(usr))
 
 def getAllSubmissions():
@@ -370,11 +374,11 @@ def processKeyScore(userId,score):
     return result
 
 def getNoteList():
-    top_users = users.query.filter_by(isAdmin=False).order_by(users.noteHighScore.desc()).limit(10).all()
+    top_users = users.query.filter_by(isAdmin=False).order_by(users.noteHighScore.desc()).limit(7).all()
     print("users",top_users)
     return top_users
 
 def getKeyList():
-    top_users = users.query.filter_by(isAdmin=False).order_by(users.KeyHighScore.desc()).limit(10).all()
+    top_users = users.query.filter_by(isAdmin=False).order_by(users.KeyHighScore.desc()).limit(7).all()
     print("users",top_users)
     return top_users
