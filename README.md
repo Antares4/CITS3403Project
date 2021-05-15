@@ -47,6 +47,7 @@ app/                                      <--Main App Module-->
       model.py                            ---user and submission model---
 config.py                                 ---configuration---
 sidenote.py                               ---Application---
+seleniumTest.py                           ---User test---
 test.py                                   ---Unittest---
     
 ```
@@ -132,7 +133,17 @@ Manuel feedback become visible to users once the marker have submitted the feedb
 * Testing
 
       > Basic unittest were automated and carried out at each iteration.
+## Testing
+### Unit test coverage 
+- ***CURD operation*** on user and submission model 
+- User ***login*** and ***registration*** control mechanism and validation
+- Submission control and validation 
+- Auto marking 
 
+### Selenium test coverage
+- User register case
+- User Login case
+- User submission case
 
 ## Install
 ```
@@ -150,7 +161,12 @@ $ flask run
 ```
 ## Unittest
 ```
-$ python3 tests.py
+$ python3 -W ignore test.py
+```
+## Selenium Test
+```
+$ export DRIVER='**your_web_driver_location**'
+$ python3 -W ignore seleniumTest.py
 ```
 ## Libraries Used
 - [Bootstrap](https://getbootstrap.com/)
@@ -158,5 +174,6 @@ $ python3 tests.py
 - [VexFlow](https://github.com/0xfe/vexflow)
 - [GoogleFont](https://fonts.google.com/specimen/Zilla+Slab#standard-styles)
 
-
-
+## Acknoldgment
+- ![CITS3403 Lecture material] by Dr Tim French(https://teaching.csse.uwa.edu.au/units/CITS3403/)
+- ![FLASK MEGA tutorial] by Miguel Grinberg(https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world)
