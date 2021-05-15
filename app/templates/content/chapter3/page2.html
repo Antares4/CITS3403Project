@@ -1,6 +1,7 @@
 {%extends "content.html"%}
 {% block page %}
-<div class="textcontainer">
+<div class="textcontainer content-section">
+    <div class="para">
    <h1>What is a key</h1>
    <hr>
    <p>A <strong>Key</strong> represents a group of core pitches used in a piece of music where melody, chords, and bassline are all derived from.</p>
@@ -10,13 +11,15 @@
         <li>A scale displays this group of notes in sequence</li>
     </ol>
     <hr>
+    <div class="canvas-wrapper">
     <p>Here is an example of a scale in the key of <strong>C Major</strong> starting from the tonic <strong>C</strong></p>
-    <div class="canvascontainer display">
+    <div class="canvascontainer">
         <div class="stave" id="cmajor"></div>
-        <hr class="display">
     </div>
+</div>
     <p>Click on learn more to learn about <strong>Key signiture</strong></p>
-    <div class="pagebutton display">
+</div>
+    <div class="pagebutton">
         <a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Previous</a>
         <a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">Next</a>
     </div>

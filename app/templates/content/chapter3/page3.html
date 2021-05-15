@@ -1,15 +1,19 @@
 {%extends "content.html"%}
 {% block page %}
-<div class="textcontainer">
+<div class="textcontainer content-section">
+    <div class="para">
     <h1>KEY signiture</h1>
     <hr>
     <p>To establish a key, we must indicate which group of notes(scale) we are after.</p> <br>
     <p>In some scenario this may require repetitive use of accidentals through out a piece of music which is redundent and more vulnerable to errors</p><br>
-    <h5>Below is a representation of the key B major without keysigniture</h5>
-    <div class="canvascontainer display">
+    <div class="canvas-wrapper">
+        <p>Below is a representation of the key B major without keysigniture
+</p>
+    <div class="canvascontainer ">
         <!-- id no modify -->
         <div class="stave" id="Bmajor"></div>
     </div>
+</div>
     <p>To solve this problem, Key signitures were used to represent keys</p>
     <hr>
     <p>
@@ -23,11 +27,14 @@
         However the two notes shown are identical despite the left having an accidental
     </p>
     <!-- this needs to be side by side in the right order -->
-    <div style="display: inline-flex; justify-content: space-around;">
+    <div class="canvas-wrapper">
+    <div class="canvascontainer">
         <div class="stave" id="Cmajorcomp"></div>
         <div class="stave" id="Fmajorcomp"></div>
     </div>
-    <div class="pagebutton display">
+</div>
+</div>
+    <div class="pagebuttons">
         <a href="{{url_for('index.notes', chapter='chapter3', page='page2')}}">Previous</a>
         <a href="{{url_for('index.notes', chapter='chapter3', page='page4')}}">Next</a>
     </div>

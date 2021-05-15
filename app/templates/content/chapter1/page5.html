@@ -30,10 +30,11 @@
 
         <div>
             <!-- same interactive button -->
+            <div class="canvas-wrapper">
             <p>Click this button to switch between accidentals</p>
             <button id="switch">Sharp</button>
             <!--  -->
-        </div>
+        
 
 <!-- stave -->
         <div class="canvascontainer">
@@ -41,6 +42,7 @@
             <div id="canvas"></div>
             <!--  -->
         </div>
+    </div>
 <!--  -->
         
  <!-- this is the piano: apply your shrink magic, position it using the piano container class-->
@@ -70,6 +72,7 @@
             <p>Felt confident? click <a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">HERE</a> to test yourself</p>
             <!--  -->
         </div>
+</div>
 </div>
 <script>
   $(document).ready(function(){
