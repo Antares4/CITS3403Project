@@ -5,6 +5,7 @@
         {% if form %}
         {{ form.hidden_tag() }}
         {% endif %}
+        <h1>Assessment - II</h1>
         <p class="question question1">
             This assessment will test your knowldge on music theory and history at an intermediate difficulty.
             <hr>
@@ -41,6 +42,11 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 1 %}
                     <p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p>&#10005</p>
+                        {% endif %}
                         <p><span>your response:</span> {{item.submittedAnswer}}</p>
                         {% if item.feedback %}
                         <p><span>Feedback for q1:</span> {{item.feedback}}</p>
@@ -77,6 +83,11 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 2 %}
                     <p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p>&#10005</p>
+                        {% endif %}
                         <p><span>your response:</span> {{item.submittedAnswer}}</p>
                         {% if item.feedback %}
                         <p><span>Feedback for q2:</span> {{item.feedback}}</p>
@@ -113,6 +124,11 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 3 %}
                     <p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p>&#10005</p>
+                        {% endif %}
                         <p><span>your response:</span> {{item.submittedAnswer}}</p>
                         {% if item.feedback %}
                         <p><span>Feedback for q3:</span> {{item.feedback}}</p>
@@ -149,6 +165,11 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 4 %}
                     <p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p>&#10005</p>
+                        {% endif %}
                         <p><span>your response:</span> {{item.submittedAnswer}}</p>
                         {% if item.feedback %}
                         <p><span>Feedback for q4:</span> {{item.feedback}}</p>
@@ -185,6 +206,11 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 5 %}
                     <p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p>&#10005</p>
+                        {% endif %}
                         <p><span>your response:</span> {{item.submittedAnswer}}</p>
                         {% if item.feedback %}
                         <p><span>Feedback for q4:</span> {{item.feedback}}</p>

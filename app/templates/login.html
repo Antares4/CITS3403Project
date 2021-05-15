@@ -4,14 +4,10 @@
     
     <form id="loginform" method="post" onsubmit="loginValidate();" novalidate>
         <h1 id="headtitle">Sign In</h1>
-        {% with messages = get_flashed_messages() %}
-        {% if messages %}
-          {% for message in messages %}
-            <span class="warning">[{{ message }}]</span>
-          {% endfor %}
-        {% endif %}
-        {% endwith %}
         {{ form.hidden_tag() }}
+        {% if msg %}
+        <span class="warning">{{msg}}</span>
+        {% endif %}
         <p>
             {{ form.username.label }}
             <br>
