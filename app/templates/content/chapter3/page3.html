@@ -1,6 +1,7 @@
 {%extends "content.html"%}
 {% block page %}
-<div class="textcontainer content-section">
+<div class="textcontainer">
+    <div class="content-section">
     <div class="para">
     <h1>KEY signiture</h1>
     <hr>
@@ -38,6 +39,10 @@
         <a href="{{url_for('index.notes', chapter='chapter3', page='page2')}}">Previous</a>
         <a href="{{url_for('index.notes', chapter='chapter3', page='page4')}}">Next</a>
     </div>
+</div>
+<div class="footer-container normal">
+    <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
+ </div>
 </div>
 <script>
     $(document).ready(function(){

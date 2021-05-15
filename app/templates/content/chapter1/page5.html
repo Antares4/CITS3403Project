@@ -13,14 +13,12 @@
         <p>
             To represent the black notes, we need modifyers called the <strong>Accidentals</strong>. 
         </p>
-        
+        <hr>
         <p>
-            The black notes were identified by modifying existing white notes with accidentals.<br>
-            However, observe the keybord carefully, and you will notice that all of the black keys were juxtaposed by <strong>two</strong> white keys<br>
-    
-            This means that any black note can be named in two ways using its neighbouring white keys. 
-            To avoid ambiguity, two types of Accidentals - <strong>Sharp(#)</strong> and <strong>Flat(b)</strong> - were used to raise/lower a white key respectively.
-
+            The black notes were identified by modifying existing white notes with accidentals. However, observe the keybord carefully, and you will notice that all of the black keys were juxtaposed by <strong>two</strong> white keys.<br>
+            This means that any black note can be named in two ways using its neighbouring white keys. </p>
+            <ol class="list-stff"><li> To avoid ambiguity, two types of Accidentals - <strong>Sharp(#)</strong> and <strong>Flat(b)</strong> - were used to raise/lower a white key respectively.</li>
+            </ol>
         </p>
         <h2>Try It your Self!</h2>
         <!--  -->
@@ -31,8 +29,8 @@
         <div>
             <!-- same interactive button -->
             <div class="canvas-wrapper">
-            <p>Click this button to switch between accidentals</p>
-            <button id="switch">Sharp</button>
+            <p>Click this <span class="content-button smaller" id="switch">Sharp</span> to switch between accidentals</p>
+            
             <!--  -->
         
 
@@ -41,11 +39,9 @@
             <!--you know what to do: don't touch lol -->
             <div id="canvas"></div>
             <!--  -->
-        </div>
-    </div>
-<!--  -->
         
- <!-- this is the piano: apply your shrink magic, position it using the piano container class-->
+        </div>
+        <hr>
         <div class="pianocontainer">
             <!-- do not modify the innerhtml and id -->
             <ul class="set" id="piano">
@@ -64,15 +60,25 @@
             </ul>
             <!--  -->
         </div>
+    </div>
+<!--  -->
+        
+ <!-- this is the piano: apply your shrink magic, position it using the piano container class-->
+        
 
     </div>
     </div>
+    
         <div class="pagebutton">
             <!-- next page link -->
             <p>Felt confident? click <a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">HERE</a> to test yourself</p>
             <!--  -->
         </div>
+    
 </div>
+<div class="footer-container normal">
+    <footer>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
+ </div>
 </div>
 <script>
   $(document).ready(function(){

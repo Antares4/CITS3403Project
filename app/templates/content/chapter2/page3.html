@@ -1,7 +1,8 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<div class="textcontainer content-section">
+<div class="textcontainer">
+    <div class="content-section">
     <div class="para">
     <h1>Note Values</h1>
     <p>
@@ -50,8 +51,13 @@
 </div>
 </div>
     <hr>
+</div>
+
     <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Previous</a>
     <p><a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Next Module</a></p>
+<div class="footer-container normal">
+    <footer>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
+ </div>
 </div>
 <script>
     $(document).ready(function(){

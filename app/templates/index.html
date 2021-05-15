@@ -24,6 +24,9 @@
     <br>
     {% if not current_user.is_authenticated %}
     <p><a href="{{ url_for('register.register') }}">Register</a> <br></p>
+    <div class="footer-container">
+        <footer> &#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
+    </div>
     {% endif %}
 </div>
 {% endblock %}

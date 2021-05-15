@@ -1,12 +1,14 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<div class="textcontainer content-section">
+<div class="textcontainer">
+    <div class="content-section">
     <div class="para">
     <h1>Time Signiture</h1>
     <hr>
     <p>
-        In music notation, a <strong>Bar</strong> represents a segment of time corrosponding to a spacific number of <strong>beats</strong> that are
+        In music notation, a <strong>Bar</strong> represents a segment of time corresponding
+        to a specific number of <strong>beats</strong> that are
         are closed off by vertical boundries called <strong>bar lines.</strong>
     </p>
     <div class="canvas-wrapper">
@@ -35,10 +37,14 @@
 </div>
     <hr>
 </div>
+</div>
     <div class="pagebutton">
         <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Previous</a>
         <a href="{{url_for('index.notes', chapter='chapter2', page='page3')}}">Next</a>
     </div>
+    <div class="footer-container normal">
+        <footer>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
+     </div>
 </div>
 <script>
     $(document).ready(function(){

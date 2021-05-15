@@ -13,8 +13,8 @@
       <hr>
   <!--  -->
       <p>
-        In western music notation, <strong>notes</strong> reside either in one of 4 spaces or 5 horrizontal lines of a <strong>stave.</strong>
-        But inorder to place a note with it's intended meaning, some context must be established on a given stave.
+        In western music notation, <strong>notes</strong> reside in either one of 4 spaces or 5 horrizontal lines of a <strong>stave.</strong>
+        But in order to place a note with it's intended meaning, some context must be established on a given stave.
       
       </p>
       <p >
@@ -29,7 +29,7 @@
       <p>
         Click the buttons to find out the position of middle "C" in respective clefs.
       </p>
-      <div class="canvascontainer">
+      <div class="canvascontainer ">
 
         <!-- do not touch this part -->
         <div class="stave" id="clef"></div>
@@ -50,19 +50,16 @@
   </div>
     </div>
   <!-- these are links to the next/previous page -->
-    <div class="previous-btn">
+    <div class="pagebutton">
       <!-- please use the same css as the previous next/previus css class -->
       <!-- i would suggest place those two buttons on bottom left and bottom right  -->
       <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Previous</a> </span>
-      
-    </div>
-    <div class="next-btn">
-      <!-- please use the same css as the previous next/previus css class -->
-      <!-- i would suggest place those two buttons on bottom left and bottom right  -->
       <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Next</a> </span>
     </div>
   <!--  -->
-
+  <div class="footer-container normal">
+    <footer>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
+ </div>
 </div> 
 <script>
     $(document).ready(function(){

@@ -1,25 +1,9 @@
 {%extends "content.html"%}
 {% block page %}
 <!-- this is to make the table look not that shitty make our own table pls -->
-<style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-    
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-</style>
 
-<div class="textcontainer content-section">
+<div class="textcontainer">
+    <div class="content-section">
     <div class="para">
     <h1>Recognize Key</h1>
     <hr>
@@ -125,7 +109,10 @@
     <div class="pagebutton display">
         <a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">Previous</a>
     </div>
-
+</div>
+<div class="footer-container normal">
+    <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
+ </div>
 </div>
 <script>
     $(document).ready(function(){
