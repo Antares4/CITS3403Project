@@ -97,7 +97,7 @@
         var correctanswer = null;
         var this_clef = null;
         var points = 0;
-        var timeLeft = 3;
+        var timeLeft = 30;
         var userId = {{ current_user.id|safe }}
         var time_div = document.getElementById("timer");
         var score = document.getElementById("score");
@@ -178,7 +178,8 @@
                 console.log(data)
                 if(data.record == true){
                     document.getElementById("record").innerHTML = "New Record!"
-                }else{
+                }
+                else{
                     document.getElementById("record").innerHTML = "Well Done!"
                 }
                 document.getElementById("highscore").innerHTML = data.HighScore

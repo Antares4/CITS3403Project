@@ -217,11 +217,13 @@ a:hover {
 }
 .footer-container.normal {
   background-color: rgb(27, 27, 30);
+  padding-top: 15px;
   position: relative;
   bottom: 0px;
   width: 87.49vw;
   color: white;
   height: 30px;
+  margin: 0;
 }
 .footer-container footer {
   display: flex;
@@ -514,7 +516,7 @@ a:hover {
   }
   100% {
     width: 0%;
-    /* background-color: red; */
+    background-color: red;
   }
 }
 
@@ -524,4 +526,46 @@ a:hover {
   display: block;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+/* .content-section ul {
+  font-size: 2.6ex;
+} */
+.notedemo {
+  display: flex;
+  padding-top: 15px;
+  justify-content: space-evenly;
+}
+.notedemo button {
+  border: none;
+}
+.revision-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 50px;
+}
+
+.revision {
+  width: 100%;
+  height: auto;
+  background-color: rgb(165, 165, 165);
+  padding: 5px;
+}
+.revision:hover {
+  background-color: rgb(223, 221, 221);
+  cursor: pointer;
+  transition: 0.2s ease-in;
+}
+.revision a {
+  color: black;
+  text-decoration: none;
+}
+.revision:first-child {
+  margin-right: 5px;
+}
+/* For page 2 of chapter 3 used to force footer down*/
+.empty {
+  height: 40px;
+  margin-bottom: 20px;
 }
