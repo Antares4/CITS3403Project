@@ -154,10 +154,11 @@ a:hover {
 }
 
 .block .arrow-container {
+  padding-top: 65px;
   position: absolute;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   height: 100vh;
   width: 170px;
   z-index: 2;
@@ -165,12 +166,12 @@ a:hover {
   background-color: rgb(36, 35, 33);
 }
 .block .arrow-container .chapter-content {
+  width: 100%;
   display: inline-block;
   text-align: left;
   margin: 0;
   margin-bottom: 100px;
-  padding-left: 10px;
-  padding-right: 10px;
+
 }
 
 .block .arrow-container {
@@ -195,7 +196,7 @@ a:hover {
 }
 
 .footer-container {
-  background-color: rgb(27, 27, 30);
+  background-color: rgb(173, 173, 173);
   position: absolute;
   display: flex;
   justify-content: center;
@@ -208,14 +209,15 @@ a:hover {
 }
 .footer-container.normal {
   margin-top: 40px;
-  background-color: rgb(27, 27, 30);
+  background-color: rgb(207, 207, 207);
   padding-top: 15px;
   position: absolute;
   bottom: 0px;
   width: 100%;
-  color: white;
+  color: rgb(0, 0, 0);
   height: 30px;
   margin: 0;
+  font-size: 1.5ex;
 }
 .footer-container footer {
   display: flex;
@@ -612,4 +614,9 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+.sidebar-position{
+  padding-top: 80px;
 }
