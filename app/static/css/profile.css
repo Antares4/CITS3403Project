@@ -22,6 +22,7 @@
   width: 100%;
   z-index: 1;
   grid-area: overlap;
+  text-align: center;
 }
 
 .rank-container {
@@ -114,7 +115,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* padding-bottom: 20px; */
   border-left: 1px solid;
   border-right: 1px solid;
   height: 100%;
@@ -248,26 +248,20 @@ table a {
   margin: 5px;
 }
 
-.collopse.side{
+.collopse.side {
   height: 90vh;
 }
 
-.collopse.side .userheader{
+.collopse.side .userheader {
   background-color: rgb(29, 29, 29);
 }
 
-.collopse.side .usercontent{
-  background-color:rgb(179, 179, 179);
+.collopse.side .usercontent {
+  background-color: rgb(179, 179, 179);
   color: black;
 }
 
 
-.longin a{
-  color:rgb(56, 56, 56);
-}
 
-.login a:hover{
-  color: rgb(39, 39, 39);
-}
 
 

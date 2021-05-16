@@ -4,7 +4,15 @@
   box-sizing: border-box;
   font-family: "Zilla Slab", serif;
 }
-
+body {
+  position: relative;
+}
+.pagebutton a {
+  color: white;
+}
+.pagebutton a:hover {
+  color: rgb(156, 156, 156);
+}
 p {
   line-height: 1.5;
   font-size: 2.6ex;
@@ -29,17 +37,20 @@ hr.intro-page {
 /* div p {
   margin: 0% 20%; Remove for now check if mess with anything later
 } */
-.block h1 {
+h1 {
   letter-spacing: 0.1ex;
   text-transform: uppercase;
   font-size: 7ex;
+  padding: 20px 0px 20px 20px;
+  margin-bottom: 5%;
+  background-color: rgb(216, 212, 212);
 }
 a {
-  color: rgb(116, 116, 116);
+  color: black;
   text-decoration: none;
 }
 a:hover {
-  color: rgb(201, 201, 201);
+  color: rgb(138, 138, 138);
   /* border-bottom: 3px solid black; */
   text-decoration: none;
 }
@@ -58,7 +69,7 @@ a:hover {
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  width: 30%;
+  /* width: 30%; */
 }
 .items li {
   position: relative;
@@ -73,6 +84,13 @@ a:hover {
   cursor: pointer;
 }
 .item li a {
+  color: white;
+  transition: 1s;
+}
+.navbar-option li {
+  transition: 200ms;
+}
+.navbar-option a {
   color: white;
 }
 
@@ -92,38 +110,36 @@ a:hover {
   position: absolute;
   background-color: rgb(43, 41, 38);
   z-index: 1;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 #fixed-nav .navbar-option:hover {
   background-color: rgb(91, 91, 91);
   color: white;
 }
 #fixed-nav .navbar-option:hover .dropdown-content.content-translate {
-  transition-delay: 0.2s;
+  transition-delay: 0.5s;
   width: 100%;
-  display: block;
+  display: flex;
+  flex-direction: column;
   transform: translate(-21.5%);
   margin-top: 20px;
 }
 #fixed-nav .navbar-option:hover .dropdown-content.assessment-translate {
   transition-delay: 0.2s;
   width: 100%;
-  display: block;
+  display: flex;
+  flex-direction: column;
   transform: translate(-18%);
   margin-top: 20px;
+}
+#fixed-nav .dropdown-content a:hover {
+  background-color: rgb(91, 91, 91);
 }
 .items ul {
   display: flex;
 }
 
-.dropdown-content {
-  position: absolute;
-  display: none;
-  color: rgb(199, 194, 194);
-  background-color: grey;
-  width: auto;
-  z-index: inherit;
-  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
-}
 .t {
   background-color: red;
   height: 400px;
@@ -188,7 +204,6 @@ a:hover {
   text-align: left;
   margin: 0;
   margin-bottom: 100px;
-
 }
 
 .block .arrow-container {
@@ -241,14 +256,6 @@ a:hover {
   justify-content: center;
   align-items: center;
   align-content: center;
-}
-h1 {
-  letter-spacing: 0.1ex;
-  text-transform: uppercase;
-  font-size: 7ex;
-  padding: 20px 0px 20px 20px;
-  margin-bottom: 5%;
-  background-color: rgb(216, 212, 212);
 }
 
 .learn-wrapper {
@@ -380,12 +387,31 @@ h1 {
   ); /* Chrome10+,Safari5.1+ */
 }
 
-.all-wrapper.bob {
+.all-wrapper.homepage {
   display: flex;
-  justify-content: center;
-  justify-content: center;
   flex-direction: column;
-  align-content: flex-end;
+  /* padding-top: 20px; */
+}
+.all-wrapper.homepage li {
+  list-style-type: none;
+  text-align: center;
+}
+.all-wrapper.homepage h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+.all-wrapper.homepage h2 {
+  margin-bottom: 10px;
+  font-size: 5ex;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.all-wrapper.homepage .homepage-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
 }
 
 .warning {
@@ -635,20 +661,120 @@ h1 {
   justify-content: center;
 }
 
-
-.sidebar-position{
+.sidebar-position {
   padding-top: 80px;
 }
 
-body{
-  position: relative;
+.response {
+  width: 100%;
+  height: 90px;
+}
+.canvascontainer.assessment {
+  display: block;
+  padding-bottom: 20px;
+  text-align: left;
 }
 
+.content-section.assessment-change {
+  padding-top: 0;
+}
+.content-section.assessment-change .list-stff {
+  background-color: rgb(214, 214, 214);
+}
+p.cross {
+  display: flex;
+  justify-self: flex-end;
+  width: 30px;
+  transform: translate(780px, -115px);
+  align-items: center;
+  justify-content: center;
+}
+/* separater */
+form#loginform,
+form#registerform {
+  /* padding-top: 180px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 10% 0 10%;
+}
 
-.pagebutton a{
+#loginform h1,
+#registerform h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 400;
+  width: 50%;
+}
+/* #loginpwd {
+  outline: none;
+} */
+
+input[type="text"],
+input[type="password"] {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  transition: transform 200ms linear;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="text"]:hover,
+input[type="password"]:hover {
+  transform: scaleX(1.1);
+  border-color: brown;
+  font-size: larger;
+}
+
+#loginform .sub-title,
+#registerform .sub-title {
+  font-size: 4ex;
+}
+
+input[type="submit"] {
+  width: 150px;
+}
+input[type="submit"] {
+  justify-content: center;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  display: inline-flex;
+  height: 5ch;
+  width: 10ch;
+  align-items: center;
+  cursor: pointer;
   color: white;
+  background-color: rgb(34, 34, 34);
+  border: none;
+  transition: all 0.4s ease 0.01s;
 }
 
-.pagebutton a:hover{
-  color: rgb(156, 156, 156);
+input[type="submit"]:hover {
+  /* background-color: white;
+  color: black;
+  border: 1px solid black;
+  box-shadow: none; */
+  color: rgb(39, 39, 39);
+  background-color: rgb(228, 228, 228);
+  /* transition: all 0.4s ease 0.01s; */
 }
+.register-container {
+  margin-top: 20px;
+}
+.register-container a {
+  color: blue;
+}
+.register-container a:hover {
+  color: rgb(58, 58, 199);
+}
+/* End here for login */
+
+/* register form */
+form#registerform {
+  text-align: center;
+}
+/* END REGISTER */
+

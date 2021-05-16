@@ -42,7 +42,7 @@ def markSubmission(toBeMarked):
         user_responses = getAnswerForSub(int(toBeMarked))
         if form.validate_on_submit():
             if feedbackAssessment(this_sub, form, user_responses):
-                return redirect(url_for('index.index'))
+                return redirect(url_for('index.profile', userId=current_user.id))
             else:
                 print("submission failed")
                 return render_template(route_mark, title='Marking', form=form, responses=user_responses)
