@@ -149,7 +149,7 @@ class SystemTest(unittest.TestCase):
         submit.click()
 
         warnings = self.driver.find_elements(By.CLASS_NAME, "warning")
-        self.assertEqual(warnings[0].get_attribute("innerHTML"),"[Username already exist.]")
+        self.assertEqual(warnings[0].get_attribute("innerHTML"),"[Please enter a different username.]")
 
     def test_login(self):
         self.driver.get("http://localhost:5000/login")
