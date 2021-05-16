@@ -197,7 +197,7 @@ def howManyUsers():
     return(len(usr))
 
 def getAllSubmissions():
-    all_sub = submission.query.order_by(submission.createdAt.desc())
+    all_sub = submission.query.filter_by(feedback=False).order_by(submission.createdAt.desc())
     return all_sub
 
 def getAllUsers():
@@ -273,6 +273,7 @@ def getKeyRanking(userid):
 
 def getAdminProfile(page, userId):
     all_sub = getAllSubmissions().paginate(page, 10, False)
+    print("allsub",getAllSubmissions().all())
     ###########
     if all_sub.has_next:
         next_sub_page = url_for('index.profile', page=all_sub.next_num, userId=userId) 

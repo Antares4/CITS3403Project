@@ -1,15 +1,20 @@
-function submissionvalidate(){
-    removewarning();
-    var answerField = document.getElementsByClassName("response");
-    for(i = 0; i<answerField.length; i++){
-        if(answerField[i].value == ""){
-            createwarning("[This field is required.]",answerField[i])
+function submissionvalidate(admin){
+    if(admin != 0){
+        removewarning();
+        var answerField = document.getElementsByClassName("response");
+        for(i = 0; i<answerField.length; i++){
+            if(answerField[i].value == ""){
+                createwarning("[This field is required.]",answerField[i])
+            }
+            else if(answerField[i].value.length > 100){
+                createwarning("[Exeed word limit]",answerField[i]);
+            }
         }
-        else if(answerField[i].value.length > 100){
-            createwarning("[Exeed word limit]",answerField[i]);
-        }
+        return true
     }
-    return true
+    else{
+        return true
+    }   
 }
 
 function loginValidate(){

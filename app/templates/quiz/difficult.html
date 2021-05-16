@@ -1,23 +1,29 @@
 {%extends "assessment.html"%}
 {% block page %}
-<form method="post" onsubmit="submissionvalidate();" novalidate>
+{% if current_user.isAdmin %}
+<form method="post" onsubmit="submissionvalidate(0);" novalidate>
+{% else %}
+<form method="post" onsubmit="submissionvalidate(1);" novalidate>
+{% endif %}
     {% if form %}
     {{ form.hidden_tag() }}
     {% endif %}
-    <h1 class="assessment-header">Assessment - III</h1>
+    <h1>Assessment - III</h1>
+    {% if not total %}
     <p class="question question1">
         This assessment may require knowldge beyond provided content and is sutible for ones seeking for more challenge.
     </p>
+    {% elif not current_user.isAdmin %}
+    <h2 class="empty">Total mark: {{total}}</h2>
+    {% endif %}
     <div class="canvas-wrapper">
-        <p>
-            Look at this passage and answer the questions below.
-        </p> 
+        <p>Look at this passage and answer the questions below.</p> 
         <div class="canvascontainer display">
             <div id="Q1"></div>
         </div>
     </div>
     <div class="canvascontainer assessment">
-        <div id="question1" class="question">
+        <div id="question1">
             <ol class="list-stff">
                 <li>Name three notes in this passage that does not belong to the key of <strong>A</strong></li> 
             </ol>
@@ -26,13 +32,13 @@
                     <span>user response for this question is</span>
                     {% for item in responses %}
                         {% if item.answerSeq == 1 %}
-                        <p>
+                        <p class="response-area">
                             {{item.submittedAnswer}}
                         </p>
                         {% endif %}
                     {% endfor %}
-                    <span>marker's feedback:</span>
-                    <p>{{form.F1}}</p>
+                    <span>Marker's feedback:</span>
+                    <p>{{form.F1(class="response")}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
                 <p>{{form.Q1(class="response")}}</p>
@@ -42,14 +48,15 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 1 %}
                     <p>
-                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        <span>your response:</span> 
                         {% if item.markreceived %}
-                        <p>&#10003</p>
+                        <p class="correct">{{item.submittedAnswer}}</p>
                         {% else %}
-                        <p class="cross">&#10005</p>
+                        <p class="wrong">{{item.submittedAnswer}}</p>
                         {% endif %}
                         {% if item.feedback %}
-                        <p><span>Feedback for q1:</span> {{item.feedback}}</p>
+                        <span>Feedback for q1:</span> 
+                        <p class="response-area">{{item.feedback}}</p>
                         {% endif %}
                     </p>
                     {% endif %}
@@ -69,13 +76,13 @@
                     <span>user response for this question is</span>
                     {% for item in responses %}
                         {% if item.answerSeq == 2 %}
-                        <p>
+                        <p class="response-area">
                             {{item.submittedAnswer}}
                         </p>
                         {% endif %}
                     {% endfor %}
-                    <span>marker's feedback:</span>
-                    <p>{{form.F2}}</p>
+                    <span>Marker's feedback:</span>
+                    <p>{{form.F2(class="response")}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
                 <p>{{form.Q2(class="response")}}</p>
@@ -85,14 +92,15 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 2 %}
                     <p>
-                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        <span>your response:</span> 
                         {% if item.markreceived %}
-                        <p>&#10003</p>
+                        <p class="correct">{{item.submittedAnswer}}</p>
                         {% else %}
-                        <p class="cross">&#10005</p>
+                        <p class="wrong">{{item.submittedAnswer}}</p>
                         {% endif %}
                         {% if item.feedback %}
-                        <p><span>Feedback for q2:</span> {{item.feedback}}</p>
+                        <span>Feedback for q2:</span> 
+                        <p class="response-area">{{item.feedback}}</p>
                         {% endif %}
                     </p>
                     {% endif %}
@@ -111,13 +119,13 @@
                     <span>user response for this question is</span>
                     {% for item in responses %}
                         {% if item.answerSeq == 3 %}
-                        <p>
+                        <p class="response-area"> 
                             {{item.submittedAnswer}}
                         </p>
                         {% endif %}
                     {% endfor %}
-                    <span>marker's feedback:</span>
-                    <p>{{form.F3}}</p>
+                    <span>Marker's feedback:</span>
+                    <p>{{form.F3(class="response")}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
                 <p>{{form.Q3(class="response")}}</p>
@@ -127,14 +135,15 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 3 %}
                     <p>
-                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        <span>your response:</span> 
                         {% if item.markreceived %}
-                        <p>&#10003</p>
+                        <p class="correct">{{item.submittedAnswer}}</p>
                         {% else %}
-                        <p class="cross">&#10005</p>
+                        <p class="wrong">{{item.submittedAnswer}}</p>
                         {% endif %}
                         {% if item.feedback %}
-                        <p><span>Feedback for q3:</span> {{item.feedback}}</p>
+                        <span>Feedback for q3:</span> 
+                        <p class="response-area">{{item.feedback}}</p>
                         {% endif %}
                     </p>
                     {% endif %}
@@ -153,13 +162,13 @@
                     <span>user response for this question is</span>
                     {% for item in responses %}
                         {% if item.answerSeq == 4 %}
-                        <p>
+                        <p class="response-area">
                             {{item.submittedAnswer}}
                         </p>
                         {% endif %}
                     {% endfor %}
                     <span>marker's feedback:</span>
-                    <p>{{form.F4}}</p>
+                    <p>{{form.F4(class="response")}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
                 <p>{{form.Q4(class="response")}}</p>
@@ -169,14 +178,15 @@
                 {% for item in responses %}
                     {% if item.answerSeq == 4 %}
                     <p>
-                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        <span>your response:</span> 
                         {% if item.markreceived %}
-                        <p>&#10003</p>
+                        <p class="correct">{{item.submittedAnswer}}</p>
                         {% else %}
-                        <p class="cross">&#10005</p>
+                        <p class="wrong">{{item.submittedAnswer}}</p>
                         {% endif %}
                         {% if item.feedback %}
-                        <p><span>Feedback for q4:</span> {{item.feedback}}</p>
+                        <span>Feedback for q4:</span> 
+                        <p class="response-area">{{item.feedback}}</p>
                         {% endif %}
                     </p>
                     {% endif %}
@@ -195,13 +205,13 @@
                 <span>user response for this question is</span>
                 {% for item in responses %}
                     {% if item.answerSeq == 5 %}
-                    <p>
+                    <p class="response-area">
                         {{item.submittedAnswer}}
                     </p>
                     {% endif %}
                 {% endfor %}
                 <span>marker's feedback:</span>
-                <p>{{form.F5}}</p>
+                <p>{{form.F5(class="response")}}</p>
             {% endif %}
             {% if not current_user.isAdmin%}
                 <p>{{form.Q5(class="response")}}</p>
@@ -211,14 +221,15 @@
             {% for item in responses %}
                 {% if item.answerSeq == 5 %}
                 <p>
+                    <span>your response:</span> 
                     {% if item.markreceived %}
-                    <p>&#10003</p>
+                    <p class="correct">{{item.submittedAnswer}}</p>
                     {% else %}
-                    <p>&#10005</p>
+                    <p class="wrong">{{item.submittedAnswer}}</p>
                     {% endif %}
-                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
                     {% if item.feedback %}
-                    <p><span>Feedback for q5:</span> {{item.feedback}}</p>
+                    <span>Feedback for q5:</span> 
+                    <p class="response-area">{{item.feedback}}</p>
                     {% endif %}
                 </p>
                 {% endif %}
@@ -229,12 +240,6 @@
     <p>{{ form.submit() }}</p>
     {% endif %}
 </form>
-    <style>
-        textarea{
-            width: 300px;
-            height: 90px;
-        }
-    </style>
     <script>
         $(document).ready(function(){
             difficult("Q1","Q5")

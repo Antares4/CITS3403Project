@@ -46,8 +46,6 @@ def markSubmission(toBeMarked):
             else:
                 print("submission failed")
                 return render_template(route_mark, title='Marking', form=form, responses=user_responses)
-        
-
         return render_template(route_mark, title='Marking', form=form, responses=user_responses)
 
 
@@ -59,8 +57,10 @@ def viewSubmission(subId):
         return redirect(url_for('index.index'))
     else:
         this_sub = getSubmissionById(int(subId))
+        total_mark = this_sub.totalmark
+        print(total_mark)
         user_responses = getAnswerForSub(int(subId))
         diff = this_sub.difficulty
         route_mark = "quiz/{}.html".format(diff)
-        return render_template(route_mark, title='ViewSubmission', form=False, responses=user_responses)
+        return render_template(route_mark, title='ViewSubmission', form=False, responses=user_responses, total=total_mark)
 

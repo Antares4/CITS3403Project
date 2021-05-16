@@ -1,243 +1,251 @@
 {%extends "assessment.html"%}
 {% block page %}
-    <form method="post" onsubmit="submissionvalidate();" novalidate>
+    {% if current_user.isAdmin %}
+    <form method="post" onsubmit="submissionvalidate(0);" novalidate>
+    {% else %}
+    <form method="post" onsubmit="submissionvalidate(1);" novalidate>
+    {% endif %}
         {% if form %}
         {{ form.hidden_tag() }}
         {% endif %}
         <h1>Assessment - I</h1>
+        {% if not total %}
         <p class="question question1">
             This assessment will test your knowldge on music theory and history at an intermediate difficulty.
             <hr>
             Once you felt confortable with this moduel you may move on to the next level
             <hr>
         </p>
+        {% elif not current_user.isAdmin %}
+        <h2 class="empty">Total mark: {{total}}</h2>
+        {% endif %}
         <div class="canvas-wrapper">
-        <p>
-            Look at this passage and answer the questions below
-        </p> 
-        <div class="canvascontainer display">
-            <div class="stave" id="Q1"></div>
+            <p>Look at this passage and answer the questions below.</p> 
+            <div class="canvascontainer display">
+                <div class="stave" id="Q1"></div>
+            </div>
         </div>
-    </div>
-        <div id="question1">
-            <p>
-                Name the first and last note.
-            </p>
-            {% if form %}
-                {% if current_user.isAdmin%}
-                    <span>user response for this question is</span>
+        <div class="canvascontainer assessment">
+            <div id="question1">
+                <ol class="list-stff">
+                    <li>Name the first and last note.</li>
+                </ol>
+                {% if form %}
+                    {% if current_user.isAdmin%}
+                        <span>User response for this question is:</span>
+                        {% for item in responses %}
+                            {% if item.answerSeq == 1 %}
+                            <p class="response-area">
+                                {{item.submittedAnswer}}
+                            </p>
+                            {% endif %}
+                        {% endfor %}
+                        <span>Marker's feedback:</span>
+                        <p>{{form.F1(class="response")}}</p>
+                    {% endif %}
+                    {% if not current_user.isAdmin%}
+                        <p>{{form.Q1(class="response")}}</p>
+                    {% endif %}
+                {% endif %}
+                {% if not current_user.isAdmin%}
                     {% for item in responses %}
                         {% if item.answerSeq == 1 %}
                         <p>
-                            {{item.submittedAnswer}}
+                            <span>your response:</span> 
+                            {% if item.markreceived %}
+                            <p class="correct">{{item.submittedAnswer}}</p>
+                            {% else %}
+                            <p class="wrong">{{item.submittedAnswer}}</p>
+                            {% endif %}
+                            {% if item.feedback %}
+                            <span>Feedback for q1:</span> 
+                            <p class="response-area">{{item.feedback}}</p>
+                            {% endif %}
                         </p>
                         {% endif %}
                     {% endfor %}
-                    <span>marker's feedback:</span>
-                    <p>{{form.F1}}</p>
-                    <p>{{form.F1.lable}}</p>
                 {% endif %}
-
-                {% if not current_user.isAdmin%}
-                <p>{{form.Q1(class="response")}}</p>
-                <p>{{form.Q1.lable}}</p>
-                {% endif %}
-            {% endif %}
-            {% if not current_user.isAdmin%}
-                {% for item in responses %}
-                    {% if item.answerSeq == 1 %}
-                    <p>
-                        {% if item.markreceived %}
-                        <p>&#10003</p>
-                        {% else %}
-                        <p>&#10005</p>
-                        {% endif %}
-                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                        <p><span>mark for q1:</span> {{item.markreceived}}</p>
-                        {% if item.feedback %}
-                        <p><span>Feedback for q1:</span> {{item.feedback}}</p>
-                        {% endif %}
-                    </p>
+            </div>
+        </div>  
+        <hr>
+        <div class="canvascontainer assessment">
+            <div id="question2">
+                <ol class="list-stff">
+                    <li>What's the value of the first note in the second bar?</li>
+                </ol>
+                {% if form %}
+                    {% if current_user.isAdmin %}
+                        <span>User response for this question is: </span>
+                        {% for item in responses %}
+                            {% if item.answerSeq == 2 %}
+                            <p class="response-area">
+                                {{item.submittedAnswer}}
+                            </p>
+                            {% endif %}
+                        {% endfor %}
+                        <span>Marker's feedback:</span>
+                        <p>{{form.F2(class="response")}}</p>
                     {% endif %}
-                {% endfor %}
-            {% endif %}
-        </div>
-        <div id="question2">
-            <p>
-                What's the value of the first note in the second bar?
-            </p>
-            {% if form %}
-                {% if current_user.isAdmin %}
-                    <span>user response for this question is</span>
+                    {% if not current_user.isAdmin%}
+                    <p>{{form.Q2(class="response")}}</p>
+                    {% endif %}
+                {% endif %}
+                {% if not current_user.isAdmin%}
                     {% for item in responses %}
                         {% if item.answerSeq == 2 %}
                         <p>
-                            {{item.submittedAnswer}}
+                            <span>your response:</span> 
+                            {% if item.markreceived %}
+                            <p class="correct">{{item.submittedAnswer}}</p>
+                            {% else %}
+                            <p class="wrong">{{item.submittedAnswer}}</p>
+                            {% endif %}
+                            {% if item.feedback %}
+                            <span>Feedback for q2:</span> 
+                            <p class="response-area">{{item.feedback}}</p>
+                            {% endif %}
                         </p>
                         {% endif %}
                     {% endfor %}
-                    <span>marker's feedback:</span>
-                    <p>{{form.F2}}</p>
-                    <p>{{form.F2.lable}}</p>
+                {% endif %} 
+            </div>
+        </div> 
+        <hr>
+        <div class="canvascontainer assessment">
+            <div id="question3">
+                <ol class="list-stff">
+                    <li>Name a note that is 7 steps above the last note.</li>
+                </ol>
+                {% if form %}
+                    {% if current_user.isAdmin %}
+                        <span>user response for this question is</span>
+                        {% for item in responses %}
+                            {% if item.answerSeq == 3 %}
+                            <p class="response-area">
+                                {{item.submittedAnswer}}
+                            </p>
+                            {% endif %}
+                        {% endfor %}
+                        <span>marker's feedback:</span>
+                        <p>{{form.F3(class="response")}}</p>
+                    {% endif %}
+                    {% if not current_user.isAdmin%}
+                    <p>{{form.Q3(class="response")}}</p>
+                    {% endif %}
                 {% endif %}
                 {% if not current_user.isAdmin%}
-                <p>{{form.Q2(class="response")}}</p>
-                <p>{{form.Q2.lable}}</p>
-                {% endif %}
-            {% endif %}
-            {% if not current_user.isAdmin%}
-                {% for item in responses %}
-                    {% if item.answerSeq == 2 %}
-                    <p>
-                        {% if item.markreceived %}
-                        <p>&#10003</p>
-                        {% else %}
-                        <p>&#10005</p>
-                        {% endif %}
-                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                        {% if item.feedback %}
-                        <p><span>Feedback for q2:</span> {{item.feedback}}</p>
-                        {% endif %}
-                    </p>
-                    {% endif %}
-                {% endfor %}
-            {% endif %} 
-        </div>
-        <div id="question3">
-            <p>
-                Name a note that is 7 steps above the last note 
-            </p>
-            {% if form %}
-                {% if current_user.isAdmin %}
-                    <span>user response for this question is</span>
                     {% for item in responses %}
                         {% if item.answerSeq == 3 %}
                         <p>
-                            {{item.submittedAnswer}}
+                            <span>your response:</span> 
+                            {% if item.markreceived %}
+                            <p class="correct">{{item.submittedAnswer}}</p>
+                            {% else %}
+                            <p class="wrong">{{item.submittedAnswer}}</p>
+                            {% endif %}
+                            {% if item.feedback %}
+                            <span>Feedback for q3:</span> 
+                            <p class="response-area">{{item.feedback}}</p>
+                            {% endif %}
                         </p>
                         {% endif %}
                     {% endfor %}
-                    <span>marker's feedback:</span>
-                    <p>{{form.F3}}</p>
-                    <p>{{form.F3.lable}}</p>
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+        <div class="canvascontainer assessment">
+            <div id="question4">
+                <p>
+                    List 5 note values in decending order(longest to shortest), starting from semibreave.
+                </p>
+                {% if form %}
+                    {% if current_user.isAdmin %}
+                        <span>User response for this question is: </span>
+                        {% for item in responses %}
+                            {% if item.answerSeq == 4 %}
+                            <p class="response-area">
+                                {{item.submittedAnswer}}
+                            </p>
+                            {% endif %}
+                        {% endfor %}
+                        <span>marker's feedback:</span>
+                        <p>{{form.F4(class="response")}}</p>
+                    {% endif %}
+                    {% if not current_user.isAdmin%}
+                    <p>{{form.Q4(class="response")}}</p>
+                    {% endif %}
                 {% endif %}
                 {% if not current_user.isAdmin%}
-                <p>{{form.Q3(class="response")}}</p>
-                <p>{{form.Q3.lable}}</p>
-                {% endif %}
-            {% endif %}
-            {% if not current_user.isAdmin%}
-                {% for item in responses %}
-                    {% if item.answerSeq == 3 %}
-                    <p>
-                        {% if item.markreceived %}
-                        <p>&#10003</p>
-                        {% else %}
-                        <p>&#10005</p>
-                        {% endif %}
-                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                        {% if item.feedback %}
-                        <p><span>Feedback for q3:</span> {{item.feedback}}</p>
-                        {% endif %}
-                    </p>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-        </div>
-        <div id="question4">
-            <p>
-                List 5 note values in decending order(longest to shortest), starting from semibreave.
-            </p>
-            {% if form %}
-                {% if current_user.isAdmin %}
-                    <span>user response for this question is</span>
                     {% for item in responses %}
                         {% if item.answerSeq == 4 %}
                         <p>
-                            {{item.submittedAnswer}}
+                            <span>your response:</span> 
+                            {% if item.markreceived %}
+                            <p class="correct">{{item.submittedAnswer}}</p>
+                            {% else %}
+                            <p class="wrong">{{item.submittedAnswer}}</p>
+                            {% endif %}
+                            {% if item.feedback %}
+                            <span>Feedback for q4:</span> 
+                            <p class="response-area">{{item.feedback}}</p>
+                            {% endif %}
                         </p>
                         {% endif %}
                     {% endfor %}
-                    <span>marker's feedback:</span>
-                    <p>{{form.F4}}</p>
-                    <p>{{form.F4.lable}}</p>
+                {% endif %}
+            </div>
+        </div>
+        <hr>
+        <div class="canvascontainer assessment">
+            <div id="question5">
+                <ol class="list-stff">
+                    <li> Name the time signiture and exaplain what it means</li>
+                </ol>          
+                {% if form %}
+                    {% if current_user.isAdmin %}
+                        <span>user response for this question is</span>
+                        {% for item in responses %}
+                            {% if item.answerSeq == 5 %}
+                            <p class="response-area">
+                                {{item.submittedAnswer}}
+                            </p>
+                            {% endif %}
+                        {% endfor %}
+                        <span>marker's feedback:</span>
+                        <p>{{form.F5(class="response")}}</p>
+                    {% endif %}
+                    {% if not current_user.isAdmin%}
+                        <p>{{form.Q5(class="response")}}</p>
+                        {% endif %}
                 {% endif %}
                 {% if not current_user.isAdmin%}
-                <p>{{form.Q4(class="response")}}</p>
-                <p>{{form.Q4.lable}}</p>
-                {% endif %}
-            {% endif %}
-            {% if not current_user.isAdmin%}
-                {% for item in responses %}
-                    {% if item.answerSeq == 4 %}
-                    <p>
-                        {% if item.markreceived %}
-                        <p>&#10003</p>
-                        {% else %}
-                        <p>&#10005</p>
-                        {% endif %}
-                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                        {% if item.feedback %}
-                        <p><span>Feedback for q4:</span> {{item.feedback}}</p>
-                        {% endif %}
-                    </p>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
-        </div>
-        <div id="question5">
-            <p>
-                Name the time signiture and exaplain what it means
-            </p>            
-            {% if form %}
-                {% if current_user.isAdmin %}
-                    <span>user response for this question is</span>
                     {% for item in responses %}
                         {% if item.answerSeq == 5 %}
                         <p>
-                            {{item.submittedAnswer}}
+                            <span>your response:</span> 
+                            {% if item.markreceived %}
+                            <p class="correct">{{item.submittedAnswer}}</p>
+                            {% else %}
+                            <p class="wrong">{{item.submittedAnswer}}</p>
+                            {% endif %}
+                            {% if item.feedback %}
+                            <span>Feedback for 5:</span> 
+                            <p class="response-area">{{item.feedback}}</p>
+                            {% endif %}
                         </p>
                         {% endif %}
                     {% endfor %}
-                    <span>marker's feedback:</span>
-                    <p>{{form.F5}}</p>
-                    <p>{{form.F5.lable}}</p>
                 {% endif %}
-                {% if not current_user.isAdmin%}
-                    <p>{{form.Q5(class="response")}}</p>
-                    <p>{{form.Q5.lable}}</p>
-                    {% endif %}
-            {% endif %}
-            {% if not current_user.isAdmin%}
-                {% for item in responses %}
-                    {% if item.answerSeq == 5 %}
-                    <p>
-                        {% if item.markreceived %}
-                        <p>&#10003</p>
-                        {% else %}
-                        <p>&#10005</p>
-                        {% endif %}
-                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                        {% if item.feedback %}
-                        <p><span>Feedback for q5:</span> {{item.feedback}}</p>
-                        {% endif %}
-                    </p>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
+            </div>
         </div>
+        <hr>
         {% if form %}
-        <p>{{ form.submit(id="submit") }}</p>
+        <p class="notedemo">{{ form.submit(id="submit", class="content-button") }}</p>
         {% endif %}
 
     </form>
-</div>
-    <style>
-        textarea{
-            width: 300px;
-            height: 90px;
-        }
-    </style>
+
     <script>
         $(document).ready(function(){
             intro("Q1")

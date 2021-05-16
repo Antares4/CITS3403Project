@@ -6,6 +6,8 @@
 }
 body {
   position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 .pagebutton a {
   color: white;
@@ -228,7 +230,7 @@ a:hover {
 }
 
 .footer-container {
-  background-color: rgb(173, 173, 173);
+  background-color: rgb(207, 207, 207);
   position: absolute;
   display: flex;
   justify-content: center;
@@ -236,8 +238,9 @@ a:hover {
   align-content: center;
   bottom: 0;
   width: 100%;
-  color: white;
+  color: rgb(0, 0, 0);
   height: 30px;
+  font-size: 1.5ex;
 }
 .footer-container.normal {
   margin-top: 40px;
@@ -606,7 +609,8 @@ a:hover {
 /* For page 2 of chapter 3 used to force footer down*/
 .empty {
   height: 40px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+  text-align: center;
 }
 .pagebutton {
   display: grid;
@@ -681,14 +685,7 @@ a:hover {
 .content-section.assessment-change .list-stff {
   background-color: rgb(214, 214, 214);
 }
-p.cross {
-  display: flex;
-  justify-self: flex-end;
-  width: 30px;
-  transform: translate(780px, -115px);
-  align-items: center;
-  justify-content: center;
-}
+
 /* separater */
 form#loginform,
 form#registerform {
@@ -696,7 +693,7 @@ form#registerform {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 100px 10% 0 10%;
+  padding: 100px 10% 8% 10%;
 }
 
 #loginform h1,
@@ -778,3 +775,15 @@ form#registerform {
 }
 /* END REGISTER */
 
+.correct{
+  padding: 10px;
+  background-color: lightgreen;
+}
+.wrong{
+  padding: 10px;
+  background-color: rgb(255, 0, 0);
+}
+.response-area{
+  padding: 5px;
+  background-color: white;
+}

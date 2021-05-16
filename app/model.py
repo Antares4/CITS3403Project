@@ -69,6 +69,7 @@ class submission(db.Model):
     def __init__(self):
         self.createdAt = datetime.utcnow()
         self.markedAt = None
+        self.feedback = False
         self.totalmark = None
         self.marked = False
         self.passed = False
