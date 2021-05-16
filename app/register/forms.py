@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, ValidationError
 from wtforms.validators import DataRequired, Email, length, EqualTo
+from app.model import users
 
 class RegisterForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -11,16 +12,19 @@ class RegisterForm(FlaskForm):
     email = StringField("email", validators=[DataRequired(),Email()])
     submit = SubmitField('Sign up')
     
-    def username_validate(self, username):
+    def validate_username(self, username):
         usr = users.query.filter_by(username=username.data).first()
-        if user is not None:
+        if usr is not None:
+            print("raised")
             raise ValidationError('Please enter a different username.')
 
-    def email_validate(self, email):
+    def validate_email(self, email):
         usr = users.query.filter_by(email=email.data).first()
-        if user is not None:
+        if usr is not None:
+            print("raised")
             raise ValidationError('Please enter a different email address.')
     
-    def password_validate(self, password):
-        if len(password) < 6:
+    def validate_password(self, password):
+        if len(password.data) < 6:
+            print("raised")
             raise ValidationError("Password has to be atleast 6 characters long")
