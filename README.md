@@ -166,7 +166,7 @@ $ python3 -W ignore test.py
 ```
 ## Selenium Test
 ```
-$ export DRIVER='**your_web_driver_location**'
+$ export DRIVER='**PATH_TO_WEB_DRIVER**'
 $ python3 -W ignore seleniumTest.py
 ```
 ## Libraries Used
