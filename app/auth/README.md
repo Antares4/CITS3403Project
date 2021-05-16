@@ -7,8 +7,4 @@
 
 ## ***routes.py***
 @route
-### login
-- Takes login request with authentication form
-- Form validated on submit 
-- Successful submission redirect to home page
-- Invlalid username or password error raised on Unsuccessful submit
+- login
