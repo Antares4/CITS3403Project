@@ -620,3 +620,7 @@ h1 {
 .sidebar-position{
   padding-top: 80px;
 }
+
+body{
+  position: relative;
+}
