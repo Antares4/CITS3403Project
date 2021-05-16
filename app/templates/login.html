@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    
+<div class="login">
     <form id="loginform" method="post" onsubmit="loginValidate();" novalidate>
         <h1 id="headtitle">Sign In</h1>
         {{ form.hidden_tag() }}
@@ -33,5 +33,6 @@
           don't have an account? <a href="{{ url_for('register.register') }}">Register</a>
         </div>
     </form>
+</div>
     <script src="/static/js/validate.js"></script>
 {% endblock %}

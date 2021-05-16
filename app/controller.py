@@ -88,7 +88,6 @@ def feedbackAssessment(sub,form,responses):
             db.session.add(sub)
             db.session.commit()
         except SQLAlchemyError as e:
-            print("submit:", str(e))
             raise TypeError
         return True
     else:
@@ -120,7 +119,6 @@ def autoMark(submission):
                 print(orig)
                 for item in orig:
                     if item.lower() in match:
-                        print("markReceived")
                         ans.markreceived = True
                         total += 1
                         break
@@ -131,7 +129,6 @@ def autoMark(submission):
     try:
         db.session.commit()
     except SQLAlchemyError as e:
-        print("submit:", str(e))
         return False
     return True
 
@@ -147,7 +144,6 @@ def createSubmission(sid, difficulty, form):
     try:
         db.session.commit()
     except SQLAlchemyError as e:
-        print("submit:", str(e))
         raise TypeError
     
     ans1 = answer()
@@ -185,7 +181,6 @@ def createSubmission(sid, difficulty, form):
     try:
         db.session.commit()
     except SQLAlchemyError as e:
-        print("submit:", str(e))
         raise TypeError
     return sub
 

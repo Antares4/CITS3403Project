@@ -16,6 +16,7 @@
 }
 
 .rank-under {
+  text-align: center;
   background-color: rgb(224, 224, 224);
   height: 100%;
   width: 100%;
@@ -106,7 +107,6 @@
 
 .header {
   height: auto;
-  justify-items: center;
   grid-area: title;
 }
 .header h1 {
@@ -121,6 +121,7 @@
   background-color: rgb(216, 212, 212);
 }
 .submissions {
+  text-align: center;
   grid-area: subs;
   border-right: solid black 1px;
   border-left: solid black 1px;
@@ -259,3 +260,14 @@ table a {
   background-color:rgb(179, 179, 179);
   color: black;
 }
+
+
+.longin a{
+  color:rgb(56, 56, 56);
+}
+
+.login a:hover{
+  color: rgb(39, 39, 39);
+}
+
+

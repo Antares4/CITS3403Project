@@ -23,6 +23,9 @@ hr.intro-page {
   width: 70%;
   margin: auto;
 }
+.navbar-option a{
+  color: white;
+}
 /* div p {
   margin: 0% 20%; Remove for now check if mess with anything later
 } */
@@ -32,11 +35,11 @@ hr.intro-page {
   font-size: 7ex;
 }
 a {
-  color: rgb(255, 255, 255);
+  color: rgb(116, 116, 116);
   text-decoration: none;
 }
 a:hover {
-  color: rgb(66, 71, 87);
+  color: rgb(201, 201, 201);
   /* border-bottom: 3px solid black; */
   text-decoration: none;
 }
@@ -240,6 +243,9 @@ a:hover {
   align-content: center;
 }
 h1 {
+  letter-spacing: 0.1ex;
+  text-transform: uppercase;
+  font-size: 7ex;
   padding: 20px 0px 20px 20px;
   margin-bottom: 5%;
   background-color: rgb(216, 212, 212);
@@ -636,4 +642,13 @@ h1 {
 
 body{
   position: relative;
+}
+
+
+.pagebutton a{
+  color: white;
+}
+
+.pagebutton a:hover{
+  color: rgb(156, 156, 156);
 }
