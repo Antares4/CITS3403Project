@@ -53,17 +53,9 @@
     $(document).ready(function(){
         //stave
         init("timesigniture","treble","4/4",200);
-        
-        //
-        var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
-        var display = 0;
         init("bar",null, null, 200,null)
-        $(".textcontainer").bind('click',function(){
-            if(display < paragraph.length){
-                paragraph[display].style.opacity = 1;
-                display++;
-            }
-        })
+        //
+
     });
 </script>
 {% endblock %}

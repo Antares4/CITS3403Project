@@ -7,8 +7,9 @@
 
 p {
   line-height: 1.5;
+  font-size: 2.6ex;
 }
-.content-page ol {
+ol {
   list-style-position: inside;
 }
 hr.intro-page {
@@ -30,19 +31,12 @@ hr.intro-page {
 /* div p {
   margin: 0% 20%; Remove for now check if mess with anything later
 } */
-.container-fluid h1 {
+.block h1 {
   letter-spacing: 0.1ex;
   text-transform: uppercase;
   font-size: 7ex;
 }
-.container-fluid {
-  width: 100%;
-  height: 105ex;
-  text-align: center;
-  height: 100ex;
-  padding-right: 0;
-  padding-left: 0;
-}
+
 #a {
   min-height: 4rem;
   display: flex;
@@ -229,14 +223,12 @@ a:hover {
   align-items: center;
   align-content: center;
 }
-.content-page h1 {
+h1 {
   padding: 20px 0px 20px 20px;
   margin-bottom: 5%;
   background-color: rgb(216, 212, 212);
 }
-.content-page p {
-  font-size: 2.6ex;
-}
+
 
 .learn-wrapper {
   margin-top: 8%;
@@ -251,8 +243,8 @@ a:hover {
   background: none;
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 20px;
-  width: 140px;
+  padding: 20px 35px 20px 35px;
+  width: 180px;
 }
 
 .learn-btn::before {
@@ -422,7 +414,8 @@ a:hover {
   grid-area: quiz-homepage;
 }
 .content-section.quiz {
-  height: 600px;
+  text-align: center;
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: "quiz-homepage";
@@ -571,7 +564,7 @@ a:hover {
 .pagebutton {
   display: grid;
   width: 100%;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   grid-template-columns: 1fr 1fr;
 }
 .footer-positioner {
