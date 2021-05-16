@@ -142,52 +142,54 @@
             {% endif %}
         </div>
     </div>
-    <div id="question4">    
-        <p>
-            Name the missing time signiture and explain why.
-        </p>
-        {% if form %}
-            {% if current_user.isAdmin %}
-                <span>user response for this question is</span>
+    <hr>
+    <div class="canvascontainer assessment">
+        <div id="question4">    
+            <ol class="list-stff">
+                <li> Name the missing time signiture and explain why.</li>
+            </ol>
+            {% if form %}
+                {% if current_user.isAdmin %}
+                    <span>user response for this question is</span>
+                    {% for item in responses %}
+                        {% if item.answerSeq == 4 %}
+                        <p>
+                            {{item.submittedAnswer}}
+                        </p>
+                        {% endif %}
+                    {% endfor %}
+                    <span>marker's feedback:</span>
+                    <p>{{form.F4}}</p>
+                {% endif %}
+                {% if not current_user.isAdmin%}
+                <p>{{form.Q4(class="response")}}</p>
+                {% endif %}
+            {% endif %}
+            {% if not current_user.isAdmin%}
                 {% for item in responses %}
                     {% if item.answerSeq == 4 %}
                     <p>
-                        {{item.submittedAnswer}}
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p class="cross">&#10005</p>
+                        {% endif %}
+                        {% if item.feedback %}
+                        <p><span>Feedback for q4:</span> {{item.feedback}}</p>
+                        {% endif %}
                     </p>
                     {% endif %}
                 {% endfor %}
-                <span>marker's feedback:</span>
-                <p>{{form.F4}}</p>
             {% endif %}
-            {% if not current_user.isAdmin%}
-            <p>{{form.Q4(class="response")}}</p>
-            {% endif %}
-        {% endif %}
-        {% if not current_user.isAdmin%}
-            {% for item in responses %}
-                {% if item.answerSeq == 4 %}
-                <p>
-                    {% if item.markreceived %}
-                    <p>&#10003</p>
-                    {% else %}
-                    <p>&#10005</p>
-                    {% endif %}
-                    <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                    {% if item.feedback %}
-                    <p><span>Feedback for q4:</span> {{item.feedback}}</p>
-                    {% endif %}
-                </p>
-                {% endif %}
-            {% endfor %}
-        {% endif %}
+        </div>
     </div>
-
-
-
+    <hr>
+<div class="canvascontainer assessment">
     <div id="question5">
-        <p>
-            What's the interval between the last two notes and which scale degree does the last note represent in the current key? Explain
-        </p>                      
+        <ol class="list-stff">
+            <li>What's the interval between the last two notes and which scale degree does the last note represent in the current key? Explain
+        </ol>                      
         {% if form %}
             {% if current_user.isAdmin %}
                 <span>user response for this question is</span>
