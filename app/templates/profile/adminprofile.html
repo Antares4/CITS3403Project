@@ -42,7 +42,7 @@
                                 Last Name: {{usr.lastname}} <br>
                                 Email: {{usr.email}} <br>
                                 Last Login At <span class="trim-time">{{usr.lastLogin}}</span> <br>
-                                <span><a href="{{url_for('register.deleteUser', userId=usr.id)}}">delete</a></span>
+                                <a class="redhover" href="{{url_for('register.deleteUser', userId=usr.id)}}">delete</a>
                             </div>
                         {% endif %}
                     {% endfor %}

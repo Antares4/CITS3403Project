@@ -108,7 +108,13 @@
             {% endif %}
         </div>
     </div>
-    <div id="Q5"></div>
+    <hr>
+    <div class="canvas-wrapper">
+        <p>Answer question 5 with the following diagram.</p>
+        <div class="canvascontainer display">
+            <div id="Q5"></div>
+        </div>
+    </div>
     <div class="canvascontainer assessment">
         <div id="question3">
             <ol class="list-stff">
@@ -195,7 +201,7 @@
         </div>
     </div>
     <hr>
-<div class="canvascontainer assessment">
+<div class="canvascontainer assessment"> 
     <div id="question5">
         <ol class="list-stff">
             <li>What's the interval between the last two notes and which scale degree does the last note represent in the current key? Explain
@@ -236,9 +242,10 @@
             {% endfor %}
         {% endif %}
     </div>
-    {% if form %}
-    <p>{{ form.submit() }}</p>
-    {% endif %}
+</div>
+{% if form %}
+<p class="notedemo">{{ form.submit(id="submit", class="content-button") }}</p>
+{% endif %}
 </form>
     <script>
         $(document).ready(function(){

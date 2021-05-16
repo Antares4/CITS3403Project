@@ -672,6 +672,8 @@ a:hover {
 .response {
   width: 100%;
   height: 90px;
+  padding: 7px;
+
 }
 .canvascontainer.assessment {
   display: block;
@@ -786,4 +788,13 @@ form#registerform {
 .response-area{
   padding: 5px;
   background-color: white;
+}
+
+.usercontent .redhover{
+  color: black;
+  text-transform: capitalize;
+}
+.usercontent .redhover:hover{
+  color: rgb(255, 0, 0);
+  background: none;
 }
