@@ -37,7 +37,7 @@ hr.intro-page {
 }
 .container-fluid {
   width: 100%;
-  height: 105ex;  
+  height: 105ex;
   text-align: center;
   height: 100ex;
   padding-right: 0;
@@ -191,7 +191,7 @@ a:hover {
   margin-bottom: 8%;
 }
 .text-container {
-  /* min-height: 120vh; */
+  min-height: 100vh;
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
@@ -199,7 +199,6 @@ a:hover {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr ; */
 }
-
 
 .footer-container {
   background-color: rgb(27, 27, 30);
@@ -575,8 +574,7 @@ a:hover {
   padding-bottom: 40px;
   grid-template-columns: 1fr 1fr;
 }
-.footer-positioner{
-
+.footer-positioner {
   position: absolute;
 }
 
@@ -594,7 +592,6 @@ a:hover {
 
   transition: transform 300ms ease-out;
 }
-
 
 .pagebutton #next {
   width: 180px;
@@ -617,11 +614,9 @@ a:hover {
   transform: translate(0px);
 }
 
-
 .test-self {
   padding-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
