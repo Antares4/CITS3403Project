@@ -21,6 +21,7 @@
   width: 100%;
   z-index: 1;
   grid-area: overlap;
+  text-align: center;
 }
 
 .rank-container {
@@ -105,16 +106,20 @@
 
 .header {
   height: auto;
-  justify-items: center;
   grid-area: title;
 }
 .header h1 {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-left: 1px solid;
   border-right: 1px solid;
   height: 100%;
   background-color: rgb(216, 212, 212);
 }
 .submissions {
+  text-align: center;
   grid-area: subs;
   border-right: solid black 1px;
   border-left: solid black 1px;
@@ -241,15 +246,15 @@ table a {
   margin: 5px;
 }
 
-.collopse.side{
+.collopse.side {
   height: 90vh;
 }
 
-.collopse.side .userheader{
+.collopse.side .userheader {
   background-color: rgb(29, 29, 29);
 }
 
-.collopse.side .usercontent{
-  background-color:rgb(179, 179, 179);
+.collopse.side .usercontent {
+  background-color: rgb(179, 179, 179);
   color: black;
 }

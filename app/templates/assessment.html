@@ -1,8 +1,7 @@
 {%extends "base.html"%}
 
 {% block content %}
-<div class="block" style="display: none;">
-    <div class="arrow-container" class="box">
+<div class="block assessment-section" style="display: none;">
         <ul>
             <a href="{{url_for('assessment.testSubmission', difficulty='intro')}}">Intro</a>
             <a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">intermediate</a>
@@ -10,7 +9,7 @@
         </ul>
     </div>
 
-    <div class="content-section">
+    <div class="content-section assessment-change">
         {% block page %}{% endblock %}
     </div>
 </div>

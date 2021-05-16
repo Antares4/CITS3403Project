@@ -1,5 +1,5 @@
 
-<nav id="a" class="top-nav">
+<nav id="fixed-nav" class="top-nav">
     <!-- display if loggedin -->
         <h3 class="logo">Sidenote</h3>
     <ul class="items">
@@ -21,7 +21,7 @@
         
             <li class="navbar-option">
                 content
-                <div class="dropdown-content">
+                <div class="dropdown-content content-translate">
                     <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Notation</a>
                     <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Rhythm</a>
                     <a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Key</a>
@@ -29,7 +29,7 @@
             </li>
             <li id="assessment" class="navbar-option">
                 Assessment
-                <div class="dropdown-content">
+                <div class="dropdown-content assessment-translate">
                     <a href="{{url_for('assessment.testSubmission', difficulty='intro')}}">Intro</a>
                     <a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">intermediate</a>
                     <a href="{{url_for('assessment.testSubmission', difficulty='difficult')}}">Difficult</a>
