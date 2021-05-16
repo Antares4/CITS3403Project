@@ -31,6 +31,9 @@ hr.intro-page {
   width: 70%;
   margin: auto;
 }
+.navbar-option a{
+  color: white;
+}
 /* div p {
   margin: 0% 20%; Remove for now check if mess with anything later
 } */
@@ -774,3 +777,4 @@ form#registerform {
   text-align: center;
 }
 /* END REGISTER */
+

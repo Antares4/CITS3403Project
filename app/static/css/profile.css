@@ -16,6 +16,7 @@
 }
 
 .rank-under {
+  text-align: center;
   background-color: rgb(224, 224, 224);
   height: 100%;
   width: 100%;
@@ -34,11 +35,11 @@
 }
 
 .all-wrapper {
+  position: relative;
   border-right: solid 1px black;
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 65px;
-  height: 100vh;
   display: grid;
   grid-template-columns: 300px 1fr;
   grid-template-rows: 70px 200px 298px 80px 50px;
@@ -74,7 +75,7 @@
 }
 
 .black {
-  background-color: rgb(32, 32, 32);
+  background-color: rgb(41, 40, 40);
   color: white;
 }
 
@@ -93,6 +94,7 @@
 }
 
 .user-profile {
+  border-top: 1px solid black;
   padding-left: 7%;
   text-align: left;
   display: block;
@@ -258,3 +260,8 @@ table a {
   background-color: rgb(179, 179, 179);
   color: black;
 }
+
+
+
+
+

@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <form id="loginform" method="post" onsubmit="loginValidate();" novalidate>
     <h1 id="headtitle">Sign In</h1>
     {{ form.hidden_tag() }}
@@ -9,6 +10,8 @@
     {% endif %}
     <p>
         <div class="sub-title">
+
+
             {{ form.username.label }}
         </div>
         <br>
@@ -42,6 +45,8 @@
         <div class="register-container">
             Don't have an account? <a href="{{ url_for('register.register') }}">Register</a>
         </div>
+
 </form>
 <script src="/static/js/validate.js"></script>
+
 {% endblock %}
