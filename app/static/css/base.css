@@ -37,6 +37,7 @@ hr.intro-page {
 }
 .container-fluid {
   width: 100%;
+  height: 105ex;  
   text-align: center;
   height: 100ex;
   padding-right: 0;
@@ -130,6 +131,7 @@ a:hover {
   height: 100vh;
   grid-template-columns: 1fr;
   grid-template-rows: 64px 1fr;
+  overflow-x: hidden;
   grid-template-areas:
     "nav-top"
     "content-block";
@@ -141,21 +143,13 @@ a:hover {
 .block {
   grid-area: content-block;
   width: 100%;
-  height: 100vh;
   display: grid;
   grid-template-columns: 180px 1fr;
   grid-template-areas: "sidebar content-section";
   overflow: auto;
+  overflow-x: hidden;
 }
-.block {
-  grid-area: content-block;
-  width: 100%;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  grid-template-areas: "sidebar content-section";
-  overflow: auto;
-}
+
 .arrow-container {
   grid-area: sidebar;
 }
@@ -197,12 +191,16 @@ a:hover {
   margin-bottom: 8%;
 }
 .text-container {
-  min-height: 100vh;
+  /* min-height: 120vh; */
   position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
   /* display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr ; */
 }
+
+
 .footer-container {
   background-color: rgb(27, 27, 30);
   position: absolute;
@@ -211,16 +209,17 @@ a:hover {
   align-items: center;
   align-content: center;
   bottom: 0;
-  width: 87.49vw;
+  width: 100%;
   color: white;
   height: 30px;
 }
 .footer-container.normal {
+  margin-top: 40px;
   background-color: rgb(27, 27, 30);
   padding-top: 15px;
-  position: relative;
+  position: absolute;
   bottom: 0px;
-  width: 87.49vw;
+  width: 100%;
   color: white;
   height: 30px;
   margin: 0;
@@ -254,7 +253,7 @@ a:hover {
   letter-spacing: 1px;
   text-transform: uppercase;
   padding: 20px;
-  width: 250px;
+  width: 140px;
 }
 
 .learn-btn::before {
@@ -424,6 +423,7 @@ a:hover {
   grid-area: quiz-homepage;
 }
 .content-section.quiz {
+  height: 600px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: "quiz-homepage";
@@ -455,7 +455,7 @@ a:hover {
   height: 5px;
   background-color: rgb(81, 203, 32);
   color: white;
-  animation: change 31s ease-in-out;
+  animation: change 31s linear;
 }
 
 #timer {
@@ -571,8 +571,15 @@ a:hover {
 }
 .pagebutton {
   display: grid;
+  width: 100%;
+  padding-bottom: 40px;
   grid-template-columns: 1fr 1fr;
 }
+.footer-positioner{
+
+  position: absolute;
+}
+
 .pagebutton #previous {
   width: 180px;
   height: 40px;
@@ -587,9 +594,8 @@ a:hover {
 
   transition: transform 300ms ease-out;
 }
-.pagebutton {
-  width: 100%;
-}
+
+
 .pagebutton #next {
   width: 180px;
   height: 40px;
@@ -611,12 +617,11 @@ a:hover {
   transform: translate(0px);
 }
 
-.textcontainer {
-  overflow-x: hidden;
-}
+
 .test-self {
   padding-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+

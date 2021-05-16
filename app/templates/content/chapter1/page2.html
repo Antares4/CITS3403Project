@@ -3,7 +3,7 @@
 {% block page %}
 <!-- basically same as page 1 but with stave to concider -->
 <!-- strong are words i wanted to empathesis so can you give it a special font that you like? -->
-<div class="textcontainer">
+<div class="text-container">
   <!-- this is the title -->
   <div class="content-section">
     <div class="para">
@@ -55,11 +55,12 @@
       <!-- i would suggest place those two buttons on bottom left and bottom right  -->
       <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">&lt Previous</a> </span>
       <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Next &gt</a> </span>
+      <div class="footer-container normal">
+        <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
+     </div>
     </div>
   <!--  -->
-  <div class="footer-container normal">
-    <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
- </div>
+
 </div> 
 <script>
     $(document).ready(function(){
