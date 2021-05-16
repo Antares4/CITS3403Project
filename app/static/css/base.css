@@ -4,7 +4,15 @@
   box-sizing: border-box;
   font-family: "Zilla Slab", serif;
 }
-
+body {
+  position: relative;
+}
+.pagebutton a {
+  color: white;
+}
+.pagebutton a:hover {
+  color: rgb(156, 156, 156);
+}
 p {
   line-height: 1.5;
   font-size: 2.6ex;
@@ -26,17 +34,20 @@ hr.intro-page {
 /* div p {
   margin: 0% 20%; Remove for now check if mess with anything later
 } */
-.block h1 {
+h1 {
   letter-spacing: 0.1ex;
   text-transform: uppercase;
   font-size: 7ex;
+  padding: 20px 0px 20px 20px;
+  margin-bottom: 5%;
+  background-color: rgb(216, 212, 212);
 }
 a {
-  color: rgb(255, 255, 255);
+  color: black;
   text-decoration: none;
 }
 a:hover {
-  color: rgb(66, 71, 87);
+  color: rgb(138, 138, 138);
   /* border-bottom: 3px solid black; */
   text-decoration: none;
 }
@@ -70,6 +81,13 @@ a:hover {
   cursor: pointer;
 }
 .item li a {
+  color: white;
+  transition: 1s;
+}
+.navbar-option li {
+  transition: 200ms;
+}
+.navbar-option a {
   color: white;
 }
 
@@ -185,7 +203,6 @@ a:hover {
   text-align: left;
   margin: 0;
   margin-bottom: 100px;
-
 }
 
 .block .arrow-container {
@@ -238,11 +255,6 @@ a:hover {
   justify-content: center;
   align-items: center;
   align-content: center;
-}
-h1 {
-  padding: 20px 0px 20px 20px;
-  margin-bottom: 5%;
-  background-color: rgb(216, 212, 212);
 }
 
 .learn-wrapper {
@@ -374,12 +386,31 @@ h1 {
   ); /* Chrome10+,Safari5.1+ */
 }
 
-.all-wrapper.bob {
+.all-wrapper.homepage {
   display: flex;
-  justify-content: center;
-  justify-content: center;
   flex-direction: column;
-  align-content: flex-end;
+  /* padding-top: 20px; */
+}
+.all-wrapper.homepage li {
+  list-style-type: none;
+  text-align: center;
+}
+.all-wrapper.homepage h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+.all-wrapper.homepage h2 {
+  margin-bottom: 10px;
+  font-size: 5ex;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.all-wrapper.homepage .homepage-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
 }
 
 .warning {
@@ -629,7 +660,31 @@ h1 {
   justify-content: center;
 }
 
-
-.sidebar-position{
+.sidebar-position {
   padding-top: 80px;
+}
+
+textarea {
+  width: 100%;
+  height: 90px;
+}
+.canvascontainer.assessment {
+  display: block;
+  padding-bottom: 20px;
+  text-align: left;
+}
+
+.content-section.assessment-change {
+  padding-top: 0;
+}
+.content-section.assessment-change .list-stff {
+  background-color: rgb(214, 214, 214);
+}
+p.cross {
+  display: flex;
+  justify-self: flex-end;
+  width: 30px;
+  transform: translate(780px, -115px);
+  align-items: center;
+  justify-content: center;
 }

@@ -2,33 +2,39 @@
 
 {% block content %}
 
-<div class="all-wrapper bob">
-    <h1 id="indexheader">
-        SideNote
-    </h1>
-    <h2>
-        {% if not use==None %}
-        welcome back {{use}}!
+<div class="all-wrapper homepage">
+        <h1 id="indexheader">
+            SideNote
+        </h1>
+    <div class="homepage-content">
+        <h2>
+            {% if not use==None %}
+            welcome back {{use}}!
+            {% endif %}
+        </h2>
+        <p>
+            Your first step in music theory
+        </p>
+        <p>
+            <strong>You will learn about</strong>
+        </p>
+        <ul>
+            <li>Basic knowledge of music theory</li>
+            <li>Music Notation</li>
+            <li>Rhythm</li>
+            <li>Keys and scales</li>
+        </ul>
+        <br>
+        {% if not current_user.is_authenticated %}
+            <p><a href="{{ url_for('register.register') }}">Register</a></p>
         {% endif %}
-    </h2>
-    <p>
-        Your first step in music theory
-    </p>
-    <p>You will learn about</p>
-    <ul>
-        <li>Basic knowledge of music theory</li>
-        <li>Music Notation</li>
-        <li>Rhythm</li>
-        <li>Keys and scales</li>
-    </ul>
-    <br>
-    {% if not current_user.is_authenticated %}
-    <p><a href="{{ url_for('register.register') }}">Register</a> <br></p>
-    <div class="footer-container">
-        <footer> &#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
     </div>
-    {% endif %}
+
 </div>
+<div class="footer-container">
+    <p> &#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
+</div>
+
 {% endblock %}
 
 <!-- insert into users values('5','guang','sha384$mQ0gvQVv$db2ad8ac65507679ac663aa251f2c82cf25885fa7b2d691a1f334d9cd9708d266f9718e228af961a0f040909bc76a094','abc@abc.com','guang','yu','2021-05-11 14:44:58.644682',1,1,0,0); -->

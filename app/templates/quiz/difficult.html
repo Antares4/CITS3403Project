@@ -10,6 +10,7 @@
         <p class="question question1">
             This assessment may require knowldge beyond provided content and is sutible for ones seeking for more challenge.
         </p>
+        <div class="canvas-wrapper">
         <p>
             Look at this passage and answer the questions below
         </p> 
@@ -17,8 +18,8 @@
         <div class="canvascontainer display">
             <div id="Q1"></div>
         </div>
-
-        <div id="question1">
+    </div>
+        <div id="question1" class="question">
             <p>                
                 Name three notes in this passage that does not belong to the key of <strong>A</strong>
             </p>
@@ -34,11 +35,9 @@
                     {% endfor %}
                     <span>marker's feedback:</span>
                     <p>{{form.F1}}</p>
-                    <p>{{form.F1.lable}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
                 <p>{{form.Q1(class="response")}}</p>
-                <p>{{form.Q1.lable}}</p>
                 {% endif %}
             {% endif %}   
             {% if not current_user.isAdmin%}
@@ -60,6 +59,7 @@
             {% endif %}
 
         </div>
+        <hr>
         <div id="question2">  
             <p>
                 State two diffierece between bar 1 and bar 2.
@@ -76,11 +76,9 @@
                     {% endfor %}
                     <span>marker's feedback:</span>
                     <p>{{form.F2}}</p>
-                    <p>{{form.F2.lable}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
                 <p>{{form.Q2(class="response")}}</p>
-                <p>{{form.Q2.lable}}</p>
                 {% endif %}
             {% endif %}
             {% if not current_user.isAdmin%}
@@ -118,11 +116,9 @@
                     {% endfor %}
                     <span>marker's feedback:</span>
                     <p>{{form.F3}}</p>
-                    <p>{{form.F3.lable}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
                 <p>{{form.Q3(class="response")}}</p>
-                <p>{{form.Q3.lable}}</p>
                 {% endif %}
             {% endif %}
             {% if not current_user.isAdmin%}
@@ -159,11 +155,9 @@
                     {% endfor %}
                     <span>marker's feedback:</span>
                     <p>{{form.F4}}</p>
-                    <p>{{form.F4.lable}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
                 <p>{{form.Q4(class="response")}}</p>
-                <p>{{form.Q4.lable}}</p>
                 {% endif %}
             {% endif %}
             {% if not current_user.isAdmin%}
@@ -203,11 +197,9 @@
                     {% endfor %}
                     <span>marker's feedback:</span>
                     <p>{{form.F5}}</p>
-                    <p>{{form.F5.lable}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
                     <p>{{form.Q5(class="response")}}</p>
-                    <p>{{form.Q5.lable}}</p>
                     {% endif %}
             {% endif %}
             {% if not current_user.isAdmin%}
