@@ -1,7 +1,8 @@
 
 # CITS3403Project
 
-Sidenote music learning webapp written for [CITS3403-Project](https://teaching.csse.uwa.edu.au/units/CITS3403/) semester 1, 2021.
+Sidenote music learning webapp written for [CITS3403-Project](https://teaching.csse.uwa.edu.au/units/CITS3403/) semester 1, 2021 
+by [Peter Sheng](https://github.com/kurapikaaaa) (22707161) and [Shuangquan Zheng](https://github.com/HereItGoes) ()
 
 ## Features
 Sidenote support online interactive learning of basic music theory where a users can complete formative assessments to reflect on their learning progress.
