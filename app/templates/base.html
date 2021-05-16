@@ -6,9 +6,9 @@
         {% include "imports/importhead.html" %}
     </head>
     <body>
-    <div class="grid-wrapper">
+    <!-- <div class="grid-wrapper"> -->
         {% include "nav.html" %}
-        <div class="container-fluid">
+        <!-- <div class="container-fluid"> -->
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                 <ul class="under">
@@ -19,10 +19,10 @@
                 {% endif %}
             {% endwith %}
             {% block content %}{% endblock %}
-        </div>
+        <!-- </div> -->
 
         {% include "imports/importfoot.html"%}
-    </div>
+    <!-- </div> -->
 
     </body> 
 </html>

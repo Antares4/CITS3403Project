@@ -2,7 +2,7 @@
 {% block page %}
 <!-- this is to make the table look not that shitty make our own table pls -->
 
-<div class="textcontainer">
+<div class="text-container">
     <div class="content-section">
     <div class="para">
     <h1>Recognize Key</h1>
@@ -117,17 +117,17 @@
     <p>Felt confident? click <a href="{{url_for('index.notes', chapter='chapter3', page='page5')}}">HERE</a> to test yourself</p>
     <!--  -->
 </div>
-    
-</div>
 <div class="pagebutton">
     <span id="previous"><a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">&lt Previous</a></span>
     <span id="next"><a href="{{url_for('assessment.testSubmission', difficulty='intro')}}">Intro Assessment</a></span>
-    
+    <div class="footer-container normal">
+        <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
+     </div>
     </div>
-<div class="footer-container normal">
-    <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
- </div>
+
 </div>
+</div>
+
 <script>
     $(document).ready(function(){
         init("flat", "treble", "4/4",200,"Ab");

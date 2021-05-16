@@ -186,7 +186,6 @@ table a {
   height: 100%;
   background-color: rgb(43, 41, 38);
   color: rgb(255, 255, 255);
-  cursor: pointer;
   width: 100%;
   border: none;
   text-align: left;
@@ -207,6 +206,7 @@ table a {
 }
 
 .userheader {
+  cursor: pointer;
   padding-left: 4%;
   font-size: 20px;
   background-color: rgb(78, 78, 78);
@@ -218,6 +218,7 @@ table a {
 }
 
 .usercontent {
+  cursor: pointer;
   padding-left: 4%;
   max-height: 0;
   overflow: hidden;
@@ -239,4 +240,16 @@ table a {
 .links .content-button {
   margin: 5px;
 }
-/* this is for assessment */
+
+.collopse.side{
+  height: 90vh;
+}
+
+.collopse.side .userheader{
+  background-color: rgb(29, 29, 29);
+}
+
+.collopse.side .usercontent{
+  background-color:rgb(179, 179, 179);
+  color: black;
+}

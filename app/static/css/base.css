@@ -7,8 +7,9 @@
 
 p {
   line-height: 1.5;
+  font-size: 2.6ex;
 }
-.content-page ol {
+ol {
   list-style-position: inside;
 }
 hr.intro-page {
@@ -30,18 +31,12 @@ hr.intro-page {
 /* div p {
   margin: 0% 20%; Remove for now check if mess with anything later
 } */
-.container-fluid h1 {
+.block h1 {
   letter-spacing: 0.1ex;
   text-transform: uppercase;
   font-size: 7ex;
 }
-.container-fluid {
-  width: 100%;
-  text-align: center;
-  height: 100ex;
-  padding-right: 0;
-  padding-left: 0;
-}
+
 #a {
   min-height: 4rem;
   display: flex;
@@ -130,6 +125,7 @@ a:hover {
   height: 100vh;
   grid-template-columns: 1fr;
   grid-template-rows: 64px 1fr;
+  overflow-x: hidden;
   grid-template-areas:
     "nav-top"
     "content-block";
@@ -141,21 +137,13 @@ a:hover {
 .block {
   grid-area: content-block;
   width: 100%;
-  height: 100vh;
   display: grid;
   grid-template-columns: 180px 1fr;
   grid-template-areas: "sidebar content-section";
   overflow: auto;
+  overflow-x: hidden;
 }
-.block {
-  grid-area: content-block;
-  width: 100%;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  grid-template-areas: "sidebar content-section";
-  overflow: auto;
-}
+
 .arrow-container {
   grid-area: sidebar;
 }
@@ -166,10 +154,11 @@ a:hover {
 }
 
 .block .arrow-container {
+  padding-top: 65px;
   position: absolute;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
   height: 100vh;
   width: 170px;
   z-index: 2;
@@ -177,12 +166,12 @@ a:hover {
   background-color: rgb(36, 35, 33);
 }
 .block .arrow-container .chapter-content {
+  width: 100%;
   display: inline-block;
   text-align: left;
   margin: 0;
   margin-bottom: 100px;
-  padding-left: 10px;
-  padding-right: 10px;
+
 }
 
 .block .arrow-container {
@@ -199,31 +188,36 @@ a:hover {
 .text-container {
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
   /* display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr ; */
 }
+
 .footer-container {
-  background-color: rgb(27, 27, 30);
+  background-color: rgb(173, 173, 173);
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   align-content: center;
   bottom: 0;
-  width: 87.49vw;
+  width: 100%;
   color: white;
   height: 30px;
 }
 .footer-container.normal {
-  background-color: rgb(27, 27, 30);
+  margin-top: 40px;
+  background-color: rgb(207, 207, 207);
   padding-top: 15px;
-  position: relative;
+  position: absolute;
   bottom: 0px;
-  width: 87.49vw;
-  color: white;
+  width: 100%;
+  color: rgb(0, 0, 0);
   height: 30px;
   margin: 0;
+  font-size: 1.5ex;
 }
 .footer-container footer {
   display: flex;
@@ -231,14 +225,12 @@ a:hover {
   align-items: center;
   align-content: center;
 }
-.content-page h1 {
+h1 {
   padding: 20px 0px 20px 20px;
   margin-bottom: 5%;
   background-color: rgb(216, 212, 212);
 }
-.content-page p {
-  font-size: 2.6ex;
-}
+
 
 .learn-wrapper {
   margin-top: 8%;
@@ -253,8 +245,8 @@ a:hover {
   background: none;
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 20px;
-  width: 250px;
+  padding: 20px 35px 20px 35px;
+  width: 180px;
 }
 
 .learn-btn::before {
@@ -424,6 +416,8 @@ a:hover {
   grid-area: quiz-homepage;
 }
 .content-section.quiz {
+  text-align: center;
+  height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-areas: "quiz-homepage";
@@ -455,7 +449,7 @@ a:hover {
   height: 5px;
   background-color: rgb(81, 203, 32);
   color: white;
-  animation: change 31s ease-in-out;
+  animation: change 31s linear;
 }
 
 #timer {
@@ -571,8 +565,14 @@ a:hover {
 }
 .pagebutton {
   display: grid;
+  width: 100%;
+  padding-bottom: 20px;
   grid-template-columns: 1fr 1fr;
 }
+.footer-positioner {
+  position: absolute;
+}
+
 .pagebutton #previous {
   width: 180px;
   height: 40px;
@@ -587,9 +587,7 @@ a:hover {
 
   transition: transform 300ms ease-out;
 }
-.pagebutton {
-  width: 100%;
-}
+
 .pagebutton #next {
   width: 180px;
   height: 40px;
@@ -611,12 +609,14 @@ a:hover {
   transform: translate(0px);
 }
 
-.textcontainer {
-  overflow-x: hidden;
-}
 .test-self {
   padding-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+.sidebar-position{
+  padding-top: 80px;
 }
