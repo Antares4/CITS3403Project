@@ -2,7 +2,7 @@
 
 {% block content %}
     <form id="registerform" method="post" onsubmit="registerValidate();" novalidate>
-        <h1>Register</h1>
+        <h1 id="headtitle">Register</h1>
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}
@@ -61,6 +61,7 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+        <br>
         <p>{{ form.submit(id="submit") }}</p>
     </form>
     <script src="/static/js/validate.js"></script>

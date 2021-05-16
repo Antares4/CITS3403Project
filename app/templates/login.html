@@ -1,37 +1,47 @@
 {% extends "base.html" %}
 
 {% block content %}
-    
-    <form id="loginform" method="post" onsubmit="loginValidate();" novalidate>
-        <h1 id="headtitle">Sign In</h1>
-        {{ form.hidden_tag() }}
-        {% if msg %}
-        <span class="warning">{{msg}}</span>
-        {% endif %}
-        <p>
+<form id="loginform" method="post" onsubmit="loginValidate();" novalidate>
+    <h1 id="headtitle">Sign In</h1>
+    {{ form.hidden_tag() }}
+    {% if msg %}
+    <span class="warning">{{msg}}</span>
+    {% endif %}
+    <p>
+        <div class="sub-title">
             {{ form.username.label }}
-            <br>
-            {{ form.username(size=32, id="loginname") }}
+        </div>
+        <br>
+        <div class="input-box">
+            {{ form.username(size=32, id="loginname",placeholder="  User Name") }}
+        </div>
             {% for error in form.username.errors %}
             <br>
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        <div class="sub-title">
             {{ form.password.label }}
+        </div>
             <br>
-            {{ form.password(size=32, id="loginpwd") }}
+        <div class="input-box">
+            {{ form.password(size=32, id="loginpwd",placeholder="  Password") }}
+        </div>
             {% for error in form.password.errors %}
             <br>
-            <span style="color: red;">[{{ error }}]</span>
+        <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit(id="submit") }}</p>
-
-        <div>
-          don't have an account? <a href="{{ url_for('register.register') }}">Register</a>
+    </p>
+    <p>
+        {{ form.remember_me() }} {{ form.remember_me.label }}
+    </p>
+    <p>
+        {{ form.submit(id="submit") }}
+    </p>
+        <div class="register-container">
+            Don't have an account? <a href="{{ url_for('register.register') }}">Register</a>
         </div>
-    </form>
-    <script src="/static/js/validate.js"></script>
+</form>
+<script src="/static/js/validate.js"></script>
 {% endblock %}

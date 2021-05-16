@@ -66,7 +66,7 @@ a:hover {
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  width: 30%;
+  /* width: 30%; */
 }
 .items li {
   position: relative;
@@ -107,38 +107,36 @@ a:hover {
   position: absolute;
   background-color: rgb(43, 41, 38);
   z-index: 1;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 #fixed-nav .navbar-option:hover {
   background-color: rgb(91, 91, 91);
   color: white;
 }
 #fixed-nav .navbar-option:hover .dropdown-content.content-translate {
-  transition-delay: 0.2s;
+  transition-delay: 0.5s;
   width: 100%;
-  display: block;
+  display: flex;
+  flex-direction: column;
   transform: translate(-21.5%);
   margin-top: 20px;
 }
 #fixed-nav .navbar-option:hover .dropdown-content.assessment-translate {
   transition-delay: 0.2s;
   width: 100%;
-  display: block;
+  display: flex;
+  flex-direction: column;
   transform: translate(-18%);
   margin-top: 20px;
+}
+#fixed-nav .dropdown-content a:hover {
+  background-color: rgb(91, 91, 91);
 }
 .items ul {
   display: flex;
 }
 
-.dropdown-content {
-  position: absolute;
-  display: none;
-  color: rgb(199, 194, 194);
-  background-color: grey;
-  width: auto;
-  z-index: inherit;
-  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
-}
 .t {
   background-color: red;
   height: 400px;
@@ -664,7 +662,7 @@ a:hover {
   padding-top: 80px;
 }
 
-textarea {
+.response {
   width: 100%;
   height: 90px;
 }
@@ -688,3 +686,91 @@ p.cross {
   align-items: center;
   justify-content: center;
 }
+/* separater */
+form#loginform,
+form#registerform {
+  /* padding-top: 180px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 10% 0 10%;
+}
+
+#loginform h1,
+#registerform h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 400;
+  width: 50%;
+}
+/* #loginpwd {
+  outline: none;
+} */
+
+input[type="text"],
+input[type="password"] {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  transition: transform 200ms linear;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="text"]:hover,
+input[type="password"]:hover {
+  transform: scaleX(1.1);
+  border-color: brown;
+  font-size: larger;
+}
+
+#loginform .sub-title,
+#registerform .sub-title {
+  font-size: 4ex;
+}
+
+input[type="submit"] {
+  width: 150px;
+}
+input[type="submit"] {
+  justify-content: center;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  display: inline-flex;
+  height: 5ch;
+  width: 10ch;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  background-color: rgb(34, 34, 34);
+  border: none;
+  transition: all 0.4s ease 0.01s;
+}
+
+input[type="submit"]:hover {
+  /* background-color: white;
+  color: black;
+  border: 1px solid black;
+  box-shadow: none; */
+  color: rgb(39, 39, 39);
+  background-color: rgb(228, 228, 228);
+  /* transition: all 0.4s ease 0.01s; */
+}
+.register-container {
+  margin-top: 20px;
+}
+.register-container a {
+  color: blue;
+}
+.register-container a:hover {
+  color: rgb(58, 58, 199);
+}
+/* End here for login */
+
+/* register form */
+form#registerform {
+  text-align: center;
+}
+/* END REGISTER */

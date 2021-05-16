@@ -1,113 +1,107 @@
 {%extends "assessment.html"%}
 {% block page %}
 <!--  -->
-    <form method="post" onsubmit="submissionvalidate();" novalidate>
-        {% if form %}
-        {{ form.hidden_tag() }}
-        {% endif %}
-        <h1 class="assessment-header">Assessment - II</h1>
-        <p class="question question1">
-            This assessment will test your knowldge on music theory and history at an intermediate difficulty.
-            <hr>
-            Once you felt confortable with this moduel you may move on to the next level
-            <hr>
-        </p>
-            <div class="canvas-wrapper">
-                    <p>Look at this passage and answer the questions below.</p>
-                <div class="canvascontainer">
-                    <div class="stave" id="Q1"></div>
-                </div>
-            </div>
-        <div class="canvascontainer assessment">
-            <div id="question1">
-                <ol class="list-stff">
-                    <li>Name the highest note in this passage and state its notevalue.</li>
-                </ol>
-                {% if form %}
-                    {% if current_user.isAdmin%}
-                        <span>user response for this question is</span>
-                        {% for item in responses %}
-                            {% if item.answerSeq == 1 %}
-                            <p>
-                                {{item.submittedAnswer}}
-                            </p>
-                            {% endif %}
-                        {% endfor %}
-                        <span>marker's feedback:</span>
-                        <p>{{form.F1}}</p>
-                        <p>{{form.F1.lable}}</p>
-                    {% endif %}
-                    {% if not current_user.isAdmin%}
-                    <p>{{form.Q1(class="response")}}</p>
-                    <p>{{form.Q1.lable}}</p>
-                    {% endif %}
-                {% endif %} 
-                {% if not current_user.isAdmin%}  
+<form method="post" onsubmit="submissionvalidate();" novalidate>
+    {% if form %}
+    {{ form.hidden_tag() }}
+    {% endif %}
+    <h1 class="assessment-header">Assessment - II</h1>
+    <p class="question question1">
+        This assessment will test your knowldge on music theory and history at an intermediate difficulty.
+        <hr>
+        Once you felt confortable with this moduel you may move on to the next level.
+        <hr>
+    </p>
+    <div class="canvas-wrapper">
+            <p>Look at this passage and answer the questions below.</p>
+        <div class="canvascontainer">
+            <div class="stave" id="Q1"></div>
+        </div>
+    </div>
+    <div class="canvascontainer assessment">
+        <div id="question1">
+            <ol class="list-stff">
+                <li>Name the highest note in this passage and state its notevalue.</li>
+            </ol>
+            {% if form %}
+                {% if current_user.isAdmin%}
+                    <span>user response for this question is</span>
                     {% for item in responses %}
                         {% if item.answerSeq == 1 %}
                         <p>
-                            <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                            {% if item.markreceived %}
-                            
-                            <p>&#10003</p>
-                            {% else %}
-                            <p class="cross">&#10005</p>
-                            {% endif %}
-                            
-                            {% if item.feedback %}
-                            <p><span>Feedback for q1:</span> {{item.feedback}}</p>
-                            {% endif %}
+                            {{item.submittedAnswer}}
                         </p>
                         {% endif %}
                     {% endfor %}
-                {% endif %}
-            </div>
-        </div>  
-        <hr>
-        <div class="canvascontainer assessment">
-            <div id="question2">
-                <ol class="list-stff">
-                    <li>Describe the time signiture as: Simple or Compound/duple, triple or quadruple</li>
-                </ol>
-                {% if form %}
-                    {% if current_user.isAdmin %}
-                        <span>user response for this question is</span>
-                        {% for item in responses %}
-                            {% if item.answerSeq == 2 %}
-                            <p>
-                                {{item.submittedAnswer}}
-                            </p>
-                            {% endif %}
-                        {% endfor %}
-                        <span>marker's feedback:</span>
-                        <p>{{form.F2}}</p>
-                        <p>{{form.F2.lable}}</p>
-                    {% endif %}
-                    {% if not current_user.isAdmin%}
-                    <p>{{form.Q2(class="response")}}</p>
-                    <p>{{form.Q2.lable}}</p>
-                    {% endif %}
+                    <span>marker's feedback:</span>
+                    <p>{{form.F1}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
+                <p>{{form.Q1(class="response")}}</p>
+                {% endif %}
+            {% endif %} 
+            {% if not current_user.isAdmin%}  
+                {% for item in responses %}
+                    {% if item.answerSeq == 1 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p class="cross">&#10005</p>
+                        {% endif %}
+                        {% if item.feedback %}
+                        <p><span>Feedback for q1:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>  
+    <hr>
+    <div class="canvascontainer assessment">
+        <div id="question2">
+            <ol class="list-stff">
+                <li>Describe the time signature as: Simple or Compound/duple, triple or quadruple</li>
+            </ol>
+            {% if form %}
+                {% if current_user.isAdmin %}
+                    <span>user response for this question is</span>
                     {% for item in responses %}
                         {% if item.answerSeq == 2 %}
                         <p>
-                            <p><span>your response:</span> {{item.submittedAnswer}}</p>
-                            {% if item.markreceived %}
-                            <p>&#10003</p>
-                            {% else %}
-                            <p class="cross">&#10005</p>
-                            {% endif %}
-                            {% if item.feedback %}
-                            <p><span>Feedback for q2:</span> {{item.feedback}}</p>
-                            {% endif %}
+                            {{item.submittedAnswer}}
                         </p>
                         {% endif %}
                     {% endfor %}
+                    <span>marker's feedback:</span>
+                    <p>{{form.F2}}</p>
                 {% endif %}
-            </div>
+                {% if not current_user.isAdmin%}
+                <p>{{form.Q2(class="response")}}</p>
+                {% endif %}
+            {% endif %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 2 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p class="cross">&#10005</p>
+                        {% endif %}
+                        {% if item.feedback %}
+                        <p><span>Feedback for q2:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
-        <hr>
+    </div>
+    <hr>
     <div class="canvascontainer assessment">
         <div id="question3">
             <ol class="list-stff">
@@ -129,7 +123,6 @@
                 {% endif %}
                 {% if not current_user.isAdmin%}
                 <p>{{form.Q3(class="response")}}</p>
-                <p>{{form.Q3.lable}}</p>
                 {% endif %}
             {% endif %}
             {% if not current_user.isAdmin%}
@@ -150,107 +143,107 @@
                 {% endfor %}
             {% endif %}
         </div>
-        </div>  
-        <hr>
-        <div class="canvascontainer assessment">
-            <div id="question4">
-                <ol class="list-stff">
-                    <li> Name an enharmonic of the second last note </li>
-                </ol>
-                {% if form %}
-                    {% if current_user.isAdmin %}
-                        <span>user response for this question is</span>
-                        {% for item in responses %}
-                            {% if item.answerSeq == 4 %}
-                            <p>
-                                {{item.submittedAnswer}}
-                            </p>
-                            {% endif %}
-                        {% endfor %}
-                        <span>marker's feedback:</span>
-                        <p>{{form.F4}}</p>
-                        <p>{{form.F4.lable}}</p>
-                    {% endif %}
-                    {% if not current_user.isAdmin%}
-                    <p>{{form.Q4(class="response")}}</p>
-                    <p>{{form.Q4.lable}}</p>
-                    {% endif %}
-                {% endif %}
-                {% if not current_user.isAdmin%}
+    </div>  
+    <hr>
+    <div class="canvascontainer assessment">
+        <div id="question4">
+            <ol class="list-stff">
+                <li> Name an enharmonic of the second last note </li>
+            </ol>
+            {% if form %}
+                {% if current_user.isAdmin %}
+                    <span>user response for this question is</span>
                     {% for item in responses %}
                         {% if item.answerSeq == 4 %}
                         <p>
-                            <p><span>your response:</span> {{item.submittedAnswer}}</p>
-
-                            {% if item.markreceived %}
-                            <p>&#10003</p>
-                            {% else %}
-                            <p class="cross">&#10005</p>
-                            {% endif %}
-                            {% if item.feedback %}
-                            <p><span>Feedback for q4:</span> {{item.feedback}}</p>
-                            {% endif %}
+                            {{item.submittedAnswer}}
                         </p>
                         {% endif %}
                     {% endfor %}
-                {% endif %}
-            </div>
-        </div>
-        <hr>
-        <div class="canvascontainer assessment">
-            <div id="question5">
-                <ol class="list-stff">
-                    <li>List the components of A major</li>
-                </ol>
-                {% if form %}
-                    {% if current_user.isAdmin %}
-                        <span>user response for this question is</span>
-                        {% for item in responses %}
-                            {% if item.answerSeq == 5 %}
-                            <p>
-                                {{item.submittedAnswer}}
-                            </p>
-                            {% endif %}
-                        {% endfor %}
-                        <span>marker's feedback:</span>
-                        <p>{{form.F5}}</p>
-                        <p>{{form.F5.lable}}</p>
-                    {% endif %}
-                    {% if not current_user.isAdmin%}
-                        <p>{{form.Q5(class="response")}}</p>
-                        <p>{{form.Q5.lable}}</p>
-                        {% endif %}
+                    <span>marker's feedback:</span>
+                    <p>{{form.F4}}</p>
+                    <p>{{form.F4.lable}}</p>
                 {% endif %}
                 {% if not current_user.isAdmin%}
+                <p>{{form.Q4(class="response")}}</p>
+                <p>{{form.Q4.lable}}</p>
+                {% endif %}
+            {% endif %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 4 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p class="cross">&#10005</p>
+                        {% endif %}
+                        {% if item.feedback %}
+                        <p><span>Feedback for q4:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    <div class="canvascontainer assessment">
+        <div id="question5">
+            <ol class="list-stff">
+                <li>List the components of A major</li>
+            </ol>
+            {% if form %}
+                {% if current_user.isAdmin %}
+                    <span>user response for this question is</span>
                     {% for item in responses %}
                         {% if item.answerSeq == 5 %}
                         <p>
-                            <p><span>your response:</span> {{item.submittedAnswer}}</p>
-
-                            {% if item.markreceived %}
-                            <p>&#10003</p>
-                            {% else %}
-                            <p class="cross">&#10005</p>
-                            {% endif %}
-                            {% if item.feedback %}
-                            <p><span>Feedback for q4:</span> {{item.feedback}}</p>
-                            {% endif %}
+                            {{item.submittedAnswer}}
                         </p>
                         {% endif %}
                     {% endfor %}
+                    <span>marker's feedback:</span>
+                    <p>{{form.F5}}</p>
+                    <p>{{form.F5.lable}}</p>
                 {% endif %}
-            </div>
+                {% if not current_user.isAdmin%}
+                    <p>{{form.Q5(class="response")}}</p>
+                    <p>{{form.Q5.lable}}</p>
+                    {% endif %}
+            {% endif %}
+            {% if not current_user.isAdmin%}
+                {% for item in responses %}
+                    {% if item.answerSeq == 5 %}
+                    <p>
+                        <p><span>your response:</span> {{item.submittedAnswer}}</p>
+
+                        {% if item.markreceived %}
+                        <p>&#10003</p>
+                        {% else %}
+                        <p class="cross">&#10005</p>
+                        {% endif %}
+                        {% if item.feedback %}
+                        <p><span>Feedback for q4:</span> {{item.feedback}}</p>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
         </div>
-        {% if form %}
+    </div>
+    {% if form %}
 
-        <p class="notedemo">{{ form.submit(class="content-button") }}</p>
-        {% endif %}
+    <p class="notedemo">{{ form.submit(class="content-button") }}</p>
+    {% endif %}
 
-    </form>
-    <script>
-        $(document).ready(function(){
-            intermediate("Q1")
-        })
-    </script>
-    <script src="/static/js/validate.js"></script>
+</form>
+<script>
+    $(document).ready(function(){
+        intermediate("Q1")
+    })
+</script>
+<script src="/static/js/validate.js"></script>
 {% endblock %}
