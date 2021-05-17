@@ -1,9 +1,6 @@
-
 <nav id="fixed-nav" class="top-nav">
-    <!-- display if loggedin -->
-        <h3 class="logo">Sidenote</h3>
+    <h3 class="logo">Sidenote</h3>
     <ul class="items">
-        
         {% if not current_user.is_authenticated %}
         <li class="navbar-option">
             <a href="{{url_for('index.index')}}">Home</a>
@@ -16,7 +13,6 @@
             <li class="navbar-option">
                 <a href="{{url_for('index.index')}}">Home</a>
             </li>
-        
             <li class="navbar-option">
                 content
                 <div class="dropdown-content content-translate">
@@ -34,7 +30,6 @@
                 </div>
             </li>
         {% endif %}
-
         {% if current_user.is_authenticated%}
         <li class="navbar-option">
             <a href="{{url_for('index.profile', userId=current_user.id)}}">Profile</a>
@@ -43,5 +38,5 @@
             <a href="{{url_for('index.logout')}}">Logout</a>
         </li>
         {% endif %}
-</ul>
+    </ul>
 </nav>

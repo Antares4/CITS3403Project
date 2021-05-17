@@ -87,10 +87,6 @@ a:hover {
 }
 .item li a {
   color: white;
-  transition: 1s;
-}
-.navbar-option li {
-  transition: 200ms;
 }
 .navbar-option a {
   color: white;

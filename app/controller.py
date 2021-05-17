@@ -26,9 +26,10 @@ def createUser(user,password):
         print("Missing data")
         return False
 
-# removes user and corrospoding 
+
 def removeUser(userId):
-    if not userId:
+    usr = users.query.filter_by(id=userId).first()
+    if not usr:
         print("Unknown id provided")
         return False
     else:
@@ -114,9 +115,7 @@ def autoMark(submission):
         for i in range(len(index)):
             if i == ans.answerSeq-1:
                 match = index[i].split(",")
-                print(match, i)
                 orig = ans.submittedAnswer.split(" ")
-                print(orig)
                 for item in orig:
                     if item.lower() in match:
                         ans.markreceived = True
@@ -183,8 +182,6 @@ def createSubmission(sid, difficulty, form):
     except SQLAlchemyError as e:
         raise TypeError
     return sub
-
-
 
 
 
@@ -273,8 +270,6 @@ def getKeyRanking(userid):
 
 def getAdminProfile(page, userId):
     all_sub = getAllSubmissions().paginate(page, 10, False)
-    print("allsub",getAllSubmissions().all())
-    ###########
     if all_sub.has_next:
         next_sub_page = url_for('index.profile', page=all_sub.next_num, userId=userId) 
     else:
@@ -283,7 +278,6 @@ def getAdminProfile(page, userId):
         prev_sub_page = url_for('index.profile', page=all_sub.prev_num, userId=userId) 
     else:
         prev_sub_page = None
-    #######
     all_user = getAllUsers()
     info = {
         'subs'  : all_sub.items,
@@ -300,7 +294,6 @@ def getAdminProfile(page, userId):
 
 def getUserProfile(page, userId):
     my_sub = submission.query.filter_by(creater_id=userId).order_by(submission.createdAt.desc()).paginate(page, 10, False)
-    ###########
     if my_sub.has_next:
         next_sub_page = url_for('index.profile', page=my_sub.next_num, userId=userId) 
     else:
@@ -334,7 +327,6 @@ def processNoteScore(userId,score):
             'ranking': getNoteRanking(userId),
             'score': score
         }
-        print("result is",result)
     else:
         result = {
             'record': False,
@@ -342,7 +334,6 @@ def processNoteScore(userId,score):
             'ranking': getNoteRanking(userId),
             'score': score
         }
-        print("result is",result)
     db.session.commit()
     return result
 
@@ -357,7 +348,6 @@ def processKeyScore(userId,score):
             'ranking': getKeyRanking(userId),
             'score': score
         }
-        print("result is",result)
     else:
         result = {
             'record': False,
@@ -365,16 +355,13 @@ def processKeyScore(userId,score):
             'ranking': getKeyRanking(userId),
             'score': score
         }
-        print("result is",result)
     db.session.commit()
     return result
 
 def getNoteList():
     top_users = users.query.filter_by(isAdmin=False).order_by(users.noteHighScore.desc()).limit(7).all()
-    print("users",top_users)
     return top_users
 
 def getKeyList():
     top_users = users.query.filter_by(isAdmin=False).order_by(users.KeyHighScore.desc()).limit(7).all()
-    print("users",top_users)
     return top_users

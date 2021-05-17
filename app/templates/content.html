@@ -1,83 +1,53 @@
 {%extends "base.html"%}
 
 {% block content %}
-<!-- do not change this line -->
+
 <div class="block">
-<!-- do not change this line -->
     <div id="arrow" class="arrow-container" class="box">
         <div class="chapter-content" >
             <table>
                 <div class="user-info">
                     <div class="collopse side">
-                                <div class="userheader">
-                                    Notation<br>
-                                </div>
-                                <div class="usercontent">
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">What is Notation</a></div> 
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Clefs</a></div>
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Note Representation</a></div> 
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">More on Representation</a></div>
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter1', page='page5')}}">Accidentals</a></div>
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">Test your self</a></div>
-                                </div>
-                                <div class="userheader">
-                                    Rhythm<br>
-                                </div>
-                                <div class="usercontent">
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Rhythm</a></div> 
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Time signature</a></div>
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter2', page='page3')}}">Note value</a></div> 
-                                </div>
-                                <div class="userheader">
-                                    Key<br>
-                                </div>
-                                <div class="usercontent">
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Key</a></div> 
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter3', page='page2')}}">What is key</a></div>
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">Key signatures</a></div> 
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter3', page='page4')}}">Recognize key</a></div> 
-                                        <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter3', page='page5')}}">Test your self</a></div> 
-                                </div>
+                        <div class="userheader">
+                            Notation<br>
+                        </div>
+                        <div class="usercontent">
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">What is Notation</a></div> 
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Clefs</a></div>
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Note Representation</a></div> 
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">More on Representation</a></div>
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter1', page='page5')}}">Accidentals</a></div>
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">Test your self</a></div>
+                        </div>
+                        <div class="userheader">
+                            Rhythm<br>
+                        </div>
+                        <div class="usercontent">
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Rhythm</a></div> 
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Time signature</a></div>
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter2', page='page3')}}">Note value</a></div> 
+                        </div>
+                        <div class="userheader">
+                            Key<br>
+                        </div>
+                        <div class="usercontent">
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Key</a></div> 
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter3', page='page2')}}">What is key</a></div>
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">Key signatures</a></div> 
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter3', page='page4')}}">Recognize key</a></div> 
+                            <div class="page-num"><a href="{{url_for('index.notes', chapter='chapter3', page='page5')}}">Test your self</a></div> 
+                        </div>
                     </div>
                 </div>
             </table>
         </div>
     </div>
-    <!-- can you please get this section to be on the left side / change the class name if u want to fit ur css-->
-            <!-- <div class="pageIndex"> -->
-                <!-- <ul class="items"> -->
-            <!-- can u make it so that when you click on notation it expands and review -->
-                <!-- <li>Notation</li>  -->
-                <!-- review this part -->
-                <!-- <li><a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">What is Notation</a></li> --> -->
-                <!-- <li><a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Clefs</a></li> -->
-                <!-- <li><a href="{{url_for('index.notes', chapter='chapter1', page='page3')}}">Note Representation</a></li> -->
-                <!-- <li><a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">More on Representation</a></li> -->
-                <!-- <li><a href="{{url_for('index.notes', chapter='chapter1', page='page5')}}">Accidentals</a></li> -->
-                <!-- <li><a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">Test your self</a></li> -->
-                <!-- this part -->
-                <!-- same thing for Rhythm section -->
-                <!-- <li>Rhythm</li> -->
-                <!-- thispart for rhythm -->
-                <!-- <li> <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">What is Rhythm</a></li> -->
-                <!-- <li> <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Time signiture</a></li> -->
-                <!-- <li> <a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">Note Values</a></li>
-                thispart for rhythm
-                key part yet to come but same as the previous two parts
-                 </ul> -->
-            <!-- </div> -->
-    <!-- <div class="content-page"> -->
+    Content
     <div class="fadein" style="display: none;">
         {% block page %}{% endblock %}
     </div>
-
-    <!-- </div> -->
-<!-- do not change this line -->
 </div>
-<!-- do not change this line -->
 <script type="text/javascript">
-    //don't touch this part!!!!!!! and do not change class name of block 
-    //this function will fade in the entire div(including the page content) so it doesn't flash on load!!!!
     $(document).ready(function() {
         $(".fadein").fadeIn(500);
         var users = document.getElementsByClassName("userheader");
@@ -94,7 +64,6 @@
             });
         }
     });
-    ///
 </script>
 {% include "imports/importnote.html" %}
 {% endblock %}

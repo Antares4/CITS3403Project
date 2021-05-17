@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block content %}
     <form id="registerform" method="post" onsubmit="registerValidate();" novalidate>
         <h1 id="headtitle">Register</h1>
@@ -13,7 +12,7 @@
                 <span class="warning">{{userExist}}</span>
             {% endif %}
             {% for error in form.username.errors %}
-            <span class="warning" style="color: red;">[{{ error }}]</span>
+                <span class="warning" style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>

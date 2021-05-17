@@ -3,13 +3,11 @@
 {% block content %}
 
 <div class="all-wrapper" style="display: none;" >
-    <!--  if is admin -->
     <div class="header">
         <h1>
             admin
         </h1>
     </div>
-    <!-- this possibly in a square  -->
         <div class="rank-wrapper">
             <div class="rank-container">
                 <div class="submission-upper black">
@@ -18,7 +16,6 @@
                     <span class="highlight">{{data.subCount}} </span> 
                 </div>
             </div>
-            <!-- this one same next to the one above -->
             <div class="rank-container">
                 <div class="submission-upper black">
                     <span class="highlight">Total Users</span>
@@ -27,7 +24,6 @@
                 </div>
             </div>
         </div>
-    <!-- user table that does not have paging thinking of use a drop down menu to shrink size -->
         <table>
             <div class="user-info">
                 <div class="collopse">
@@ -51,7 +47,6 @@
         </table>
 
         <div class="submissions">
-            <!-- submission table -->
             <table>
                 <tr class="first">
                     <th>
@@ -95,12 +90,8 @@
                     {% endif %}
                 {% endfor %}
             </table>
-            <!--  -->
-            
-            <!--  -->
         </div>
         <div id="sublinks" class="links">
-            <!-- link for submission pages -->
             {% if data._links.sub_prev %}
                 <a id="new" class="content-button" href="{{ data._links.sub_prev }}">Newer sub</a>
             {% endif %}
@@ -115,8 +106,6 @@
     <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
  </div>
 <script type="text/javascript">
-    //don't touch this part!!!!!!! and do not change class name of block 
-    //this function will fade in the entire div(including the page content) so it doesn't flash on load!!!!
     $(document).ready(function() {
         $(".all-wrapper").fadeIn(500);
         if(document.getElementById("new") == null && document.getElementById("old") !=null){
@@ -135,6 +124,5 @@
         });
         }
     });
-    ///
 </script>
 {% endblock %}

@@ -73,7 +73,6 @@ class submission(db.Model):
         self.totalmark = None
         self.marked = False
         self.passed = False
-        print("submission init")
     
     def validate(self):
         if self.difficulty and self.creater_id and self.createdAt:
@@ -94,11 +93,11 @@ class answer(db.Model):
     submissionId = db.Column(db.Integer, db.ForeignKey("submission.id"))
 
     def __init__(self):
-        feedback = None
-        markreceived = False
+        self.feedback = None
+        self.markreceived = False
 
     def validate(self):
-        if self.answerSeq and self.submittedAnswer and submissionId:
+        if self.answerSeq and self.submittedAnswer and self.submissionId:
             return True
         else:
             print("missingfield")
@@ -116,7 +115,3 @@ def load_user(usr_id):
 def unauthorized():
     return redirect(url_for("auth.login"))
 
-#.headers on
-#.open app.db
-#.mode column
-#select * from submission;
