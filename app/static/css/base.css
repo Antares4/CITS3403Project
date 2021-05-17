@@ -116,7 +116,6 @@ a:hover {
   color: white;
 }
 #fixed-nav .navbar-option:hover .dropdown-content.content-translate {
-  transition-delay: 0.5s;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -124,7 +123,6 @@ a:hover {
   margin-top: 20px;
 }
 #fixed-nav .navbar-option:hover .dropdown-content.assessment-translate {
-  transition-delay: 0.2s;
   width: 100%;
   display: flex;
   flex-direction: column;

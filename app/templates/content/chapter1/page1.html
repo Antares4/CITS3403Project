@@ -1,68 +1,29 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<!-- the text container class is needed for click and display to work -->
-<!-- you can remove it if u want to use an other class name to fit ur css -->
 <div class="text-container">
-  <!-- NOTE: -->
-  <!-- use hr to break between section you felt should be separated -->
-  <!-- please make the tags consistent, as long as those texts were in the right order  -->
-
-  <!-- this is the title make it big -->
-  <!-- the font for H1 right now is pry good so i want to keep it, you can find it in the base.css and import head -->
   <div class="content-section">
     <div class="para">
       <h1>
         WHAT IS MUSIC NOTATION
       </h1>
-  <!--  -->
-
-  <!-- <hr class="display"> -->
       <p>
         Western music notation is a system used to visurally represent music played by instrument or sung by human voice through a set of 
         rules and symbols. 
-      
       </p>
-  <!-- <hr > -->
       <p>
         <ol class="list-stff">
-       <li>This module will develop a basic understanding of musical notation and explore some of its relevant context. 
-      </li> </ol> 
+          <li>This module will develop a basic understanding of musical notation and explore some of its relevant context.</li> 
+        </ol> 
       </p>
     </div>
     <hr class="intro-page">
-    <!-- this class is convinently set up for u to edit in base.css -->
     <div class="learn-wrapper">
-      <!-- for the link to previous and next page can you create a single css class that will make the button look the same accross all pages -->
-      <!-- for Learn more can you place it in the center  -->
       <a class="learn-btn" id="Learn-more" onkeydown="myFunction()" href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">Learn More</a>
-  
-  </div>
-  
-      </div>
-      <div class="footer-container">
-        <footer>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
-     </div>
-  
     </div>
-  <script>
-function myFunction() {
-  document.getElementById("Learn-more").click()
-}
-</script>
-<!-- <script>
-  $(document).ready(function(){
-      //this part displays every element with class display one by one when user click on the page 
-      //you can remove it if you want 
-      var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
-      var display = 0;
-      $(".textcontainer").bind('click',function(){
-          if(display < paragraph.length){
-              paragraph[display].style.opacity = 1;
-              display++;
-          }
-      })
-      //
-  });
-</script> -->
+  </div>
+  <div class="footer-container">
+    <footer>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
+  </div>
+</div>
 {% endblock %}

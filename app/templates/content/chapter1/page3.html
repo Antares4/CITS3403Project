@@ -1,126 +1,79 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<!-- text part basically same as page 2 -->
 <div class="text-container">
-  <!-- this is the title -->
   <div class="content-section">
     <div class="para">
-      <h1>
-        Note representation
-      </h1>
-  <!--  -->
-      <p>
-        Now with a stave to work with , we are able to place some <strong>notes</strong>.
-        
-      </p>
-      <hr>
-      <p >
-        In western music notation, <strong>notes</strong> are named cyclically through the Alphabets 
-        <strong>[A-G]</strong>. For each step up the stave, the note increment alphabetically (decrements stepping down the stave).
-        Identical notes of the next/previous cycle essentially represent the same note, but an octive higher/Lower. 
-        
-      </p>
-      <hr >
-
-  <!-- this is a span that will display the current note, please make it beautifull and position it so that it corrosponds to the stave -->
-  <!-- you can place it above/next/in front or any position relative tho the stave below -->
-  <!-- do not change this ID!!!!!!! -->
-      
-      <!-- do not change this ID!!!!!!! -->
-
-
-      <!-- this is the stave section!!! -->
-      <div class="canvas-wrapper">
-        <div class="canvascontainer ">
-          
-          <!-- do not touch this part -->
-          <div class="stave" id="notes"></div>
-          <!-- do not touch this part -->
+        <h1>
+          Note representation
+        </h1>
+        <p>
+          Now with a stave to work with , we are able to place some <strong>notes</strong>.
+        </p>
+        <hr>
+        <p>
+          In western music notation, <strong>notes</strong> are named cyclically through the Alphabets 
+          <strong>[A-G]</strong>. For each step up the stave, the note increment alphabetically (decrements stepping down the stave).
+          Identical notes of the next/previous cycle essentially represent the same note, but an octive higher/Lower. 
+        </p>
+        <hr>
+        <div class="canvas-wrapper">
+          <div class="canvascontainer ">
+            <div class="stave" id="notes"></div>
+          </div>
+          <div  class="button-container">
+            <span class="content-button" id="down">&lt</span>
+            <span class="content-note" id="display" ></span>
+            <span class="content-button" id="up">&gt</span>
+          </div>
         </div>
-      
-  <!--  -->
-
-
-  <!-- these two buttons controls the raise and lower of notes -->
-      <div  class="button-container">
-        <!-- same as the ineractive button as previous pages -->
-        <span class="content-button" id="down">&lt</span>
-        <span class="content-note" id="display" ></span>
-        <span class="content-button" id="up">&gt</span>
-      </div>
     </div>
   </div>
+  <div class="pagebutton">
+    <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">&lt Previous</a> </span>
+    <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}"> Next &gt</a> </span>
+    <div class="footer-container normal">
+      <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
     </div>
-    
-      <!-- prev/next page  same stuff-->
-      <div class="pagebutton">
-        <span id="previous"> <a href="{{url_for('index.notes', chapter='chapter1', page='page2')}}">&lt Previous</a> </span>
-        <span id="next"> <a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}"> Next &gt</a> </span>
-        <div class="footer-container normal">
-          <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
-       </div>
-      </div>
-
-
-
-     
-      <!--  -->
+  </div>
 </div>
 <script>
-      $(document).ready(function(){
-      // note logic do not modify!!!!
-      const basicnotes = ["c/4","d/4","e/4","f/4","g/4","a/4","b/4","c/5","d/5","e/5","f/5","g/5","a/5","b/5"]
-      var position = 6;
-      init("notes", "treble", null,200,null);
-      addnote("treble", [basicnotes[position]], ["q"]);
-      $("#display").text(basicnotes[position]);
-      $("#down").bind('click',function(){
-          console.log("clicked");
-          if(position == basicnotes.length-1){
-              $('#up').css("opacity", "1");
-          }
-          if(position > 0 ){
-              position--;
-              console.log("movedown",position)
-              removestave("notes");
-              init("notes", "treble", null,200,null);
-              addnote("treble", [basicnotes[position]], ["q"]); 
-              $("#display").text(basicnotes[position])
-          }
-          if(position == 0){
-              $('#down').css("opacity", "0");
-          }
-      })
-      $("#up").bind('click',function(){
-          console.log("up")
-          if(position == 0){
-              $('#down').css("opacity", "1");
-          }
-          if(position < basicnotes.length-1){
-              position++;
-              console.log("moveup",position)
-              removestave("notes")
-              init("notes", "treble", null,200,null);
-              addnote("treble", [basicnotes[position]], ["q"]);  
-              $("#display").text(basicnotes[position])
-          }
-          if(position == basicnotes.length-1){
-              $('#up').css("opacity", "0");
-          }  
-      })
-      //note logic do not modify!!!!
-
-      //display logic, remove if u have removed previous
-      // var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
-      // var display = 0;
-      // $(".textcontainer").bind('click',function(){
-      //     if(display < paragraph.length){
-      //         paragraph[display].style.opacity = 1;
-      //         display++;
-      //     }   
-      // })
-       //display logic, remove if u have removed previous
-      });
+  $(document).ready(function(){
+    const basicnotes = ["c/4","d/4","e/4","f/4","g/4","a/4","b/4","c/5","d/5","e/5","f/5","g/5","a/5","b/5"]
+    var position = 6;
+    init("notes", "treble", null,200,null);
+    addnote("treble", [basicnotes[position]], ["q"]);
+    $("#display").text(basicnotes[position]);
+    $("#down").bind('click',function(){
+        if(position == basicnotes.length-1){
+            $('#up').css("opacity", "1");
+        }
+        if(position > 0 ){
+            position--;
+            removestave("notes");
+            init("notes", "treble", null,200,null);
+            addnote("treble", [basicnotes[position]], ["q"]); 
+            $("#display").text(basicnotes[position])
+        }
+        if(position == 0){
+            $('#down').css("opacity", "0");
+        }
+    })
+    $("#up").bind('click',function(){
+        if(position == 0){
+            $('#down').css("opacity", "1");
+        }
+        if(position < basicnotes.length-1){
+            position++;
+            removestave("notes");
+            init("notes", "treble", null,200,null);
+            addnote("treble", [basicnotes[position]], ["q"]);  
+            $("#display").text(basicnotes[position])
+        }
+        if(position == basicnotes.length-1){
+            $('#up').css("opacity", "0");
+        }  
+    })
+  });
 </script>
 {% endblock %}
