@@ -1,132 +1,120 @@
 {%extends "content.html"%}
 {% block page %}
-<!-- this is to make the table look not that shitty make our own table pls -->
-
 <div class="text-container">
     <div class="content-section">
-    <div class="para">
-    <h1>Recognize Key</h1>
-    <hr>
-    <p>Click on the cells of this table to see how each key is represented on the stave</p>
-    <!-- td is used to select and id needed for rendering -->
-    <table id="keysig">
-        <tr>
-          <th>Number of:</th>
-          <th>0</th>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-          <th>5</th>
-          <th>6</th>
-          <th>7</th>
-        </tr>
-        <tr>
-          <th>Sharp</th>
-          <td id="C">C</td>
-          <td id="G">G</td>
-          <td id="D">D</td>
-          <td id="A">A</td>
-          <td id="E">E</td>
-          <td id="B">B</td>
-          <td id="F#">F Sharp</td>
-          <td id="C#">C  Sharp</td>
-        </tr>
-        <tr>
-          <th>Flat</th>
-          <td id="C">C</td>
-          <td id="F">F</td>
-          <td id="Bb">B Flat</td>
-          <td id="Eb">E Flat</td>
-          <td id="Ab">A Flat</td>
-          <td id="Db">D Flat</td>
-          <td id="Gb">G flat</td>
-          <td id="Cb">C flat</td>
-        </tr>
-      </table>
-    
-    <div>
-        The Key of: <span id="keyname"></span>
+        <div class="para">
+            <h1>Recognize Key</h1>
+            <hr>
+            <p>Click on the cells of this table to see how each key is represented on the stave</p>
+            <table id="keysig">
+                <tr>
+                    <th>Number of:</th>
+                    <th>0</th>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>5</th>
+                    <th>6</th>
+                    <th>7</th>
+                </tr>
+                <tr>
+                    <th>Sharp</th>
+                    <td id="C">C</td>
+                    <td id="G">G</td>
+                    <td id="D">D</td>
+                    <td id="A">A</td>
+                    <td id="E">E</td>
+                    <td id="B">B</td>
+                    <td id="F#">F Sharp</td>
+                    <td id="C#">C  Sharp</td>
+                </tr>
+                <tr>
+                    <th>Flat</th>
+                    <td id="C">C</td>
+                    <td id="F">F</td>
+                    <td id="Bb">B Flat</td>
+                    <td id="Eb">E Flat</td>
+                    <td id="Ab">A Flat</td>
+                    <td id="Db">D Flat</td>
+                    <td id="Gb">G flat</td>
+                    <td id="Cb">C flat</td>
+                </tr>
+            </table>
+            <div>
+                The Key of: <span id="keyname"></span>
+            </div>
+            <div class="canvas-wrapper">
+                <div class="canvascontainer">
+                    <div class="stave" id="key"></div>
+                </div>
+            </div>
+            <ol class="list-stff">
+                <li> Remembering this table seems to be an difficult task, but fortunately there are some techniques to quickly identify a key signatures.</li>
+            </ol>
+            <h3>
+                Flats
+            </h3>
+            <hr>
+            <p>For key signature with Flats, the key is always the <strong>second last</strong> flat.</p>
+            <ol>
+                <li>Count the number of flats.</li>
+                <li>Remember the order in which the flats occurs: <strong>[B , E , A , D , G , C , F].</strong> </li>
+                <li>Name the second last flat.</li>
+            </ol>
+            <div class="canvas-wrapper">
+                <p>The example below has <strong>4</strong> flats in the order[B, E, {A}, D]. Therefore, the key is A flat major. </p>
+                <div class="canvascontainer">
+                    <div class="stave" id="flat"></div>
+                </div>
+            </div>
+            <hr>
+            <h3>
+                Sharps
+            </h3>
+            <hr>
+            <p>For key signature in Sharps, the key is the note name <strong>one step above</strong> the <strong>last Sharp.</strong></p>
+            <ol>
+                <li>The order of Sharps can be simply obtained by reversing the order of flats:[F , C , G , D , A , E , B].</li>
+                <li>Name the note one step above the last sharp.</li>
+            </ol>
+            <div class="canvas-wrapper">
+                <p>This is the key of B major because the last Sharp: <strong>A#</strong> is one step below B.</p>
+                <div class="canvascontainer">
+                    <div class="stave" id="sharp"></div>
+                </div>
+                <hr>
+                <div class="pianocontainer">
+                    <ul class="set" id="piano">
+                        <li class="white f" id="f/4">F</li>
+                        <li class="black f#" id="f#/4">F#</li>
+                        <li class="white g" id="g/4">G</li>
+                        <li class="black gs" id="g#/4">G#</li>
+                        <li class="white a" id="a/4">A</li>
+                        <li class="black as" id="a#/4">A#</li>
+                        <li class="white b" id="b/4">B</li>
+                        <li class="white c" id="c/5">C</li>
+                        <li class="black cs" id="c#/5">C#</li>
+                        <li class="white d" id="d/5">D</li>
+                        <li class="black ds" id="d#/5">D#</li>
+                        <li class="white e" id="e/5">E</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="canvas-wrapper">
-    <div class="canvascontainer">
-        <!-- id no modify -->
-        <div class="stave" id="key"></div>
+    <div class="test-self">
+        <p>Felt confident? click <a href="{{url_for('index.notes', chapter='chapter3', page='page5')}}">HERE</a> to test yourself</p>
+    </div>
+    <div class="pagebutton">
+        <span id="previous"><a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">&lt Previous</a></span>
+        <span id="next"><a href="{{url_for('assessment.testSubmission', difficulty='intro')}}">Intro Assessment</a></span>
+        <div class="footer-container normal">
+            <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
+        </div>
     </div>
 </div>
-<ol class="list-stff">
-    <li> Remembering this table seems to be an difficult task, but fortunately there are some techniques to quickly identify a key signatures.</li>
-</ol>
-    <h3>
-        Flats
-    </h3>
-    <hr>
-    <p>For key signature with Flats, the key is always the <strong>second last</strong> flat.</p>
-    <ol>
-        <li>Count the number of flats.</li>
-        <li>Remember the order in which the flats occurs: <strong>[B , E , A , D , G , C , F].</strong> </li>
-        <li>Name the second last flat.</li>
-    </ol>
-    
-    <div class="canvas-wrapper">
-    <p>The example below has <strong>4</strong> flats in the order[B, E, {A}, D]. Therefore, the key is A flat major. </p>
-    <div class="canvascontainer">
-        <!-- id no modify -->
-        <div class="stave" id="flat"></div>
-    </div>
-</div>
-    <hr>
-    <h3>
-        Sharps
-    </h3>
-    <hr>
-    <p>For key signature in Sharps, the key is the note name <strong>one step above</strong> the <strong>last Sharp.</strong></p>
-    <ol>
-        <li>The order of Sharps can be simply obtained by reversing the order of flats:[F , C , G , D , A , E , B].</li>
-        <li>Name the note one step above the last sharp.</li>
-    </ol>
-    <div class="canvas-wrapper">
-        <p>This is the key of B major because the last Sharp: <strong>A#</strong> is one step below B.</p>
-    <div class="canvascontainer">
-        <!-- id no modify -->
-        <div class="stave" id="sharp"></div>
-    </div>
-    <hr>
-    <div class="pianocontainer">
-        <ul class="set" id="piano">
-            <li class="white f" id="f/4">F</li>
-            <li class="black f#" id="f#/4">F#</li>
-            <li class="white g" id="g/4">G</li>
-            <li class="black gs" id="g#/4">G#</li>
-            <li class="white a" id="a/4">A</li>
-            <li class="black as" id="a#/4">A#</li>
-            <li class="white b" id="b/4">B</li>
-            <li class="white c" id="c/5">C</li>
-            <li class="black cs" id="c#/5">C#</li>
-            <li class="white d" id="d/5">D</li>
-            <li class="black ds" id="d#/5">D#</li>
-            <li class="white e" id="e/5">E</li>
-        </ul>
-    </div>
-</div>
-    
-</div>
-</div>
-<div class="test-self">
-    <!-- next page link -->
-    <p>Felt confident? click <a href="{{url_for('index.notes', chapter='chapter3', page='page5')}}">HERE</a> to test yourself</p>
-    <!--  -->
-</div>
-<div class="pagebutton">
-    <span id="previous"><a href="{{url_for('index.notes', chapter='chapter3', page='page3')}}">&lt Previous</a></span>
-    <span id="next"><a href="{{url_for('assessment.testSubmission', difficulty='intro')}}">Intro Assessment</a></span>
-    <div class="footer-container normal">
-        <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
-     </div>
-    </div>
 
-</div>
-</div>
 
 <script>
     $(document).ready(function(){
@@ -143,17 +131,6 @@
                 $("#keyname").text(e.target.id)
             })
         }
-        
-        //display
-        var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
-        var display = 0;
-        $(".textcontainer").bind('click',function(){
-            if(display < paragraph.length){
-                paragraph[display].style.opacity = 1;
-                display++;
-            }
-        })
-        //
     });
 </script>
 {% endblock %}
