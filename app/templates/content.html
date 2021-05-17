@@ -3,10 +3,10 @@
 {% block content %}
 
 <div class="block">
-    <div id="arrow" class="arrow-container" class="box">
+    <div id="arrow" class="arrow-container box">
         <div class="chapter-content" >
-            <table>
-                <div class="user-info">
+            <div class="user-info">
+                <div>
                     <ul class="items min-nav">
                         {% if not current_user.is_authenticated %}
                         <li class="navbar-option">
@@ -28,7 +28,7 @@
                                     <a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Key</a>
                                 </div>
                             </li>
-                            <li id="assessment" class="navbar-option">
+                            <li id="assessment-inside" class="navbar-option">
                                 <span>Assessment</span>
                                 <div class="dropdown-content assessment-translate">
                                     <a href="{{url_for('assessment.testSubmission', difficulty='intro')}}">Intro</a>
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-            </table>
+            </div>
         </div>
     </div>
     Content

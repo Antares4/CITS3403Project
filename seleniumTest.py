@@ -160,8 +160,8 @@ class SystemTest(unittest.TestCase):
         test_username = test_user.username
         test_password = "adminnnn"
 
-        username = self.driver.find_element_by_id("loginname")
-        password = self.driver.find_element_by_id("loginpwd")
+        username = self.driver.find_element_by_id("username")
+        password = self.driver.find_element_by_id("password")
         submit = self.driver.find_element_by_id("submit")
 
         username.send_keys(test_username)
