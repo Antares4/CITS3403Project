@@ -1,7 +1,7 @@
 
 # CITS3403Project
 
-Sidenote music learning webapp written for [CITS3403-Project](https://teaching.csse.uwa.edu.au/units/CITS3403/) semester 1, 2021 
+[Sidenote](https://github.com/kurapikaaaa/CITS3403Project) music learning webapp written for [CITS3403-Project](https://teaching.csse.uwa.edu.au/units/CITS3403/) semester 1, 2021 
 by [Peter Sheng](https://github.com/kurapikaaaa) (22707161) and [Shuangquan Zheng](https://github.com/HereItGoes) ()
 
 ## Features
