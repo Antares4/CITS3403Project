@@ -3,77 +3,66 @@
 {% block page %}
 <div class="text-container">
     <div class="content-section">
-    <div class="para">
-    <h1>Note Values</h1>
-    <p>
-        Starting from <strong>semibreve &#119133</strong>, the ordinal of note value are as follow: <strong>semibreve &#119133</strong>, <strong>minim &#119134</strong>, 
-        <strong>crotchet &#119135</strong>, <strong>quaver &#119136</strong> and
-        <strong>semiquaver &#119137</strong>. <br>
-        Each with duration halving the previous. 
-    </p>
-   
-    <!-- notedemo class needed for js -->
-    <div class="canvas-wrapper">
-        <p>
-            Click on the following to see how many of each note fits in a 4/4 bar
-        </p>
-    
-    
-    <div class="canvascontainer">
-        <!-- no modify -->
-        <div class="stave" id="notevalue"></div>
-        <!--  -->
-        
-    </div>
-    <div class="notedemo">
-        <button class="content-button" value=0>semibreve</button>
-        <button class="content-button" value=1>minim</button>
-        <button class="content-button" value=2>crotchet</button>
-        <button class="content-button" value=3>quaver</button>
-        <button class="content-button" value=4>semiquaver</button>
-    </div>
-    </div>
-    <hr>
-    <p>
-        The note values are not set in stone however as they can also be changed by the <strong>dot</strong> modifier.
-        <ol class="list-stff">
-            <li>This modifyer extends the note value of it's host note by <strong>half</strong> of it's own value.</li>
-        </ol>
-    </p>
-        <p>For example, A crotchet is normally equivalent to <strong>2</strong> quavers, however a <strong>dotted</strong> crotchet will instead be equivalent to <strong>3</strong> quavers.
-        </p>
-    <div class="canvas-wrapper">
-    <p>
-        Here is an example a 6/8 bar that a duration of 6 quavers, which will fit exactly two <strong>dotted</strong> crotchets.
-    </p>
-    <div class="canvas-wrapper">
-    <div class="canvascontainer">
-        <!-- no modify -->
-        <div class="stave" id="dotted"></div>
-        <!--  -->
+        <div class="para">
+            <h1>Note Values</h1>
+            <p>
+                Starting from <strong>semibreve &#119133</strong>, the ordinal of note value are as follow: <strong>semibreve &#119133</strong>, <strong>minim &#119134</strong>, 
+                <strong>crotchet &#119135</strong>, <strong>quaver &#119136</strong> and
+                <strong>semiquaver &#119137</strong>. <br>
+                Each with duration halving the previous. 
+            </p>
+            <div class="canvas-wrapper">
+                <p>
+                    Click on the following to see how many of each note fits in a 4/4 bar
+                </p>
+                <div class="canvascontainer">
+                    <div class="stave" id="notevalue"></div>
+                </div>
+                <div class="notedemo">
+                    <button class="content-button" value=0>semibreve</button>
+                    <button class="content-button" value=1>minim</button>
+                    <button class="content-button" value=2>crotchet</button>
+                    <button class="content-button" value=3>quaver</button>
+                    <button class="content-button" value=4>semiquaver</button>
+                </div>
+            </div>
+            <hr>
+            <p>
+                The note values are not set in stone however as they can also be changed by the <strong>dot</strong> modifier.
+                <ol class="list-stff">
+                    <li>This modifyer extends the note value of it's host note by <strong>half</strong> of it's own value.</li>
+                </ol>
+            </p>
+            <p>
+                For example, A crotchet is normally equivalent to <strong>2</strong> quavers, however a <strong>dotted</strong> crotchet will instead be equivalent to <strong>3</strong> quavers.
+            </p>
+            <div class="canvas-wrapper">
+                <p>
+                    Here is an example a 6/8 bar that a duration of 6 quavers, which will fit exactly two <strong>dotted</strong> crotchets.
+                </p>
+                <div class="canvas-wrapper">
+                    <div class="canvascontainer">
+                        <div class="stave" id="dotted"></div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
         <hr>
     </div>
-</div>
-</div>
-</div>
-    <hr>
-</div>
-<div class="pagebutton">
-<span id="previous"><a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">&lt Previous</a></span>
-<span id="next"><a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Next Module</a></span>
-<div class="footer-container normal">
-    <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
- </div>
-</div>
-
+    <div class="pagebutton">
+        <span id="previous"><a href="{{url_for('index.notes', chapter='chapter2', page='page2')}}">&lt Previous</a></span>
+        <span id="next"><a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Next Module</a></span>
+        <div class="footer-container normal">
+            <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
+        </div>
+    </div>
 </div>
 <script>
     $(document).ready(function(){
         initdotted();
         notevalues = ["w","h","q","8","16"];
         init("notevalue", "treble", "4/4",400,null);
-
-        //display thing
         var paragraph = document.getElementsByClassName("text-container")[0].querySelectorAll('.display');
         var display = 0;
         $(".textcontainer").bind('click',function(){
@@ -82,14 +71,11 @@
                 display++;
             }
         })
-        //
-
         $(".notedemo > .content-button").bind('click',function(){
             removestave("notevalue");
             notenames=[];
             notevals=[];
             for(i = 0; i < notevalues.length; i++){
-                console.log(parseInt(this.value));
                 if(parseInt(this.value) == i){
                     thisval=notevalues[i];
                     numNote=Math.pow(2,i);

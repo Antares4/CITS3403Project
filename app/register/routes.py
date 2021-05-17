@@ -11,6 +11,7 @@ from datetime import datetime
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
+    #submmit form validates 
     if form.validate_on_submit():
         user = users()
         user.username = form.username.data
@@ -18,22 +19,22 @@ def register():
         user.firstname = form.firstname.data
         user.lastname = form.lastname.data
         user.joinedAt = datetime.utcnow()
-        #############testing###################
-        if form.username.data == "Shuang":
-            user.isAdmin = True
-        #########################################
+        #check password match
         if(form.password.data != form.confirmpassword.data):
             flash("password does not match, try again")
             return render_template("register.html", form=form)
+        #create user 
         elif createUser(user, form.password.data):
             return redirect(url_for('auth.login'))
+        #user exists
         else:
             return render_template("register.html", form=form, userExist="[Username already exist.]")
+    #form submit doesnot validate
     elif(request.method == 'POST' and not form.validate_on_submit()):
         flash('unable to register')
     return render_template('register.html', title='Register', form=form)
 
-
+#delete user
 @bp.route('/deleteUSR/<userId>', methods=['GET'])
 @login_required
 def deleteUser(userId):

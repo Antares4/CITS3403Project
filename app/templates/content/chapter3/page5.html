@@ -1,72 +1,40 @@
 {% extends 'content.html'%}
 {% block page %}
-<!-- this is the interesting one -->
-<!-- each module needs to take up the entire page -->
-
-<!-- intro module will be displayed at the beginning-->
 <div class="text-container">
     <div class="content-section quiz"> 
         <div id="intro">
             <h1>Key Reaction test</h1>
-
-        <div class="summary" >
-            <!-- header -->
-            <!--  -->
-            <p>
-                <!-- make this eye catching, espically the "30"  -->
-                In this test you will have <strong>30</strong> seconds to test your familiarity with note recognition. 
-            </p>
-            <span class="content-button note" id="start">Start</span>
+            <div class="summary" >
+                <p>
+                    In this test you will have <strong>30</strong> seconds to test your familiarity with note recognition. 
+                </p>
+                <span class="content-button note" id="start">Start</span>
+            </div>
         </div>
-        <!-- make this button bigger and  -->
-    
-        </div>
-
-    <!--  -->
-
-    <!-- Start button triggers display of this module which will also take up the whole page-->
         <div id="content" style="display: none;">
-            
-                <h1 class="header-section">Note Reaction test</h1>
-            <!-- you need to impliment either a text timer e.g 1:30 or a css graphic one which ever one you prefer -->
+            <h1 class="header-section">Note Reaction test</h1>
             <span id="timer">30 seconds remaining</span>
             <div class="timer-section">
                 <div class="bar"></div>
-                
             </div>
             <div class="score-section">
-                <!--  -->
                 Current score :  <strong id="score">0</strong>
             </div>
-            <!-- this div you can use to position the stave -->
             <div class="stave-section">
-                <!-- do not touch !!!!! -->
                 <p>Name the following note.</p>
                 <div>
                     <div class="stave" id="note"></div>
                 </div>
-
-                <!-- do not touch !!!!! -->
             </div>
-            <!--  -->
             <div class="btn-section">
-            <!-- these two buttons needs to be large to be clicked on easily -->
-            <!-- please use contrasting color -->
                 <span class="content-button large"  id="btn-1">button1</span>
                 <span class="content-button large"  id="btn-2">button2</span>
-            <!--  -->
             </div>
         </div>
-    <!--  -->
-
-    <!-- this is the last module that will display when the test finshes  -->
         <div class="review-hr" id="review" style="display: none;">
             <h1 id="record"></h1>
             <span>you have received: </span>
-            <!-- do not change the id -->
             <span id="finalscore"></span>
-
-            <!--  -->
             <span> Marks!</span>
             <hr>
             <span>Highest score:</span> 
@@ -78,14 +46,11 @@
             <span>View full result and ranking, click <a href="{{url_for('index.profile', userId=current_user.id)}}">Here</a></span>
         </div>
     </div>
-<div class="footer-container">
-    <footer>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
- </div>
+    <div class="footer-container">
+        <footer>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
+    </div>
 </div>
-<!--  -->
-
 <script type=text/javascript>
-    // game logic do not modify!!!!!
     $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     $(document).ready(function(){
         var rightAnswer = null;
@@ -102,23 +67,12 @@
         var time_div = document.getElementById("timer");
         var score = document.getElementById("score");
         $("#start").bind("click",function(){
-            // do not modify
             $("#intro").css("display","none")
             $("#content").css("display","block")
-            // do not modify
-
-            //####### Shuang this is for you ##########
-            // this is the time out callback i've set when start is pressed try impliment a countdown using js or css or both 
-
             timer = setInterval(countdown, 1000);
-            //###############################
-
-            // do not modify
             this_clef = getRandomClef()
             setAnswers(this_clef);
-            // do not modify
         })
-        // do not modify
         $("#btn-1").bind("click",function(){
             if(event.target.innerHTML == correctanswer[1]){
                 points++;
@@ -133,9 +87,6 @@
             this_clef = getRandomClef()
             setAnswers(this_clef);
         })
-        // do not modify
-        
-        // do not modify
         $("#btn-2").bind("click",function(){
             if(event.target.innerHTML == correctanswer[1]){
                 points++;
@@ -150,12 +101,10 @@
             this_clef = getRandomClef()
             setAnswers(this_clef);
         })
-        // do not modify
         function setAnswers(clef){
             canidates = getRandomCanidate(15);
             currentpair[0] = canidateLiterals[canidates[0]];
             currentpair[1] = canidateLiterals[canidates[1]];
-            //0 is always correct answer
             correctanswer = currentpair[0];
             btn_assign = Math.round(Math.random())
             btn_assign == 0 ? btnAssingInOrder("btn-1","btn-2",currentpair) : btnAssignReOrder("btn-1","btn-2",currentpair)
@@ -190,6 +139,5 @@
             }
         }
     });
-    // gmae logic do not modify!!!!!
   </script>
 {% endblock %}

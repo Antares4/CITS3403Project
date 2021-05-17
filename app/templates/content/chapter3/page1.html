@@ -2,44 +2,30 @@
 {% block page %}
 <div class="text-container">
     <div class="content-section">
-    <div class="para">
-    <h1>KEY</h1>
-    <p>
-        Some concepts from previous modules may apply, it is recommended to compelete those modules before you continue
-    </p> 
-    <p> 
-    <div class="revision-wrapper">
-        <span class="revision"><a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Revise Notation</a></span> 
-        <span class="revision"><a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Revise Rhythm</a></span>
+        <div class="para">
+            <h1>KEY</h1>
+            <p>
+                Some concepts from previous modules may apply, it is recommended to compelete those modules before you continue
+            </p> 
+            <p> 
+                <div class="revision-wrapper">
+                    <span class="revision"><a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Revise Notation</a></span> 
+                    <span class="revision"><a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Revise Rhythm</a></span>
+                </div>
+            </p>   
+            <p>
+                <ol class="list-stff"> 
+                    <li>This module will explore the concepts of <strong>Keys.</strong></li> 
+                </ol>
+            </p>
+        </div>
+        <hr class="intro-page">
+        <div class="learn-wrapper">
+            <a class="learn-btn" href="{{url_for('index.notes', chapter='chapter3', page='page2')}}">Learn More</a>
+        </div>
     </div>
-    
-</p>   
-<p>
-        <ol class="list-stff"> <li>This module will explore the concepts of <strong>Keys.</strong></li> 
-        </ol>
-    </p>
-</div>
-<hr class="intro-page">
-    <div class="learn-wrapper">
-        <a class="learn-btn" href="{{url_for('index.notes', chapter='chapter3', page='page2')}}">Learn More</a>
+    <div class="footer-container">
+        <footer>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
     </div>
 </div>
-<div class="footer-container">
-    <footer>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</footer>
- </div>
-</div>
-<script>
-    $(document).ready(function(){
-        //display
-        var paragraph = document.getElementsByClassName("textcontainer")[0].querySelectorAll('.display');
-        var display = 0;
-        $(".textcontainer").bind('click',function(){
-            if(display < paragraph.length){
-                paragraph[display].style.opacity = 1;
-                display++;
-            }
-        })
-        //
-    });
-</script>
 {% endblock %}

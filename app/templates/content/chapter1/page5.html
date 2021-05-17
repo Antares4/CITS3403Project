@@ -1,107 +1,81 @@
 {% extends 'content.html'%}
 
 {% block page %}
-<!-- title -->
+
 <div class="text-container">
     <div class="content-section">
         <div class="para">
-        <h1>
-            Accidentals
-        </h1>
-        <!--  -->
-
-        <p>
-            To represent the black notes, we need modifyers called the <strong>Accidentals</strong>. 
-        </p>
-        <hr>
-        <p>
-            The black notes were identified by modifying existing white notes with accidentals. However, observe the keybord carefully, and you will notice that all of the black keys were juxtaposed by <strong>two</strong> white keys.<br>
-            This means that any black note can be named in two ways using its neighbouring white keys. </p>
-            <ol class="list-stff"><li> To avoid ambiguity, two types of Accidentals - <strong>Sharp(#)</strong> and <strong>Flat(b)</strong> - were used to raise/lower a white key respectively.</li>
+            <h1>
+                Accidentals
+            </h1>
+            <p>
+                To represent the black notes, we need modifyers called the <strong>Accidentals</strong>. 
+            </p>
+            <hr>
+            <p>
+                The black notes were identified by modifying existing white notes with accidentals. However, observe the keybord carefully, and you will notice that all of the black keys were juxtaposed by <strong>two</strong> white keys.<br>
+                This means that any black note can be named in two ways using its neighbouring white keys. 
+            </p>
+            <ol class="list-stff">
+                <li> To avoid ambiguity, two types of Accidentals - <strong>Sharp(#)</strong> and <strong>Flat(b)</strong> - were used to raise/lower a white key respectively.</li>
             </ol>
-        </p>
-        <h2>Try It your Self!</h2>
-        <!--  -->
-        <p>
-            Click on the keyboard below to see where the notes were placed on a stave <br>
-        </p>
-
-        <div>
-            <!-- same interactive button -->
-            <div class="canvas-wrapper">
-            <p>Click this <span class="content-button smaller" id="switch">Sharp</span> to switch between accidentals</p>
-            
-            <!--  -->
-        
-
-<!-- stave -->
-        <div class="canvascontainer">
-            <!--you know what to do: don't touch lol -->
-            <div id="canvas"></div>
-            <!--  -->
-        
+            <h2>Try It your Self!</h2>
+            <p>
+                Click on the keyboard below to see where the notes were placed on a stave <br>
+            </p>
+            <div>
+                <div class="canvas-wrapper">
+                    <p>Click this <span class="content-button smaller" id="switch">Sharp</span> to switch between accidentals</p>
+                    <div class="canvascontainer">
+                        <div id="canvas"></div>
+                    </div>
+                    <hr>
+                    <div class="pianocontainer">
+                        <ul class="set" id="piano">
+                            <li class="white b" id="f/4">f/4</li>
+                            <li class="black as" id="f#/4">f#/4</li>
+                            <li class="white a" id="g/4">g/4</li>
+                            <li class="black gs" id="g#/4">g#/4</li>
+                            <li class="white g" id="a/4">a/4</li>
+                            <li class="black fs" id="a#/4">a#/4</li>
+                            <li class="white f" id="b/4">b/4</li>
+                            <li class="white e" id="c/5">c/5</li>
+                            <li class="black ds" id="c#/5">c#/5</li>
+                            <li class="white d" id="d/5">d/5</li>
+                            <li class="black cs" id="d#/5">d#/5</li>
+                            <li class="white c" id="e/5">e/5</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <hr>
-        <div class="pianocontainer">
-            <!-- do not modify the innerhtml and id -->
-            <ul class="set" id="piano">
-                <li class="white b" id="f/4">f/4</li>
-                <li class="black as" id="f#/4">f#/4</li>
-                <li class="white a" id="g/4">g/4</li>
-                <li class="black gs" id="g#/4">g#/4</li>
-                <li class="white g" id="a/4">a/4</li>
-                <li class="black fs" id="a#/4">a#/4</li>
-                <li class="white f" id="b/4">b/4</li>
-                <li class="white e" id="c/5">c/5</li>
-                <li class="black ds" id="c#/5">c#/5</li>
-                <li class="white d" id="d/5">d/5</li>
-                <li class="black cs" id="d#/5">d#/5</li>
-                <li class="white c" id="e/5">e/5</li>
-            </ul>
-            <!--  -->
-        </div>
-    </div>
-<!--  -->
-        
- <!-- this is the piano: apply your shrink magic, position it using the piano container class-->
-        
-
-    </div>
-    </div>
-    
         <div class="test-self">
-            <!-- next page link -->
             <p>Felt confident? click <a href="{{url_for('index.notes', chapter='chapter1', page='page6')}}">HERE</a> to test yourself</p>
-            <!--  -->
         </div>
-    
-</div>
-<div class="pagebutton">
-    <span id="previous"><a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">&lt Previous</a></span>
-    <span id="next"><a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Next Module </a></span>
-    <div class="footer-container normal">
-        <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
     </div>
-</div>
-
+    <div class="pagebutton">
+        <span id="previous"><a href="{{url_for('index.notes', chapter='chapter1', page='page4')}}">&lt Previous</a></span>
+        <span id="next"><a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Next Module </a></span>
+        <div class="footer-container normal">
+            <p>&#169 Copyright Sidenote by Peter Sheng & Shuang Zheng 2021. All Rights Reserved.</p>
+        </div>
+    </div>
 </div>
 <script>
   $(document).ready(function(){
-    //game logic do not touch !!!!!!!
-      Sharp = ["f/4","f#/4","g/4","g#/4","a/4","a#/4","b/4","c/5","c#/5","d/5","d#/5","e/5"]
-      Flat = ["f/4","gb/4","g/4","ab/4","a/4","bb/4","b/4","c/5","db/5","d/5","eb/5","e/5"]
-      init("canvas", "treble", "4/4",200,null);
-      var keys = document.getElementById("piano").querySelectorAll('li');
-      for(i=0; i<keys.length; i++){
+        Sharp = ["f/4","f#/4","g/4","g#/4","a/4","a#/4","b/4","c/5","c#/5","d/5","d#/5","e/5"]
+        Flat = ["f/4","gb/4","g/4","ab/4","a/4","bb/4","b/4","c/5","db/5","d/5","eb/5","e/5"]
+        init("canvas", "treble", "4/4",200,null);
+        var keys = document.getElementById("piano").querySelectorAll('li');
+        for(i=0; i<keys.length; i++){
           keys[i].addEventListener("click", function(){
           removestave("canvas");
           init("canvas", "treble", "4/4",200,null);
-          console.log(this.innerHTML);
           note = [this.innerHTML];
           addnote("treble",[this.innerHTML],["q"]);
           });
-      }
-      $("#switch").bind('click',function(){
+        }
+        $("#switch").bind('click',function(){
             if(this.innerHTML == "Sharp"){
                 this.innerHTML = "Flat";
                 for(i = 0; i < keys.length; i++){
@@ -115,7 +89,6 @@
                 }
             }
         })
-    //game logic do not touch !!!!!!!
-  });
+    });
 </script>
 {% endblock %}
