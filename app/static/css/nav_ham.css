@@ -1,0 +1,67 @@
+ul.items.min-nav {
+  padding-top: 5px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
+  display: none;
+}
+
+.items.min-nav .navbar-option span {
+  padding: 10px;
+}
+.navbar-option a {
+  padding: 10px;
+}
+.items.min-nav #assessment-inside .dropdown-content,
+.navbar-option.content-option .dropdown-content {
+  display: none;
+}
+.items.min-nav .navbar-option a:hover,
+span:hover {
+  background-color: var(--a);
+}
+
+.items.min-nav #assessment-inside:hover .dropdown-content {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 12px;
+}
+.items.min-nav .content-option:hover .dropdown-content {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 12px;
+}
+#fixed-nav .hamburger {
+  width: 40px;
+  cursor: pointer;
+  display: none;
+}
+#fixed-nav .hamburger .stack {
+  height: 3px;
+  width: 100%;
+  background-color: var(--white);
+  z-index: 3;
+  margin-bottom: 8px;
+}
+#fixed-nav .hamburger.active #line-2 {
+  display: none;
+  transition: transform 1s ease;
+}
+#fixed-nav .hamburger.active #line-1 {
+  transform: rotate(45deg) translate(10px, 2px);
+}
+
+#fixed-nav .hamburger.active #line-3 {
+  position: relative;
+  transform: rotate(-45deg) translate(4.5px, 3px);
+}
+#fixed-nav .hamburger .stack {
+  transition: transform 1s ease;
+}

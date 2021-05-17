@@ -1,0 +1,75 @@
+form#loginform,
+form#registerform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px 10% 8% 10%;
+}
+
+#loginform h1,
+#registerform h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 400;
+  width: 50%;
+}
+
+input[type="text"],
+input[type="password"] {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  transition: transform 200ms linear;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="text"]:hover,
+input[type="password"]:hover {
+  transform: scaleX(1.1);
+  border-color: brown;
+  font-size: larger;
+}
+
+#loginform .sub-title,
+#registerform .sub-title {
+  font-size: 4ex;
+}
+
+input[type="submit"] {
+  width: 150px;
+}
+input[type="submit"] {
+  justify-content: center;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  display: inline-flex;
+  height: 5ch;
+  width: 10ch;
+  align-items: center;
+  cursor: pointer;
+  color: var(--white);
+  background-color: rgb(34, 34, 34);
+  border: none;
+  transition: all 0.4s ease 0.01s;
+}
+
+input[type="submit"]:hover {
+  color: rgb(39, 39, 39);
+  background-color: rgb(228, 228, 228);
+}
+.register-container {
+  margin-top: 20px;
+}
+.register-container a {
+  color: blue;
+}
+.register-container a:hover {
+  color: rgb(58, 58, 199);
+}
+
+form#registerform {
+  text-align: center;
+}

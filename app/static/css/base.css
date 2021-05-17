@@ -5,8 +5,10 @@
   font-family: "Zilla Slab", serif;
 }
 :root {
-  --dropdown: background-color: rgb(43, 41, 38);;
+  --maincolor: rgb(43, 41, 38);
+
   --a: rgb(138, 138, 138);
+  --white: rgb(255, 255, 255);
 }
 body {
   position: relative;
@@ -14,7 +16,7 @@ body {
   overflow-x: hidden;
 }
 .pagebutton a {
-  color: white;
+  color: var(--white);
 }
 .pagebutton a:hover {
   color: rgb(156, 156, 156);
@@ -38,11 +40,9 @@ hr.intro-page {
   margin: auto;
 }
 .navbar-option a {
-  color: white;
+  color: var(--white);
 }
-/* div p {
-  margin: 0% 20%; Remove for now check if mess with anything later
-} */
+
 h1 {
   letter-spacing: 0.1ex;
   text-transform: uppercase;
@@ -57,12 +57,11 @@ a {
 }
 a:hover {
   color: var(--a);
-  /* border-bottom: 3px solid black; */
   text-decoration: none;
 }
 .logo {
   margin: 0;
-  color: rgb(255, 255, 255);
+  color: var(--white);
   text-transform: capitalize;
   letter-spacing: 1px;
   font-size: 3ex;
@@ -84,16 +83,16 @@ a:hover {
   display: inline-block;
   text-align: center;
   height: 100%;
-  color: white;
+  color: var(---white);
   text-decoration: none;
   letter-spacing: 1px;
   cursor: pointer;
 }
 .item li a {
-  color: white;
+  color: var(---white);
 }
 .navbar-option a {
-  color: white;
+  color: var(---white);
 }
 
 #fixed-nav {
@@ -103,21 +102,21 @@ a:hover {
   min-height: 4rem;
   display: flex;
   align-items: center;
-  background-color: rgb(43, 41, 38);
+  background-color: var(--maincolor);
   justify-content: space-around;
-  box-shadow: 0px 1px 8px 1px rgb(43, 41, 38);
+  box-shadow: 0px 1px 8px 1px var(--maincolor);
 }
 #fixed-nav .dropdown-content {
   display: none;
   position: absolute;
-  background-color: rgb(43, 41, 38);
+  background-color: var(--maincolor);
   z-index: 1;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 #fixed-nav .navbar-option:hover {
   background-color: rgb(91, 91, 91);
-  color: white;
+  color: var(--white);
 }
 #fixed-nav .navbar-option:hover .dropdown-content.content-translate {
   width: 100%;
@@ -254,7 +253,7 @@ a:hover {
 }
 .learn-btn {
   position: relative;
-  color: rgb(43, 41, 38);
+  color: var(--maincolor);
   background: none;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -270,8 +269,7 @@ a:hover {
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(43, 41, 38);
-
+  background-color: var(--maincolor);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 700ms ease-in;
@@ -284,7 +282,7 @@ a:hover {
 .learn-btn:hover,
 .learn-btn:focus {
   transition: 800ms;
-  color: white;
+  color: var(--white);
 }
 .para {
   display: inline-block;
@@ -298,7 +296,7 @@ a:hover {
   background-color: rgb(87, 87, 87);
 }
 .canvas-wrapper p {
-  color: white;
+  color: var(--white);
 }
 .canvascontainer {
   justify-content: center;
@@ -323,15 +321,15 @@ a:hover {
   width: 10ch;
   align-items: center;
   cursor: pointer;
-  color: white;
+  color: var(--white);
   background-color: rgb(34, 34, 34);
-  box-shadow: 0px 1px 2px 1px rgb(43, 41, 38);
+  box-shadow: 0px 1px 2px 1px var(--maincolor);
 }
 
 .content-button:hover {
   color: rgb(39, 39, 39);
   background-color: rgb(228, 228, 228);
-  box-shadow: 0px 2px 9px 2px rgb(43, 41, 38);
+  box-shadow: 0px 2px 9px 2px var(--maincolor);
   transition: all 0.4s ease 0.01s;
 }
 .content-button.smaller {
@@ -349,7 +347,7 @@ a:hover {
 }
 
 .content-note {
-  background-color: rgb(255, 255, 255);
+  background-color: var(--white);
   height: 5ch;
   width: 15ch;
   text-transform: uppercase;
@@ -360,17 +358,17 @@ a:hover {
   background: rgb(148, 148, 148); /* Old browsers */
   background: -moz-linear-gradient(
     left,
-    rgb(255, 255, 255) 1%,
+    var(---white) 1%,
     rgb(221, 221, 221) 20%,
     rgb(221, 221, 221) 80%,
-    rgb(255, 255, 255) 100%
+    var(--white) 100%
   ); /* FF3.6+ */
   background: -webkit-linear-gradient(
     left,
-    rgb(255, 255, 255) 1%,
+    var(---white) 1%,
     rgb(221, 221, 221) 20%,
     rgb(221, 221, 221) 80%,
-    rgb(255, 255, 255) 100%
+    var(---white) 100%
   ); /* Chrome10+,Safari5.1+ */
 }
 
@@ -407,7 +405,7 @@ a:hover {
 
 .piano-wrapper {
   background-color: rgb(87, 87, 87);
-  color: white;
+  color: var(--white);
   padding: 2%;
 }
 .pianocontainer {
@@ -467,7 +465,7 @@ a:hover {
 .timer-section .bar {
   height: 5px;
   background-color: rgb(81, 203, 32);
-  color: white;
+  color: var(--white);
   animation: change 31s linear;
 }
 
@@ -485,7 +483,7 @@ a:hover {
   height: 30px;
   padding: 20px;
   margin: 20px 0 20px 0;
-  color: white;
+  color: var(--white);
 }
 #score {
   margin-left: 3px;
@@ -598,7 +596,7 @@ a:hover {
   justify-content: center;
   align-items: center;
   background-color: black;
-  color: white;
+  color: var(--white);
   justify-self: flex-start;
   margin-bottom: 30px;
 
@@ -614,7 +612,7 @@ a:hover {
   align-items: center;
   right: 0;
   background-color: black;
-  color: white;
+  color: var(--white);
   justify-self: flex-end;
   margin-bottom: 20px;
   transition: transform 300ms ease-out;
@@ -655,85 +653,6 @@ a:hover {
   background-color: rgb(214, 214, 214);
 }
 
-
-form#loginform,
-form#registerform {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 100px 10% 8% 10%;
-}
-
-#loginform h1,
-#registerform h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  font-weight: 400;
-  width: 50%;
-}
-
-
-input[type="text"],
-input[type="password"] {
-  outline: none;
-  border: none;
-  border-bottom: 1px solid black;
-  transition: transform 200ms linear;
-}
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="text"]:hover,
-input[type="password"]:hover {
-  transform: scaleX(1.1);
-  border-color: brown;
-  font-size: larger;
-}
-
-#loginform .sub-title,
-#registerform .sub-title {
-  font-size: 4ex;
-}
-
-input[type="submit"] {
-  width: 150px;
-}
-input[type="submit"] {
-  justify-content: center;
-  user-select: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  display: inline-flex;
-  height: 5ch;
-  width: 10ch;
-  align-items: center;
-  cursor: pointer;
-  color: white;
-  background-color: rgb(34, 34, 34);
-  border: none;
-  transition: all 0.4s ease 0.01s;
-}
-
-input[type="submit"]:hover {
-  color: rgb(39, 39, 39);
-  background-color: rgb(228, 228, 228);
-}
-.register-container {
-  margin-top: 20px;
-}
-.register-container a {
-  color: blue;
-}
-.register-container a:hover {
-  color: rgb(58, 58, 199);
-}
-
-form#registerform {
-  text-align: center;
-}
-
 .correct {
   padding: 10px;
   background-color: lightgreen;
@@ -744,7 +663,7 @@ form#registerform {
 }
 .response-area {
   padding: 5px;
-  background-color: white;
+  background-color: var(--white);
 }
 
 .usercontent .redhover {
@@ -755,70 +674,3 @@ form#registerform {
   color: rgb(255, 0, 0);
   background: none;
 }
-ul.items.min-nav {
-  padding-top: 5px;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  align-items: flex-start;
-  display: none;
-}
-
-.items.min-nav .navbar-option span{
-  padding: 10px;
-}
-.navbar-option a{
-  padding: 10px;
-}
-.items.min-nav #assessment-inside .dropdown-content, .navbar-option.content-option .dropdown-content {
-  display: none;
-}
-.items.min-nav .navbar-option a:hover, span:hover {
-  background-color: var(--a);
-}
-
-.items.min-nav #assessment-inside:hover .dropdown-content {
-  padding-top: 10px;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  font-size: 12px;
-}
-.items.min-nav .content-option:hover .dropdown-content {
-  padding-top: 10px;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  font-size: 12px;
-}
-#fixed-nav .hamburger{
-  width: 40px;
-  cursor: pointer;
-  display: none;
-}
-#fixed-nav .hamburger .stack{
-  height: 3px;
-  width: 100%;
-  background-color: white;
-  z-index: 3;
-  margin-bottom: 8px;
-}
-#fixed-nav .hamburger.active #line-2 {
-  display: none;
-  transition: transform 1s ease;
-
-}
-#fixed-nav .hamburger.active #line-1 {
-  transform: rotate(45deg) translate(10px,2px);
-}
-
-#fixed-nav .hamburger.active #line-3 {
-  position: relative;
-  transform: rotate(-45deg) translate(4.5px,3px);
-}
-#fixed-nav .hamburger  .stack{
-  transition: transform 1s ease;
-}
-
