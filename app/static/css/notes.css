@@ -51,40 +51,66 @@ ul {
 .white:active {
   background-color: white;
 }
+/* also use for navbar thing */
+@media screen and (max-width: 1130px) {
+  .block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .set .white {
+    width: 70px;
+    height: 200px;
+  }
+  .set .black {
+    width: 30px;
+    height: 100px;
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+@media screen and (max-width: 717px) {
+  .set .white {
+    width: 50px;
+    height: 170px;
+  }
+  .set .black {
+    font-size: 9px;
+    width: 20px;
+    height: 80px;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .para h1 {
+    font-size: 5ex;
+  }
+}
 
 @media screen and (max-width: 1130px) {
   .block .arrow-container {
-  display: none;
+    width: 100%;
+    height: 100%;
+    padding-top: 10px;
+    top: -100%;
+    transition: 1s ease;
   }
-  .block {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  #fixed-nav .items {
+    display: none;
   }
-  .set .white {
-  width: 70px;
-  height: 200px;
+  #fixed-nav .hamburger {
+    display: block;
   }
-  .set .black {
-  width: 30px;
-  height: 100px;
-  margin-left: -15px;
-  margin-right: -15px;
+  ul.items.min-nav {
+    display: block;
+    padding-top: 5px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-start;
   }
- }
- @media screen and (max-width: 717px) {
-  .set .white {
-  width: 50px;
-  height: 170px;
-  }
-  .set .black {
-  font-size: 9px;
-  width: 20px;
-  height: 80px;
-  margin-left: -10px;
-  margin-right: -10px;
-  }
-  .para h1 {
-  font-size: 5ex;
-  }
- }
+}
+.block .arrow-container.active {
+  top: 0;
+}

@@ -37,6 +37,23 @@
         <li class="navbar-option">
             <a href="{{url_for('index.logout')}}">Logout</a>
         </li>
+        
         {% endif %}
     </ul>
+    <div class="hamburger">
+        <div id="line-1" class="stack"></div>
+        <div id="line-2" class="stack"></div>
+        <div id="line-3" class="stack"></div>
+    </div>
 </nav>
+<script type="text/javascript">
+$('.hamburger').on('click', function(){
+    $(this).toggleClass('active');
+});
+$('.hamburger').on('click', function(){
+    $(".arrow-container").toggleClass('active');
+});
+$('top-nav').on('click', function(){
+    $(".hamburger").removeClass('active');
+});
+</script>
