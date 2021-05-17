@@ -7,6 +7,45 @@
         <div class="chapter-content" >
             <table>
                 <div class="user-info">
+                    <ul class="items min-nav">
+                        {% if not current_user.is_authenticated %}
+                        <li class="navbar-option">
+                            <a class="home" href="{{url_for('index.index')}}">Home</a>
+                        </li>
+                        <li class="navbar-option">
+                            <a id="login" href="{{url_for('auth.login')}}">Login</a>
+                         </li>
+                        {% endif %}
+                        {% if current_user.is_authenticated and not current_user.isAdmin %}
+                            <li class="navbar-option home">
+                                <a href="{{url_for('index.index')}}">Home</a>
+                            </li>
+                            <li class="navbar-option content-option">
+                                <span class="home">content</span>
+                                <div class="dropdown-content content-translate">
+                                    <a href="{{url_for('index.notes', chapter='chapter1', page='page1')}}">Notation</a>
+                                    <a href="{{url_for('index.notes', chapter='chapter2', page='page1')}}">Rhythm</a> 
+                                    <a href="{{url_for('index.notes', chapter='chapter3', page='page1')}}">Key</a>
+                                </div>
+                            </li>
+                            <li id="assessment" class="navbar-option">
+                                <span>Assessment</span>
+                                <div class="dropdown-content assessment-translate">
+                                    <a href="{{url_for('assessment.testSubmission', difficulty='intro')}}">Intro</a>
+                                    <a href="{{url_for('assessment.testSubmission', difficulty='intermediate')}}">intermediate</a>
+                                    <a href="{{url_for('assessment.testSubmission', difficulty='difficult')}}">Difficult</a>
+                                </div>
+                            </li>
+                        {% endif %}
+                        {% if current_user.is_authenticated%}
+                        <li class="navbar-option" >
+                            <a  class="home" href="{{url_for('index.profile', userId=current_user.id)}}">Profile</a>
+                        </li>
+                        <li class="navbar-option">
+                            <a href="{{url_for('index.logout')}}">Logout</a>
+                        </li>
+                        {% endif %}
+                    </ul>
                     <div class="collopse side">
                         <div class="userheader">
                             Notation<br>
