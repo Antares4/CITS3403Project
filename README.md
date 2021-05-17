@@ -31,7 +31,6 @@ app/                                      <--Main App Module-->
                 routes.py                 ---register view route---
       static/                             
                 css/    
-                          base.css        ---probvide base styling---
                 js/
                           note.js         ---Note rendering functionality useing VexFlow---
                           assessment.js   ---Note rendering for assessment module useing VexFlow---
@@ -126,7 +125,7 @@ Manuel feedback become visible to users once the marker have submitted the feedb
 * Agile Methodology 
 
       > Scope of each iterations were outlined based on the analysis of requirements constructed from user storys.
-      > Determine functionalities that needs to be delivered.
+      > Determine functionalities that needs to be delivered. 
 
 * Implimentation phase
 
@@ -153,7 +152,7 @@ $ sudo apt install python3
 $ sudo apt install python3-pip
 $ sudo apt-get install python3-setuptools
 $ sudo apt install python3-flask
-$ git clone
+$ git clone https://github.com/kurapikaaaa/CITS3403Project.git
 $ pip3 install -r requirements.txt
 $ export FLASK_APP=sidenote.py
 ```
