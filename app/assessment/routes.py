@@ -69,7 +69,6 @@ def viewSubmission(subId):
     else:
         this_sub = getSubmissionById(int(subId))
         total_mark = this_sub.totalmark
-        print(total_mark)
         user_responses = getAnswerForSub(int(subId))
         diff = this_sub.difficulty
         route_mark = "quiz/{}.html".format(diff)
