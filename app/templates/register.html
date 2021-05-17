@@ -6,7 +6,7 @@
         <p>
             {{ form.username.label }}
             <br>
-            {{ form.username(size=32,id="regUsrName") }}
+            {{ form.username(size=32,id="regUsrName",placeholder="  Username") }}
             <br>
             {% if userExist %}
                 <span class="warning">{{userExist}}</span>
@@ -18,7 +18,7 @@
         <p>
             {{ form.password.label }}
             <br>
-            {{ form.password(size=32,id="regPwd") }}
+            {{ form.password(size=32,id="regPwd",placeholder="  Password") }}
             {% for error in form.password.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
@@ -27,7 +27,7 @@
         <p>
             {{ form.confirmpassword.label }}
             <br>
-            {{ form.confirmpassword(size=32,id="regCfmPwd") }}
+            {{ form.confirmpassword(size=32,id="regCfmPwd",placeholder="  Password") }}
             {% for error in form.confirmpassword.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
@@ -36,7 +36,7 @@
         <p>
             {{ form.firstname.label }}
             <br>
-            {{ form.firstname(size=32,id="regFirst") }}
+            {{ form.firstname(size=32,id="regFirst",placeholder="  Firstname") }}
             {% for error in form.firstname.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
@@ -45,7 +45,7 @@
         <p>
             {{ form.lastname.label }}
             <br>
-            {{ form.lastname(size=32,id="regLast") }}
+            {{ form.lastname(size=32,id="regLast",placeholder="  Lastname") }}
             {% for error in form.lastname.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>
@@ -54,7 +54,7 @@
         <p>
             {{ form.email.label }}
             <br>
-            {{ form.email(size=32,id="regEmail") }}
+            {{ form.email(size=32,id="regEmail",placeholder="  example@user.com") }}
             {% for error in form.email.errors %}
             <br>
             <span style="color: red;">[{{ error }}]</span>

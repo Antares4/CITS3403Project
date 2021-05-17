@@ -35,7 +35,7 @@ ul {
   border: 1px solid black;
   margin-left: -20px;
   margin-right: -20px;
-  z-index: 2;
+  z-index: 1;
   transition: all 0.4s ease 0.01s;
 }
 

@@ -103,8 +103,6 @@ def autoMark(submission):
     intermediate = ["c#,quaver","compound,duple","six,6","gb","f#,c#,g#"]
     difficult = ["f,bb,g","f,bb,c#,d,seventh,7th,lower","no, d#","9/8,nine,eight","augmented,fourth,supertonic"]
     ans_list = getAnswerForSub(submission.id)
-    for item in ans_list:
-        print("item",item.submittedAnswer, item.answerSeq)
     if submission.difficulty == "intro":
         index = intro
     elif submission.difficulty == "intermediate":
@@ -229,7 +227,6 @@ def getSubmissionById(sub_id):
 #return list of answer for a given submssion, return none if it does not exist
 def getAnswerForSub(sub_id):
     answer_list = answer.query.filter_by(submissionId=sub_id).all()
-    print(answer_list)
     if not answer_list:
         print('cannot find answer for submission:', sub_id)
         return None
@@ -283,7 +280,7 @@ def getKeyRanking(userid):
 #returns dictinory for admin profile data
 def getAdminProfile(page, userId):
     #pagination of submissions
-    all_sub = getAllSubmissions().paginate(page, 10, False)
+    all_sub = getAllSubmissions().paginate(page, 9, False)
     if all_sub.has_next:
         next_sub_page = url_for('index.profile', page=all_sub.next_num, userId=userId) 
     else:
@@ -307,7 +304,7 @@ def getAdminProfile(page, userId):
 
 #return dictinory of user profile 
 def getUserProfile(page, userId):
-    my_sub = submission.query.filter_by(creater_id=userId).order_by(submission.createdAt.desc()).paginate(page, 10, False)
+    my_sub = submission.query.filter_by(creater_id=userId).order_by(submission.createdAt.desc()).paginate(page, 9, False)
     if my_sub.has_next:
         next_sub_page = url_for('index.profile', page=my_sub.next_num, userId=userId) 
     else:
