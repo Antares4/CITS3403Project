@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired, length
 
+#submission form
 class submissionForm(FlaskForm):
     Q1 = TextAreaField("Question1", validators=[DataRequired()])
     Q2 = TextAreaField("Question2", validators=[DataRequired()])
@@ -10,6 +11,7 @@ class submissionForm(FlaskForm):
     Q5 = TextAreaField("Question5", validators=[DataRequired()])
     submit = SubmitField("submit")
 
+#marking form
 class markingForm(FlaskForm):
     F1 = TextAreaField("Feedback1")
     F2 = TextAreaField("Feedback2")

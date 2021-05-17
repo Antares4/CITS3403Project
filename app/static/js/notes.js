@@ -1,3 +1,4 @@
+// VexFlow library used to create helper music diagram renderding functions(https://www.vexflow.com/)
 
 var stave;
 var context;
@@ -5,23 +6,16 @@ var context;
 const sharp = /[a-z]\#\/\d/;
 const flat = /[a-z]b\/\d/;
 const dotted = /[a-z]*\d*d/;
-function init(element, clef, time,stavelength, key){
-  console.log("init")
-  VF = Vex.Flow;
 
-  // Create an SVG renderer and attach it to the DIV element named "boo".
+//create stave
+function init(element, clef, time,stavelength, key){
+  VF = Vex.Flow;
   var div = document.getElementById(element)
   var renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
-
-  // Configure the rendering context.
   renderer.resize(stavelength, 100);
   context = renderer.getContext();
   context.setFont("Arial", 10, "").setBackgroundFillStyle("#eed");
-
-  // Create a stave of width 400 at position 10, 40 on the canvas.
   stave= new VF.Stave(0, 0, stavelength);
-
-  // Add a clef and time signature.
   if(clef){
     stave.addClef(clef);
   }
@@ -31,12 +25,10 @@ function init(element, clef, time,stavelength, key){
   if(key){
     stave.addKeySignature(key)
   }
-  // Connect it to the rendering context and draw!
   stave.setContext(context).draw();
-
 }
 
-
+//remove stave
 function removestave(staveId){
       parent = document.getElementById(staveId).parentNode;
       document.getElementById(staveId).remove();
@@ -46,31 +38,23 @@ function removestave(staveId){
       parent.insertBefore(g,parent.childNodes[0]);
 }
 
-
+//add notes with duration
 function addnote(clef, e, dur){
   var notes = [];
   for(i=0; i<dur.length; i++){
     notes[i] = new VF.StaveNote({clef: clef, keys: [e[i]], duration: dur[i]});
     if(sharp.test(e[i])){
       notes[i].addAccidental(0, new VF.Accidental("#"));
-      console.log("sharp");
     }
     if(flat.test(e[i])){
       notes[i].addAccidental(0, new VF.Accidental("b"));
-      console.log("flat");
     }
     if(dotted.test(dur[i])){
       notes[i].addDotToAll();
     }
   }
-	//var voice = new VF.Voice({num_beats: time[0],  beat_value: time[1]});
-  //voice.addTickables(notes);
   var beams = VF.Beam.generateBeams(notes);
   var formatter = new VF.Formatter.FormatAndDraw(context, stave, notes)
   beams.forEach(function(b) {b.setContext(context).draw()})
-  // joinVoices([voice]).format([voice], 410);
-  
-  // Render voice
-  //voice.draw(context, stave);
 }
 

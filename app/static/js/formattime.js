@@ -1,3 +1,4 @@
+//trims down utc format of yyyy-MM-ddTHH:mm:ssZ to yyyy-MM-dd
 var timeElements = document.getElementsByClassName('trim-time');
 for (let i = 0; i < timeElements.length; i++) {
   var timetomilisec = timeElements[i].innerHTML;

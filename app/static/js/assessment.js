@@ -1,4 +1,7 @@
+// VexFlow library used to render music diagrams(https://www.vexflow.com/)
+
 VF = Vex.Flow
+//intermedate assessment
 function intermediate(location){
     loc = document.getElementById(location)
     var renderer = new VF.Renderer(loc, VF.Renderer.Backends.SVG);
@@ -9,7 +12,6 @@ function intermediate(location){
     stave1.addClef("treble").addKeySignature("F#m").addTimeSignature("6/8").setContext(context).draw();
     var stave2 = new Vex.Flow.Stave(stave1.width + stave1.x, 0 , 200);
     stave2.setContext(context).draw();
-
     var stave1notes = [
         new VF.StaveNote({clef: "treble", keys: ["f/4"], duration: "16" }),
         new VF.StaveNote({clef: "treble", keys: ["g/4"], duration: "16" }),
@@ -40,8 +42,7 @@ function intermediate(location){
     })
 }
 
-
-
+//difficult assessment
 function difficult(location1,location2){
     loc = document.getElementById(location1)
     var renderer = new VF.Renderer(loc, VF.Renderer.Backends.SVG);
@@ -139,6 +140,7 @@ function difficult(location1,location2){
 }
 
 VF = Vex.Flow
+//intro assessment
 function intro(location){
     loc = document.getElementById(location)
     var renderer = new VF.Renderer(loc, VF.Renderer.Backends.SVG);
