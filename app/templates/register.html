@@ -19,10 +19,6 @@
             {{ form.password.label }}
             <br>
             {{ form.password(size=32,id="password",placeholder="  Password") }}
-            {% for error in form.password.errors %}
-            <br>
-            <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
         </p>
         <p>
             {{ form.confirmpassword.label }}
@@ -30,7 +26,7 @@
             {{ form.confirmpassword(size=32,id="confirmpassword",placeholder="  Password") }}
             {% for error in form.confirmpassword.errors %}
             <br>
-            <span style="color: red;">[{{ error }}]</span>
+            <span class="warning" style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
@@ -39,7 +35,7 @@
             {{ form.firstname(size=32,id="firstname",placeholder="  Firstname") }}
             {% for error in form.firstname.errors %}
             <br>
-            <span style="color: red;">[{{ error }}]</span>
+            <span class="warning" style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>

@@ -83,12 +83,12 @@ class SystemTest(unittest.TestCase):
         invalid_email3 = "123abc@aaa.c"
         self.driver.get("http://localhost:5000/register")
         self.driver.implicitly_wait(3)
-        username = self.driver.find_element_by_id("regUsrName")
-        password = self.driver.find_element_by_id("regPwd")
-        cfmpassword = self.driver.find_element_by_id("regCfmPwd")
-        firstname = self.driver.find_element_by_id("regFirst")
-        lastname = self.driver.find_element_by_id("regLast")
-        email = self.driver.find_element_by_id("regEmail")
+        username = self.driver.find_element_by_id("username")
+        password = self.driver.find_element_by_id("password")
+        cfmpassword = self.driver.find_element_by_id("confirmpassword")
+        firstname = self.driver.find_element_by_id("firstname")
+        lastname = self.driver.find_element_by_id("lastname")
+        email = self.driver.find_element_by_id("email")
         submit = self.driver.find_element_by_id("submit")
         
         username.send_keys(valid_username)
@@ -107,29 +107,29 @@ class SystemTest(unittest.TestCase):
 
         self.driver.get("http://localhost:5000/register")
 
-        username = self.driver.find_element_by_id("regUsrName")
-        password = self.driver.find_element_by_id("regPwd")
-        cfmpassword = self.driver.find_element_by_id("regCfmPwd")
-        firstname = self.driver.find_element_by_id("regFirst")
-        lastname = self.driver.find_element_by_id("regLast")
-        email = self.driver.find_element_by_id("regEmail")
+        username = self.driver.find_element_by_id("username")
+        password = self.driver.find_element_by_id("password")
+        cfmpassword = self.driver.find_element_by_id("confirmpassword")
+        firstname = self.driver.find_element_by_id("firstname")
+        lastname = self.driver.find_element_by_id("lastname")
+        email = self.driver.find_element_by_id("email")
         submit = self.driver.find_element_by_id("submit")
 
         username.send_keys(valid_username)
         password.send_keys(invalid_password)
         cfmpassword.send_keys(invalid_cfmpassword)
-        firstname.send_keys(too_long_string)
+        firstname.send_keys(empty_string)
         lastname.send_keys(empty_string)
         email.send_keys(invalid_email1)
         submit.click()
         
         self.driver.implicitly_wait(4)
-        time.sleep(2)
+        time.sleep(6)
         ##
         warnings = self.driver.find_elements(By.CLASS_NAME, "warning")
         self.assertEqual(warnings[0].get_attribute("innerHTML"),"[Password must be between 6 to 80 characters long.]")
         self.assertEqual(warnings[1].get_attribute("innerHTML"),"[Password must match.]")
-        self.assertEqual(warnings[2].get_attribute("innerHTML"),"[Firstname cannot exceed 130 characters]")
+        self.assertEqual(warnings[2].get_attribute("innerHTML"),"[This field is required]")
         self.assertEqual(warnings[3].get_attribute("innerHTML"),"[This field is required]")
         self.assertEqual(warnings[4].get_attribute("innerHTML"),"[Invalid Email]")
 
@@ -180,8 +180,8 @@ class SystemTest(unittest.TestCase):
         test_username = test_user.username
         test_password = "goodmorning"
 
-        username = self.driver.find_element_by_id("loginname")
-        password = self.driver.find_element_by_id("loginpwd")
+        username = self.driver.find_element_by_id("username")
+        password = self.driver.find_element_by_id("username")
         submit = self.driver.find_element_by_id("submit")
 
         username.send_keys(test_username)

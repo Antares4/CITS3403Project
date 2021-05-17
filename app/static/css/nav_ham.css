@@ -19,8 +19,7 @@ ul.items.min-nav {
 .navbar-option.content-option .dropdown-content {
   display: none;
 }
-.items.min-nav .navbar-option a:hover,
-span:hover {
+.items.min-nav .navbar-option a:hover{
   background-color: var(--a);
 }
 
