@@ -62,7 +62,6 @@
 }
 
 .rank-wrapper {
-  /* border-style: solid; */
   justify-self: center;
   align-self: center;
   align-items: center;
@@ -99,8 +98,6 @@
   text-align: left;
   display: block;
   padding-top: 2%;
-  /* align-self: center;
-    justify-content: center; */
   grid-area: user;
   border-left: solid;
   border-width: 1px;
@@ -206,8 +203,6 @@ table a {
   height: 100%;
   text-align: left;
   display: block;
-  /* align-self: center;
-    justify-content: center; */
   grid-area: user;
   border-left: solid;
   border-width: 1px;

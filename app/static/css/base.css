@@ -145,14 +145,6 @@ a:hover {
   height: 400px;
 }
 
-/* .pageIndex{
-    min-height: 7ch;
-    border: 2px solid rgb(53, 51, 44);
-    display: flex;
-    align-items: center;
-    background-color: rgb(43, 41, 38);
-    justify-content: space-around;
-} */
 .grid-wrapper {
   display: grid;
   height: 100vh;
@@ -190,8 +182,6 @@ a:hover {
   padding-top: 65px;
   position: absolute;
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
   height: 100vh;
   width: 170px;
   z-index: 2;
@@ -222,9 +212,6 @@ a:hover {
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
-  /* display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr ; */
 }
 
 .footer-container {
@@ -267,7 +254,6 @@ a:hover {
 }
 .learn-btn {
   position: relative;
-  /* border: 1px solid black; */
   color: rgb(43, 41, 38);
   background: none;
   letter-spacing: 1px;
@@ -448,16 +434,8 @@ a:hover {
 }
 #content .stave-section {
   background-color: rgb(216, 219, 226);
-  /* width: 80%;
-  margin-left: 10%; */
   grid-area: stave-section;
 }
-/* .content-section.quiz {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* grid-template-rows: ; 
-  grid-template-areas: "quiz-homepage quiz-homepage";
-} */
 #intro {
   grid-area: quiz-homepage;
 }
@@ -485,11 +463,6 @@ a:hover {
 }
 .timer-section {
   grid-area: timer;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* justify-self: center;
-  align-self: center; */
 }
 .timer-section .bar {
   height: 5px;
@@ -567,9 +540,7 @@ a:hover {
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* .content-section ul {
-  font-size: 2.6ex;
-} */
+
 .notedemo {
   display: flex;
   padding-top: 15px;
@@ -604,10 +575,9 @@ a:hover {
 .revision:first-child {
   margin-right: 5px;
 }
-/* For page 2 of chapter 3 used to force footer down*/
+
 .empty {
   height: 40px;
-  /* margin-bottom: 20px; */
   text-align: center;
 }
 .pagebutton {
@@ -685,10 +655,10 @@ a:hover {
   background-color: rgb(214, 214, 214);
 }
 
-/* separater */
+
 form#loginform,
 form#registerform {
-  /* padding-top: 180px; */
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -703,9 +673,7 @@ form#registerform {
   font-weight: 400;
   width: 50%;
 }
-/* #loginpwd {
-  outline: none;
-} */
+
 
 input[type="text"],
 input[type="password"] {
@@ -749,13 +717,8 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  /* background-color: white;
-  color: black;
-  border: 1px solid black;
-  box-shadow: none; */
   color: rgb(39, 39, 39);
   background-color: rgb(228, 228, 228);
-  /* transition: all 0.4s ease 0.01s; */
 }
 .register-container {
   margin-top: 20px;
@@ -766,13 +729,10 @@ input[type="submit"]:hover {
 .register-container a:hover {
   color: rgb(58, 58, 199);
 }
-/* End here for login */
 
-/* register form */
 form#registerform {
   text-align: center;
 }
-/* END REGISTER */
 
 .correct {
   padding: 10px;
