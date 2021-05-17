@@ -777,7 +777,6 @@ ul.items.min-nav {
 }
 .items.min-nav .navbar-option a:hover, span:hover {
   background-color: var(--a);
-  width: 100%;
 }
 
 .items.min-nav #assessment-inside:hover .dropdown-content {
