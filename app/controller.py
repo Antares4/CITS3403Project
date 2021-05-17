@@ -7,7 +7,8 @@ from sqlalchemy.exc import SQLAlchemyError
 import sys
 from datetime import datetime
 
-
+#creates user, validates and sets password 
+#return flase on exception
 def createUser(user,password):
     if user.validate() and password!="":
         if not users.query.filter_by(username=user.username).first():
@@ -26,7 +27,7 @@ def createUser(user,password):
         print("Missing data")
         return False
 
-
+#removes user and submission created by this user
 def removeUser(userId):
     usr = users.query.filter_by(id=userId).first()
     if not usr:
@@ -52,6 +53,7 @@ def removeUser(userId):
             return False
         return True
 
+#update user login time
 def updateLoginTime(user):
     if user:
         user.lastLogin = datetime.utcnow()
@@ -66,6 +68,7 @@ def updateLoginTime(user):
         print("invalid user Object")
         return False
 
+#create feedback response for an assessment
 def feedbackAssessment(sub,form,responses):
     if sub and form and responses:
         for i in range(len(responses)):
@@ -94,6 +97,7 @@ def feedbackAssessment(sub,form,responses):
     else:
         return False
 
+#assessment automark
 def autoMark(submission):
     intro = ["g,e","minim","b","semibreave,minim,crotchet ,quaver,semiquaver","4/4,four four"]
     intermediate = ["c#,quaver","compound,duple","six,6","gb","f#,c#,g#"]
@@ -131,7 +135,7 @@ def autoMark(submission):
         return False
     return True
 
-
+#create an assessment submission
 def createSubmission(sid, difficulty, form):
     valid_dif = ["intro","intermediate","difficult"]
     if difficulty not in valid_dif or users.query.filter_by(id=sid).first() == None:
@@ -184,23 +188,27 @@ def createSubmission(sid, difficulty, form):
     return sub
 
 
-
+#return the number of total submissions
 def howManySubmissions():
     sub = submission.query.all()
     return(len(sub))
 
+#return the number of total(excluding admin) users
 def howManyUsers():
     usr = users.query.filter_by(isAdmin=False).all()
     return(len(usr))
 
+#returns all submission objects that havn't been marked(given feedback) from newest to latest
 def getAllSubmissions():
     all_sub = submission.query.filter_by(feedback=False).order_by(submission.createdAt.desc())
     return all_sub
 
+#return all user objects from newest login to latest
 def getAllUsers():
     alluser = users.query.order_by(users.lastLogin.desc()).all()
     return alluser
 
+#return user object by id, reutrn none if user does not exist
 def getUserById(userId):
     usr = users.query.filter_by(id=userId).first()
     if usr==None:
@@ -209,6 +217,7 @@ def getUserById(userId):
     else:
         return usr
 
+#return submission by id, return none if submission does not exist
 def getSubmissionById(sub_id):
     this_sub = submission.query.filter_by(id=sub_id).first()
     if this_sub==None:
@@ -217,6 +226,7 @@ def getSubmissionById(sub_id):
     else:
         return this_sub
 
+#return list of answer for a given submssion, return none if it does not exist
 def getAnswerForSub(sub_id):
     answer_list = answer.query.filter_by(submissionId=sub_id).all()
     print(answer_list)
@@ -226,6 +236,7 @@ def getAnswerForSub(sub_id):
     else:
         return answer_list
 
+#returns note timed test ranking of the user with the given id 
 def getNoteRanking(userid):
     ranking = None
     adminCount = 0
@@ -248,6 +259,8 @@ def getNoteRanking(userid):
     else:
         return False
         
+
+#returns key timed test ranking of the user with the given id 
 def getKeyRanking(userid):
     ranking = None
     adminCount = 0
@@ -267,8 +280,9 @@ def getKeyRanking(userid):
     else:
         return False
 
-
+#returns dictinory for admin profile data
 def getAdminProfile(page, userId):
+    #pagination of submissions
     all_sub = getAllSubmissions().paginate(page, 10, False)
     if all_sub.has_next:
         next_sub_page = url_for('index.profile', page=all_sub.next_num, userId=userId) 
@@ -291,7 +305,7 @@ def getAdminProfile(page, userId):
     }
     return info
 
-
+#return dictinory of user profile 
 def getUserProfile(page, userId):
     my_sub = submission.query.filter_by(creater_id=userId).order_by(submission.createdAt.desc()).paginate(page, 10, False)
     if my_sub.has_next:
@@ -315,7 +329,7 @@ def getUserProfile(page, userId):
     }
     return info
 
-
+# processes the given user note timed test score and returns status 
 def processNoteScore(userId,score):
     this_user = getUserById(userId)
     if this_user.noteHighScore < score:
@@ -337,6 +351,7 @@ def processNoteScore(userId,score):
     db.session.commit()
     return result
 
+# processes the given user key timed test score and returns status 
 def processKeyScore(userId,score):
     this_user = getUserById(userId)
     if this_user.KeyHighScore < score:
@@ -358,10 +373,12 @@ def processKeyScore(userId,score):
     db.session.commit()
     return result
 
+#return the top 7 top player in the note timed quiz
 def getNoteList():
     top_users = users.query.filter_by(isAdmin=False).order_by(users.noteHighScore.desc()).limit(7).all()
     return top_users
 
+#return the top 7 top player in the key timed quiz
 def getKeyList():
     top_users = users.query.filter_by(isAdmin=False).order_by(users.KeyHighScore.desc()).limit(7).all()
     return top_users
