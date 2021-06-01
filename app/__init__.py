@@ -9,7 +9,7 @@ migrate = Migrate()
 login = LoginManager()
 def initapp(config_type=Config):
     app = Flask(__name__)
-    app.config.from_object(Config)
+    app.config.from_object(config_type)
     db.init_app(app)
     migrate.init_app(app, db)
     login.init_app(app)

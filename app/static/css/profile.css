@@ -118,6 +118,7 @@
   background-color: rgb(216, 212, 212);
 }
 .submissions {
+  margin-top: 20px;
   overflow-y: auto;
   text-align: center;
   grid-area: subs;
